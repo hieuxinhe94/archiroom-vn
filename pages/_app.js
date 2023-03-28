@@ -10,7 +10,7 @@ import "aos/dist/aos.css";
 
 function MyApp({ Component, pageProps }) {
 
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState("dark")
 
   useEffect(() => {
     if (localStorage.getItem('theme')) {
