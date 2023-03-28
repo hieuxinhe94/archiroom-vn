@@ -205,6 +205,64 @@ export const digitalTransformationSteps = {
   ],
 };
 
+
+export const digitalConceptMetatdata = {
+  title: "Hiểu về DX",
+  subtitle: "Giới thiệu tổng quan khái niệm về DX",
+  description: "Diễn dãi chi tiết hơn ở đây ....",
+  main_image: {
+    src: "https://www.morrisengineeringllc.com/wp-content/uploads/lawyer.png",
+    alt: "",
+  },
+  features: [
+    {
+      id: 1,
+      title: "Số hóa - Digitalization",
+      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
+      description:
+        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+        alt: "",
+      },
+    },
+    {
+      id: 2,
+      title: "Tự động hóa - RPA",
+      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
+      description:
+        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+        alt: "",
+      },
+    },
+    {
+      id: 2,
+      title: "Chuyển đổi số toàn diện - DX",
+      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
+      description:
+        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+        alt: "",
+      },
+    },
+  ],
+};
+
 export const digitalMeasureToolMetatdata = {
   title: "PDX Maturity Tool",
   subtitle: "Pasture DX Maturity Tool",
@@ -232,6 +290,87 @@ export const digitalMeasureToolMetatdata = {
   ],
 };
 
+
+export const digitalObjectivesMetadata = {
+  title: "Mục tiêu",
+  subtitle: "Pasture DX Maturity Tool",
+  description: "Pasture DX Maturity Tool",
+  main_image: {
+    src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+    alt: "",
+  },
+  features: [
+    {
+      id: 1,
+      title: "Hiểu về DX",
+      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
+      description:
+        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+        alt: "",
+      },
+    },
+  ],
+};
+
+export const digitalSolutionMetadata = {
+  title: "Giải pháp & Căn chỉnh liên tục",
+  subtitle: "Pasture DX Maturity Tool",
+  description: "Pasture DX Maturity Tool",
+  main_image: {
+    src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+    alt: "",
+  },
+  features: [
+    {
+      id: 1,
+      title: "Hiểu về DX",
+      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
+      description:
+        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+        alt: "",
+      },
+    },
+  ],
+};
+
+export const partnerTrustedMetadata = {
+  title: "Đối tác cùng chúng tôi",
+  subtitle: "Pasture DX Maturity Tool",
+  description: "Pasture DX Maturity Tool",
+  main_image: {
+    src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+    alt: "",
+  },
+  partners: [
+    {
+      id: 1,
+      title: "TPBank",
+      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
+      description:
+        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+        alt: "",
+      },
+    },
+  ],
+};
 
 export const digitalCaseStudyArticles = {
   title: "Case studies",

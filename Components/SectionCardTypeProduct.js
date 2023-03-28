@@ -28,14 +28,14 @@ const SectionCardTypeProduct = ({ currentTheme, data }) => {
             <div className="flex relative flex-wrap">
               <div className="w-full lg:w-1/2 order-1 md:order-2">
                 <div className="relative shadow-image transform -translate-y-16 lg:-translate-y-20 ratio-3-2 lg:ratio-none lg:translate-x-3 xl1450:translate-x-20">
-                  <picture  className="w-full h-full object-cover object-center lg:w-auto lg:h-auto absolute top-0 left-0 lg:static lg:top-auto lg:left-auto">
+                  <picture  className="w-full h-full skew-y-6 object-cover object-center lg:w-auto lg:h-auto absolute top-0 left-0 lg:static lg:top-auto lg:left-auto">
                     <source srcSet="./137065-business.gif" type="image/avif" />
                     <source srcSet="./137065-business.gif" type="image/webp" />
                     <img
                       width="1300"
                       height="730"
                       src="./137065-business.gif"
-                      className="w-full h-full object-cover object-center lg:w-auto lg:h-auto absolute top-0 left-0 lg:static lg:top-auto lg:left-auto"
+                      className="w-full h-full skew-y-6 object-cover object-center lg:w-auto lg:h-auto absolute top-0 left-0 lg:static lg:top-auto lg:left-auto"
                       alt="condo"
                       loading="lazy"
                       srcSet="137065-business.gif 1300w, 137065-business.gif 300w, 137065-business.gif 1024w, 137065-business.gif 768w"

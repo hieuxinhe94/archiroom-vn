@@ -5,6 +5,10 @@ import SectionCardTypeTimeline from "./SectionCardTypeTimeline";
 import HomeBusinessMainProcess from "./HomeBussinessMainProcess";
 import SectionCardTypeProduct from "./SectionCardTypeProduct";
 import SectionCardTypeCaseStudy from "./SectionCardTypeCaseStudy";
+import SectionCardTypeConcept from "./SectionCardTypeConcept";
+import SectionCardTypeSolution from "./SectionCardTypeSolution";
+import SectionCardTypeObjective from "./SectionCardTypeObjectives";
+import SectionCardTypeParterTrusted from "./SectionCardTypeParterTrusted";
 
 const HomePage = ({ currentTheme }) => {
   return (
@@ -20,28 +24,48 @@ const HomePage = ({ currentTheme }) => {
         >
           {heroInfo.subtitle}
         </h2>
-        <Link href="#work">
-          <a
-            className={styles.cta1}
-            style={{
-              backgroundColor: currentTheme.accent,
-              color: currentTheme.contrastText,
-              boxShadow: currentTheme.boxShadow,
-            }}
-          >
-            {ctaTexts.landingCTA}
-          </a>
-        </Link>
       </div>
       <section className="-mt-20 bg-transparent xsm:-mt-16 sm:mt-0 md:-mt-10 xl:-mt-20 xl1450:-mt-20 z-10 relative pb-8 sm:pb-16 overflow-visible z-10">
-            <HomeBusinessMainProcess currentTheme={currentTheme}/>
+        <HomeBusinessMainProcess currentTheme={currentTheme} />
       </section>
 
-      <div>{true ? <SectionCardTypeTimeline currentTheme={currentTheme} /> : null}</div>
+      <div>
+        {true ? <SectionCardTypeTimeline currentTheme={currentTheme} /> : null}
+      </div>
 
-      <div>{true ? <SectionCardTypeProduct currentTheme={currentTheme} /> : null}</div>
+      <div>
+        {true ? <SectionCardTypeConcept currentTheme={currentTheme} /> : null}
+      </div>
 
-      <div>{true ? <SectionCardTypeCaseStudy currentTheme={currentTheme} /> : null}</div>
+      <div>
+        {true ? <SectionCardTypeProduct currentTheme={currentTheme} /> : null}
+      </div>
+
+      <div>
+        {true ? <SectionCardTypeObjective currentTheme={currentTheme} /> : null}
+      </div>
+
+      <div>
+        {true ? <SectionCardTypeSolution currentTheme={currentTheme} /> : null}
+      </div>
+
+      <div
+        className={" h-1 w-full container mx-auto " + styles.lineHorizontal}
+        data-aos="fade-up"
+      />
+
+      <div>
+        {true ? (
+          <SectionCardTypeParterTrusted currentTheme={currentTheme} />
+        ) : null}
+      </div>
+      <div
+        className={" h-1 w-full container mx-auto " + styles.lineHorizontal}
+        data-aos="fade-up"
+      />
+      <div>
+        {true ? <SectionCardTypeCaseStudy currentTheme={currentTheme} /> : null}
+      </div>
     </div>
   );
 };
