@@ -264,8 +264,8 @@ export const digitalConceptMetatdata = {
 };
 
 export const digitalMeasureToolMetatdata = {
-  title: "PDX Maturity Tool",
-  subtitle: "Pasture DX Maturity Tool",
+  title: "Hiểu chính mình",
+  subtitle: "Pasture DXMaturity",
   description: "Pasture DX Maturity Tool",
   main_image: {
     src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
@@ -292,7 +292,7 @@ export const digitalMeasureToolMetatdata = {
 
 
 export const digitalObjectivesMetadata = {
-  title: "Mục tiêu",
+  title: "Xác định mục tiêu",
   subtitle: "Pasture DX Maturity Tool",
   description: "Pasture DX Maturity Tool",
   main_image: {
@@ -319,7 +319,7 @@ export const digitalObjectivesMetadata = {
 };
 
 export const digitalSolutionMetadata = {
-  title: "Giải pháp & Căn chỉnh liên tục",
+  title: "Căn chỉnh Giải pháp",
   subtitle: "Pasture DX Maturity Tool",
   description: "Pasture DX Maturity Tool",
   main_image: {

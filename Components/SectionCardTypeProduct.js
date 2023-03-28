@@ -28,14 +28,14 @@ const SectionCardTypeProduct = ({ currentTheme, data }) => {
             <div className="flex relative flex-wrap">
               <div className="w-full lg:w-1/2 order-1 md:order-2">
                 <div className="relative shadow-image transform -translate-y-16 lg:-translate-y-20 ratio-3-2 lg:ratio-none lg:translate-x-3 xl1450:translate-x-20">
-                  <picture  className="w-full h-full skew-y-6 object-cover object-center lg:w-auto lg:h-auto absolute top-0 left-0 lg:static lg:top-auto lg:left-auto">
+                  <picture  className="w-full h-full skew-y-2 object-cover object-center lg:w-auto lg:h-auto absolute top-0 left-0 lg:static lg:top-auto lg:left-auto">
                     <source srcSet="./137065-business.gif" type="image/avif" />
                     <source srcSet="./137065-business.gif" type="image/webp" />
                     <img
                       width="1300"
                       height="730"
                       src="./137065-business.gif"
-                      className="w-full h-full skew-y-6 object-cover object-center lg:w-auto lg:h-auto absolute top-0 left-0 lg:static lg:top-auto lg:left-auto"
+                      className="w-full h-full skew-y-2 object-cover object-center lg:w-auto lg:h-auto absolute top-0 left-0 lg:static lg:top-auto lg:left-auto"
                       alt="condo"
                       loading="lazy"
                       srcSet="137065-business.gif 1300w, 137065-business.gif 300w, 137065-business.gif 1024w, 137065-business.gif 768w"
@@ -65,29 +65,171 @@ const SectionCardTypeProduct = ({ currentTheme, data }) => {
                   <p className="pb-4">
                     Morris Engineering, LLC, collaborates with Association
                     Boards and their Property Managers to help ensure the smooth
-                    operation of any project you may be tackling. We can help
-                    you prepare your community for the future with our
-                    transition and reserve studies services. We can identify the
-                    source of and remediate structural concerns or leaks in your
-                    community. We can assist with the repair or replacement of
-                    site facilities, such as asphalt pavement or drainage
-                    structures.{" "}
+                     
                   </p>
-                  <p className="pb-4">
-                    Morris Engineering continuously monitors emerging property
-                    enhancements, like EV Charging Stations, to ensure that you
-                    are ready to address these and other future requirements.
-                  </p>
-                  <p>
-                    We provide Associations with peace of mind by helping to
-                    ensure the work being performed is appropriate and enduring.
-                  </p>
+                  <Step ></Step>
                 </div>
               </div>
             </div>
           </div>{" "}
         </div>
       </section>
+    </div>
+  );
+};
+
+
+export const Step = () => {
+  return (
+    <div className="sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
+      <div className="grid gap-6 row-gap-10 lg:grid-cols-1">
+        <div className="lg:py-6 lg:pr-16">
+          <div className="flex">
+            <div className="flex flex-col items-center mr-4">
+              <div>
+                <div className="flex items-center justify-center w-10 h-10 border rounded-full">
+                  <svg
+                    className="w-4 text-gray-600"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    viewBox="0 0 24 24"
+                  >
+                    <line
+                      fill="none"
+                      strokeMiterlimit="10"
+                      x1="12"
+                      y1="2"
+                      x2="12"
+                      y2="22"
+                    />
+                    <polyline
+                      fill="none"
+                      strokeMiterlimit="10"
+                      points="19,15 12,22 5,15"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div className="w-px h-full bg-gray-300" />
+            </div>
+            <div className="pt-1 pb-8">
+              <p className="mb-2 text-lg font-bold">Step 1</p>
+              <p className="text-gray-700">
+                All recipes are written using certain conventions, which define
+                the characteristics of common ingredients. The rules vary from
+                place to place.
+              </p>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="flex flex-col items-center mr-4">
+              <div>
+                <div className="flex items-center justify-center w-10 h-10 border rounded-full">
+                  <svg
+                    className="w-4 text-gray-600"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    viewBox="0 0 24 24"
+                  >
+                    <line
+                      fill="none"
+                      strokeMiterlimit="10"
+                      x1="12"
+                      y1="2"
+                      x2="12"
+                      y2="22"
+                    />
+                    <polyline
+                      fill="none"
+                      strokeMiterlimit="10"
+                      points="19,15 12,22 5,15"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div className="w-px h-full bg-gray-300" />
+            </div>
+            <div className="pt-1 pb-8">
+              <p className="mb-2 text-lg font-bold">Step 2</p>
+              <p className="text-gray-700">
+                The first mate and his Skipper too will do their very best to
+                make the others comfortable in their tropic island nest. Michael
+                Knight a young loner.
+              </p>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="flex flex-col items-center mr-4">
+              <div>
+                <div className="flex items-center justify-center w-10 h-10 border rounded-full">
+                  <svg
+                    className="w-4 text-gray-600"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    viewBox="0 0 24 24"
+                  >
+                    <line
+                      fill="none"
+                      strokeMiterlimit="10"
+                      x1="12"
+                      y1="2"
+                      x2="12"
+                      y2="22"
+                    />
+                    <polyline
+                      fill="none"
+                      strokeMiterlimit="10"
+                      points="19,15 12,22 5,15"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div className="w-px h-full bg-gray-300" />
+            </div>
+            <div className="pt-1 pb-8">
+              <p className="mb-2 text-lg font-bold">Step 3</p>
+              <p className="text-gray-700">
+                Tell them I hate them. Is the Space Pope reptilian!? Tell her
+                she looks thin. Hello, little man. I will destroy you!
+              </p>
+            </div>
+          </div>
+       
+          <div className="flex">
+            <div className="flex flex-col items-center mr-4">
+              <div>
+                <div className="flex items-center justify-center w-10 h-10 border rounded-full">
+                  <svg
+                    className="w-6 text-gray-600"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <polyline
+                      fill="none"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeMiterlimit="10"
+                      points="6,12 10,16 18,8"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div className="pt-1">
+              <p className="mb-2 text-lg font-bold">Success</p>
+              <p className="text-gray-700" />
+            </div>
+          </div>
+        </div>
+      
+      </div>
     </div>
   );
 };

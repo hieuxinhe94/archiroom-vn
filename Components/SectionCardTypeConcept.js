@@ -26,16 +26,41 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
             <div className="flex relative flex-wrap">
               <div className="w-full lg:w-1/2 ">
                 <div className="relative shadow-image transform -translate-y-16 lg:-translate-y-20 ratio-3-2 lg:ratio-none lg:-translate-x-3 xl1450:-translate-x-20">
-                  {" Image or video "}
+                  <div className="my-auto lg:max-w-2xl">
+                    <div className="relative w-full transition-shadow duration-300 hover:shadow-xl">
+                      <img
+                        className="p-2 mt-8 object-cover w-full h-64 rounded shadow-lg sm:h-64 md:h-80 lg:h-96"
+                        src="https://images.pexels.com/photos/927022/pexels-photo-927022.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
+                        alt=""
+                      />
+                      <a
+                        href="/"
+                        aria-label="Play Video"
+                        className="absolute inset-0 flex items-center justify-center w-full h-full transition-colors duration-300 bg-gray-900 bg-opacity-50 group hover:bg-opacity-25"
+                      >
+                        <div className="flex items-center justify-center w-16 h-16 transition duration-300 transform bg-gray-100 rounded-full shadow-2xl group-hover:scale-110">
+                          <svg
+                            className="w-10 text-gray-900"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z" />
+                          </svg>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="w-full lg:w-1/2 z-10 transform -translate-y-16 lg:translate-y-0 mt-8 lg:mt-0 lg:pr-12 lg:pl-12">
+              <div className="w-full lg:w-1/2 z-10 transform -translate-y-16 lg:translate-y-0 mt-2 lg:mt-0 lg:pr-12 lg:pl-8">
                 <h2 className="text-primary-color font-semibold">
-                  {" "}
+                 
                   {digitalConceptMetatdata?.subtitle}
                 </h2>
                 <div className="wysiwyg mt-6">
-                  <p className="pb-4 font-light">{digitalConceptMetatdata?.description}</p>
+                  <p className="pb-4 font-light">
+                    {digitalConceptMetatdata?.description}
+                  </p>
 
                   <div className="w-full text-center sm:w-3/4 lg:w-3/5">
                     <ul className="accordion mt-4">
