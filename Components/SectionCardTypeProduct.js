@@ -27,21 +27,36 @@ const SectionCardTypeProduct = ({ currentTheme, data }) => {
           <div className="bg-theme-light-gray pt-8 px-6 lg:px-0 lg:py-10 mt-8">
             <div className="flex relative flex-wrap">
               <div className="w-full lg:w-1/2 order-1 md:order-2">
-                <div className="relative shadow-image transform -translate-y-16 lg:-translate-y-20 ratio-3-2 lg:ratio-none lg:translate-x-3 xl1450:translate-x-20">
-                  <picture  className="w-full h-full skew-y-2 object-cover object-center lg:w-auto lg:h-auto absolute top-0 left-0 lg:static lg:top-auto lg:left-auto">
+                <div className="relative mt-12 w-full transition-shadow duration-300 hover:shadow-xl">
+                  <picture className="p-2 mt-8 mr-4 rounded-2xl object-cover w-full h-64 rounded shadow-lg sm:h-64 md:h-80 lg:h-full ">
                     <source srcSet="./137065-business.gif" type="image/avif" />
                     <source srcSet="./137065-business.gif" type="image/webp" />
                     <img
-                      width="1300"
-                      height="730"
+                      width="900"
+                      height="530"
                       src="./137065-business.gif"
-                      className="w-full h-full skew-y-2 object-cover object-center lg:w-auto lg:h-auto absolute top-0 left-0 lg:static lg:top-auto lg:left-auto"
+                      className="w-full h-full rounded rounded-xl object-cover object-center lg:w-auto absolute top-0 left-0 lg:static lg:top-auto lg:left-auto"
                       alt="condo"
                       loading="lazy"
-                      srcSet="137065-business.gif 1300w, 137065-business.gif 300w, 137065-business.gif 1024w, 137065-business.gif 768w"
-                      sizes="(max-width: 1300px) 100vw, 1300px"
+                      srcSet="137065-business.gif 900w, 137065-business.gif 300w, 137065-business.gif 1024w, 137065-business.gif 768w"
+                      sizes="(max-width: 900px) 100vw, 1300px"
                     />
-                  </picture>{" "}
+                  </picture>
+                  <a
+                    href="/"
+                    aria-label="Play Video"
+                    className="absolute inset-0 flex items-center justify-center w-full h-full transition-colors duration-300 bg-gray-900 bg-opacity-50 group hover:bg-opacity-25"
+                  >
+                    <div className="flex items-center justify-center w-16 h-16 transition duration-300 transform bg-gray-100 rounded-full shadow-2xl group-hover:scale-110">
+                      <svg
+                        className="w-10 text-gray-900"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z" />
+                      </svg>
+                    </div>
+                  </a>
                 </div>
               </div>
               <div className="w-full lg:w-1/2 z-10 transform -translate-y-16 lg:translate-y-0 mt-8 lg:mt-0 lg:pl-12 lg:pr-12 order-2 md:order-1">
@@ -65,9 +80,8 @@ const SectionCardTypeProduct = ({ currentTheme, data }) => {
                   <p className="pb-4">
                     Morris Engineering, LLC, collaborates with Association
                     Boards and their Property Managers to help ensure the smooth
-                     
                   </p>
-                  <Step ></Step>
+                  <Step></Step>
                 </div>
               </div>
             </div>
@@ -77,7 +91,6 @@ const SectionCardTypeProduct = ({ currentTheme, data }) => {
     </div>
   );
 };
-
 
 export const Step = () => {
   return (
@@ -200,7 +213,7 @@ export const Step = () => {
               </p>
             </div>
           </div>
-       
+
           <div className="flex">
             <div className="flex flex-col items-center mr-4">
               <div>
@@ -228,7 +241,6 @@ export const Step = () => {
             </div>
           </div>
         </div>
-      
       </div>
     </div>
   );

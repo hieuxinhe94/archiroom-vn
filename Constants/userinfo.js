@@ -75,7 +75,7 @@ export const businessMainSteps = {
       main_classes: "",
       secondary_classes: "",
       main_image: {
-        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+        src: "team.svg",
         alt: "",
       },
     },
@@ -88,7 +88,7 @@ export const businessMainSteps = {
       main_classes: "",
       secondary_classes: "",
       main_image: {
-        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+        src: "team.svg",
         alt: "",
       },
     },
@@ -101,7 +101,7 @@ export const businessMainSteps = {
       main_classes: "",
       secondary_classes: "",
       main_image: {
-        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+        src: "team.svg",
         alt: "",
       },
     },
@@ -114,7 +114,7 @@ export const businessMainSteps = {
       main_classes: "",
       secondary_classes: "",
       main_image: {
-        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+        src: "team.svg",
         alt: "",
       },
     },

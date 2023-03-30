@@ -17,13 +17,13 @@ const HomeBusinessMainProcess = ({ currentTheme }) => {
                 return (
                   <div
                     data-aos="fade-up"
-                    data-aos-duration={500 + index * 350}
+                    data-aos-duration={200 + index * 500}
                     key={item.id}
-                    className="card-rise px-2 lg:px-3 mb-4 mt-3  w-1/2 md:w-1/5  "
+                    className="rounded-xl card-rise px-2 lg:px-3 mb-4 mt-3  w-1/2 md:w-1/5  "
                   >
                     <a target="" href="/services/#condo">
-                      <div className="bg-theme-light-gray bg-white text-gray-900 text-center flex flex-col justify-start items-center mx-auto  h-full shadow-lg px-3 pt-5 pb-6  sm:m-0 ">
-                        <picture className="inline-block h-24 mt-3">
+                      <div className="bg-theme-light-gray rounded-lg bg-gray-200/90 text-gray-900 text-center flex flex-col justify-start items-center mx-auto  h-full shadow-lg px-3 pt-5 pb-6  sm:m-0 ">
+                        {/* <picture className="inline-block h-24 mt-3">
                           <source
                             srcSet={item.main_image.src}
                             type="image/avif"
@@ -37,8 +37,8 @@ const HomeBusinessMainProcess = ({ currentTheme }) => {
                             alt={item.main_image.alt}
                             className="inline-block h-24 mt-3"
                           />
-                        </picture>
-                        <p className="font-bold mt-6 text-xs sm:text-sm lg:text-lg">
+                        </picture> */}
+                        <p className="font-bold text-xs sm:text-sm lg:text-lg">
                           {item.title}
                           <span className="text-secondary-color double-caret "></span>
                         </p>

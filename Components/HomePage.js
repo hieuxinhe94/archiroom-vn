@@ -9,6 +9,7 @@ import SectionCardTypeConcept from "./SectionCardTypeConcept";
 import SectionCardTypeSolution from "./SectionCardTypeSolution";
 import SectionCardTypeObjective from "./SectionCardTypeObjectives";
 import SectionCardTypeParterTrusted from "./SectionCardTypeParterTrusted";
+import ChatbotHead from "./ChatbotHead";
 
 const HomePage = ({ currentTheme }) => {
   return (
@@ -24,8 +25,12 @@ const HomePage = ({ currentTheme }) => {
         >
           {heroInfo.subtitle}
         </h2>
+
+        <div className="absolute rounded-xl top-16 right-8 sm:w-1/2 lg:w-1/3 bg-white/90">
+          <ChatbotHead />
+        </div>
       </div>
-      <section className="-mt-20 bg-transparent xsm:-mt-16 sm:mt-0 md:-mt-10 xl:-mt-20 xl1450:-mt-20 z-10 relative pb-8 sm:pb-16 overflow-visible z-10">
+      <section className="-mt-30 bg-transparent xsm:-mt-16 sm:mt-0 md:-mt-10 xl:-mt-20 xl1450:-mt-20 z-10 relative pb-8 sm:pb-16 overflow-visible z-10">
         <HomeBusinessMainProcess currentTheme={currentTheme} />
       </section>
 
@@ -66,6 +71,8 @@ const HomePage = ({ currentTheme }) => {
       <div>
         {true ? <SectionCardTypeCaseStudy currentTheme={currentTheme} /> : null}
       </div>
+
+   
     </div>
   );
 };
