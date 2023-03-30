@@ -15,7 +15,7 @@ const HomePage = ({ currentTheme }) => {
   return (
     <div>
       <div
-        className={styles.homeheading}
+        className={styles.homeheading + " overflow-visible" }
         style={{ backgroundColor: currentTheme.secondary }}
       >
         <h1 className={styles.heading}>{heroInfo.title}</h1>
@@ -26,11 +26,11 @@ const HomePage = ({ currentTheme }) => {
           {heroInfo.subtitle}
         </h2>
 
-        <div className="absolute rounded-xl top-16 right-8 sm:w-1/2 lg:w-1/3 bg-white/90">
+        <div className="absolute rounded-xl top-16 lg:right-8 sm:w-1/2 lg:w-1/3 bg-white/90 sm:px-8">
           <ChatbotHead />
         </div>
       </div>
-      <section className="-mt-30 bg-transparent xsm:-mt-16 sm:mt-0 md:-mt-10 xl:-mt-20 xl1450:-mt-20 z-10 relative pb-8 sm:pb-16 overflow-visible z-10">
+      <section className="lg:-mt-30 bg-transparent xsm:-mt-16 sm:mt-0 md:-mt-10 xl:-mt-20 xl1450:-mt-20 z-10 relative pb-8 sm:pb-16 overflow-visible z-10">
         <HomeBusinessMainProcess currentTheme={currentTheme} />
       </section>
 

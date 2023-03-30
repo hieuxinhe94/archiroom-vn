@@ -38,7 +38,8 @@ const HomeBusinessMainProcess = ({ currentTheme }) => {
                             className="inline-block h-24 mt-3"
                           />
                         </picture> */}
-                        <p className="font-bold text-xs sm:text-sm lg:text-lg">
+                   
+                        <p className="font-bold text-xs sm:text-sm lg:text-lg animate-pulse">
                           {item.title}
                           <span className="text-secondary-color double-caret "></span>
                         </p>
