@@ -17,8 +17,7 @@ import { useRouter } from "next/router";
 export default function HomePage (props) {
   const { postdata, siteconfig, preview, currentTheme } = props;
   const router = useRouter();
-  console.log("postdata")
-  console.log(postdata)
+  
   
   // const { data: posts } = usePreviewSubscription(postquery, {
   //   initialData: postdata,
