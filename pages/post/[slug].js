@@ -22,9 +22,9 @@ export default function Post(props) {
     enabled: preview || router.query.preview !== undefined,
   });
 
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
+  // if (!router.isFallback && !post?.slug) {
+  //   return <ErrorPage statusCode={404} />;
+  // }
 
   const imageProps = post?.mainImage ? GetImage(post?.mainImage) : null;
 
@@ -36,19 +36,31 @@ export default function Post(props) {
     block: {
       // Ex. 2: rendering custom lists
       blockquoteComponent: ({ children }) => (
-        <CustomFieldsComponent type={"blockquoteComponent"} children={children} />  
+        <CustomFieldsComponent type={"blockquoteComponent"}>
+          {children}{" "}
+        </CustomFieldsComponent>
       ),
       podcastComponent: ({ children }) => (
-        <CustomFieldsComponent type={"podcastComponent"} children={children} />  
+        <CustomFieldsComponent type={"podcastComponent"}>
+          {" "}
+          {children}
+        </CustomFieldsComponent>
       ),
       videoComponent: ({ children }) => (
-        <CustomFieldsComponent type={"videoComponent"} children={children} />  
+        <CustomFieldsComponent type={"videoComponent"}>
+          {" "}
+          {children}
+        </CustomFieldsComponent>
       ),
       chatbotComponent: ({ children }) => (
-        <CustomFieldsComponent type={"chatbotComponent"} children={children} />  
+        <CustomFieldsComponent type={"chatbotComponent"}>
+          {children}
+        </CustomFieldsComponent>
       ),
       rpaComponent: ({ children }) => (
-        <CustomFieldsComponent type={"rpaComponent"} children={children} />  
+        <CustomFieldsComponent type={"rpaComponent"}>
+          {children}
+        </CustomFieldsComponent>
       ),
     },
   };
@@ -224,7 +236,6 @@ export default function Post(props) {
                     <div className="w-full ">
                       <div className="w-full cursor-pointer   rounded-md bg-black/30  text-white backdrop-blur-md hover:bg-black/20 text-[0.8125rem] font-medium leading-5 text-slate-700 shadow-sm ring-1 ring-slate-700/10">
                         <div className="flex items-center justify-center ">
-                      
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -257,8 +268,6 @@ export default function Post(props) {
     </>
   );
 }
-
-
 
 export async function getStaticProps({ params, preview = false }) {
   const post = await getClient(preview).fetch(singlequery, {

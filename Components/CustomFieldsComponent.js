@@ -1,19 +1,21 @@
 export function CustomFieldsComponent({ children, type }) {
   switch (type) {
     case "blockquoteComponent":
-      return <CustomComponentQuote children={children} />;
+      return <CustomComponentQuote>{children} </CustomComponentQuote>;
     case "podcastComponent":
-      return <CustomPodcastComponent children={children} />;
+      return <CustomPodcastComponent >{children} </CustomPodcastComponent>;
     case "videoComponent":
-      return <CustomVideoComponent children={children} />;
+      return <CustomVideoComponent >{children} </CustomVideoComponent>;
     case "chatbotComponent":
-      return <CustomChatbotComponent children={children} />;
+      return <CustomChatbotComponent >{children} </CustomChatbotComponent>;
     case "rpaComponent":
-      return <CustomRpaComponent children={children} />;
+      return <CustomRpaComponent >{children} </CustomRpaComponent>;
     default:
       return <></>;
   }
 }
+
+CustomFieldsComponent.displayName = 'CustomFieldsComponent';
 
 export function CustomComponentQuote({ children }) {
   return (
@@ -33,7 +35,7 @@ export function CustomComponentQuote({ children }) {
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
-                    stroke-width="0"
+                    strokeWidth="0"
                     viewBox="0 0 448 512"
                     className="relative text-black "
                     height="1em"
@@ -71,7 +73,7 @@ export function CustomPodcastComponent({ children }) {
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
-                    stroke-width="0"
+                    strokeWidth="0"
                     viewBox="0 0 448 512"
                     className="relative text-black "
                     height="1em"
@@ -109,7 +111,7 @@ export function CustomVideoComponent({ children }) {
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
-                    stroke-width="0"
+                    strokeWidth="0"
                     viewBox="0 0 448 512"
                     className="relative text-black "
                     height="1em"
@@ -147,7 +149,7 @@ export function CustomChatbotComponent({ children }) {
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
-                    stroke-width="0"
+                    strokeWidth="0"
                     viewBox="0 0 448 512"
                     className="relative text-black "
                     height="1em"
@@ -185,7 +187,7 @@ export function CustomRpaComponent({ children }) {
                     <svg
                       stroke="currentColor"
                       fill="currentColor"
-                      stroke-width="0"
+                      strokeWidth="0"
                       viewBox="0 0 448 512"
                       className="relative text-black "
                       height="1em"
