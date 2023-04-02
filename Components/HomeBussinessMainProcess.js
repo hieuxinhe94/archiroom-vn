@@ -23,7 +23,7 @@ const HomeBusinessMainProcess = ({ currentTheme }) => {
                   >
                     <a target="" href="/services/#condo">
                       <div className="bg-theme-light-gray rounded-lg bg-gray-200/90 text-gray-900 text-center flex flex-col justify-start items-center mx-auto  h-full shadow-lg px-3 pt-5 pb-6  sm:m-0 ">
-                        {/* <picture className="inline-block h-24 mt-3">
+                        <picture className="inline-block h-24 mt-3">
                           <source
                             srcSet={item.main_image.src}
                             type="image/avif"
@@ -37,7 +37,7 @@ const HomeBusinessMainProcess = ({ currentTheme }) => {
                             alt={item.main_image.alt}
                             className="inline-block h-24 mt-3"
                           />
-                        </picture> */}
+                        </picture>
                    
                         <p className="font-bold text-xs sm:text-sm lg:text-lg animate-pulse">
                           {item.title}

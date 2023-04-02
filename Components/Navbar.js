@@ -25,7 +25,7 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
     })
 
     return (
-        <div className={styles.navbar} style={{ backgroundColor: currentTheme.secondary, boxShadow: currentTheme.boxShadow, position: sticky ? 'fixed' : 'static' }}>
+        <div className={styles.navbar + " top-0"} style={{ backgroundColor: currentTheme.secondary, boxShadow: currentTheme.boxShadow, position: sticky ? 'fixed' : 'static' }}>
             <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'baseline', marginBottom: !drawerVisible ? '0' : '10px' }}>
                 <Link href='/'><a>
                     <h2 className={styles.logo}>{pageInfo.logoText} &#174;</h2>

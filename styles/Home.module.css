@@ -10,6 +10,10 @@
   padding: 0 25vw;
 }
 
+.articleBody p{
+  margin-bottom: 10px;
+}
+
 .homeheading::before {
   content: "";
   position: absolute;
@@ -91,7 +95,7 @@
 
 .workheading {
   font-family: "Playfair Display", serif;
-  font-size: 30px;
+  font-size: 25px;
   text-align: center;
   position: absolute;
 }
@@ -322,7 +326,7 @@
     font-size: 17px;
   }
   .workheading {
-    font-size: 45px;
+   
     position: absolute;
   }
   .skills {
@@ -409,9 +413,7 @@
   .projectSubTitle {
     margin-bottom: 0.5rem;
   }
-  .workheading {
-    font-size: 40px;
-  }
+  
   .homeWorkSection {
     padding: 1rem;
   }

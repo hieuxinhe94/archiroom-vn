@@ -388,7 +388,7 @@ export const digitalCaseStudyArticles = {
       description:
         "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
       due_date: "1-2 weeks",
-      href: "/solution",
+      href: "/post/searching",
       main_classes: "",
       secondary_classes: "",
       main_image: {

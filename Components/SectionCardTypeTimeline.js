@@ -12,12 +12,12 @@ const SectionCardTypeTimeline = ({ currentTheme, data }) => {
   return (
     <div className={styles.educationWrapper + " container mx-auto"}>
       <div
-        className={styles.workheading + " flex items-end " + styles.lineHorizontal}
+        className={styles.workheading + " flex items-end md:text-sm lg:text-4xl px-4 " + styles.lineHorizontal}
         data-aos="fade-up"
       >
  
         {digitalTransformationSteps?.title} 
-          <div className="pb-12 px-2">
+          <div className="pb-2 lg:pb-12 px-2">
             <span className="block text-2xl font-bold text-gray-400 dark:text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ const SectionCardTypeTimeline = ({ currentTheme, data }) => {
             </span>
          </div>
       </div>
-      <div className={styles.timeline + " pt-20"}>
+      <div className={styles.timeline + " mt-20"}>
         <ul>
           {digitalTransformationSteps
             ? digitalTransformationSteps.steps.map((value, key) => {
@@ -54,7 +54,7 @@ const SectionCardTypeTimeline = ({ currentTheme, data }) => {
                       </p>
                     </div>
                     <div
-                      className={styles.time}
+                      className={styles.time + ""}
                       style={{
                         border: `2px solid ${currentTheme.accent}`,
                         color: currentTheme.accent,

@@ -9,6 +9,7 @@ export const lightTheme = {
     boxShadow: '0px 2px 10px -2px rgba(134, 134, 134, 0.5)',
     contrastText: '#FAFAFA',
     footerColor: '#F0F0F0',
+    mainColor: '#263859'
   }
   
   export const darkTheme = {
@@ -21,5 +22,6 @@ export const lightTheme = {
     accent: '#d7f7f5',
     boxShadow: '0px 2px 10px -2px rgba(51, 51, 51, 0.5)',
     contrastText: '#101010',
-    footerColor: '#16161D'
+    footerColor: '#16161D',
+    mainColor: '#263859'
   }

@@ -29,7 +29,7 @@ const SectionCardTypeParterTrusted = ({ currentTheme, data }) => {
       <section className="cards-block z-30 relative bg-no-repeat px-3 py-8 md:py-12 xl:py-16 bg-cover bg-center">
         <div className="container mx-auto z-10 relative">
           <div className="flex flex-wrap justify-center">
-            <div className="card-rise  px-2 lg:px-3 mb-4 mt-3  w-full md:w-1/2 lg:w-1/4  ">
+            <div className="card-rise px-8 lg:px-3 mb-4 mt-3 w-full md:w-1/2 lg:w-1/4  ">
               <a target="" href="#ev-charging">
                 <div className=" bg-white bg-theme-light-gray text-gray-900 text-center flex flex-col justify-start items-center mx-auto  h-full shadow-lg px-3 pt-5 pb-6  sm:m-0 ">
                   <img
@@ -45,7 +45,7 @@ const SectionCardTypeParterTrusted = ({ currentTheme, data }) => {
                 </div>
               </a>
             </div>
-            <div className="card-rise px-2 lg:px-3 mb-4 mt-3  w-full md:w-1/2 lg:w-1/4  ">
+            <div className="card-rise px-8 lg:px-3 mb-4 mt-3  w-full md:w-1/2 lg:w-1/4  ">
               <a target="" href="#pavement">
                 <div className=" bg-white bg-theme-light-gray text-gray-900 text-center flex flex-col justify-start items-center mx-auto  h-full shadow-lg px-3 pt-5 pb-6  sm:m-0 ">
                   <img

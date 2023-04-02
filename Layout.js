@@ -1,7 +1,7 @@
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 
-const Layout = ({children, toggleTheme, currentTheme}) => {
+export default function Layout ({children, toggleTheme, currentTheme}) {
     return (
         <div>
             <Navbar toggleTheme={toggleTheme} currentTheme={currentTheme}/>
@@ -10,5 +10,3 @@ const Layout = ({children, toggleTheme, currentTheme}) => {
         </div>
     )
 }
-
-export default Layout
