@@ -135,15 +135,17 @@ export const businessMainSteps = {
 };
 
 export const digitalTransformationSteps = {
-  title: "Tư vấn Chuyển đổi số",
+  title: "Tư vấn chiến lược",
   subtitle: "DX consultant",
   steps: [
     {
       id: 1,
       title: "Hiểu về DX",
       subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
-      description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      description: `Hiểu các khái niệm/tiêu chuẩn kỹ thuật về Chuyển đổi số.
+         Tiếp theo là các đánh giá về ngành, đối thủ cạnh tranh trên thị trường về năng lực Chuyển đổi số của họ.
+         Sau đó bạn cần hiểu về những công nghệ mới, cách mà tổ chức khác đang áp dụng chúng nhằm tăng lợi thế cạnh tranh với bạn. 
+         Cuối cùng, và rất quan trọng, bạn cần hiểu những chiến lược cạnh tranh nhất định có thể áp dụng như những lựa chọn sống còn cho tổ chức.`,
       due_date: "1-2 weeks",
       href: "/solution",
       main_classes: "",
@@ -156,11 +158,12 @@ export const digitalTransformationSteps = {
 
     {
       id: 2,
-      title: "Hiểu chính mình",
+      title: "Hiểu về tổ chức",
       subtitle:
-        "Ứng dụng phần mềm [ProductName] phân tích tổng quan tổ chức của bạn",
-      description:
-        "[ProductName] được phát triển bởi [CompanyName] và cung cấp dưới dạng [CompainName] .... Phần mềm có các module .... nhằm trực quan hóa .... ",
+        "Triển khai [PDM Consul Software] - Công cụ chiến lược phân tích/đo lường mức độ số hóa.",
+      description: `Đánh giá tình trạng chuyển đổi số hiện tại của công ty: 
+        Cần tiến hành khảo sát và phân tích hệ thống và quy trình hoạt động của công ty để xác định tình trạng chuyển đổi số hiện tại,
+        bao gồm cả các vấn đề về hạ tầng công nghệ, quản lý dữ liệu, cơ cấu tổ chức, quy trình kinh doanh và trải nghiệm khách hàng.`,
       due_date: "3-4 weeks",
       href: "/solution",
       main_classes: "",
@@ -174,9 +177,11 @@ export const digitalTransformationSteps = {
     {
       id: 3,
       title: "Hiểu mục tiêu",
-      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
-      description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      subtitle: "Xác định mục tiêu chuyển đổi số",
+      description: `Xác định mục tiêu chuyển đổi số:
+         Dựa trên tình trạng chuyển đổi số hiện tại và chiến lược kinh doanh của công ty, 
+         cần xác định mục tiêu chuyển đổi số cụ thể mà công ty mong muốn đạt được, 
+         bao gồm cả các chỉ tiêu về hiệu quả hoạt động, tăng trưởng doanh số và cải thiện trải nghiệm khách hàng.`,
       due_date: "1-2 weeks",
       href: "/solution",
       main_classes: "",
@@ -190,9 +195,9 @@ export const digitalTransformationSteps = {
     {
       id: 4,
       title: "Hiểu giải pháp",
-      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
-      description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      subtitle: "Thiết kế chiến lược & Đánh giá kết quả & Cải tiến liên tục.",
+      description: `Dựa trên mục tiêu chuyển đổi số đã xác định, cần thiết kế chiến lược chuyển đổi số phù hợp với nhu cầu và điều kiện của công ty.
+         Chiến lược này nên bao gồm các giải pháp kỹ thuật, cơ cấu tổ chức, quy trình kinh doanh và trải nghiệm khách hàng để đảm bảo tính toàn diện và hiệu quả của quá trình chuyển đổi.`,
       due_date: "1-2 weeks",
       href: "/solution",
       main_classes: "",
@@ -204,7 +209,6 @@ export const digitalTransformationSteps = {
     },
   ],
 };
-
 
 export const digitalConceptMetatdata = {
   title: "Hiểu về DX",
@@ -268,14 +272,14 @@ export const digitalMeasureToolMetatdata = {
   subtitle: "Pasture DXMaturity",
   description: "Pasture DX Maturity Tool",
   main_image: {
-    src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+    src: "https://www.morrisengineeringllc.com/wp-content/uploads/lawyer.png",
     alt: "",
   },
-  features: [
+  steps: [
     {
       id: 1,
-      title: "Hiểu về DX",
-      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
+      title: "Đo lường tỷ lệ Số hóa ",
+      subtitle: "Đo lường mức độ số hóa, ....",
       description:
         "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
       due_date: "1-2 weeks",
@@ -283,20 +287,97 @@ export const digitalMeasureToolMetatdata = {
       main_classes: "",
       secondary_classes: "",
       main_image: {
-        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+        src: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
+        alt: "",
+      },
+    },
+    {
+      id: 2,
+      title: "Liên thông số hóa quy trình",
+      subtitle: "Đo lường mức độ số hóa, ....",
+      description:
+        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
+        alt: "",
+      },
+    },
+    {
+      id: 3,
+      title: "Đo lường tần suất/thời gian",
+      subtitle: "Đo lường mức độ số hóa, ....",
+      description:
+        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
+        alt: "",
+      },
+    },
+    {
+      id: 4,
+      title: "Đề xuất điểm Tự động hóa",
+      subtitle: "RPA - R ....",
+      description:
+        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
+        alt: "",
+      },
+    },
+
+    {
+      id: 5,
+      title: "Ứng dụng Công nghệ mới",
+      subtitle: "Đo lường mức độ số hóa, ....",
+      description:
+        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
+        alt: "",
+      },
+    },
+
+    {
+      id: 7,
+      title: "Cải tiến quy trình",
+      subtitle:
+        "Đổi mới quy trình vận hành, quy trình kinh doanh dựa trên nền tảng những công nghệ cốt lõi đã xây dựng.",
+      description:
+        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
         alt: "",
       },
     },
   ],
 };
 
-
 export const digitalObjectivesMetadata = {
   title: "Xác định mục tiêu",
   subtitle: "Pasture DX Maturity Tool",
   description: "Pasture DX Maturity Tool",
   main_image: {
-    src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+    src: "https://www.morrisengineeringllc.com/wp-content/uploads/lawyer.png",
     alt: "",
   },
   features: [
@@ -396,7 +477,7 @@ export const digitalCaseStudyArticles = {
         alt: "",
       },
     },
-    
+
     {
       id: 3,
       title: "Tập đoàn Vingroup",
@@ -426,8 +507,6 @@ export const digitalCaseStudyArticles = {
         src: "https://www.morrisengineeringllc.com/wp-content/uploads/home-inspection.png",
         alt: "",
       },
-
-      
     },
     {
       id: 2,

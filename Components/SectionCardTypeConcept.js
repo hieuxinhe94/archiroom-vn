@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/Home.module.css";
 import {
   userinfo,
@@ -11,10 +11,16 @@ import {
 import Link from "next/link";
 
 const SectionCardTypeConcept = ({ currentTheme, data }) => {
+  const [toggleId, setToggleId] = useState(null);
+
   return (
     <div className={styles.educationWrapper + " container mx-auto"}>
       <div
-        className={styles.workheading + " flex items-end md:text-sm lg:text-4xl px-4 " + styles.lineHorizontal}
+        className={
+          styles.workheading +
+          " flex items-end md:text-sm lg:text-4xl px-4 " +
+          styles.lineHorizontal
+        }
         data-aos="fade-up"
       >
         {digitalConceptMetatdata?.title}
@@ -22,7 +28,7 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
 
       <section className="lg:mt-20 text-and-media-block relative px-4 bg-no-repeat overflow-hidden py-8 md:py-12 xl:py-16 bg-primary-color bg-cover bg-center">
         <div className="container mx-auto z-10 relative px-2">
-          <div className="bg-theme-light-gray pt-8 px-2 lg:px-0 lg:py-10 mt-8">
+          <div className="bg-theme-light-gray pt-8 px-2 lg:px-0">
             <div className="flex relative flex-wrap">
               <div className="w-full lg:w-1/2 ">
                 <div className="relative shadow-image transform -translate-y-16 lg:-translate-y-20 ratio-3-2 lg:ratio-none lg:-translate-x-3 xl1450:-translate-x-20">
@@ -33,30 +39,32 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
                         src="https://images.pexels.com/photos/927022/pexels-photo-927022.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
                         alt=""
                       />
-                      <Link href={`/post/`} className="absolute inset-0 flex items-center justify-center w-full h-full transition-colors duration-300 bg-gray-900 bg-opacity-50 group hover:bg-opacity-25">
-                    
-                        <div className="flex items-center justify-center w-16 h-16 transition duration-300 transform bg-gray-100 rounded-full shadow-2xl group-hover:scale-110">
-                          <svg
-                            className="w-10 text-gray-900"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z" />
-                          </svg>
-                        </div>
-                    
-                      </Link>
+                      <a
+                        aria-label="Play Video"
+                        className="absolute inset-0 flex items-center justify-center w-full h-full transition-colors duration-300 bg-gray-900 bg-opacity-50 group hover:bg-opacity-25"
+                      >
+                        <Link href={`/post/`}>
+                          <div className="flex items-center justify-center w-16 h-16 transition duration-300 transform bg-gray-100 rounded-full shadow-2xl group-hover:scale-110">
+                            <svg
+                              className="w-10 text-gray-900"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z" />
+                            </svg>
+                          </div>
+                        </Link>
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="w-full lg:w-1/2 z-10 transform -translate-y-16 lg:translate-y-0 mt-2 lg:mt-0 lg:pr-12 lg:pl-8">
-                <h2 className="text-primary-color font-semibold">
-                 
+              <div className="w-full lg:w-1/2 z-10 transform -translate-y-16 lg:translate-y-0 mt-2 lg:mt-0 lg:pr-12">
+                <h2 className="text-primary-color -mt-10 font-semibold">
                   {digitalConceptMetatdata?.subtitle}
                 </h2>
-                <div className="wysiwyg mt-6">
-                  <p className="pb-4 font-light">
+                <div className="wysiwyg">
+                  <p className="py-2 font-light text-gray-300">
                     {digitalConceptMetatdata?.description}
                   </p>
 
@@ -70,13 +78,36 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
                               className="py-5 rounded relative text-left border-sep cursor-pointer"
                             >
                               <div className="flex justify-between align-center">
-                                <p className="leading-normal text-sm ">
+                                <p className="">
                                   {item.title}
                                 </p>
-                                <p className="text-xl font-bold ml-2">
-                                  <span className="plus block">+</span>
+                                <p
+                                  className="text-xl font-bold ml-2"
+                                  onClick={() => {
+                                    if (key == toggleId) setToggleId(null);
+                                    else {
+                                      setToggleId(key);
+                                    }
+                                  }}
+                                >
+                                  <span className="plus block">
+                                    {key == toggleId ? "-" : "+"}
+                                  </span>
                                 </p>
                               </div>
+                              <div
+                                className={
+                                  (key == toggleId ? "" : "!visible hidden  ") +
+                                  " rounded-lg shadow-lg"
+                                }
+                                id="collapseExample"
+                                data-te-collapse-item
+                              >
+                                <div className="block rounded-lg py-2 text-sm text-gray-300 dark:bg-neutral-700 dark:text-neutral-50 text-justify">
+                                  {item.description}
+                                </div>
+                              </div>
+
                               <div className="description max-h-0 overflow-hidden opacity-0">
                                 <div className="text-base wysiwyg">
                                   <p className="pb-2 font-semibold">

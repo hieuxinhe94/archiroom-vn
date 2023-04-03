@@ -43,20 +43,20 @@ const SectionCardTypeTimeline = ({ currentTheme, data }) => {
                 return (
                   <li data-aos="fade-up" key={key}>
                     <div className={styles.content}>
-                      <h3 style={{ color: currentTheme.accent }}>
+                      <h3 className="text-gray-100 font-bold dark:text-gray-200" style={{ color: currentTheme.accent }}>
                         {value.title}
                       </h3>
-                      <p style={{ color: currentTheme.text }}>
+                      <p className="text-gray-200" style={{ color: currentTheme.text }}>
                         {value.subtitle}
                       </p>
-                      <p style={{ color: currentTheme.subtext }}>
+                      <p className="text-justify" style={{ color: currentTheme.subtext }}>
                         {value.description}
                       </p>
                     </div>
                     <div
                       className={styles.time + ""}
                       style={{
-                        border: `2px solid ${currentTheme.accent}`,
+                        border: `0.5px solid ${currentTheme.accent}`,
                         color: currentTheme.accent,
                       }}
                     >

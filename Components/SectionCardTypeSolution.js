@@ -15,23 +15,41 @@ const SectionCardTypeSolution = ({ currentTheme, data }) => {
   return (
     <div className={styles.educationWrapper + " container mx-auto"}>
       <div
-        className={styles.workheading + " flex items-end md:text-sm lg:text-4xl px-4 " + styles.lineHorizontal}
+        className={
+          styles.workheading +
+          " flex items-end md:text-sm lg:text-4xl px-4 " +
+          styles.lineHorizontal
+        }
         data-aos="fade-up"
       >
         {digitalSolutionMetadata?.title}
       </div>
 
-      <section className="lg:mt-20 text-and-media-block relative px-4 bg-no-repeat overflow-hidden py-8 md:py-12 xl:py-16 bg-primary-color bg-cover bg-center">
+      <section className=" text-and-media-block relative px-4 bg-no-repeat overflow-hidden py-8 md:py-12 xl:py-16 bg-primary-color bg-cover bg-center">
         <div className="container mx-auto z-10 relative px-2">
-          <div className="bg-theme-light-gray pt-8 px-2 lg:px-0 lg:py-10 mt-8">
+          <div className="bg-theme-light-gray pt-8 px-2 lg:px-0 ">
             <div className="flex relative flex-wrap">
-           
-              <div className="w-full lg:w-1/2 z-10 transform -translate-y-16 lg:translate-y-0 mt-8 lg:mt-0 lg:pr-12 lg:pl-12">
+              <div className="w-full lg:w-1/2 z-10 transform -translate-y-16 lg:translate-y-0 mt-8 lg:mt-0 lg:pr-12">
                 <h2 className="text-primary-color">Services for Attorneys</h2>
                 <div className="wysiwyg mt-6">
                   <p className="pb-4">
                     Let Morris Engineering help you make your case.
                   </p>
+
+                  <div className="grid auto-cols-2 place-content-center h-56 gap-4">
+                    <div className="p-4 w-64 h-14 flex items-center justify-center shadow-lg rounded-lg bg-blue-500">
+                      Thiết kế giải pháp
+                    </div>
+                    <div className="p-4 w-64 h-14 flex items-center justify-center shadow-lg rounded-lg bg-green-500">
+                      Thực thi
+                    </div>
+                    <div className="p-4 w-64 h-14 flex items-center justify-center shadow-lg rounded-lg bg-orange-500">
+                      Đánh giá
+                    </div>
+                    <div className="p-4 w-64 h-14 flex items-center justify-center shadow-lg rounded-lg bg-sky-500">
+                      Căn chỉnh
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -43,7 +61,8 @@ const SectionCardTypeSolution = ({ currentTheme, data }) => {
                       src="designthinking-2.png"
                       alt=""
                     />
-                   <Link href={`/post/`}
+                    <a
+                      href={`/post/`}
                       aria-label="Play Video"
                       className="absolute inset-0 flex items-center justify-center w-full h-full transition-colors duration-300 bg-gray-900 bg-opacity-50 group hover:bg-opacity-25"
                     >
@@ -56,7 +75,7 @@ const SectionCardTypeSolution = ({ currentTheme, data }) => {
                           <path d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z" />
                         </svg>
                       </div>
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
