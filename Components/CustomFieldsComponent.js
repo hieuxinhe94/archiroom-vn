@@ -30,7 +30,7 @@ export function CustomComponentQuote({ children }) {
               aria-controls="radix-:R3aojaddh:"
               data-state="closed"
             >
-              <div className="group hidden items-center gap-3 text-white/60 transition-colors hover:text-white lg:flex">
+              <div className="group items-center gap-3 text-white/60 transition-colors hover:text-white lg:flex">
                 <span className="flex items-center rounded-full bg-white/70 px-3 py-3 group-hover:bg-white">
                   <svg
                     stroke="currentColor"
@@ -68,7 +68,7 @@ export function CustomPodcastComponent({ children }) {
               aria-controls="radix-:R3aojaddh:"
               data-state="closed"
             >
-              <div className="group hidden items-center gap-3 text-white/60 transition-colors hover:text-white lg:flex">
+              <div className="group   items-center gap-3 text-white/60 transition-colors hover:text-white lg:flex">
                 <span className="flex items-center rounded-full bg-white/70 px-3 py-3 group-hover:bg-white">
                   <svg
                     stroke="currentColor"
@@ -106,7 +106,7 @@ export function CustomVideoComponent({ children }) {
               aria-controls="radix-:R3aojaddh:"
               data-state="closed"
             >
-              <div className="group hidden items-center gap-3 text-white/60 transition-colors hover:text-white lg:flex">
+              <div className="group   items-center gap-3 text-black transition-colors hover:text-white lg:flex">
                 <span className="flex items-center rounded-full bg-white/70 px-3 py-3 group-hover:bg-white">
                   <svg
                     stroke="currentColor"
@@ -144,7 +144,7 @@ export function CustomChatbotComponent({ children }) {
               aria-controls="radix-:R3aojaddh:"
               data-state="closed"
             >
-              <div className="group hidden items-center gap-3 text-white/60 transition-colors hover:text-white lg:flex">
+              <div className="group   items-center gap-3 text-white/60 transition-colors hover:text-white lg:flex">
                 <span className="flex items-center rounded-full bg-white/70 px-3 py-3 group-hover:bg-white">
                   <svg
                     stroke="currentColor"
@@ -182,7 +182,7 @@ export function CustomRpaComponent({ children }) {
                 aria-controls="radix-:R3aojaddh:"
                 data-state="closed"
               >
-                <div className="group hidden items-center gap-3 text-white/60 transition-colors hover:text-white lg:flex">
+                <div className="group   items-center gap-3 text-white/60 transition-colors hover:text-white lg:flex">
                   <span className="flex items-center rounded-full bg-white/70 px-3 py-3 group-hover:bg-white">
                     <svg
                       stroke="currentColor"

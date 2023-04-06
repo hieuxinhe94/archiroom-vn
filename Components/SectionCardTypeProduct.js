@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/Home.module.css";
 import {
   userinfo,
@@ -10,6 +10,8 @@ import {
 import Link from "next/link";
 
 const SectionCardTypeProduct = ({ currentTheme, data }) => {
+  const [isReadMore, setIsReadMore] = useState(false);
+
   return (
     <div className={styles.educationWrapper + " container mx-auto"}>
       <div
@@ -66,24 +68,24 @@ const SectionCardTypeProduct = ({ currentTheme, data }) => {
                 <h2 className="text-primary-color">
                   {digitalMeasureToolMetatdata?.subtitle}
                 </h2>
-                <div className="flex flex-wrap text-center pt-4 mb-2">
-                  <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
-                    Tailwind CSS
-                  </div>
 
-                  <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
-                    React
-                  </div>
-
-                  <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
-                    Next.js
-                  </div>
-                </div>
                 <div className="wysiwyg mt-6">
-                  <p className="pb-4">
+                  <p className="my-1 line-clamp-3 hover:line-clamp-none cursor-pointer text-gray-300">
                     {digitalMeasureToolMetatdata?.description}
                   </p>
-                  <Step steps={digitalMeasureToolMetatdata.steps } currentTheme={currentTheme}></Step>
+                  <Step
+                    steps={digitalMeasureToolMetatdata.steps}
+                    currentTheme={currentTheme}
+                  ></Step>
+
+                  <div className="flex flex-wrap text-center pt-4 mb-2">
+                    <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
+                      2 years free updates trial
+                    </div>
+                    <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
+                      On-premise support
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -94,31 +96,53 @@ const SectionCardTypeProduct = ({ currentTheme, data }) => {
   );
 };
 
-export const Step = ( props ) => {
-  
+export const Step = (props) => {
+  const [toggleId, setToggleId] = useState(null);
+
   return (
-    <div className="mt-2 space-y-6">
+    <div className="mt-4 ">
       {props?.steps &&
         props?.steps?.map((item, key) => (
-          <div key={key} className="flex items-center gap-6">
-            <div className="flex h-8 w-8 rounded-lg border border-gray-200 bg-white px-auto dark:border-gray-600/60 dark:bg-gray-900/40">
-              <picture className="m-auto h-4 w-auto">
-                <source srcSet={item.main_image.src} type="image/jpeg" />
-                <img
-                  src={digitalMeasureToolMetatdata?.main_image.src}
-                  className="m-auto h-4 w-auto"
-                  alt="condo"
-                  loading="lazy"
-                />
-              </picture>
-            </div>
-            <div className="w-[calc(100%-7.5rem)]">
-              <h4 className="text-sm font-semibold text-gray-100 dark:text-white">
+          <div
+            key={key}
+            className="py-5 lg:w-3/4 rounded relative text-left border-sep cursor-pointer"
+            data-aos="fade-up"
+            data-aos-duration={200 + key * 500}
+          >
+            <div className="flex justify-between align-center">
+              <div>
                 {item.title}
-              </h4>
-              <p className="mt-1 text-sm text-gray-200 dark:text-gray-400">
-                {item.subtitle}
+                <br />
+                <div className="block rounded-lg py-2 text-sm text-gray-300 dark:bg-neutral-700 dark:text-neutral-50 text-justify">
+                  {item.subtitle}
+                </div>
+              </div>
+
+              <p
+                className="text-xl font-bold ml-2"
+                onClick={() => {
+                  if (key == toggleId) setToggleId(null);
+                  else {
+                    setToggleId(key);
+                  }
+                }}
+              >
+                <span className="plus block">
+                  {key == toggleId ? "-" : "+"}
+                </span>
               </p>
+            </div>
+            <div
+              className={
+                (key == toggleId ? "" : "!visible hidden  ") +
+                " rounded-lg shadow-lg"
+              }
+              id="collapseExample"
+              data-te-collapse-item
+            >
+              <div className="block rounded-lg py-2 text-sm text-gray-300 dark:bg-neutral-700 dark:text-neutral-50 text-justify">
+                {item.description}
+              </div>
             </div>
           </div>
         ))}

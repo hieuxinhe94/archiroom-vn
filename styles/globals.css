@@ -4,6 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.h-48 {
+  height: 12rem;
+}
+
+.h-96 {
+  height: 24rem;
+}
+
+.h-128 {
+  height: 26rem;
+}
+
 html,
 body {
   padding: 0;

@@ -163,25 +163,10 @@ export default function Post(props) {
             </div>
 
             <section className="flex justify-center">
-              <article className={styles.articleBody + " mx-auto flex"}>
-                <div className="text-gray-300/90 mx-auto indent-2 text-justify max-w-screen-md my-3 prose prose-base dark:prose-invert prose-a:text-blue-500 antialiased hover:subpixel-antialiased leading-loose">
-                  {post.body && (
-                    <PortableText
-                      components={components}
-                      value={post.customizebody}
-                    />
-                  )}
-
-                  <div className="flex justify-center mt-7 mb-7">
-                    <Link href="/">
-                      <a className="px-5 py-2 text-sm text-blue-600 rounded-full dark:text-blue-500 bg-brand-secondary/20 ">
-                        ← View all posts
-                      </a>
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="w-64 p-4">
+              <article
+                className={styles.articleBody + " mx-auto block lg:flex lg:flex-row-reverse"}
+              >
+                <div className="w-full lg:w-64 p-4">
                   <div className="w-full  items-center justify-end">
                     <div className="w-full ">
                       <div className="w-full cursor-pointer relative inline-flex rounded-md bg-white text-[0.8125rem] font-medium leading-5 text-slate-700 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50 hover:text-slate-900">
@@ -258,6 +243,22 @@ export default function Post(props) {
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div className="text-gray-300/90 mx-auto indent-2 px-4 lg:px-2 text-justify max-w-screen-md my-3 prose prose-base dark:prose-invert prose-a:text-blue-500 antialiased hover:subpixel-antialiased leading-loose">
+                  {post.body && (
+                    <PortableText
+                      components={components}
+                      value={post.customizebody}
+                    />
+                  )}
+
+                  <div className="flex justify-center mt-7 mb-7">
+                    <Link href="/">
+                      <a className="px-5 py-2 text-sm text-blue-600 rounded-full dark:text-blue-500 bg-brand-secondary/20 ">
+                        ← View all posts
+                      </a>
+                    </Link>
                   </div>
                 </div>
               </article>

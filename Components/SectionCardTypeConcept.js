@@ -64,11 +64,11 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
                   {digitalConceptMetatdata?.subtitle}
                 </h2>
                 <div className="wysiwyg">
-                  <p className="py-2 font-light text-gray-300">
+                  <p className="py-2 font-light text-gray-300 lg:w-4/5">
                     {digitalConceptMetatdata?.description}
                   </p>
 
-                  <div className="w-full text-center sm:w-3/4 lg:w-3/5">
+                  <div className="w-full text-center sm:w-3/4 lg:w-4/5">
                     <ul className="accordion mt-4">
                       {digitalConceptMetatdata?.features &&
                         digitalConceptMetatdata?.features.map((item, key) => {
@@ -76,11 +76,11 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
                             <li
                               key={key}
                               className="py-5 rounded relative text-left border-sep cursor-pointer"
+                              data-aos="fade-up"
+                              data-aos-duration={200 + key * 500}
                             >
                               <div className="flex justify-between align-center">
-                                <p className="">
-                                  {item.title}
-                                </p>
+                                <p className="">{item.title}</p>
                                 <p
                                   className="text-xl font-bold ml-2"
                                   onClick={() => {
@@ -105,25 +105,6 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
                               >
                                 <div className="block rounded-lg py-2 text-sm text-gray-300 dark:bg-neutral-700 dark:text-neutral-50 text-justify">
                                   {item.description}
-                                </div>
-                              </div>
-
-                              <div className="description max-h-0 overflow-hidden opacity-0">
-                                <div className="text-base wysiwyg">
-                                  <p className="pb-2 font-semibold">
-                                    Hudson County, NJ
-                                  </p>
-                                  <ul className="check-list pb-4">
-                                    <li>28 Buildings, 212 Units</li>
-                                    <li>Stucco Replacement</li>
-                                  </ul>
-                                  <p className="pb-2 font-semibold">
-                                    Passaic County, NJ
-                                  </p>
-                                  <ul className="check-list ">
-                                    <li>24 Buildings, 210 Units</li>
-                                    <li>EIFS Replacement</li>
-                                  </ul>
                                 </div>
                               </div>
                             </li>

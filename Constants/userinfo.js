@@ -212,8 +212,9 @@ export const digitalTransformationSteps = {
 
 export const digitalConceptMetatdata = {
   title: "Hiểu về DX",
-  subtitle: "Giới thiệu tổng quan khái niệm về DX",
-  description: "Diễn dãi chi tiết hơn ở đây ....",
+  subtitle: "3 Cấp độ quan trọng:",
+  description:
+    "Chuyển đổi số là quá trình chuyển đổi các hoạt động và quy trình từ hình thức truyền thống sang kỹ thuật số, nhằm tối ưu hóa hiệu quả và năng suất. Thường thì quá trình có thể được chia thành 3 giai đoạn chính, bao gồm:",
   main_image: {
     src: "https://www.morrisengineeringllc.com/wp-content/uploads/lawyer.png",
     alt: "",
@@ -222,9 +223,10 @@ export const digitalConceptMetatdata = {
     {
       id: 1,
       title: "Số hóa - Digitalization",
-      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
+      subtitle:
+        "Giai đoạn tiền chuyển đổi số (Pre-digital transformation stage)",
       description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+        "Đây là giai đoạn khi các tổ chức và doanh nghiệp vẫn đang sử dụng các phương pháp công nghệ truyền, lập trình các ứng dụng phục vụ các hoạt động kinh doanh, vận hành tổ chức. Các công nghệ và hệ thống được sử dụng trong giai đoạn này thường gây ra các hạn chế về tốc độ, chính xác và khả năng mở rộng. Việc thu thập và xử lý dữ liệu cũng gặp khó khăn và đôi khi dẫn đến sai sót.",
       due_date: "1-2 weeks",
       href: "/solution",
       main_classes: "",
@@ -236,10 +238,10 @@ export const digitalConceptMetatdata = {
     },
     {
       id: 2,
-      title: "Tự động hóa - RPA",
-      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
+      title: "Tự động hóa - Tối ưu hóa",
+      subtitle: "Giai đoạn chuyển đổi số (Digital transformation stage)",
       description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+        "Giai đoạn này bắt đầu khi tổ chức bắt đầu áp dụng các công nghệ số vào hoạt động kinh doanh. Các công nghệ này bao gồm đám mây, trí tuệ nhân tạo, big data và Internet of Things (IoT). Các hệ thống mới này cung cấp khả năng tăng tốc độ xử lý, tăng tính chính xác và tăng khả năng mở rộng, giúp cho các tổ chức có thể hoạt động một cách hiệu quả hơn và nhanh chóng hơn.",
       due_date: "1-2 weeks",
       href: "/solution",
       main_classes: "",
@@ -250,11 +252,12 @@ export const digitalConceptMetatdata = {
       },
     },
     {
-      id: 2,
+      id: 3,
       title: "Chuyển đổi số toàn diện - DX",
-      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
+      subtitle:
+        "Giai đoạn sau chuyển đổi số (Post-digital transformation stage)",
       description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+        "Giai đoạn này bắt đầu khi các tổ chức đã hoàn thành quá trình chuyển đổi số. Các hệ thống và công nghệ số đã trở thành một phần của quy trình kinh doanh hàng ngày và được sử dụng để nâng cao năng suất và tối ưu hóa hiệu quả. Tại giai đoạn này, các tổ chức có thể tập trung vào việc phát triển và cải thiện các giải pháp kỹ thuật số, tạo ra giá trị gia tăng cho khách hàng và nâng cao năng suất của các hoạt động kinh doanh.",
       due_date: "1-2 weeks",
       href: "/solution",
       main_classes: "",
@@ -269,8 +272,10 @@ export const digitalConceptMetatdata = {
 
 export const digitalMeasureToolMetatdata = {
   title: "Hiểu chính mình",
-  subtitle: "Pasture DXMaturity",
-  description: "Pasture DX Maturity Tool",
+  subtitle: "Đánh giá năng lực chuyển đổi số tổ chức",
+  description: `[ProductName] cung cấp cho người quản trị những chỉ số đa chiều 360 về năng lực của tổ chức.\n
+   Chúng tôi hỗ trợ các chỉ số thông dụng sau:
+   `,
   main_image: {
     src: "https://www.morrisengineeringllc.com/wp-content/uploads/lawyer.png",
     alt: "",
@@ -278,10 +283,10 @@ export const digitalMeasureToolMetatdata = {
   steps: [
     {
       id: 1,
-      title: "Đo lường tỷ lệ Số hóa ",
-      subtitle: "Đo lường mức độ số hóa, ....",
+      title: "Digital Transformation Index - DTI",
+      subtitle: " Chỉ số mức độ chuyển đổi số",
       description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+        "Đây là chỉ số đo lường mức độ chuyển đổi số của một tổ chức hay doanh nghiệp, bao gồm đánh giá các yếu tố như năng lực kỹ thuật số, quản lý dữ liệu, cơ sở hạ tầng kỹ thuật số, quản lý đổi mới và sáng tạo.",
       due_date: "1-2 weeks",
       href: "/solution",
       main_classes: "",
@@ -293,10 +298,10 @@ export const digitalMeasureToolMetatdata = {
     },
     {
       id: 2,
-      title: "Liên thông số hóa quy trình",
-      subtitle: "Đo lường mức độ số hóa, ....",
+      title: "Digital Adaptability Index - DAI",
+      subtitle: "Chỉ số sự thích nghi với chuyển đổi số",
       description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+        " Đây là chỉ số đo lường khả năng thích nghi với các thay đổi kỹ thuật số trong môi trường kinh doanh, bao gồm đánh giá các yếu tố như tính linh hoạt của tổ chức, khả năng đổi mới và sáng tạo, và khả năng học hỏi và thích nghi nhanh chóng.",
       due_date: "1-2 weeks",
       href: "/solution",
       main_classes: "",
@@ -308,10 +313,10 @@ export const digitalMeasureToolMetatdata = {
     },
     {
       id: 3,
-      title: "Đo lường tần suất/thời gian",
-      subtitle: "Đo lường mức độ số hóa, ....",
+      title: "Digital Momentum Index - DMI: ",
+      subtitle: "Chỉ số động lực kỹ thuật số",
       description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+        "Đây là chỉ số đo lường tốc độ và quy mô của chuyển đổi số của một tổ chức hay doanh nghiệp, bao gồm đánh giá các yếu tố như tốc độ đầu tư vào công nghệ kỹ thuật số, tốc độ đào tạo nhân viên về kỹ thuật số, và tốc độ triển khai các giải pháp kỹ thuật số mới.",
       due_date: "1-2 weeks",
       href: "/solution",
       main_classes: "",
@@ -323,43 +328,10 @@ export const digitalMeasureToolMetatdata = {
     },
     {
       id: 4,
-      title: "Đề xuất điểm Tự động hóa",
-      subtitle: "RPA - R ....",
+      title: "Digital Customer Interaction Index - DCI",
+      subtitle: "Chỉ số tương tác khách hàng kỹ thuật số ",
       description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
-      due_date: "1-2 weeks",
-      href: "/solution",
-      main_classes: "",
-      secondary_classes: "",
-      main_image: {
-        src: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
-        alt: "",
-      },
-    },
-
-    {
-      id: 5,
-      title: "Ứng dụng Công nghệ mới",
-      subtitle: "Đo lường mức độ số hóa, ....",
-      description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
-      due_date: "1-2 weeks",
-      href: "/solution",
-      main_classes: "",
-      secondary_classes: "",
-      main_image: {
-        src: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
-        alt: "",
-      },
-    },
-
-    {
-      id: 7,
-      title: "Cải tiến quy trình",
-      subtitle:
-        "Đổi mới quy trình vận hành, quy trình kinh doanh dựa trên nền tảng những công nghệ cốt lõi đã xây dựng.",
-      description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+        "Đây là chỉ số đo lường mức độ tương tác của tổ chức hay doanh nghiệp với khách hàng thông qua các kênh kỹ thuật số, bao gồm đánh giá các yếu tố như trải nghiệm khách hàng, tính khả dụng của các kênh tương tác, và tốc độ phản hồi của tổ chức đối với phản hồi của khách hàng trên các kênh kỹ thuật số.",
       due_date: "1-2 weeks",
       href: "/solution",
       main_classes: "",
@@ -374,8 +346,13 @@ export const digitalMeasureToolMetatdata = {
 
 export const digitalObjectivesMetadata = {
   title: "Xác định mục tiêu",
-  subtitle: "Pasture DX Maturity Tool",
-  description: "Pasture DX Maturity Tool",
+  subtitle:
+    "Mục tiêu chuyển đổi số sẽ giúp doanh nghiệp xác định được hướng đi của mình và những thay đổi cần thiết để đạt được mục tiêu đó bằng cách:",
+  description: `
+    Tập trung nỗ lực và tài nguyên vào những mục tiêu cụ thể để đạt được hiệu quả cao nhất. 
+    Xác định mục tiêu chuyển đổi số sẽ giúp doanh nghiệp tránh việc mơ hồ hoặc không thực tế khi triển khai chiến lược.
+    Và cũng rất quan trọng là tăng tính nhất quán và tăng tính cạnh tranh.
+    `,
   main_image: {
     src: "https://www.morrisengineeringllc.com/wp-content/uploads/lawyer.png",
     alt: "",
@@ -383,26 +360,56 @@ export const digitalObjectivesMetadata = {
   features: [
     {
       id: 1,
-      title: "Hiểu về DX",
-      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
+      title: "Điều tra",
+      subtitle: "3m",
       description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
-      due_date: "1-2 weeks",
+        "Điều tra và đánh giá tình hình hiện tại của doanh nghiệp, bao gồm việc đánh giá các quy trình, hệ thống và cơ sở hạ tầng kỹ thuật số hiện có của doanh nghiệp. Thiết lập mục tiêu chuyển đổi số và lập kế hoạch chi tiết để đạt được các mục tiêu đó.",
+      due_date: 3,
       href: "/solution",
       main_classes: "",
       secondary_classes: "",
-      main_image: {
-        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
-        alt: "",
-      },
+    },
+    {
+      id: 2,
+      title: "Số hóa có tính chiến lược",
+      subtitle: "6m",
+      description:
+        "Xây dựng và triển khai các giải pháp phần mềm và ứng dụng kỹ thuật số cho các bộ phận và quy trình khác nhau của doanh nghiệp.",
+      due_date: 6,
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+    },
+    {
+      id: 3,
+      title: "Đào tạo công nghệ mới",
+      subtitle: "3m",
+      description:
+        "Đào tạo nhân viên về kỹ thuật số, để đảm bảo họ có đầy đủ kiến thức và kỹ năng để sử dụng các công nghệ kỹ thuật số.",
+      due_date: 3,
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+    },
+    {
+      id: 4,
+      title: "Đánh giá & điều chỉnh",
+      subtitle: "3m",
+      description:
+        "Đánh giá hiệu quả của các giải pháp kỹ thuật số đã triển khai và tìm cách cải thiện chúng để đạt được kết quả tốt nhất.",
+      due_date: 3,
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
     },
   ],
 };
 
 export const digitalSolutionMetadata = {
-  title: "Căn chỉnh Giải pháp",
-  subtitle: "Pasture DX Maturity Tool",
-  description: "Pasture DX Maturity Tool",
+  title: "Thực thi + Cải tiến",
+  subtitle: "Vòng tròn cải tiến liên tục trong quá trình chuyển đổi số",
+  description: `Việc thực hiện quá trình chuyển đổi số có thể khó khăn và đòi hỏi sự nỗ lực của toàn bộ doanh nghiệp để thực hiện thành công. 
+  `,
   main_image: {
     src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
     alt: "",
@@ -410,18 +417,43 @@ export const digitalSolutionMetadata = {
   features: [
     {
       id: 1,
-      title: "Hiểu về DX",
-      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
-      description:
-        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
+      title: "Hiểu rõ mục tiêu ngắn hạn",
+      subtitle: "",
+      description: "Trong quá trình xác định vấn đề, điều này có thể áp dụng bằng cách tìm hiểu cách mà khách hàng tương tác với doanh nghiệp và các sản phẩm/sản phẩm của doanh nghiệp.",
       due_date: "1-2 weeks",
       href: "/solution",
       main_classes: "",
       secondary_classes: "",
-      main_image: {
-        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
-        alt: "",
-      },
+    },
+    {
+      id: 2,
+      title: "Thực thi",
+      subtitle: "",
+      description: "",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+    },
+    {
+      id: 3,
+      title: "Đánh giá",
+      subtitle: "",
+      description: "",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+    },
+    {
+      id: 4,
+      title: "Căn chỉnh",
+      subtitle: "",
+      description: "",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
     },
   ],
 };
