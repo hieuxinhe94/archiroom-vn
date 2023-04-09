@@ -5,9 +5,6 @@ import Link from "next/link";
 import GetImage from "../utils/getImage";
 
 const SectionCardTypeCaseStudy = ({ currentTheme, posts }) => {
-  console.log("postdata");
-  console.log(posts);
-
   return (
     <div className={styles.educationWrapper + " container mx-auto"}>
       <div
