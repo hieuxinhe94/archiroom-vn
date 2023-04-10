@@ -43,13 +43,15 @@ export function PostThumbnail(post) {
   ? GetImage(post.mainImage)
   : null;
 
+  console.log(imageProps);
+
   return (
     <Link href={`/post/${post.slug.current}`}>
       <div className="mx-auto sm:m-0 shadow-2xl text-center bg-white h-full overflow-visible flex flex-col relative">
         <div
           className="ratio-4-3 h-64 bg-top-1/4 w-full bg-cover bg-no-repeat"
           style={{
-            backgroundImage: "url('" + imageProps?.src + "')",
+            backgroundImage: "url('" + imageProps?.blurDataURL + "')",
           }}
         ></div>
         <div className="grow flex flex-col">

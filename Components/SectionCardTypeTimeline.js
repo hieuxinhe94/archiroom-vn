@@ -10,31 +10,37 @@ import Link from "next/link";
 
 const SectionCardTypeTimeline = ({ currentTheme, data }) => {
   return (
-    <div className={styles.educationWrapper + " container mx-auto"}>
+    <div
+      className={styles.educationWrapper + " container mx-auto"}
+     
+    >
       <div
-        className={styles.workheading + " flex items-end md:text-sm lg:text-4xl px-4 " + styles.lineHorizontal}
+        className={
+          styles.workheading +
+          " flex items-end md:text-sm lg:text-4xl px-4 " +
+          styles.lineHorizontal
+        }
         data-aos="fade-up"
       >
- 
-        {digitalTransformationSteps?.title} 
-          <div className="pb-2 lg:pb-12 px-2">
-            <span className="block text-2xl font-bold text-gray-400 dark:text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                />
-              </svg>
-            </span>
-         </div>
+        {digitalTransformationSteps?.title}
+        <div className="pb-2 lg:pb-12 px-2">
+          <span className="block text-2xl font-bold text-gray-400 dark:text-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+              />
+            </svg>
+          </span>
+        </div>
       </div>
       <div className={styles.timeline + " mt-20"}>
         <ul>
@@ -43,13 +49,21 @@ const SectionCardTypeTimeline = ({ currentTheme, data }) => {
                 return (
                   <li data-aos="fade-up" key={key}>
                     <div className={styles.content}>
-                      <h3 className="text-gray-100 font-bold dark:text-gray-200" style={{ color: currentTheme.accent }}>
+                      <h3
+                        className=" font-semibold "
+                        style={{
+                          color: currentTheme.textColor,
+                        }}
+                      >
                         {value.title}
                       </h3>
-                      <p className="text-gray-200" style={{ color: currentTheme.text }}>
+                      <p style={{ color: currentTheme.text }}>
                         {value.subtitle}
                       </p>
-                      <p className="text-justify" style={{ color: currentTheme.subtext }}>
+                      <p
+                        className="text-justify leading-relaxed"
+                        style={{ color: currentTheme.subtext }}
+                      >
                         {value.description}
                       </p>
                     </div>
@@ -57,7 +71,7 @@ const SectionCardTypeTimeline = ({ currentTheme, data }) => {
                       className={styles.time + ""}
                       style={{
                         border: `0.5px solid ${currentTheme.accent}`,
-                        color: currentTheme.accent,
+                        color: currentTheme.subtext,
                       }}
                     >
                       <h4>{value.due_date}</h4>

@@ -18,8 +18,8 @@ const ChatbotHead = ({ currentTheme }) => {
   };
 
   return (
-    <div >
-      <div className="flex items-center justify-center -mt-3">
+    <div className="">
+      <div className="flex items-center justify-center -mt-3 ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -36,11 +36,11 @@ const ChatbotHead = ({ currentTheme }) => {
         </svg>
       </div>{" "}
       {visible && (
-        <div className="col-start-1 col-end-8 p-2 rounded-lg">
-          <div className="flex flex-row items-start">
+        <div className="col-start-1 col-end-8 p-2 rounded-lg ">
+          <div className="flex flex-row items-start ">
             <div
-              style={{ backgroundColor: currentTheme.mainColor }}
-              className="relative text-gray-300 text-left lg:mx-6 ml-1 text-sm py-2 px-2 shadow rounded-xl "
+              style={{ backgroundColor: currentTheme.mainColor, color:  currentTheme.textColor}}
+              className="relative text-justify  text-left lg:mx-2 leading-relaxed ml-1 text-sm py-2 px-1 rounded-xl "
             >
               <TypeIt
                 options={{
@@ -100,7 +100,7 @@ const ChatbotHead = ({ currentTheme }) => {
             </svg>
             <p className="text-xs mx-1 font-medium text-gray-300">
               Powered by{" "}
-              <strong className="rounded-xl mt-1 border border-indigo-500 bg-indigo-800 px-3 py-1 text-[10px] font-medium text-white hover:underline cursor-pointer">
+              <strong className="rounded-xl mt-1 border border-indigo-500 dark:bg-indigo-800  px-3 py-1 text-[10px] font-medium text-white hover:underline cursor-pointer">
                 ChatGPT
               </strong>{" "}
             </p>

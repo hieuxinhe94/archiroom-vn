@@ -51,7 +51,9 @@ export default function HomePage (props) {
         <HomeBusinessMainProcess currentTheme={currentTheme} />
       </section> */}
 
-      <div>
+      <div  style={{
+        backgroundColor: currentTheme.body,
+      }}>
         {true ? <SectionCardTypeTimeline currentTheme={currentTheme} /> : null}
       </div>
 

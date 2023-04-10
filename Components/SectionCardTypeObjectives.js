@@ -7,7 +7,7 @@ import Utils from "chart.js/helpers";
 
 const SectionCardTypeObjective = ({ currentTheme, data }) => {
   return (
-    <div className={styles.educationWrapper + " container mx-auto my-24"}>
+    <div className={styles.educationWrapper + " container mx-auto my-24"} >
       <div
         className={
           styles.workheading +
@@ -48,7 +48,7 @@ const SectionCardTypeObjective = ({ currentTheme, data }) => {
                           data-aos-duration={200 + key * 500}
                         >
                           <div className="absolute w-8 bottom-6">
-                            <div className="-rotate-90 text-xs">
+                            <div className="-rotate-90 text-xs text-gray-300 text-left">
                               {item.subtitle}
                             </div>
                           </div>
@@ -56,9 +56,9 @@ const SectionCardTypeObjective = ({ currentTheme, data }) => {
                         <div
                           data-aos="fade-up"
                           data-aos-duration={200 + key * 500}
-                          className={"w-32 text-sm font-normal text-center "}
+                          className={"w-32 text-sm font-normal text-left "}
                         >
-                          {item.title}{" "}
+                          {item.title}
                         </div>
                       </>
                     ))}
@@ -68,8 +68,9 @@ const SectionCardTypeObjective = ({ currentTheme, data }) => {
                 <h2 className="text-primary-color sm:w-3/4 lg:w-4/5 text-justify">
                   {digitalObjectivesMetadata?.subtitle}
                 </h2>
-                <div className="wysiwyg mt-6 sm:w-3/4 lg:w-4/5 text-gray-300 text-justify">
+                <div className="wysiwyg mt-1 sm:w-3/4 lg:w-4/5 text-gray-300 text-justify leading-relaxed" style={{whiteSpace: "pre-line"}}>
                   {digitalObjectivesMetadata?.description}
+                 
                 </div>
               </div>
             </div>

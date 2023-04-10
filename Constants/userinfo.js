@@ -347,11 +347,15 @@ export const digitalMeasureToolMetatdata = {
 export const digitalObjectivesMetadata = {
   title: "Xác định mục tiêu",
   subtitle:
-    "Mục tiêu chuyển đổi số sẽ giúp doanh nghiệp xác định được hướng đi của mình và những thay đổi cần thiết để đạt được mục tiêu đó bằng cách:",
+    "Mục tiêu chuyển đổi số sẽ giúp doanh nghiệp xác định được hướng đi của mình và những thay đổi cần thiết.",
   description: `
-    Tập trung nỗ lực và tài nguyên vào những mục tiêu cụ thể để đạt được hiệu quả cao nhất. 
-    Xác định mục tiêu chuyển đổi số sẽ giúp doanh nghiệp tránh việc mơ hồ hoặc không thực tế khi triển khai chiến lược.
-    Và cũng rất quan trọng là tăng tính nhất quán và tăng tính cạnh tranh.
+    Tập trung nỗ lực và tài nguyên vào những mục tiêu cụ thể để đạt được hiệu quả cao nhất. Xác định mục tiêu chuyển đổi số sẽ giúp doanh nghiệp tránh việc mơ hồ hoặc không thực tế khi triển khai chiến lược. Và cũng rất quan trọng là tăng tính nhất quán và tăng tính cạnh tranh. Ví dụ:
+    
+    • Tăng cường khả năng cạnh tranh
+    • Tăng năng suất và hiệu quả
+    • Cải thiện trải nghiệm khách hàng
+    • Giảm chi phí
+    • Tăng khả năng dự đoán và đưa ra quyết định kinh doanh
     `,
   main_image: {
     src: "https://www.morrisengineeringllc.com/wp-content/uploads/lawyer.png",
@@ -407,8 +411,8 @@ export const digitalObjectivesMetadata = {
 
 export const digitalSolutionMetadata = {
   title: "Thực thi + Cải tiến",
-  subtitle: "Vòng tròn cải tiến liên tục trong quá trình chuyển đổi số",
-  description: `Việc thực hiện quá trình chuyển đổi số có thể khó khăn và đòi hỏi sự nỗ lực của toàn bộ doanh nghiệp để thực hiện thành công. 
+  subtitle: "Vòng tròn cải tiến liên tục trong quá trình chuyển đổi số ",
+  description: `Việc thực hiện quá trình chuyển đổi số có thể khó khăn và đòi hỏi sự nỗ lực của toàn bộ doanh nghiệp để thực hiện thành công. Vòng tròn cải tiến liên tục (PDCA - Plan-Do-Check-Act) được sử dụng để cải thiện hiệu quả và hiệu suất của giải pháp.
   `,
   main_image: {
     src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
@@ -417,7 +421,7 @@ export const digitalSolutionMetadata = {
   features: [
     {
       id: 1,
-      title: "Hiểu rõ mục tiêu ngắn hạn",
+      title: "Plan: Hiểu rõ mục tiêu ngắn hạn",
       subtitle: "",
       description: "Trong quá trình xác định vấn đề, điều này có thể áp dụng bằng cách tìm hiểu cách mà khách hàng tương tác với doanh nghiệp và các sản phẩm/sản phẩm của doanh nghiệp.",
       due_date: "1-2 weeks",
@@ -427,7 +431,7 @@ export const digitalSolutionMetadata = {
     },
     {
       id: 2,
-      title: "Thực thi",
+      title: "Do: Thực thi",
       subtitle: "",
       description: "",
       due_date: "1-2 weeks",
@@ -437,7 +441,7 @@ export const digitalSolutionMetadata = {
     },
     {
       id: 3,
-      title: "Đánh giá",
+      title: "Check: Đánh giá",
       subtitle: "",
       description: "",
       due_date: "1-2 weeks",
@@ -447,7 +451,7 @@ export const digitalSolutionMetadata = {
     },
     {
       id: 4,
-      title: "Căn chỉnh",
+      title: "Act: Điều chỉnh",
       subtitle: "",
       description: "",
       due_date: "1-2 weeks",

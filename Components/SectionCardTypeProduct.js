@@ -68,6 +68,14 @@ const SectionCardTypeProduct = ({ currentTheme, data }) => {
                 <h2 className="text-primary-color">
                   {digitalMeasureToolMetatdata?.subtitle}
                 </h2>
+                <div className="flex flex-wrap text-center pt-4 mb-2">
+                    <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
+                      2 years free updates trial
+                    </div>
+                    <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
+                      On-premise support
+                    </div>
+                  </div>
 
                 <div className="wysiwyg mt-6">
                   <p className="my-1 line-clamp-3 hover:line-clamp-none cursor-pointer text-gray-300">
@@ -78,14 +86,7 @@ const SectionCardTypeProduct = ({ currentTheme, data }) => {
                     currentTheme={currentTheme}
                   ></Step>
 
-                  <div className="flex flex-wrap text-center pt-4 mb-2">
-                    <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
-                      2 years free updates trial
-                    </div>
-                    <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
-                      On-premise support
-                    </div>
-                  </div>
+                 
                 </div>
               </div>
             </div>
