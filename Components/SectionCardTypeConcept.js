@@ -60,19 +60,20 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
                 </div>
               </div>
               <div className="w-full lg:w-1/2 z-10 transform -translate-y-16 lg:translate-y-0 mt-2 lg:mt-0 lg:pr-12">
-                
                 <h2 className="text-primary-color -mt-10 font-semibold">
                   {digitalConceptMetatdata?.subtitle}
                 </h2>
-                <div className="flex flex-wrap text-center pt-4 mb-2"  data-aos="fade-up"
-                        >
-                    <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
-                      PDF Book download
-                    </div>
-                    <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
-                      Video download
-                    </div>
+                <div
+                  className="flex flex-wrap text-center pt-4 mb-2"
+                  data-aos="fade-up"
+                >
+                  <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
+                    PDF Book download
                   </div>
+                  <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
+                    Video download
+                  </div>
+                </div>
                 <div className="wysiwyg">
                   <p className="py-2 font-light text-gray-300 lg:w-4/5">
                     {digitalConceptMetatdata?.description}
@@ -122,8 +123,6 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
                         })}
                     </ul>
                   </div>
-
-             
                 </div>
               </div>
             </div>

@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import { digitalCaseStudyArticles } from "../Constants/userinfo";
 import Link from "next/link";
 import GetImage from "../utils/getImage";
+import Image from "next/image";
 
 const SectionCardTypeCaseStudy = ({ currentTheme, posts }) => {
   return (
@@ -24,9 +25,7 @@ const SectionCardTypeCaseStudy = ({ currentTheme, posts }) => {
                       data-aos="fade-up"
                       className="expandable-card relative card-basic pb-8 sm:px-3 mt-6 lg:mt-0 xl:px-6  w-full md:w-1/2 lg:w-1/4"
                     >
-
-                    <PostThumbnail {...post} ></PostThumbnail>
-
+                      <PostThumbnail {...post}></PostThumbnail>
                     </div>
                   ))
                 : null}
@@ -39,48 +38,52 @@ const SectionCardTypeCaseStudy = ({ currentTheme, posts }) => {
 };
 
 export function PostThumbnail(post) {
-  const imageProps = post?.mainImage
-  ? GetImage(post.mainImage)
-  : null;
-
-  console.log(imageProps);
+  const imageProps = post?.mainImage ? GetImage(post.mainImage) : null;
 
   return (
     <Link href={`/post/${post.slug.current}`}>
       <div className="mx-auto sm:m-0 shadow-2xl text-center bg-white h-full overflow-visible flex flex-col relative">
-        <div
-          className="ratio-4-3 h-64 bg-top-1/4 w-full bg-cover bg-no-repeat"
-          style={{
-            backgroundImage: "url('" + imageProps?.blurDataURL + "')",
-          }}
-        ></div>
+        {imageProps ? (
+          <Image
+            src={imageProps?.src}
+            alt={"trustcheck feature"}
+            loader={imageProps.loader}
+            width={254}
+            height={254}
+            priority={false}
+            className="ratio-4-3 h-64 bg-top-1/4 w-full bg-cover bg-no-repeat p-3"
+          />
+        ) : null}
+
         <div className="grow flex flex-col">
           <button
             className="focus:outline-none grow flex items-start justify-between text-left bg-theme-light-gray px-6 py-4 z-10 relative"
             data-modal="bio-modal-1"
           >
             <div className="">
-              <h4 className=" text-gray-800"> {post.title}</h4>
-              <h5 className="text-sm text-gray-500 ">{post.excerpt}</h5>
-            </div>
-            <div>
-              <div className="plus transform duration-300 transition-transform border-2 border-black border-solid rounded-full w-12 h-12 flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-8 h-8 text-gray-600"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                  />
-                </svg>
+              <div className="flex">
+                <h4 className=" text-gray-800"> {post.title}</h4>
+                <div className="ml-2 plus transform duration-300 transition-transform border-1 border-black border-solid rounded-full w-8 h-8 flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6 text-gray-600"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                    />
+                  </svg>
+                </div>
               </div>
+
+              <h5 className="text-sm text-gray-500 mt-2 text-justify">{post.excerpt}</h5>
             </div>
+            <div></div>
           </button>
         </div>
       </div>

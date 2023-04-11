@@ -38,11 +38,11 @@ export const navigations = [
   { id: 1, href: "/", link: "/", label: "Trang chủ" },
   {
     id: 1,
-    href: "/consultant-service",
-    link: "/#consultant-service",
+    href: "/services",
+    link: "/#services",
     label: "Dịch vụ tư vấn",
   },
-  { id: 1, href: "/solution", link: "/#solution", label: "Phương pháp" },
+  { id: 1, href: "/posts", link: "/#posts", label: "Phương pháp luận" },
   { id: 1, href: "/tool", link: "/#tool", label: "Công cụ" },
   { id: 1, href: "/contact", link: "/#contact", label: "Liên hệ" },
 ];
@@ -478,6 +478,32 @@ export const partnerTrustedMetadata = {
       description:
         "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
       due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+        alt: "",
+      },
+    },
+  ],
+};
+
+export const ourTeamMetadata = {
+  title: "Chúng tôi",
+  subtitle: "Our team",
+  description: "",
+  main_image: {
+    src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+    alt: "",
+  },
+  members: [
+    {
+      id: 1,
+      title: "TPBank",
+      subtitle: "Hiểu rõ về DX trong lĩnh vực hiện tại",
+      description:
+        "Mô tả rõ, chi tiết, phương pháp luận, trung bình ngành, kẻ dần đầu, case study ...etc",
       href: "/solution",
       main_classes: "",
       secondary_classes: "",
