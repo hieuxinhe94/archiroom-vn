@@ -1,0 +1,40 @@
+{
+    "version": 2,
+    "title": "BlueContact",
+    "description": "BlueContact is a trusted caller, message or name for your phone",
+    "previewMedia": {
+        "type": "image",
+        "src": "public/img/logo.jpg",
+        "alt": "BlueContact"
+    },
+    "technologies": [{
+            "id": "vercel",
+            "name": "Vercel",
+            "url": "https://vercel.com/"
+        },
+        {
+            "id": "nextjs",
+            "name": "Next.js",
+            "url": "https://nextjs.org"
+        },
+        {
+            "id": "tailwindcss",
+            "name": "TailwindCSS",
+            "url": "https://tailwindcss.com"
+        }
+    ],
+    "deployment": {
+        "provider": "vercel",
+        "studio": {
+            "basePath": "/studio"
+        },
+        "corsOrigins": [{
+            "origin": "http://localhost:3000",
+            "allowCredentials": true
+        }],
+        "envVars": {
+            "projectId": ["NEXT_PUBLIC_SANITY_PROJECT_ID"],
+            "dataset": ["NEXT_PUBLIC_SANITY_DATASET"]
+        }
+    }
+}
