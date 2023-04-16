@@ -43,7 +43,7 @@ export const navigations = [
     label: "Dịch vụ tư vấn",
   },
   { id: 1, href: "/posts", link: "/#posts", label: "Phương pháp luận" },
-  { id: 1, href: "/tool", link: "/#tool", label: "Công cụ" },
+  { id: 1, href: "/app/auth", link: "/#app/auth", label: "Công cụ" },
   { id: 1, href: "/contact", link: "/#contact", label: "Liên hệ" },
 ];
 
