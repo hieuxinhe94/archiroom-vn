@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "cd studio && yarn && npx @sanity/cli build ../public/studio -y && echo 'Done studio'  &&  cd ../app && yarn && yarn build ../public/apptool && echo 'Done\n' ",
+    "prebuild": "cd studio && yarn && npx @sanity/cli build ../public/studio -y && echo 'Done studio'  &&  cd ../AppTool && npm i && npm run build && mv build ../public/apptool || move build ../public/apptool && echo 'Done\n' ",
     "build": "next build",
     "start": "next start",
     "sanity": "cd studio && sanity start",
