@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "cd studio && yarn && npx @sanity/cli build ../public/studio -y && echo 'Done studio'  &&  cd ../AppTool && npm i && npm run build && mv build ../public/apptool || move build ../public/apptool && echo 'Done\n' ",
+    "prebuild": "cd studio && yarn && npx @sanity/cli build ../public/studio -y && echo 'Done studio'  &&  cd ../AppTool && yarn && yarn build && mv build ../public/apptool || move build ../public/apptool && echo 'Done\n' ",
     "build": "next build",
     "start": "next start",
     "sanity": "cd studio && sanity start",
@@ -25,7 +25,7 @@
     "fully customisable"
   ],
   "dependencies": {
-    "@chakra-ui/icons": "^1.0.13",
+    
     "@chakra-ui/react": "^1.6.4",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -54,15 +54,7 @@
     "tailwindcss": "^3.2.7",
     "typeit-react": "^2.6.4",
     "react-hook-form": "^7.31.2",
-    "use-web3forms": "^1.2.1",
-    "@sanity/base": "^2.29.8",
-    "@sanity/core": "^2.29.5",
-    "@sanity/default-layout": "^2.29.8",
-    "@sanity/default-login": "^2.29.8",
-    "@sanity/desk-tool": "^2.29.8",
-    "@sanity/eslint-config-studio": "^2.0.0",
-    "@sanity/vision": "^2.29.8",
-    "sanity-plugin-asset-source-unsplash": "^0.2.1"
+    "use-web3forms": "^1.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
