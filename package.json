@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "cd studio && yarn --silent && npx @sanity/cli build ../public/studio -y && echo 'Done studio'  &&  cd ../AppTool && npm i && npm run build && echo 'Done App Tool' ",
+    "prebuild": "cd AppTool && npm i && yarn build && mv build ../public/apptool || move build ../public/apptool && echo 'Done App Tool' && cd ../studio && yarn --silent && npx @sanity/cli build ../public/studio -y && echo 'Done studio'  ",
     "build": "echo 'Start build' &&  next build && echo 'Done app'",
     "start": "next start",
     "sanity": "cd studio && sanity start",
@@ -25,7 +25,6 @@
     "fully customisable"
   ],
   "dependencies": {
-    
     "@chakra-ui/react": "^1.6.4",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -33,6 +32,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@heroicons/react": "^1.0.6",
     "@portabletext/react": "^2.0.2",
     "@tailwindcss/line-clamp": "^0.4.4",
     "aos": "^2.3.4",
@@ -40,7 +40,6 @@
     "date-fns": "^2.28.0",
     "dotenv": "^10.0.0",
     "framer-motion": "^4.1.17",
-    "@heroicons/react": "^1.0.6",
     "next": "^11.1.4",
     "next-sanity": "^0.5.2",
     "next-sanity-image": "^3.2.1",
@@ -48,15 +47,16 @@
     "nodemailer": "^6.6.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-hook-form": "^7.31.2",
     "react-icons": "^4.2.0",
     "react-swipeable": "^6.1.2",
     "styled-components": "^5.3.0",
     "tailwindcss": "^3.2.7",
     "typeit-react": "^2.6.4",
-    "react-hook-form": "^7.31.2",
     "use-web3forms": "^1.2.1"
   },
   "devDependencies": {
+    "@types/react": "^18.0.37",
     "autoprefixer": "^10.4.14",
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.0",
