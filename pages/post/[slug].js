@@ -246,10 +246,10 @@ export default function Post(props) {
                   </div>
                 </div>
                 <div className="text-brand-primary dark:text-white mx-auto indent-2 px-4 lg:px-2 text-justify max-w-screen-md my-3 prose prose-base dark:prose-invert prose-a:text-blue-500 antialiased hover:subpixel-antialiased leading-loose">
-                  {post.body && (
+                  {(post.body || post.customizebody) && (
                     <PortableText
                       components={components}
-                      value={post.body ?? post.customizebody}
+                      value={ post.customizebody || post.body}
                     />
                   )}
 
