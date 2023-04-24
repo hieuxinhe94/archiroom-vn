@@ -3,7 +3,7 @@ import Link from "next/link";
 import {
   userinfo,
   ctaTexts,
-  headings,
+   
   businessMainSteps,
 } from "../Constants/userinfo";
 
@@ -21,6 +21,7 @@ const HomeBusinessMainProcess = ({ currentTheme }) => {
                     key={item.id}
                     className="rounded-xl card-rise px-2 lg:px-3 mb-4 mt-3  w-1/2 md:w-1/5  "
                   >
+                     
                     <a target="" href="/services/#condo">
                       <div className="bg-theme-light-gray rounded-lg bg-gray-200/90 text-gray-900 text-center flex flex-col justify-start items-center mx-auto  h-full shadow-lg px-3 pt-5 pb-6  sm:m-0 ">
                         <picture className="inline-block h-24 mt-3">
