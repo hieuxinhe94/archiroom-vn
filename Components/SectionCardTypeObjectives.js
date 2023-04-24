@@ -7,7 +7,7 @@ import Utils from "chart.js/helpers";
 
 const SectionCardTypeObjective = ({ currentTheme, data }) => {
   return (
-    <div className={styles.educationWrapper + " container mx-auto my-24"} >
+    <div className={styles.educationWrapper + " container mx-auto my-24"}>
       <div
         className={
           styles.workheading +
@@ -29,6 +29,7 @@ const SectionCardTypeObjective = ({ currentTheme, data }) => {
                     digitalObjectivesMetadata.features.map((item, key) => (
                       <>
                         <div
+                          key={key}
                           className={
                             " w-8  rounded-lg shadow-lg relative " +
                             " h-" +
@@ -68,9 +69,11 @@ const SectionCardTypeObjective = ({ currentTheme, data }) => {
                 <h2 className="text-primary-color sm:w-3/4 lg:w-4/5 text-justify">
                   {digitalObjectivesMetadata?.subtitle}
                 </h2>
-                <div className="wysiwyg mt-1 sm:w-3/4 lg:w-4/5 text-gray-300 text-justify leading-relaxed" style={{whiteSpace: "pre-line"}}>
+                <div
+                  className="wysiwyg mt-1 sm:w-3/4 lg:w-4/5 text-gray-300 text-justify leading-relaxed"
+                  style={{ whiteSpace: "pre-line" }}
+                >
                   {digitalObjectivesMetadata?.description}
-                 
                 </div>
               </div>
             </div>
