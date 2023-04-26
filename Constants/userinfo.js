@@ -43,7 +43,7 @@ export const navigations = [
     label: "Dịch vụ tư vấn",
   },
   { id: 1, href: "/posts", link: "/#posts", label: "Phương pháp luận" },
-  { id: 1, href: "/apptool/auth", link: "/#apptool/auth", label: "Công cụ" },
+  { id: 1, href: "https://app.trustcontact.net", link: "https://app.trustcontact.net", label: "Công cụ" },
   { id: 1, href: "/contact", link: "/#contact", label: "Liên hệ" },
 ];
 
@@ -516,9 +516,9 @@ export const ourTeamMetadata = {
 };
 
 export const digitalCaseStudyArticles = {
-  title: "Case studies",
-  subtitle: "Pasture DX Maturity Tool",
-  description: "Pasture DX Maturity Tool",
+  title: "Our thinking",
+  subtitle: "Best practices and perspectives to help you grow.",
+  description: "Best practices and perspectives to help you grow.",
   main_image: {
     src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
     alt: "",

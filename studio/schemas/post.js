@@ -1,3 +1,8 @@
+
+const HighlightDecorator = props => (
+  <span style={{ backgroundColor: 'yellow' }}>{props.children}</span>
+)
+
 export default {
   name: "post",
   title: "Post",
@@ -97,9 +102,12 @@ export default {
             { title: 'quote', value: 'blockquoteComponent' },
             { title: 'podcast', value: 'podcastComponent' },
             { title: 'video', value: 'videoComponent' },
-            { title: 'chatbot', value: 'chatbotComponent' },
+            { title: 'chatbot', value: 'chatbotComponent', component: HighlightDecorator },
             { title: 'rpabot', value: 'rpaComponent' }
           ]
+        },
+        {
+          type: 'image'
         }
       ],
       marks: {
