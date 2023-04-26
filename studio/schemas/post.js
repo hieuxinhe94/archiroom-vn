@@ -102,9 +102,10 @@ export default {
             { title: 'quote', value: 'blockquoteComponent' },
             { title: 'podcast', value: 'podcastComponent' },
             { title: 'video', value: 'videoComponent' },
-            { title: 'chatbot', value: 'chatbotComponent', component: HighlightDecorator },
+            { title: 'chatbot', value: 'chatbotComponent' },
             { title: 'rpabot', value: 'rpaComponent' }
-          ]
+          ],
+        
         },
         {
           type: 'image'
@@ -114,7 +115,8 @@ export default {
         decorators: [
           {title: 'Strong', value: 'strong'},
           {title: 'Emphasis', value: 'em'},
-          {title: 'Code', value: 'code'}
+          {title: 'Code', value: 'code'},
+          {title: 'chatbot', value: 'chatbotComponent', component: HighlightDecorator }
         ]
       }
     }
