@@ -38,12 +38,12 @@ export const navigations = [
   { id: 1, href: "/", link: "/", label: "Trang chủ" },
   {
     id: 1,
-    href: "/services",
-    link: "/#services",
-    label: "Dịch vụ tư vấn",
+    href: "/showcases",
+    link: "/#showcases",
+    label: "Show Cases",
   },
   { id: 1, href: "/posts", link: "/#posts", label: "Phương pháp luận" },
-  { id: 1, href: "https://app.trustcontact.net", link: "https://app.trustcontact.net", label: "Công cụ" },
+  { id: 1, href: "https://app.trustcontact.net", link: "https://app.trustcontact.net", label: "Dùng thử" },
   { id: 1, href: "/contact", link: "/#contact", label: "Liên hệ" },
 ];
 
@@ -602,4 +602,11 @@ export const digitalCaseStudyArticles = {
       },
     },
   ],
+};
+
+
+export const showcasesSectionConfig = {
+  title: "Sản phẩm \"Làm sẵn trên bàn\" dành cho bạn ",
+  subtitle: "Chúng tôi biết rằng, sự phức tạp của những công nghệ mới luôn là trở ngại đối với doanh nghiệp. ....",
+  description: "Best practices and perspectives to help you grow.",
 };
