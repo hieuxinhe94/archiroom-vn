@@ -4,18 +4,20 @@ import { PostThumbnail } from "../Components/SectionCardTypeCaseStudy";
 import { postfeaturesquery, prebuildproductListquery } from "../lib/groq";
 import { NextSeo } from "next-seo";
 import styles from "../styles/Post.module.css";
-import { digitalCaseStudyArticles, showcasesSectionConfig } from "../Constants/userinfo";
+import {
+  digitalCaseStudyArticles,
+  showcasesSectionConfig,
+} from "../Constants/userinfo";
 
 export default function ShowCases(props) {
   const router = useRouter();
-  const posts = props.data
+  const posts = props.data;
   return (
     <div>
       <NextSeo
         title={`${"Blogs"}`}
         description={"" || ""}
         canonical={`/posts/`}
-        
         twitter={{
           cardType: "summary_large_image",
         }}
@@ -30,7 +32,7 @@ export default function ShowCases(props) {
         </div>
 
         <div className={styles.educationWrapper + " container mx-auto"}>
-          <div
+          {/* <div
             className={styles.workheading + " " + styles.lineHorizontal}
             data-aos="fade-up"
           >
@@ -42,26 +44,102 @@ export default function ShowCases(props) {
             data-aos="fade-up"
           >
             {showcasesSectionConfig?.subtitle}
-          </div>
+          </div> */}
+
+          <section
+            className={
+              styles.workheading +
+              " marketing relative py-16 md:pt-32 md:pb-16  "
+            }
+            data-section-name=""
+            data-component-name=""
+          >
+            <div class="container mb-10 grid grid-cols-12">
+              <div class="md:col-span-8 col-span-12 md:pr-8">
+                <h2 class="text-base font-medium default:text-[#08445E] uppercase mb-7 richtext">
+                  {showcasesSectionConfig?.title}
+                </h2>
+                <p class="md:mb-20 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+                  {showcasesSectionConfig?.subtitle}
+                </p>
+              </div>
+              <div class="md:col-span-4 col-span-12">
+                <p class="tracking-ff-tighter text-shade-70 my-8 md:my-16 richtext">
+                  {showcasesSectionConfig?.description}
+                </p>
+                <a
+                  href="/sell"
+                  class="text-lg overflow-hidden border-b pb-4 font-medium default:flex default:border-black w-4/5"
+                >
+                  <svg
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false"
+                    class="reduced-motion:group-hover:-translate-x-full h-6 w-6 origin-left -translate-x-full self-center opacity-0 transition-all duration-500 will-change-transform group-hover:translate-x-0 group-hover:opacity-100"
+                  >
+                    <path
+                      d="M17.707 9.293l-5-5a.999.999 0 10-1.414 1.414L14.586 9H3a1 1 0 100 2h11.586l-3.293 3.293a.999.999 0 101.414 1.414l5-5a.999.999 0 000-1.414z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                  <span class="reduced-motion:group-hover:translate-x-0 -translate-x-5 transition-transform duration-500 will-change-transform group-hover:translate-x-2">
+                    Start selling
+                  </span>
+                  <svg
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false"
+                    class="reduced-motion:group-hover:translate-x-0 ml-auto h-6 w-6 origin-left translate-x-0 self-center justify-self-end opacity-100 transition-all duration-500 will-change-transform group-hover:translate-x-full group-hover:opacity-0"
+                  >
+                    <path
+                      d="M17.707 9.293l-5-5a.999.999 0 10-1.414 1.414L14.586 9H3a1 1 0 100 2h11.586l-3.293 3.293a.999.999 0 101.414 1.414l5-5a.999.999 0 000-1.414z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="md:container flex justify-between gap-x-gutter max-w-screen overflow-x-scroll md:overflow-x-visible snap-x snap-mandatory no-scrollbar">
+              <img
+                class="w-[80vw] md:w-1/3-gutter aspect-square snap-center first:ml-gutter last:mr-gutter md:first:ml-0 md:last:mr-0"
+                sizes="100vw"
+                srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/sell-buyer-small-f7a1e59a62226c554e7691b17a1af76c06978bd41ce78d4f980446ed1bfcaad6.webp 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/sell-buyer-large-37ef6b862e53584054039ff594f868d60f1804c08624b462c4f4d679e7155c71.webp 2x"
+                loading="lazy"
+                alt="Marketing product examples"
+              />
+              <img
+                class="w-[80vw] md:w-1/3-gutter aspect-square snap-center first:ml-gutter last:mr-gutter md:first:ml-0 md:last:mr-0"
+                sizes="100vw"
+                srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/marketing2-small-2a712ec8dc64d2b33a2ddd9346f5ebeb8d87d616831d14cb32dcef3e06302598.png 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/marketing2-large-11a96ec4b8f603824a9f489b164510137d62ec4035577593d68c787159c9a5e2.png 2x"
+                loading="lazy"
+                alt="Marketing - Connect with customers online"
+              />
+              <img
+                class="w-[80vw] md:w-1/3-gutter aspect-square snap-center first:ml-gutter last:mr-gutter md:first:ml-0 md:last:mr-0"
+                sizes="100vw"
+                srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/marketing3-small-6582aefc08f96962465ba3e4579af9e7c1fd338571c1ac96de8999feb106c05f.png 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/marketing3-large-45a05b52b6219582fe516c4fdea4dfe6aa7107b7dd07b1e91e49bcf35fb85fc7.png 2x"
+                loading="lazy"
+                alt="Marketing - Connect with customers in person"
+              />
+            </div>
+          </section>
 
           <div className={" pt-20"}>
-            <section className=" cards-block z-30 relative bg-no-repeat px-3 py-20 lg:py-20 bg-cover bg-center">
-              <div className="container container-xl mx-auto z-10 relative">
-                <div className="flex flex-wrap justify-center">
-                  {posts
-                    ? posts.map((post, key) => (
-                        <div
-                          key={key}
-                          data-aos="fade-up"
-                          className="expandable-card relative card-basic pb-8 sm:px-3 mt-6 lg:mt-0 xl:px-6  w-full md:w-1/2 lg:w-1/4"
-                        >
-                          <PostThumbnail {...post}></PostThumbnail>
-                        </div>
-                      ))
-                    : null}
-                </div>
-              </div>
-            </section>
+            {posts
+              ? posts.map((post, key) => (
+                  <section
+                    key={key}
+                    data-aos="fade-up"
+                    class="pb-16 md:pt-8"
+                    data-section-name=""
+                    data-component-name=""
+                  >
+                    <PostThumbnail {...post}></PostThumbnail>
+                  </section>
+                ))
+              : null}
           </div>
         </div>
       </section>

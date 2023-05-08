@@ -13,11 +13,12 @@ import Carousel from "./Carousel";
 import { getClient, usePreviewSubscription } from "../lib/sanity";
 import { postquery } from "../lib/groq";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function HomePage (props) {
   const { postdata, siteconfig, preview, currentTheme } = props;
   const router = useRouter();
-  
+  const [displayBot, setDisplayBot] = useState(false);
   
   // const { data: posts } = usePreviewSubscription(postquery, {
   //   initialData: postdata,
@@ -44,7 +45,7 @@ export default function HomePage (props) {
           className="absolute rounded-xl top-16 lg:right-8 sm:w-1/2 lg:w-1/3  "
           data-aos="fade-up" data-aos-duration={2000}
         >
-          <ChatbotHead currentTheme={currentTheme} />
+          <ChatbotHead currentTheme={currentTheme} onClickDetail={() => setDisplayBot(true)} />
         </div>
       </div>
       {/* <section className="lg:-mt-30 bg-transparent xsm:-mt-16 sm:mt-0 md:-mt-10 xl:-mt-20 xl1450:-mt-20 z-10 relative pb-8 sm:pb-16 overflow-visible z-10">
@@ -90,6 +91,14 @@ export default function HomePage (props) {
       <div>
         {true ? <SectionCardTypeCaseStudy currentTheme={currentTheme} posts={postdata} /> : null}
       </div>
+      {displayBot && (
+        <div className="fixed bottom-10 right-10">
+          <iframe
+            src="https://webchat.botframework.com/embed/SimplifyAILanguageService01-bot?s=XN_b7jXwYcQ.310bmzFahKZJgN4BBPk3GLam2Jzkkht6bphzkvNZ7p0"
+            style={{ height: "502px", maxHeight: "502px" }}
+          ></iframe>
+        </div>
+      )}
     </div>
   );
 };

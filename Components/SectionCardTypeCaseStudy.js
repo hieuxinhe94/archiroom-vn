@@ -42,49 +42,69 @@ export function PostThumbnail(post) {
 
   return (
     <Link href={`/post/${post.slug.current}`}>
-      <div className="mx-auto sm:m-0 shadow-2xl text-center bg-white h-full overflow-visible flex flex-col relative">
-        {imageProps ? (
-          <Image
-            src={imageProps?.src}
-            alt={"trustcheck feature"}
-            loader={imageProps.loader}
-            width={254}
-            height={254}
-            priority={false}
-            className="ratio-4-3 h-64 bg-top-1/4 w-full bg-cover bg-no-repeat p-3"
-          />
-        ) : null}
-
-        <div className="grow flex flex-col">
-          <button
-            className="focus:outline-none grow flex items-start justify-between text-left bg-theme-light-gray px-6 py-4 z-10 relative"
-            data-modal="bio-modal-1"
+      <div class="container flex md:flex-row flex-col justify-between">
+        <div class="md:w-1/2-gutter flex items-center justify-center order-2 shrink-0 md:order-2">
+          {/* <img
+                    sizes="100vw"
+                    srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/pos-2-small-2bceb2e9fd90de0e825252632b00f723978536c6c4535e44468dfc31a7cef8f0.webp 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/pos-2-large-50a3a20f09c7d1fef32dd3c6fdcfc75db43bc06e980cd317d08acbba64ae9a7b.webp 2x"
+                    alt="Shopify Point of Sale"
+                    class="w-full h-full object-contain"
+                  /> */}
+          {imageProps ? (
+            <Image
+              sizes="100vw"
+              src={imageProps?.src}
+              alt={"trustcheck feature"}
+              loader={imageProps.loader}
+              width={254}
+              height={254}
+              priority={false}
+              class="w-full h-full object-contain"
+            />
+          ) : null}
+        </div>
+        <div class="w-full md:max-w-[420px] py-16 md:py-32 order-1 md:w-1/2-gutter md:order-1">
+          <h2 class="text-base font-medium default:text-[#08445E] uppercase mb-5 md:mb-7 richtext">
+            POINT OF SALE
+          </h2>
+          <p class="tracking-ff-tighter mb-6 font-bold text-[28px] leading-[30px] md:text-[40px] md:leading-[44px] richtext">
+            {post.title}
+          </p>
+          <div class="text-shade-70 mb-16 text-base">
+            <p>{post.excerpt}</p>
+          </div>
+          <a
+            href="/pos"
+            class="text-lg overflow-hidden border-b pb-4 font-medium default:flex default:border-black w-4/5"
           >
-            <div className="">
-              <div className="flex">
-                <h4 className=" text-gray-800"> {post.title}</h4>
-                <div className="ml-2 plus transform duration-300 transition-transform border-1 border-black border-solid rounded-full w-8 h-8 flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6 text-gray-600"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              <h5 className="text-sm text-gray-500 mt-2 text-justify">{post.excerpt}</h5>
-            </div>
-            <div></div>
-          </button>
+            <svg
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              focusable="false"
+              class="reduced-motion:group-hover:-translate-x-full h-6 w-6 origin-left -translate-x-full self-center opacity-0 transition-all duration-500 will-change-transform group-hover:translate-x-0 group-hover:opacity-100"
+            >
+              <path
+                d="M17.707 9.293l-5-5a.999.999 0 10-1.414 1.414L14.586 9H3a1 1 0 100 2h11.586l-3.293 3.293a.999.999 0 101.414 1.414l5-5a.999.999 0 000-1.414z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="reduced-motion:group-hover:translate-x-0 -translate-x-5 transition-transform duration-500 will-change-transform group-hover:translate-x-2">
+              Meet Shopify POS
+            </span>
+            <svg
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              focusable="false"
+              class="reduced-motion:group-hover:translate-x-0 ml-auto h-6 w-6 origin-left translate-x-0 self-center justify-self-end opacity-100 transition-all duration-500 will-change-transform group-hover:translate-x-full group-hover:opacity-0"
+            >
+              <path
+                d="M17.707 9.293l-5-5a.999.999 0 10-1.414 1.414L14.586 9H3a1 1 0 100 2h11.586l-3.293 3.293a.999.999 0 101.414 1.414l5-5a.999.999 0 000-1.414z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </a>
         </div>
       </div>
     </Link>

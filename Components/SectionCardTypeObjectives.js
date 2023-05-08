@@ -27,9 +27,9 @@ const SectionCardTypeObjective = ({ currentTheme, data }) => {
                 <div className="flex -mt-12 justify-start items-end space-x-4 font-mono font-bold text-xs text-center text-white">
                   {digitalObjectivesMetadata &&
                     digitalObjectivesMetadata.features.map((item, key) => (
-                      <>
+                      <section   key={key}>
                         <div
-                          key={key}
+                        
                           className={
                             " w-8  rounded-lg shadow-lg relative " +
                             " h-" +
@@ -61,7 +61,7 @@ const SectionCardTypeObjective = ({ currentTheme, data }) => {
                         >
                           {item.title}
                         </div>
-                      </>
+                      </section>
                     ))}
                 </div>
               </div>

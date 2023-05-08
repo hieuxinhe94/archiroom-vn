@@ -40,10 +40,10 @@ export const navigations = [
     id: 1,
     href: "/showcases",
     link: "/#showcases",
-    label: "Show Cases",
+    label: "Công nghệ",
   },
   { id: 1, href: "/posts", link: "/#posts", label: "Phương pháp luận" },
-  { id: 1, href: "https://app.trustcontact.net", link: "https://app.trustcontact.net", label: "Dùng thử" },
+  { id: 1, href: "https://app.trustcontact.net", link: "https://app.trustcontact.net", label: "DX-Chuyển đổi số" },
   { id: 1, href: "/contact", link: "/#contact", label: "Liên hệ" },
 ];
 
@@ -606,7 +606,7 @@ export const digitalCaseStudyArticles = {
 
 
 export const showcasesSectionConfig = {
-  title: "Sản phẩm \"Làm sẵn trên bàn\" dành cho bạn ",
-  subtitle: "Chúng tôi biết rằng, sự phức tạp của những công nghệ mới luôn là trở ngại đối với doanh nghiệp. ....",
-  description: "Best practices and perspectives to help you grow.",
+  title: "Khiến công nghệ số thực sự hữu ích trong kinh doanh",
+  subtitle: "Best practices and perspectives to help you grow.",
+  description: "Chúng tôi biết rằng, sự phức tạp của những công nghệ mới luôn là trở ngại đối với doanh nghiệp. ....",
 };
