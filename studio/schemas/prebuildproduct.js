@@ -17,6 +17,11 @@ export default {
       type: "string"
     },
     {
+      name: "productcode",
+      title: "Product Code",
+      type: "string"
+    },
+    {
       name: "slug",
       title: "Slug",
       type: "slug",

@@ -43,7 +43,12 @@ export const navigations = [
     label: "Công nghệ",
   },
   { id: 1, href: "/posts", link: "/#posts", label: "Phương pháp luận" },
-  { id: 1, href: "https://app.trustcontact.net", link: "https://app.trustcontact.net", label: "DX-Chuyển đổi số" },
+  {
+    id: 1,
+    href: "https://app.trustcontact.net",
+    link: "https://app.trustcontact.net",
+    label: "DX-Chuyển đổi số",
+  },
   { id: 1, href: "/contact", link: "/#contact", label: "Liên hệ" },
 ];
 
@@ -423,7 +428,8 @@ export const digitalSolutionMetadata = {
       id: 1,
       title: "Plan: Hiểu rõ mục tiêu ngắn hạn",
       subtitle: "",
-      description: "Trong quá trình xác định vấn đề, điều này có thể áp dụng bằng cách tìm hiểu cách mà khách hàng tương tác với doanh nghiệp và các sản phẩm/sản phẩm của doanh nghiệp.",
+      description:
+        "Trong quá trình xác định vấn đề, điều này có thể áp dụng bằng cách tìm hiểu cách mà khách hàng tương tác với doanh nghiệp và các sản phẩm/sản phẩm của doanh nghiệp.",
       due_date: "1-2 weeks",
       href: "/solution",
       main_classes: "",
@@ -604,9 +610,9 @@ export const digitalCaseStudyArticles = {
   ],
 };
 
-
 export const showcasesSectionConfig = {
-  title: "Khiến công nghệ số thực sự hữu ích trong kinh doanh",
-  subtitle: "Best practices and perspectives to help you grow.",
-  description: "Chúng tôi biết rằng, sự phức tạp của những công nghệ mới luôn là trở ngại đối với doanh nghiệp. ....",
+  title: "Tầm nhìn",
+  subtitle:
+    "Chúng tôi hiểu rằng: Sự thay đổi nhanh chóng, phức tạp của những công nghệ luôn là trở ngại lớn.",
+  description: "Và sứ mệnh chúng tôi:<br/> Chính Là cầu nối vững chắc giúp doanh nghiệp chuyển đổi số bằng công nghệ mới thành công!",
 };
