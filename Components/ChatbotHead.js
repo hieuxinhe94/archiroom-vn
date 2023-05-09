@@ -52,32 +52,13 @@ const ChatbotHead = ({ currentTheme, onClickDetail }) => {
                 <TypeIt
                   options={{
                     strings: [
-                      `Xu hướng Chuyển đổi số
-                <SuperStrong>(Digital Transformation)</SuperStrong> đang trở thành
-                một trong những xu hướng chính của thế giới kinh doanh trong thời
+                      `Xu hướng Chuyển đổi số <SuperStrong>(Digital Transformation)</SuperStrong> 
+                đang trở thành một trong những xu hướng chính của thế giới kinh doanh trong thời
                 gian gần đây. Nó bao gồm việc sử dụng công nghệ số và dữ liệu để
                 cải thiện các quy trình kinh doanh và tạo ra giá trị cho khách
-                hàng.`,
-                      `Các ứng dụng của Chuyển đổi số bao gồm: `,
-                      `<b>1. Tối ưu hóa quy
-                trình kinh doanh:</b> Các doanh nghiệp sử dụng công nghệ số để tự động
-                hóa các quy trình kinh doanh và cải thiện hiệu suất.`,
-                      `<b> 2. Phát triển
-                sản phẩm mới:</b> Công nghệ số cho phép các doanh nghiệp tìm ra cách
-                phát triển sản phẩm mới và tăng cường trải nghiệm khách hàng.`,
-                      `<b> 3.
-                Phân tích dữ liệu:</b> Công nghệ số giúp các doanh nghiệp thu thập và
-                phân tích dữ liệu để đưa ra quyết định tốt hơn.`,
-                      `<b> 4. Cải thiện trải
-                nghiệm khách hàng:</b> Các doanh nghiệp sử dụng công nghệ số để tăng
-                cường trải nghiệm khách hàng và cung cấp dịch vụ tốt hơn.`,
-                      `<b> 5. Tăng
-                cường an ninh và bảo mật:</b> Công nghệ số giúp các doanh nghiệp bảo
-                vệ thông tin và dữ liệu của họ khỏi các mối đe dọa an ninh.`,
-                      ` Tóm
-                lại, xu hướng Chuyển đổi số sẽ đem lại nhiều cơ hội cho các doanh
-                nghiệp để tăng cường năng suất, tăng trưởng và cung cấp giá trị
-                cho khách hàng.`,
+                hàng. `,
+                      `Simplift.AI định vị `,
+                      `Là cầu nối vững chắc giúp doanh nghiệp triển khai những công nghệ mới nhanh chóng, hiệu quả.`,
                     ],
                     speed: 8,
                     startDelay: 3000,
@@ -119,7 +100,7 @@ const ChatbotHead = ({ currentTheme, onClickDetail }) => {
                 >
                   Trò chuyện ngay với{" "}
                   <strong className="rounded-xl mt-1 border border-indigo-500 dark:bg-indigo-800  px-3 py-1 text-[10px] font-medium text-white hover:underline cursor-pointer">
-                    ChatGPT
+                    SimpleGPT
                   </strong>{" "}
                 </p>
               </div>

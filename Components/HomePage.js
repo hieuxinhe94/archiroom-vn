@@ -33,6 +33,7 @@ export default function HomePage (props) {
         style={{ backgroundColor: currentTheme.secondary }}
       >
         <h1 className={styles.heading}>{heroInfo.title}</h1>
+        
         <h2
           className={styles.subheading}
           style={{ color: currentTheme.subtext }}
