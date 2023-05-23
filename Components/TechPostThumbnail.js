@@ -20,6 +20,7 @@ export default function TechPostThumbnail(post) {
               height={"600px"}
               className=" max-w-full border border-gray-200 rounded-lg dark:border-gray-700"
               controls
+              autoPlay="true"
             >
               <source src={post.videoURL} type="video/mp4" />
               Your browser does not support the video tag.
@@ -27,20 +28,22 @@ export default function TechPostThumbnail(post) {
           )}
 
           {!post.videoURL && imageProps && (
-            <Image
-              src={imageProps?.src}
-              alt={post.title}
-              loader={imageProps.loader}
-              width={"800px"}
-              height={"600px"}
-              priority={false}
-              className="ratio-4-3 w-full bg-cover bg-no-repeat p-3"
-            />
+            <div className=" max-w-full border border-gray-200 rounded-lg dark:border-gray-700">
+              <Image
+                src={imageProps?.src}
+                alt={post.title}
+                loader={imageProps.loader}
+                width={"800px"}
+                height={"400px"}
+                priority={false}
+                className="ratio-4-3 w-full bg-cover bg-no-repeat p-3"
+              />
+            </div>
           )}
         </div>
         <div className="w-full md:max-w-[420px] py-16 md:py-32 order-1 md:w-1/2-gutter md:order-1">
-          <h2 className="text-base font-medium default:text-[#08445E] uppercase mb-5 md:mb-7 richtext">
-            {post.featured ? "POINT OF SALE" : "PRODUCT"}
+          <h2 className="text-base font-medium default:text-[antiquewhite] uppercase mb-5 md:mb-7 richtext" style={{color: "antiquewhite"}}>
+           {post.featured ? "POINT OF SALE" : "PRODUCT"}
           </h2>
           <p className="tracking-ff-tighter mb-6 font-bold text-[28px] leading-[30px] md:text-[40px] md:leading-[44px] richtext">
             {post.title}
