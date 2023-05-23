@@ -14,11 +14,12 @@ import { getClient, usePreviewSubscription } from "../lib/sanity";
 import { postquery } from "../lib/groq";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import ChatbotCustomView from "./ChatbotCustomView";
 
 export default function HomePage (props) {
   const { postdata, siteconfig, preview, currentTheme } = props;
   const router = useRouter();
-  const [displayBot, setDisplayBot] = useState(false);
+  const [displayBot, setDisplayBot] = useState(true);
   
   // const { data: posts } = usePreviewSubscription(postquery, {
   //   initialData: postdata,
@@ -94,11 +95,15 @@ export default function HomePage (props) {
       </div>
       {displayBot && (
         <div className="fixed bottom-10 right-10">
-          <iframe
-            src="https://webchat.botframework.com/embed/SimplifyAILanguageService01-bot?s=XN_b7jXwYcQ.310bmzFahKZJgN4BBPk3GLam2Jzkkht6bphzkvNZ7p0"
-            style={{ height: "502px", maxHeight: "502px" }}
-          ></iframe>
+          <ChatbotCustomView />
         </div>
+
+      // <div className="fixed bottom-10 right-10">
+      // <iframe
+      //   src="https://webchat.botframework.com/embed/SimplifyAILanguageService01-bot?s=XN_b7jXwYcQ.310bmzFahKZJgN4BBPk3GLam2Jzkkht6bphzkvNZ7p0"
+      //   style={{ height: "502px", maxHeight: "502px" }}
+      // ></iframe>
+      // </div>
       )}
     </div>
   );

@@ -8,21 +8,35 @@ import Image from "next/image";
 export default function TechPostThumbnail(post) {
   const imageProps = post?.mainImage ? GetImage(post.mainImage) : null;
 
- 
-
   return (
     <Link href={`/tech/${post.slug.current}`}>
       <div className="container flex md:flex-row flex-col justify-between cursor-pointer">
         <div className="md:w-1/2-gutter flex items-center justify-center order-2 shrink-0 md:order-2">
-          <Image
-            src={imageProps?.src}
-            alt={post.title}
-            loader={imageProps.loader}
-            width={"800px"}
-            height={"700px"}
-            priority={false}
-            className="ratio-4-3 w-full bg-cover bg-no-repeat p-3"
-          />
+          {/**/}
+
+          {post.videoURL && (
+            <video
+              width={"800px"}
+              height={"600px"}
+              className=" max-w-full border border-gray-200 rounded-lg dark:border-gray-700"
+              controls
+            >
+              <source src={post.videoURL} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )}
+
+          {!post.videoURL && imageProps && (
+            <Image
+              src={imageProps?.src}
+              alt={post.title}
+              loader={imageProps.loader}
+              width={"800px"}
+              height={"600px"}
+              priority={false}
+              className="ratio-4-3 w-full bg-cover bg-no-repeat p-3"
+            />
+          )}
         </div>
         <div className="w-full md:max-w-[420px] py-16 md:py-32 order-1 md:w-1/2-gutter md:order-1">
           <h2 className="text-base font-medium default:text-[#08445E] uppercase mb-5 md:mb-7 richtext">

@@ -10,6 +10,7 @@ import {
 } from "../Constants/userinfo";
 import TypeIt from "typeit-react";
 import TechPostThumbnail from "../Components/TechPostThumbnail";
+import GetImage from "../utils/getImage";
 
 export default function ShowCases(props) {
   const router = useRouter();
@@ -47,10 +48,13 @@ export default function ShowCases(props) {
                 <h2 className="text-base font-medium default:text-[#08445E] uppercase mb-7 richtext">
                   {showcasesSectionConfig?.title}
                 </h2>
-                <p className="text-lg h-36 ">
+                <p className="text-lg h-36 w-3/4">
                   <TypeIt
                     options={{
-                      strings: [showcasesSectionConfig?.subtitle, showcasesSectionConfig?.description],
+                      strings: [
+                        showcasesSectionConfig?.subtitle,
+                        showcasesSectionConfig?.description,
+                      ],
                       speed: 0.5,
                       startDelay: 1000,
                       waitUntilVisible: true,
@@ -58,13 +62,8 @@ export default function ShowCases(props) {
                   ></TypeIt>
                 </p>
               </div>
-              <div
-                data-aos="fade-right"
-                className="md:col-span-4 col-span-12"
-              >
-                <p className="tracking-ff-tighter text-shade-70 my-8 md:my-16 richtext">
-                
-                </p>
+              <div data-aos="fade-right" className="md:col-span-4 col-span-12">
+                <p className="tracking-ff-tighter text-shade-70 my-8 md:my-16 richtext"></p>
                 <a
                   href="#list"
                   className="text-lg overflow-hidden border-b pb-4 font-medium default:flex default:border-black w-4/5"
@@ -85,7 +84,7 @@ export default function ShowCases(props) {
                     onClick={() => {}}
                     className="reduced-motion:group-hover:translate-x-0 -translate-x-5 transition-transform duration-500 will-change-transform group-hover:translate-x-2"
                   >
-                    Khám phá sản phẩm
+                    Giải pháp của chúng tôi
                   </span>
                   <svg
                     viewBox="0 0 20 20"
@@ -102,29 +101,26 @@ export default function ShowCases(props) {
                 </a>
               </div>
             </div>
-            <div className="md:container flex justify-between gap-x-gutter max-w-screen overflow-x-scroll md:overflow-x-visible snap-x snap-mandatory no-scrollbar">
-              <img
-                className="w-[80vw] md:w-1/3-gutter aspect-square snap-center first:ml-gutter last:mr-gutter md:first:ml-0 md:last:mr-0"
-                sizes="100vw"
-                srcSet="https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/sell-buyer-small-f7a1e59a62226c554e7691b17a1af76c06978bd41ce78d4f980446ed1bfcaad6.webp 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/sell-buyer-large-37ef6b862e53584054039ff594f868d60f1804c08624b462c4f4d679e7155c71.webp 2x"
-                loading="lazy"
-                alt="Marketing product examples"
-              />
-              <img
-                className="w-[80vw] md:w-1/3-gutter aspect-square snap-center first:ml-gutter last:mr-gutter md:first:ml-0 md:last:mr-0"
-                sizes="100vw"
-                srcSet="https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/marketing2-small-2a712ec8dc64d2b33a2ddd9346f5ebeb8d87d616831d14cb32dcef3e06302598.png 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/marketing2-large-11a96ec4b8f603824a9f489b164510137d62ec4035577593d68c787159c9a5e2.png 2x"
-                loading="lazy"
-                alt="Marketing - Connect with customers online"
-              />
-              <img
-                className="w-[80vw] md:w-1/3-gutter aspect-square snap-center first:ml-gutter last:mr-gutter md:first:ml-0 md:last:mr-0"
-                sizes="100vw"
-                srcSet="https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/marketing3-small-6582aefc08f96962465ba3e4579af9e7c1fd338571c1ac96de8999feb106c05f.png 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/home/redesign2022/marketing3-large-45a05b52b6219582fe516c4fdea4dfe6aa7107b7dd07b1e91e49bcf35fb85fc7.png 2x"
-                loading="lazy"
-                alt="Marketing - Connect with customers in person"
-              />
-            </div>
+
+            {/* <div className="md:container flex justify-between gap-x-gutter max-w-screen overflow-x-scroll md:overflow-x-visible snap-x snap-mandatory no-scrollbar">
+              {posts
+                ? posts.map((post, key) => { 
+                  if(!post.mainImage) return null;
+                  const imageProps = GetImage(post.mainImage)
+                  if(!imageProps) return null;
+                  return(
+                      <img
+                        key={key}
+                        className="w-[15vw] md:w-1/3-gutter aspect-square snap-center first:ml-gutter last:mr-gutter md:first:ml-0 md:last:mr-0"
+                        sizes="10vw"
+                        src={imageProps.src}
+                        loading="lazy"
+                        alt="Marketing product examples"
+                      />
+                    ) }
+                  )
+                : null}
+            </div> */}
           </section>
 
           <div id="list" className={"mt-2 z-50"}>
@@ -134,7 +130,6 @@ export default function ShowCases(props) {
                     key={key}
                     data-aos="fade-up"
                     className="pb-16 md:pt-8"
-                  
                   >
                     <TechPostThumbnail {...post}></TechPostThumbnail>
                   </section>

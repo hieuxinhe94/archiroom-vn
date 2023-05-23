@@ -1,25 +1,24 @@
-
-const HighlightDecorator = props => (
-  <span style={{ backgroundColor: 'yellow' }}>{props.children}</span>
-)
+const HighlightDecorator = (props) => (
+  <span style={{ backgroundColor: "yellow" }}>{props.children}</span>
+);
 
 export default {
   name: "prebuildproduct",
   title: "Prebuild Product Show cases",
   type: "document",
   initialValue: () => ({
-    publishedAt: new Date().toISOString()
+    publishedAt: new Date().toISOString(),
   }),
   fields: [
     {
       name: "title",
       title: "Title",
-      type: "string"
+      type: "string",
     },
     {
       name: "productcode",
       title: "Product Code",
-      type: "string"
+      type: "string",
     },
     {
       name: "slug",
@@ -27,8 +26,8 @@ export default {
       type: "slug",
       options: {
         source: "title",
-        maxLength: 96
-      }
+        maxLength: 96,
+      },
     },
     {
       name: "excerpt",
@@ -37,94 +36,102 @@ export default {
         "The excerpt is used in blog feeds, and also for search results",
       type: "text",
       rows: 3,
-      validation: Rule => Rule.max(200)
+      validation: (Rule) => Rule.max(200),
     },
     {
       name: "author",
       title: "Author",
       type: "reference",
-      to: { type: "author" }
+      to: { type: "author" },
     },
     {
       name: "mainImage",
       title: "Main image",
       type: "image",
       fields: [
-     
         {
           name: "alt",
           type: "string",
           title: "Alternative text",
           description: "Important for SEO and accessiblity.",
           options: {
-            isHighlighted: true
-          }
-        }
+            isHighlighted: true,
+          },
+        },
       ],
       options: {
-        hotspot: true
-      }
+        hotspot: true,
+      },
+    },
+    {
+      name: "videoURL",
+      title: "Video URL (optional)",
+      type: "text",
+      description: "Place video url",
     },
     {
       name: "categories",
       title: "Categories",
       type: "array",
-      of: [{ type: "reference", to: { type: "category" } }]
+      of: [{ type: "reference", to: { type: "category" } }],
     },
     {
       name: "publishedAt",
       title: "Published at",
-      type: "datetime"
+      type: "datetime",
     },
     {
       name: "featured",
       title: "Mark as Featured",
-      type: "boolean"
+      type: "boolean",
     },
     {
       name: "customizebody",
       title: "CustomizeBody",
-      type: 'array',
+      type: "array",
       of: [
         {
-          type: 'block',
+          type: "block",
           styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'Heading 2', value: 'h2' },
-            { title: 'quote', value: 'blockquoteComponent' },
-            { title: 'podcast', value: 'podcastComponent' },
-            { title: 'video', value: 'videoComponent' },
-            { title: 'chatbot', value: 'chatbotComponent' },
-            { title: 'rpabot', value: 'rpaComponent' }
+            { title: "Normal", value: "normal" },
+            { title: "Heading 2", value: "h2" },
+            { title: "quote", value: "blockquoteComponent" },
+            { title: "podcast", value: "podcastComponent" },
+            { title: "video", value: "videoComponent" },
+            { title: "chatbot", value: "chatbotComponent" },
+            { title: "rpabot", value: "rpaComponent" },
           ],
-        
         },
         {
-          type: 'image'
-        }
+          type: "image",
+        },
       ],
       marks: {
         decorators: [
-          {title: 'Strong', value: 'strong'},
-          {title: 'Emphasis', value: 'em'},
-          {title: 'Code', value: 'code'},
-          {title: 'chatbot', value: 'chatbotComponent', component: HighlightDecorator }
-        ]
-      }
-    }
+          { title: "Strong", value: "strong" },
+          { title: "Emphasis", value: "em" },
+          { title: "Code", value: "code" },
+          {
+            title: "chatbot",
+            value: "chatbotComponent",
+            component: HighlightDecorator,
+          },
+        ],
+      },
+    },
   ],
 
   preview: {
     select: {
       title: "title",
       author: "author.name",
-      media: "mainImage"
+      media: "mainImage",
     },
     prepare(selection) {
       const { author } = selection;
       return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`
+        subtitle: author && `by ${author}`,
       });
-    }
-  }
+    },
+  },
 };

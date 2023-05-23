@@ -614,5 +614,5 @@ export const showcasesSectionConfig = {
   title: "Tầm nhìn",
   subtitle:
     "Chúng tôi hiểu rằng: Sự thay đổi nhanh chóng, phức tạp của những công nghệ luôn là trở ngại lớn.",
-  description: "Và sứ mệnh chúng tôi:<br/> Chính Là cầu nối vững chắc giúp doanh nghiệp chuyển đổi số bằng công nghệ mới thành công!",
+  description: "Và sứ mệnh chúng tôi là cầu nối vững chắc giúp doanh nghiệp chuyển đổi số bằng công nghệ mới thành công!",
 };
