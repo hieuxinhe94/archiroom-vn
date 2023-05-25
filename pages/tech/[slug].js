@@ -233,34 +233,21 @@ export default function Post(props) {
                   </button>
 
                   <div className="w-full px-8">
-                    <div className="w-full cursor-pointer rounded-md bg-black/30  text-white backdrop-blur-md hover:bg-black/20 text-[0.8125rem] font-medium leading-5 text-slate-700 shadow-sm ring-1 ring-slate-700/10">
-                      <div className="flex items-center justify-center ">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className=" rounded-xl w-6 h-6 border border-indigo-500 bg-indigo-500  justify-center text-white"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
-                          />
-                        </svg>
+                  <div className=" rounded-3xl border border-gray-100 p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none lg:px-12">
+                  <div className="w-full flex text-xs font-medium text-gray-300 text-justify">
+                      Tính năng:
                       </div>
-
-                      <div className="w-full flex px-3 pt-2 pb-5 text-xs font-medium text-gray-300 text-justify">
-                        Tính năng:
-                      </div>
-                      <div className="w-full flex px-3 pt-2 pb-5 text-xs font-medium text-gray-300 text-justify">
-                        <ul>
-                          <li>.</li>
-                          <li>.</li>
-                        </ul>
-                      </div>
-                    </div>
+                            <div className="w-64">
+                                <p className="mt-2 w-full mb-8 text-gray-600 dark:text-gray-300 overflow-hidden">Lorem ipsum dolor laboriosam deleniti 
+                                aperiam ab veniam sint non cumque quis tempore cupiditate.   veritatis harum et rerum.</p>
+                                <div className="flex gap-4">
+                                <div>
+                                        <h2 className="leading-0 text-lg font-medium text-gray-700 dark:text-white">Randy Doe</h2>
+                                        <p className="leading-0 -mt-0.5 text-sm text-gray-500 dark:text-gray-400">Backend dev</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                   </div>
 
                   <div className="w-full px-8 mt-12">

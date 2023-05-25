@@ -11,10 +11,13 @@ import {
 import TypeIt from "typeit-react";
 import TechPostThumbnail from "../Components/TechPostThumbnail";
 import GetImage from "../utils/getImage";
+import { useState } from "react";
 
 export default function ShowCases(props) {
   const router = useRouter();
   const posts = props.data;
+  const [displayAgenda, setDisplayAgenda] = useState(false)
+
   return (
     <div>
       <NextSeo
@@ -49,11 +52,8 @@ export default function ShowCases(props) {
                   {showcasesSectionConfig?.title}
                 </h2>
 
-                <div
-                  className="relative"
-                  style={{ backgroundImage: "team.svg" }}
-                >
-                  <p className="text-lg h-32 mr-32 text-gray-300">
+                <div className="relative">
+                  <p className="text-lg h-32 mr-32 text-gray-300 my-12">
                     <TypeIt
                       options={{
                         strings: [showcasesSectionConfig?.description],
@@ -61,14 +61,23 @@ export default function ShowCases(props) {
                         startDelay: 1000,
                         waitUntilVisible: true,
                       }}
+                     
+
                     ></TypeIt>
                   </p>
-                  <div className="lg:w-2/3">
-                    {posts
+                  <div
+                    data-aos="fade-up"
+                    data-aos-delay={5000}
+                    className="lg:w-2/3"
+                  >
+                    {(posts)
                       ? posts.map((post, key) => {
                           return (
                             <a
+                              key={key}
                               href={"#" + key}
+                              data-aos="zoom-out-down"
+                              data-aos-delay={(key + 1) * 500}
                               className="text-sm overflow-hidden hover:bg-gray-200/20 border-b pb-4 font-medium default:flex default:border-black w-4/5"
                             >
                               <svg

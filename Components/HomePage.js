@@ -9,10 +9,7 @@ import SectionCardTypeSolution from "./SectionCardTypeSolution";
 import SectionCardTypeObjective from "./SectionCardTypeObjectives";
 import SectionCardTypeParterTrusted from "./SectionCardTypeParterTrusted";
 import ChatbotHead from "./ChatbotHead";
-import Carousel from "./Carousel";
-import { getClient, usePreviewSubscription } from "../lib/sanity";
-import { postquery } from "../lib/groq";
-import { useRouter } from "next/router";
+ import { useRouter } from "next/router";
 import { useState } from "react";
 import ChatbotCustomView from "./ChatbotCustomView";
 

@@ -20,7 +20,7 @@ export default function TechPostThumbnail(post) {
               height={"600px"}
               className=" max-w-full border border-gray-200 rounded-lg dark:border-gray-700"
               controls
-              autoPlay="true"
+              autoPlay={true}
             >
               <source src={post.videoURL} type="video/mp4" />
               Your browser does not support the video tag.
