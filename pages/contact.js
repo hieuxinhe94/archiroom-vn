@@ -113,7 +113,7 @@ export default function Contact(props) {
                                     </div>
                                     <div>
                                         <label htmlFor="message" className="mb-2 block text-gray-600 dark:text-gray-300">Message</label>
-                                        <textarea name="message" id="message" className="peer block h-28 w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700" spellcheck="false"></textarea>
+                                        <textarea name="message" id="message" className="peer block h-28 w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700" spellCheck="false"></textarea>
 
                                         <span className="mt-1 hidden text-sm text-red-500 peer-invalid:block">Helper</span>
                                     </div>
@@ -159,7 +159,7 @@ export default function Contact(props) {
             </div>
 
             <div className="mb-5">
-              <label htmlhtmlFor="email_address" className="sr-only">
+              <label htmlFor="email_address" className="sr-only">
                 Email
               </label>
               <input
