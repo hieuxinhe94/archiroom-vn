@@ -12,8 +12,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 export const pageInfo = {
-  logoText: "Pasture Consul", //This text is visible on your navbar and footer like your logo.
-  logoSecondaryText: "Tư vấn chiến lược công nghệ", //This text is visible on your navbar and footer like your logo.
+  logoText: "SIMPLIFY.AI", //This text is visible on your navbar and footer like your logo.
+  logoSecondaryText: "Ứng dụng AI trong chuyển đổi số", //This text is visible on your navbar and footer like your logo.
   subtitle: "Tư vấn chiến lược công nghệ",
   description: "Tư vấn chiến lược công nghệ",
   contact: {

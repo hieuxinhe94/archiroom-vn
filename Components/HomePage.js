@@ -38,14 +38,14 @@ export default function HomePage (props) {
         >
           {heroInfo.subtitle}
         </h2>
-
+{/* 
         <div
           style={{ backgroundColor: currentTheme.mainColor }}
           className="absolute rounded-xl top-16 lg:right-8 sm:w-1/2 lg:w-1/3  "
           data-aos="fade-up" data-aos-duration={2000}
         >
           <ChatbotHead currentTheme={currentTheme} onClickDetail={() => setDisplayBot(true)} />
-        </div>
+        </div> */}
       </div>
       {/* <section className="lg:-mt-30 bg-transparent xsm:-mt-16 sm:mt-0 md:-mt-10 xl:-mt-20 xl1450:-mt-20 z-10 relative pb-8 sm:pb-16 overflow-visible z-10">
         <HomeBusinessMainProcess currentTheme={currentTheme} />
@@ -91,8 +91,8 @@ export default function HomePage (props) {
         {true ? <SectionCardTypeCaseStudy currentTheme={currentTheme} posts={postdata} /> : null}
       </div>
       {displayBot && (
-        <div className="fixed bottom-10 right-10">
-          <ChatbotCustomView />
+        <div className=" ">
+          <ChatbotCustomView currentTheme={currentTheme} />
         </div>
 
       // <div className="fixed bottom-10 right-10">

@@ -10,7 +10,7 @@
   padding: 0 25vw;
 }
 
-.articleBody p{
+.articleBody p {
   margin-bottom: 10px;
 }
 
@@ -199,16 +199,15 @@
 }
 
 .lineHorizontal:after {
-  content: '';
-  height: 100%;  
+  content: "";
+  height: 100%;
   width: 1px;
   position: absolute;
   right: 0;
-  top: 0;  
-  
-  background-color: #000000;  
+  top: 0;
+
+  background-color: #000000;
 }
- 
 
 /* timeline styles */
 .timeline {
@@ -326,7 +325,6 @@
     font-size: 17px;
   }
   .workheading {
-   
     position: absolute;
   }
   .skills {
@@ -413,7 +411,7 @@
   .projectSubTitle {
     margin-bottom: 0.5rem;
   }
-  
+
   .homeWorkSection {
     padding: 1rem;
   }
@@ -426,5 +424,35 @@
   }
   .homeSkillSection {
     padding: 2rem 1rem;
+  }
+}
+
+.bot-bg {
+  height: 250px;
+  width: 250px;
+  margin: 0 auto;
+  background-color: red;
+  animation-name: stretch;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+@keyframes stretch {
+  0% {
+    transform: scale(0.3);
+    background-color: red;
+    border-radius: 100%;
+  }
+  50% {
+    background-color: orange;
+  }
+  100% {
+    transform: scale(1.5);
+    background-color: yellow;
   }
 }

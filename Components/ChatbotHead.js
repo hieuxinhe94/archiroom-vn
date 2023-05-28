@@ -6,17 +6,6 @@ import TypeIt from "typeit-react";
 const ChatbotHead = ({ currentTheme, onClickDetail }) => {
   const [visible, setVisible] = useState(true);
   const [tryItvisible, setTryItvisible] = useState(false);
-  const [variable, setVariable] = useState([
-    Math.floor(Math.random() * 4) + 1,
-    Math.floor(Math.random() * 4) + 1,
-    Math.floor(Math.random() * 4) + 1,
-    Math.floor(Math.random() * 4) + 1,
-    Math.floor(Math.random() * 4) + 1,
-  ]);
-
-  const SuperStrong = ({ children }) => {
-    return <strong style={{ fontStyle: "bold" }}>{children}</strong>;
-  };
 
   return (
     <>
