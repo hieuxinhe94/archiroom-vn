@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     AOS.init({
-      duration: 500
+      duration: 500,once: true
     });
   }, []);
 
