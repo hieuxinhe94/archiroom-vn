@@ -9,8 +9,12 @@ const DynamicComponentWithNoSSR = dynamic(
 
 const ChatbotCustomView = ({ currentTheme }) => {
   const [visible, setVisible] = useState(false);
+
   const [activeChat, setActiveChat] = useState(false);
-  const [conversationsArr, setConversationsArr] = useState(conversations);
+  const [activeOption, setActiveOption] = useState(false);
+  const [conversationsArr, setConversationsArr] = useState([]);
+  const [count, setCount] = useState(0);
+
   const [botStyle, setBotStyle] = useState("");
   const [input, setInput] = useState("");
 
@@ -24,12 +28,26 @@ const ChatbotCustomView = ({ currentTheme }) => {
 
   useEffect(() => {
     const timer2 = setTimeout(() => {
-      console.log("This will run after 1000 second!");
+      console.log("This will run after 8 second!");
 
       setActiveChat(true);
     }, 8000);
     return () => clearTimeout(timer2);
   }, []);
+
+  const onSubmit = () => {
+    console.log("aaaa");
+    event.preventDefault();
+    let tmp = [...conversationsArr];
+    tmp.push({
+      type: "user",
+      title: input,
+      code: "QnABot",
+    });
+    setConversationsArr(tmp);
+    setCount(count + 1);
+    setInput("");
+  };
 
   return (
     <div
@@ -86,9 +104,9 @@ const ChatbotCustomView = ({ currentTheme }) => {
                 </div>
               </div>
 
-              <div class="px-2">
+              <div className="px-2">
                 <div
-                  class="flex gap-6 lg:gap-2"
+                  className="flex gap-6 lg:gap-2"
                   data-aos="fade-up"
                   data-aos-delay={2000}
                   data-aos-duration={1000 * 2}
@@ -96,24 +114,24 @@ const ChatbotCustomView = ({ currentTheme }) => {
                   {chatbotTypes.map((item, i) => (
                     <div
                       key={i}
-                      class={
+                      className={
                         (botStyle === item.code
                           ? "bg-indigo-400/50"
                           : "bg-indigo-400/10") +
                         " flex items-center rounded-xl lg:hover:bg-indigo/10"
                       }
                     >
-                      <div class="">
+                      <div className="">
                         <div
                           onClick={() => setBotStyle(item.code)}
-                          class="inline-flex items-center justify-center p-2 rounded-lg border-[0.5px] border-white/10 cursor-pointer"
+                          className="inline-flex items-center justify-center p-2 rounded-lg border-[0.5px] border-white/10 cursor-pointer"
                           href={item.code}
                         >
                           <svg
                             viewBox="0 0 24 24"
                             fill="none"
                             aria-hidden="true"
-                            class="h-6 w-6 flex-none"
+                            className="h-6 w-6 flex-none"
                           >
                             <circle
                               cx="12"
@@ -128,7 +146,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
                             ></path>
                           </svg>
 
-                          <span class="px-2 h-full w-full flex items-center">
+                          <span className="px-2 h-full w-full flex items-center">
                             {item.title}
                           </span>
                         </div>
@@ -138,7 +156,8 @@ const ChatbotCustomView = ({ currentTheme }) => {
                 </div>
               </div>
 
-              {activeChat && conversationsArr &&
+              {activeChat &&
+                conversationsArr &&
                 conversationsArr.map((item, i) => (
                   <div key={i}>
                     {item.type == "user" ? (
@@ -163,11 +182,12 @@ const ChatbotCustomView = ({ currentTheme }) => {
           </div>
           <DynamicComponentWithNoSSR />
           <div className="fixed flex border-t p-2  w-full bottom-0 text-xs">
-            <div>
+            <div className="relative inline-block text-left">
               <button
                 id="btnOption"
                 className="inline-flex bg-indigo-50 rounded-full p-2"
                 type="button"
+                onClick={() => setActiveOption(!activeOption)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -184,6 +204,38 @@ const ChatbotCustomView = ({ currentTheme }) => {
                   />
                 </svg>
               </button>
+              {activeOption && (
+                <div
+                  className="absolute bottom-14 z-10 mt-2 w-56 origin-top-right rounded-md bg-indigo-400/20 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="menu-button"
+                  tabindex="-1"
+                >
+                  <div className="py-1" role="none">
+                    <a
+                      href="#"
+                      className="text-white block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-0"
+                    >
+                      Account settings
+                    </a>
+                     
+                    <a
+                      href="#"
+                      className="text-white block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-2"
+                    >
+                      License
+                    </a>
+                    
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="flex w-full mx-2">
@@ -195,6 +247,10 @@ const ChatbotCustomView = ({ currentTheme }) => {
                 onInput={(e) => setInput(e.target.value)}
                 defaultValue=""
                 placeholder="Enter something...."
+                onKeyDown={(event) => {
+                  debugger;
+                  if (event.key === "Enter") return onSubmit();
+                }}
               />
             </div>
 
@@ -202,15 +258,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
               <button
                 id="btnSend"
                 className="inline-flex bg-indigo-50 rounded-full p-2"
-                
-                onClick={() => {
-                  conversationsArr.push({
-                    type: "user",
-                    title: input,
-                    code: "QnABot",
-                  });
-                  setConversationsArr(conversationsArr);
-                }}
+                onClick={(event) => onSubmit()}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
