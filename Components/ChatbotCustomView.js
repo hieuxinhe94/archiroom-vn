@@ -17,6 +17,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
 
   const [botStyle, setBotStyle] = useState("");
   const [input, setInput] = useState("");
+  const [answer, setAnswer] = useState({});
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -35,18 +36,57 @@ const ChatbotCustomView = ({ currentTheme }) => {
     return () => clearTimeout(timer2);
   }, []);
 
-  const onSubmit = () => {
-    console.log("aaaa");
-    event.preventDefault();
+  const addMessage = (type, text) => {
     let tmp = [...conversationsArr];
     tmp.push({
-      type: "user",
-      title: input,
+      type: type,
+      title: text,
       code: "QnABot",
     });
     setConversationsArr(tmp);
-    setCount(count + 1);
+    console.log(conversationsArr)
+  };
+
+  const onSubmit = () => {
+    event.preventDefault();
+    addMessage("user", input);
+    
     setInput("");
+
+    // WARNING: For GET requests, body is set to null by browsers.
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        console.log(this.responseText);
+      }
+    });
+
+    xhr.open(
+      "GET",
+      "https://simplifyaiservice.azurewebsites.net/api/Language?question=" +
+        input
+    );
+    // WARNING: Cookies will be stripped away by the browser before sending the request.
+    xhr.setRequestHeader(
+      "Cookie",
+      "ARRAffinity=22a7daa836b64a8ce56c907737553d08297ff2e76cd06a1f52c29956b9a85c17; ARRAffinitySameSite=22a7daa836b64a8ce56c907737553d08297ff2e76cd06a1f52c29956b9a85c17"
+    );
+
+    xhr.send();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == XMLHttpRequest.DONE) {
+        var jsonResponse = JSON.parse(xhr.responseText);
+        //setAnswer(jsonResponse);
+       
+        addMessage(
+          "self",
+          jsonResponse.shortAnswer?.text ?? jsonResponse.answer
+        );
+        setCount(count + 1);
+      }
+    };
   };
 
   return (
@@ -160,7 +200,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
                 conversationsArr &&
                 conversationsArr.map((item, i) => (
                   <div key={i}>
-                    {item.type == "user" ? (
+                    {item.type == "user" && (
                       <div className="flex items-center flex-row-reverse my-4">
                         <div className="flex-none flex flex-col items-center space-y-1 ml-4">
                           <a href="#" className="block text-xs hover:underline">
@@ -169,12 +209,26 @@ const ChatbotCustomView = ({ currentTheme }) => {
                         </div>
                         <div className="flex-1 bg-indigo-100 text-gray-800 p-2 rounded-lg mb-2 relative">
                           <div>{item.title}</div>
-
                           <div className="absolute right-0 top-1/2 transform translate-x-1/2 rotate-45 w-2 h-2 bg-indigo-100"></div>
                         </div>
                       </div>
-                    ) : (
-                      <>bot</>
+                    )}
+
+                    {item.type == "self" && (
+                      <div className="flex items-center flex-row-reverse my-4">
+                        <div className="flex-1 bg-indigo-100 text-gray-800 p-2 rounded-lg mb-2 relative">
+                          <div
+                            style={{ marginLeft: "-7px" }}
+                            className="absolute left-0 top-1/2 transform translate-x-1/2 rotate-45 w-2 h-2 bg-indigo-100"
+                          ></div>
+                          <div>{item.title}</div>
+                        </div>
+                        <div className="flex-none flex flex-col items-center px-2 space-y-1 ml-4">
+                          <a href="#" className="block text-xs hover:underline">
+                            Bot
+                          </a>
+                        </div>
+                      </div>
                     )}
                   </div>
                 ))}
@@ -222,7 +276,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
                     >
                       Account settings
                     </a>
-                     
+
                     <a
                       href="#"
                       className="text-white block px-4 py-2 text-sm"
@@ -232,7 +286,6 @@ const ChatbotCustomView = ({ currentTheme }) => {
                     >
                       License
                     </a>
-                    
                   </div>
                 </div>
               )}
@@ -245,10 +298,8 @@ const ChatbotCustomView = ({ currentTheme }) => {
                 type="text"
                 value={input}
                 onInput={(e) => setInput(e.target.value)}
-                defaultValue=""
                 placeholder="Enter something...."
                 onKeyDown={(event) => {
-                  debugger;
                   if (event.key === "Enter") return onSubmit();
                 }}
               />
