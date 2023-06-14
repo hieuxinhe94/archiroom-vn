@@ -65,7 +65,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
 
     xhr.open(
       "GET",
-      "https://simplifyaiservice.azurewebsites.net/api/Language?question=" +
+      "https://api.trustcontact.net/api/Language?question=" +
         input
     );
     // WARNING: Cookies will be stripped away by the browser before sending the request.
