@@ -6,7 +6,7 @@ const Footer = ({ currentTheme }) => {
     return (
         <div className={styles.footermain} style={{ backgroundColor: currentTheme.footerColor, color: currentTheme.subtext }}>
             <div className={styles.footertable}>
-                <Link href=''><a><h2 className={styles.footerlogo}>{pageInfo.logoText}</h2></a></Link>
+                <Link href='/'><a><h2 className={styles.footerlogo}>{pageInfo.logoText}</h2></a></Link>
                 <ul>
                     <li className={styles.listHeading}>Socials</li>
                     {pageInfo.socials ?

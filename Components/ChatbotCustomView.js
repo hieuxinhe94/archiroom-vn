@@ -19,6 +19,13 @@ const ChatbotCustomView = ({ currentTheme }) => {
   const [input, setInput] = useState("");
   const [answer, setAnswer] = useState({});
 
+    // Directly update state after 2 sec
+    const asyncUpdate = () => {
+      setTimeout(() => {
+        setCount(count + 1);
+      }, 2000);
+    };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       console.log("This will run after 3 second!");
@@ -37,49 +44,40 @@ const ChatbotCustomView = ({ currentTheme }) => {
   }, []);
 
   const addMessage = (type, text) => {
+    console.log("conversationsArr length " + conversationsArr.length);
     let tmp = [...conversationsArr];
     tmp.push({
       type: type,
       title: text,
       code: "QnABot",
     });
-    setConversationsArr(tmp);
-    console.log(conversationsArr)
+
+    setConversationsArr([...tmp]);
+
+    console.log("conversationsArr length " + conversationsArr.length);
   };
 
   const onSubmit = () => {
     event.preventDefault();
-    addMessage("user", input);
-    
+    asyncUpdate ()
+    addMessage("bot", input);
     setInput("");
+    setCount(count + 1);
 
-    // WARNING: For GET requests, body is set to null by browsers.
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
-
-    xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === 4) {
-        console.log(this.responseText);
-      }
-    });
-
     xhr.open(
       "GET",
-      "https://api.trustcontact.net/api/Language?question=" +
-        input
+      "https://api.trustcontact.net/api/Language?question=" + input
     );
-    // WARNING: Cookies will be stripped away by the browser before sending the request.
     xhr.setRequestHeader(
       "Cookie",
       "ARRAffinity=22a7daa836b64a8ce56c907737553d08297ff2e76cd06a1f52c29956b9a85c17; ARRAffinitySameSite=22a7daa836b64a8ce56c907737553d08297ff2e76cd06a1f52c29956b9a85c17"
     );
-
     xhr.send();
     xhr.onreadystatechange = function () {
       if (xhr.readyState == XMLHttpRequest.DONE) {
         var jsonResponse = JSON.parse(xhr.responseText);
-        //setAnswer(jsonResponse);
-       
         addMessage(
           "self",
           jsonResponse.shortAnswer?.text ?? jsonResponse.answer
@@ -91,7 +89,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
 
   return (
     <div
-      className="fixed bottom-5 right-10 w-1/4 h-3/5 rounded-2xl bot-bg border-[0.1px] border-indigo-500"
+      className="fixed bottom-5 z-50 right-10 w-1/4 h-3/5 rounded-2xl bot-bg border-[0.1px] border-indigo-500"
       style={{
         backgroundColor: currentTheme.secondary,
         backgroundImage: visible ? "" : "url('chatbot-bg-video-unscreen.gif')",
@@ -120,12 +118,15 @@ const ChatbotCustomView = ({ currentTheme }) => {
             </div>
           </div>
 
-          <div className="  mt-2 flex flex-col sm:items-center justify-between sm:gap-2">
+          <div
+            className="flex flex-col sm:items-center justify-between sm:gap-2"
+            style={{ height: "28em" }}
+          >
             <div className="flex-1 px-4 pt-4 overflow-y-auto  w-full text-xs ">
               <div className="flex items-center mb-2 w-full ">
                 <div className="flex-none flex flex-col items-center space-y-1 mr-4">
                   <div className="rounded-full w-10 h-10 items-center flex bg-gray-200/10 justify-center">
-                    SPI
+                    SPI {count}
                   </div>
                 </div>
                 <div className="flex-1 bg-indigo-400/10 text-white p-2 rounded-lg mb-2 relative">
@@ -300,7 +301,10 @@ const ChatbotCustomView = ({ currentTheme }) => {
                 onInput={(e) => setInput(e.target.value)}
                 placeholder="Enter something...."
                 onKeyDown={(event) => {
-                  if (event.key === "Enter") return onSubmit();
+                  if (event.key === "Enter") {
+                  
+                    onSubmit();
+                  }
                 }}
               />
             </div>
@@ -309,7 +313,10 @@ const ChatbotCustomView = ({ currentTheme }) => {
               <button
                 id="btnSend"
                 className="inline-flex bg-indigo-50 rounded-full p-2"
-                onClick={(event) => onSubmit()}
+                onClick={(event) => {
+               
+                  onSubmit();
+                }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
