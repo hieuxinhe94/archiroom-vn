@@ -113,3 +113,24 @@ a {
 } */
 
 
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #f9f9f9;
+  border-radius: 50%;
+  margin: 0 5px 0 0;
+  cursor: pointer;
+}
+.dot.red {
+  background: #ff6057;
+  border: 1px solid #e14640;
+}
+.dot.amber {
+  background: #ffbd2e;
+  border: 1px solid #dfa123;
+}
+.dot.green {
+  background: #27c93f;
+  border: 1px solid #1dad2b;
+}
