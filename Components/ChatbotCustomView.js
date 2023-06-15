@@ -52,7 +52,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
       code: "QnABot",
     });
 
-    setConversationsArr([...tmp]);
+    setConversationsArr(p => [...tmp]);
 
     console.log("conversationsArr length " + conversationsArr.length);
   };
@@ -62,7 +62,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
     asyncUpdate ()
     addMessage("bot", input);
     setInput("");
-    setCount(count + 1);
+    setCount(p => p + 1);
 
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
@@ -82,7 +82,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
           "self",
           jsonResponse.shortAnswer?.text ?? jsonResponse.answer
         );
-        setCount(count + 1);
+        setCount(p => p + 1);
       }
     };
   };
