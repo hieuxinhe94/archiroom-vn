@@ -163,7 +163,7 @@ export const digitalTransformationSteps = {
 
     {
       id: 2,
-      title: "Hiểu về tổ chức",
+      title: "Thấu hiểu tổ chức",
       subtitle:
         "Triển khai [PDM Consul Software] - Công cụ chiến lược phân tích/đo lường mức độ số hóa.",
       description: `Đánh giá tình trạng chuyển đổi số hiện tại của công ty: 
@@ -181,7 +181,7 @@ export const digitalTransformationSteps = {
 
     {
       id: 3,
-      title: "Hiểu mục tiêu",
+      title: "Xác định mục tiêu",
       subtitle: "Xác định mục tiêu chuyển đổi số",
       description: `Xác định mục tiêu chuyển đổi số:
          Dựa trên tình trạng chuyển đổi số hiện tại và chiến lược kinh doanh của công ty, 
@@ -199,7 +199,7 @@ export const digitalTransformationSteps = {
 
     {
       id: 4,
-      title: "Hiểu giải pháp",
+      title: "Thực thi giải pháp",
       subtitle: "Thiết kế chiến lược & Đánh giá kết quả & Cải tiến liên tục.",
       description: `Dựa trên mục tiêu chuyển đổi số đã xác định, cần thiết kế chiến lược chuyển đổi số phù hợp với nhu cầu và điều kiện của công ty.
          Chiến lược này nên bao gồm các giải pháp kỹ thuật, cơ cấu tổ chức, quy trình kinh doanh và trải nghiệm khách hàng để đảm bảo tính toàn diện và hiệu quả của quá trình chuyển đổi.`,
@@ -276,7 +276,7 @@ export const digitalConceptMetatdata = {
 };
 
 export const digitalMeasureToolMetatdata = {
-  title: "Hiểu chính mình",
+  title: "Hiểu tổ chức",
   subtitle: "Đánh giá năng lực chuyển đổi số tổ chức",
   description: `[ProductName] cung cấp cho người quản trị những chỉ số đa chiều 360 về năng lực của tổ chức.\n
    Chúng tôi hỗ trợ các chỉ số thông dụng sau:

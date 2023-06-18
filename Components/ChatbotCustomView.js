@@ -189,14 +189,15 @@ const ChatbotCustomView = ({ currentTheme }) => {
 
                   <div className="flex items-center my-3 w-full ">
                     <div
-                      className="flex-1 bg-indigo-400/20 text-white p-2 rounded-lg mb-2 relative"
+                      className="flex-1 bg-indigo-500/10 text-white/50 p-2 rounded-lg mb-2 relative"
                       style={{ width: "22rem" }}
                     >
                       <div className="">
                         <TypeIt
                           options={{
                             strings: [
-                              `Xin chào, tôi là SFA bot. Hãy khám phá những khả năng của tôi nhé. Rất hân hạnh phục vụ bạn!`,
+                              `Xin chào, tôi là SFA bot. Tôi được thiết kế để học tự động từ văn bản và trả lời trong phạm vi xác định.`,
+                              "Trong demo này, hãy trò chuyện về sản phẩm mới kính vision pro của Apple với tôi nhé !.",
                             ],
                             speed: 10,
                             startDelay: 100,
@@ -213,7 +214,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
                     conversationsArr.map((item, i) => (
                       <div key={i}>
                         {item.type == "user" && (
-                          <div className="flex items-center  flex-row-reverse my-2">
+                          <div className="flex items-center  flex-row-reverse my-2 overflow-hidden">
                             <div className="items-end pl-3 space-y-1">
                               <div className="rounded-full w-10 h-10 items-center flex bg-indigo-400/20 justify-center">
                                 <a className="block text-xs hover:underline">
@@ -233,7 +234,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
                         )}
 
                         {item.type == "self" && (
-                          <div className="flex items-center flex-row-reverse my-2">
+                          <div className="flex items-center flex-row-reverse my-2 overflow-hidden">
                             <div className="flex-1 bg-indigo-400/20 text-white p-2 rounded-lg mb-2 relative">
                               <div
                                 style={{ marginLeft: "-7px" }}
@@ -269,7 +270,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
                 <div className="relative inline-block text-left">
                   <button
                     id="btnOption"
-                    className="inline-flex bg-indigo-50 rounded-full p-2"
+                    className="inline-flex bg-indigo-500/10 rounded-full p-2"
                     type="button"
                     onClick={() => setActiveOption(!activeOption)}
                   >
@@ -279,7 +280,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6 text-gray-800"
+                      className="text-center w-5 h-5 text-gray-300/80"
                     >
                       <path
                         strokeLinecap="round"
@@ -299,22 +300,22 @@ const ChatbotCustomView = ({ currentTheme }) => {
                       <div className="py-1" role="none">
                         <a
                           href="#"
-                          className="text-white block px-4 py-2 text-sm"
+                          className="text-white bg-indigo-500/10 block my-1 px-4 py-2 text-sm"
                           role="menuitem"
                           tabIndex="-1"
                           id="menu-item-0"
                         >
-                          Clear Chat
+                          Khởi động lại chat
                         </a>
 
                         <a
                           href="#"
-                          className="text-white block px-4 py-2 text-sm"
+                          className="text-white bg-indigo-500/10 block my-1 px-4 py-2 text-sm"
                           role="menuitem"
                           tabIndex="-1"
                           id="menu-item-2"
                         >
-                          Liên hệ phát triển
+                          Xem thông số kỹ thuật
                         </a>
                       </div>
                     </div>
@@ -351,7 +352,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6 text-gray-800"
+                      className="text-center w-5 h-5 text-gray-800"
                     >
                       <path
                         strokeLinecap="round"
