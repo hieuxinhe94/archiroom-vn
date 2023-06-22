@@ -37,19 +37,19 @@ export const pageInfo = {
 export const navigations = [
   { id: 1, href: "/", link: "/", label: "Trang chủ" },
   {
-    id: 1,
+    id: 2,
     href: "/showcases",
     link: "/#showcases",
     label: "Giải pháp công nghệ",
   },
-  { id: 1, href: "/posts", link: "/#posts", label: "Phương pháp luận" },
+  { id: 3, href: "/posts", link: "/#posts", label: "Phương pháp luận" },
   {
-    id: 1,
+    id: 4,
     href: "https://app.trustcontact.net",
     link: "https://app.trustcontact.net",
     label: "DX-Tool",
   },
-  { id: 1, href: "/contact", link: "/#contact", label: "Liên hệ" },
+  { id: 5, href: "/contact", link: "/#contact", label: "Liên hệ" },
 ];
 
 export const heroInfo = {

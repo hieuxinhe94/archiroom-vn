@@ -9,7 +9,7 @@ export default function TechPostThumbnail(post) {
   const imageProps = post?.mainImage ? GetImage(post.mainImage) : null;
 
   return (
-    <Link href={`/tech/${post.slug.current}`}>
+    <div >
       <div className="container flex md:flex-row flex-col justify-between cursor-pointer">
         <div className="md:w-1/2-gutter flex items-center justify-center order-2 shrink-0 md:order-2">
           {/**/}
@@ -20,7 +20,7 @@ export default function TechPostThumbnail(post) {
               height={"600px"}
               className=" max-w-full border border-gray-200 rounded-lg dark:border-gray-700"
               controls
-              autoPlay={true}
+              autoPlay={false}
             >
               <source src={post.videoURL} type="video/mp4" />
               Your browser does not support the video tag.
@@ -91,6 +91,6 @@ export default function TechPostThumbnail(post) {
           </Link>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

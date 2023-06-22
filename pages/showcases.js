@@ -73,9 +73,9 @@ export default function ShowCases(props) {
                     {(posts)
                       ? posts.map((post, key) => {
                           return (
-                            <a
+                            <div
                               key={key}
-                              href={"#" + key}
+                          
                               data-aos="zoom-out-down"
                               data-aos-delay={(key + 1) * 500}
                               className="text-sm overflow-hidden hover:bg-gray-200/20 border-b pb-4 font-medium default:flex default:border-black w-4/5"
@@ -107,7 +107,7 @@ export default function ShowCases(props) {
                                   fill="currentColor"
                                 ></path>
                               </svg>
-                            </a>
+                            </div>
                           );
                         })
                       : null}

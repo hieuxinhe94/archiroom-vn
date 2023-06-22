@@ -139,8 +139,8 @@ const ChatbotCustomView = ({ currentTheme }) => {
                     <div
                       className="flex gap-6 lg:gap-2"
                       data-aos="fade-up"
-                      data-aos-delay={2000}
-                      data-aos-duration={1000 * 2}
+                      data-aos-delay={100}
+                      data-aos-duration={100}
                     >
                       {chatbotTypes.map((item, i) => (
                         <div

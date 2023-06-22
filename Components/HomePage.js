@@ -9,20 +9,15 @@ import SectionCardTypeSolution from "./SectionCardTypeSolution";
 import SectionCardTypeObjective from "./SectionCardTypeObjectives";
 import SectionCardTypeParterTrusted from "./SectionCardTypeParterTrusted";
 import ChatbotHead from "./ChatbotHead";
- import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import ChatbotCustomView from "./ChatbotCustomView";
+import TypeIt from "typeit-react";
 
-export default function HomePage (props) {
+export default function HomePage(props) {
   const { postdata, siteconfig, preview, currentTheme } = props;
   const router = useRouter();
   const [displayBot, setDisplayBot] = useState(true);
-  
-  // const { data: posts } = usePreviewSubscription(postquery, {
-  //   initialData: postdata,
-  //   enabled: preview || router.query.preview !== undefined
-  // });
-  // console.log(posts)
 
   return (
     <div>
@@ -31,29 +26,30 @@ export default function HomePage (props) {
         style={{ backgroundColor: currentTheme.secondary }}
       >
         <h1 className={styles.heading}>{heroInfo.title}</h1>
-        
+
         <h2
           className={styles.subheading}
           style={{ color: currentTheme.subtext }}
         >
-          {heroInfo.subtitle}
+          <p id="subtitleTyping">
+            <TypeIt
+              options={{
+                strings: [heroInfo.subtitle],
+                speed: 10,
+                startDelay: 100,
+                waitUntilVisible: true,
+                cursor: false,
+              }}
+            ></TypeIt>{" "}
+          </p>
         </h2>
-{/* 
-        <div
-          style={{ backgroundColor: currentTheme.mainColor }}
-          className="absolute rounded-xl top-16 lg:right-8 sm:w-1/2 lg:w-1/3  "
-          data-aos="fade-up" data-aos-duration={2000}
-        >
-          <ChatbotHead currentTheme={currentTheme} onClickDetail={() => setDisplayBot(true)} />
-        </div> */}
       </div>
-      {/* <section className="lg:-mt-30 bg-transparent xsm:-mt-16 sm:mt-0 md:-mt-10 xl:-mt-20 xl1450:-mt-20 z-10 relative pb-8 sm:pb-16 overflow-visible z-10">
-        <HomeBusinessMainProcess currentTheme={currentTheme} />
-      </section> */}
 
-      <div  style={{
-        backgroundColor: currentTheme.body,
-      }}>
+      <div
+        style={{
+          backgroundColor: currentTheme.body,
+        }}
+      >
         {true ? <SectionCardTypeTimeline currentTheme={currentTheme} /> : null}
       </div>
 
@@ -88,23 +84,25 @@ export default function HomePage (props) {
         data-aos="fade-up"
       />
       <div>
-        {true ? <SectionCardTypeCaseStudy currentTheme={currentTheme} posts={postdata} /> : null}
+        {true ? (
+          <SectionCardTypeCaseStudy
+            currentTheme={currentTheme}
+            posts={postdata}
+          />
+        ) : null}
       </div>
       {displayBot && (
         <div className=" ">
           <ChatbotCustomView currentTheme={currentTheme} />
         </div>
 
-      // <div className="fixed bottom-10 right-10">
-      // <iframe
-      //   src="https://webchat.botframework.com/embed/SimplifyAILanguageService01-bot?s=XN_b7jXwYcQ.310bmzFahKZJgN4BBPk3GLam2Jzkkht6bphzkvNZ7p0"
-      //   style={{ height: "502px", maxHeight: "502px" }}
-      // ></iframe>
-      // </div>
+        // <div className="fixed bottom-10 right-10">
+        // <iframe
+        //   src="https://webchat.botframework.com/embed/SimplifyAILanguageService01-bot?s=XN_b7jXwYcQ.310bmzFahKZJgN4BBPk3GLam2Jzkkht6bphzkvNZ7p0"
+        //   style={{ height: "502px", maxHeight: "502px" }}
+        // ></iframe>
+        // </div>
       )}
     </div>
   );
-};
-
-
-  
+}

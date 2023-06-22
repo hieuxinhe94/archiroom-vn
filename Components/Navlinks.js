@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { navigations } from "../Constants/userinfo";
 
-const Navlinks = () => {
+const Navlinks = ({onMouseEnterCb, onMouseLeaveCb}) => {
   const router = useRouter();
   const [activeLink, setActiveLink] = useState("/");
 
@@ -15,7 +15,9 @@ const Navlinks = () => {
   return (
     <>
       {navigations.map((item, index) => (
-        <div key={index} className={styles.navlinks}>
+        <div key={index} className={styles.navlinks} 
+        onMouseEnter={() => onMouseEnterCb(item)}
+        onMouseLeave={() => onMouseLeaveCb(item)}>
           <Link href={item.href}>
             <a style={{ opacity: activeLink === item.link ? "100%" : "70%" }}>
               {item.label}
