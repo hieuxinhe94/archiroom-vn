@@ -161,7 +161,7 @@ export default function OCRServices(props) {
                     </p>
                     <img
                       sizes="100vw"
-                      srcset={features[activeModelIndex]?.demoSrc}
+                      src={features[activeModelIndex]?.demoSrc}
                       alt="Not found"
                       className="w-full  h-full  relative z-20 mt-auto scale-105"
                     />
