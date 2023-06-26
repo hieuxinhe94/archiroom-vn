@@ -92,7 +92,7 @@ export default function HomePage(props) {
         ) : null}
       </div>
       {displayBot && (
-        <div className=" ">
+        <div className=" fixed bottom-5 right-10">
           <ChatbotCustomView currentTheme={currentTheme} />
         </div>
 

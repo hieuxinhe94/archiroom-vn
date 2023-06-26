@@ -83,7 +83,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
     <>
       {active && (
         <div
-          className="fixed bottom-5 z-50 right-10  rounded-2xl bot-bg border-[0.1px] border-indigo-500"
+          className="z-50 rounded-2xl bot-bg border-[0.1px] border-indigo-500"
           style={{
             backgroundColor: currentTheme.secondary,
             backgroundImage: visible

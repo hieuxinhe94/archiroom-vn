@@ -98,8 +98,8 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
           onMouseEnterCb={() => {
             setShowMegaMenu(true);
           }}
-          onMouseLeaveCb={( ) => {
-           setShowMegaMenu(false);
+          onMouseLeaveCb={() => {
+            setShowMegaMenu(false);
           }}
         />
       )}
@@ -111,25 +111,25 @@ const MegaMenu = ({ currentTheme, onMouseEnterCb, onMouseLeaveCb }) => {
   const menuDetailService = [
     {
       id: 1,
-      href: "",
+      href: "/chatbots",
       title: "Trí tuệ nhân tạo - AI",
       description: "Trí tuệ nhân tạo - AI",
       items: [
         {
           id: 101,
-          href: "",
+          href: "/chatbots",
           title: "Chatbot QnA",
           description: "Trí tuệ nhân tạo - AI",
         },
         {
           id: 102,
-          href: "",
+          href: "/chatbots",
           title: "Chatbot Customer Support",
           description: "Trí tuệ nhân tạo - AI",
         },
         {
           id: 103,
-          href: "",
+          href: "/chatbots",
           title: "Chatbot On-Premise",
           description: "Trí tuệ nhân tạo - AI",
         },
@@ -137,13 +137,13 @@ const MegaMenu = ({ currentTheme, onMouseEnterCb, onMouseLeaveCb }) => {
     },
     {
       id: 2,
-      href: "",
+      href: "/ocr-service",
       title: "RPA - OCR",
       description: "Robot Process Automation",
       items: [
         {
           id: 201,
-          href: "",
+          href: "/ocr-service",
           title: "Scanner to image extraction",
           description: "Bóc tách dữ liệu từ động từ máy scan vật lý",
         },
@@ -212,7 +212,7 @@ const MegaMenu = ({ currentTheme, onMouseEnterCb, onMouseLeaveCb }) => {
                 id="subNavItem-Help and support"
                 className="font-bold text-t7 inline-block"
               >
-                {item.title}
+                <a href={item.href || "#"}> {item.title}</a>
               </span>
             </div>
             <ul className="pb-2" aria-labelledby="subNavItem-Help and support">
@@ -220,7 +220,7 @@ const MegaMenu = ({ currentTheme, onMouseEnterCb, onMouseLeaveCb }) => {
                 <li key={si} className="mb-2 pr-2 hover:bg-gray-300 p-2">
                   <a
                     className="group inline-block w-full text-black hover:text-black"
-                    href={subitem.href}
+                    href={subitem.href || "#"}
                   >
                     <div className="text-base font-medium">
                       <span className="inline-block arrow-animation">
