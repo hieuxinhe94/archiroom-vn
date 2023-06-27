@@ -59,9 +59,9 @@ export default function OCRServices(props) {
 
       <section>
         <div className="relative bg-white/20">
-          <div className="absolute w-full h-full -z-10"></div>
+          <div className="absolute w-full h-full"></div>
           <div className="">
-            <h1 className="relative max-w-3xl mx-auto mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl after:absolute after:w-full after:h-full after:bg-white after:inset-0 after:-z-10 after:blur-2xl after:scale-150"></h1>
+            <h1 className="relative max-w-3xl mx-auto mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl after:absolute after:w-full after:h-full after:bg-white after:inset-0  after:blur-2xl after:scale-150"></h1>
           </div>
         </div>
 
@@ -154,7 +154,7 @@ export default function OCRServices(props) {
                 >
                   <div
                     role="presentation"
-                    className=" relative z-10 transition-all duration-500 will-change-transform rounded-lg overflow-hidden shadow-homepage-card"
+                    className=" relative   transition-all duration-500 will-change-transform rounded-lg overflow-hidden shadow-homepage-card"
                   >
                     <p className="tracking-ff-tighter text-shade-70  richtext my-2">
                       Demo
@@ -163,9 +163,9 @@ export default function OCRServices(props) {
                       sizes="100vw"
                       src={features[activeModelIndex]?.demoSrc}
                       alt="Not found"
-                      className="w-full  h-full  relative z-20 mt-auto scale-105"
+                      className="w-full  h-full  relative  mt-auto scale-105"
                     />
-                    <div className="absolute inset-0 py-2 px-4 flex flex-col items-center justify-center z-30 opacity-0 hover:opacity-100 transition-opacity h-full">
+                    <div className="absolute inset-0 py-2 px-4 flex flex-col items-center justify-center  opacity-0 hover:opacity-100 transition-opacity h-full">
                       <div className="merchant-info  bottom-0 inset-x-0 flex flex-col items-center justify-center text-center px-2 self-end mt-auto w-full mb-4">
                         <div className="text-black font-bold text-lg">
                           {features[activeModelIndex]?.description}
@@ -178,7 +178,7 @@ export default function OCRServices(props) {
             </div>
           </section>
 
-          <div id="list" className={"my-12 z-50"}>
+          <div id="list" className={"my-12 "}>
             <h2 className="text-base font-bold default:text-[#08445E] uppercase mb-7 richtext">
               MÔ TẢ CHI TIẾT
             </h2>

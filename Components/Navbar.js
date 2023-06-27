@@ -110,61 +110,100 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
 const MegaMenu = ({ currentTheme, onMouseEnterCb, onMouseLeaveCb }) => {
   const menuDetailService = [
     {
+      id: 0,
+      href: "/digital-consultant",
+      title: "Tư vấn Chuyển đổi số",
+      description: "Mastering Digital Transformation",
+      items: [
+        {
+          id: 1,
+          href: "/digital-consultant",
+          title: "Ngành tài chính - ngân hàng",
+          description: "Phân tích ngành, đánh giá hiện trạng tổ chức và xây dựng KPI",
+        },
+        {
+          id: 2,
+          href: "/digital-consultant",
+          title: "Ngành xây dựng - sản xuất",
+          description: "Phân tích ngành, đánh giá hiện trạng tổ chức và xây dựng KPI",
+        },
+        {
+          id: 3,
+          href: "/digital-consultant",
+          title: "Đo lường năng lực Chuyển đổi số",
+          description: "",
+        },
+      ],
+    },
+    {
       id: 1,
       href: "/chatbots",
-      title: "Trí tuệ nhân tạo - AI",
+      title: "Chatbot AI",
       description: "Trí tuệ nhân tạo - AI",
       items: [
         {
           id: 101,
           href: "/chatbots",
           title: "Chatbot QnA",
-          description: "Trí tuệ nhân tạo - AI",
+          description: "Đọc tài liệu, web pages và hỏi đáp nội dung",
         },
         {
           id: 102,
           href: "/chatbots",
           title: "Chatbot Customer Support",
-          description: "Trí tuệ nhân tạo - AI",
+          description: "Hỗ trợ nghiệp vụ tự động kết nối dữ liệu",
         },
         {
           id: 103,
           href: "/chatbots",
           title: "Chatbot On-Premise",
-          description: "Trí tuệ nhân tạo - AI",
+          description: "Triển khai hạ tầng nội bộ doanh nghiệp",
         },
       ],
     },
     {
       id: 2,
       href: "/ocr-service",
-      title: "RPA - OCR",
+      title: "Robot - OCR",
       description: "Robot Process Automation",
       items: [
         {
           id: 201,
           href: "/ocr-service",
-          title: "Scanner to image extraction",
-          description: "Bóc tách dữ liệu từ động từ máy scan vật lý",
+          title: "Ví dụ mẫu bóc tách hồ sơ",
+          description: "CMND, ID, Passport, Invoice, Màn hình chuyển khoản, Thẻ SV...",
+        },
+         
+        {
+          id: 202,
+          href: "/ocr-service",
+          title: "Nhận diện loại tài liệu mới",
+          description: "Train loại tài liệu mới dễ dàng",
+        },
+        {
+          id: 203,
+          href: "/ocr-service",
+          title: "Triển khai nội bộ On-Premise",
+          description: "Triển khai hạ tầng nội bộ DN",
         },
       ],
     },
     {
       id: 3,
       href: "",
-      title: "Phần mềm doanh nghiệp",
+      title: "Phần mềm ứng dụng",
       description: "Business ",
       items: [
         {
           id: 301,
-          href: "",
+          href: "/tech/bpm-nen-tang-quan-ly-quy-trinh-doanh-nghiep",
           title: "Quản lý quy trình - BPM",
           description:
             "Cấu hình quy trình, biểu mẫu công việc, tích hợp tự động hóa công việc.",
         },
         {
           id: 302,
-          href: "",
+          href: "/tech/ecm-phan-mem-luu-tru-tap-trung",
           title: "Quản lý lưu trữ - EPM",
           description:
             "Lưu trữ dữ liệu phi cấu trúc office, email, media... lên tới hàng Terabytes",
@@ -182,7 +221,7 @@ const MegaMenu = ({ currentTheme, onMouseEnterCb, onMouseLeaveCb }) => {
       }}
       onMouseEnter={() => onMouseEnterCb()}
       onMouseLeave={() => onMouseLeaveCb()}
-      className="no-scrollbar rounded mt-4 px-6 overflow-hidden overflow-y-auto max-w-screen-lg  bg-white absolute inset-x-0 top-[73px] z-[21] pointer-events-none transition-transform duration-[452ms] ease-[cubic-bezier(0.26,1.00,0.48,1.00)] motion-reduce:transition-none  text-black opacity-80 visible pointer-events-auto translate-y-0"
+      className="no-scrollbar rounded mt-4 px-6 overflow-hidden overflow-y-auto max-w-screen-xl  bg-white absolute inset-x-0 top-[73px] z-[21] pointer-events-none transition-transform duration-[452ms] ease-[cubic-bezier(0.26,1.00,0.48,1.00)] motion-reduce:transition-none  text-black opacity-98 visible pointer-events-auto translate-y-0"
     >
       <div className="container  grid grid-cols-3 gap-x-gutter gap-y-0">
         {menuDetailService.map((item, i) => (
@@ -210,24 +249,24 @@ const MegaMenu = ({ currentTheme, onMouseEnterCb, onMouseLeaveCb }) => {
               </span>
               <span
                 id="subNavItem-Help and support"
-                className="font-bold text-t7 inline-block"
+                className="font-medium text-t7 inline-block"
               >
                 <a href={item.href || "#"}> {item.title}</a>
               </span>
             </div>
             <ul className="pb-2" aria-labelledby="subNavItem-Help and support">
               {item.items?.map((subitem, si) => (
-                <li key={si} className="mb-2 pr-2 hover:bg-gray-300 p-2">
+                <li key={si} className="mb-2 pr-2 hover:bg-gray-200 p-2">
                   <a
                     className="group inline-block w-full text-black hover:text-black"
                     href={subitem.href || "#"}
                   >
-                    <div className="text-base font-medium">
-                      <span className="inline-block arrow-animation">
+                    <div className="text-base font-semibold">
+                      <span className="inline-block arrow-animation text-indigo-900">
                         {subitem.title}
                       </span>
                     </div>
-                    <div className="text-sm text-shade-70 group-hover:text-black">
+                    <div className="text-sm font-light text-shade-70 group-hover:text-black">
                       {subitem.description}
                     </div>
                   </a>

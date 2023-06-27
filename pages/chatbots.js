@@ -26,28 +26,28 @@ export default function Chatbots(props) {
     {
       id: 1,
       title: "Hỏi đáp nghiệp vụ nội bộ",
-      description: "Hình ảnh minh họa",
+      description: "Trong demo này, Tôi sẽ giải đáp thắc mắc về quyền lợi nghĩa vụ của nhân viên mới cho bạn nhé.",
       body: "Hình ảnh minh họa",
       demoSrc: "./ocr-cmnd-demo.png",
     },
     {
       id: 2,
       title: "Ra lệnh tự động hóa công việc",
-      description: "Hình ảnh minh họa",
+      description: "Trong demo này, Tôi là trợ lý công việc giúp bạn như soạn thảo email, đặt lịch họp, kiểm tra khách hàng đang chăm sóc...",
       body: "Hình ảnh minh họa",
       demoSrc: "./ocr-cmnd-demo.png",
     },
     {
       id: 3,
       title: "Hỗ trợ khách hàng, hóa đơn",
-      description: "Hình ảnh minh họa",
+      description: "Trong demo này, Tôi sẽ là tổng đài hỗ trợ kiểm tra sản phẩm, yêu cầu hỗ trợ, đơn hàng cho bạn nhé.",
       body: "Hình ảnh minh họa",
       demoSrc: "./ocr-banking-result-demo.png",
     },
     {
       id: 5,
       title: "Giải trí",
-      description: "Hình ảnh minh họa",
+      description: "Trong demo này, Tôi sẽ là một một con mèo đáng yêu tâm sự với bạn nhé",
       body: "Hình ảnh minh họa",
       demoSrc: "",
     },
@@ -158,10 +158,10 @@ export default function Chatbots(props) {
                     className=" relative z-10 transition-all duration-500 will-change-transform rounded-lg overflow-hidden shadow-homepage-card"
                   >
                     <p className="tracking-ff-tighter text-shade-70  richtext my-2">
-                      Demo
+                      Demo 
                     </p>
                     
-                    <ChatbotCustomView currentTheme={currentTheme} />   
+                    <ChatbotCustomView model={features[activeModelIndex]} currentTheme={currentTheme} />   
 
                   
                   </div>

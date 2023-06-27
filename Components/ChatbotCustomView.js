@@ -7,7 +7,7 @@ const DynamicComponentWithNoSSR = dynamic(
   { ssr: false }
 );
 
-const ChatbotCustomView = ({ currentTheme }) => {
+const ChatbotCustomView = ({ currentTheme, model }) => {
   const [visible, setVisible] = useState(false);
   const [active, setActive] = useState(true);
   const [activeChat, setActiveChat] = useState(false);
@@ -19,20 +19,37 @@ const ChatbotCustomView = ({ currentTheme }) => {
   const [input, setInput] = useState("");
   const [answer, setAnswer] = useState({});
 
+  const [messageHelps, setHelps] = useState([
+    `Xin chào, tôi là SFA bot. Tôi được thiết kế để học tự động từ văn bản và trả lời trong phạm vi xác định.`,
+    "Trong demo này, hãy trò chuyện về sản phẩm mới kính vision pro của Apple với tôi nhé !.",
+  ]);
+  useEffect(() => {
+    console.log("This will reset bot");
+    setHelps(["Xin chào, tôi là SFA bot. Tôi được thiết kế để học tự động từ văn bản và trả lời trong phạm vi xác định.", model?.description])
+    setActiveChat(p => false);
+    setVisible(false);
+    const timer3 = setTimeout(() => {
+      console.log("This will run after 2 second!");
+      setVisible(true);
+      setActiveChat(true);
+    }, 2000);
+    return () => clearTimeout(timer3);
+  }, [model]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       console.log("This will run after 3 second!");
-      setVisible(true);
+      setVisible(!visible);
     }, 3000);
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     const timer2 = setTimeout(() => {
-      console.log("This will run after 8 second!");
+      console.log("This will run after 5 second!");
 
-      setActiveChat(true);
-    }, 8000);
+      setActiveChat(!activeChat);
+    }, 5000);
     return () => clearTimeout(timer2);
   }, []);
 
@@ -142,48 +159,37 @@ const ChatbotCustomView = ({ currentTheme }) => {
                       data-aos-delay={100}
                       data-aos-duration={100}
                     >
-                      {chatbotTypes.map((item, i) => (
-                        <div
-                          key={i}
-                          className={
-                            (botStyle === item.code
-                              ? "bg-indigo-400/50"
-                              : "bg-indigo-400/10") +
-                            " flex items-center rounded-xl lg:hover:bg-indigo/10"
-                          }
-                        >
-                          <div className="">
-                            <div
-                              onClick={() => setBotStyle(item.code)}
-                              className="inline-flex items-center justify-center p-1 rounded-lg border-[0.5px] border-white/10 cursor-pointer"
-                              href={item.code}
+                      <div className="bg-indigo-400/50 flex items-center rounded-xl lg:hover:bg-indigo/10">
+                        <div className="">
+                          <div
+                            className="inline-flex items-center justify-center p-1 rounded-lg border-[0.5px] border-white/10 cursor-pointer"
+                            href={model?.id}
+                          >
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                              className="h-6 w-6 flex-none"
                             >
-                              <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
-                                className="h-6 w-6 flex-none"
-                              >
-                                <circle
-                                  cx="12"
-                                  cy="12"
-                                  r="11.5"
-                                  stroke="#D4D4D4"
-                                ></circle>
-                                <path
-                                  d="M9.5 14.382V9.618a.5.5 0 0 1 .724-.447l4.764 2.382a.5.5 0 0 1 0 .894l-4.764 2.382a.5.5 0 0 1-.724-.447Z"
-                                  fill="#A3A3A3"
-                                  stroke="#A3A3A3"
-                                ></path>
-                              </svg>
+                              <circle
+                                cx="12"
+                                cy="12"
+                                r="11.5"
+                                stroke="#D4D4D4"
+                              ></circle>
+                              <path
+                                d="M9.5 14.382V9.618a.5.5 0 0 1 .724-.447l4.764 2.382a.5.5 0 0 1 0 .894l-4.764 2.382a.5.5 0 0 1-.724-.447Z"
+                                fill="#A3A3A3"
+                                stroke="#A3A3A3"
+                              ></path>
+                            </svg>
 
-                              <span className="px-2 h-full w-full flex items-center">
-                                {item.title}
-                              </span>
-                            </div>
+                            <span className="px-2 h-full w-full flex items-center">
+                              {model?.title}
+                            </span>
                           </div>
                         </div>
-                      ))}
+                      </div>
                     </div>
                   </div>
 
@@ -195,10 +201,7 @@ const ChatbotCustomView = ({ currentTheme }) => {
                       <div className="">
                         <TypeIt
                           options={{
-                            strings: [
-                              `Xin chào, tôi là SFA bot. Tôi được thiết kế để học tự động từ văn bản và trả lời trong phạm vi xác định.`,
-                              "Trong demo này, hãy trò chuyện về sản phẩm mới kính vision pro của Apple với tôi nhé !.",
-                            ],
+                            strings: messageHelps,
                             speed: 10,
                             startDelay: 100,
                             waitUntilVisible: true,
@@ -379,8 +382,8 @@ const ChatbotCustomView = ({ currentTheme }) => {
 };
 
 const chatbotTypes = [
-  { title: "Chatbot Q&A", code: "QnABot" },
-  { title: "Ecommerce Bot", code: "EcommerceBot" },
+  { id: 1, title: "Chatbot Q&A", code: "QnABot" },
+  { id: 2, title: "Ecommerce Bot", code: "EcommerceBot" },
 ];
 
 const conversations = [{ type: "user", title: "Chatbot Q&A", code: "QnABot" }];

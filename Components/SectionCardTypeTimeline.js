@@ -11,10 +11,10 @@ import Link from "next/link";
 const SectionCardTypeTimeline = ({ currentTheme, data }) => {
   return (
     <div
-      className={styles.educationWrapper + " container mx-auto"}
+      className={styles.educationWrapper + " container mx-auto mt-0"}
      
     >
-      <div
+      {/* <div
         className={
           styles.workheading +
           " flex items-end md:text-sm lg:text-4xl px-4 " +
@@ -41,8 +41,8 @@ const SectionCardTypeTimeline = ({ currentTheme, data }) => {
             </svg>
           </span>
         </div>
-      </div>
-      <div className={styles.timeline + " mt-20"}>
+      </div> */}
+      <div className={styles.timeline + ""}>
         <ul>
           {digitalTransformationSteps
             ? digitalTransformationSteps.steps.map((value, key) => {
