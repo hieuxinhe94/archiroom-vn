@@ -5,6 +5,7 @@ import { postfeaturesquery, prebuildproductListquery } from "../lib/groq";
 import { NextSeo } from "next-seo";
 import styles from "../styles/Post.module.css";
 import {
+  chatbotfeatures,
   digitalCaseStudyArticles,
   showcasesSectionConfig,
 } from "../Constants/userinfo";
@@ -22,42 +23,13 @@ export default function Chatbots(props) {
   const [displayAgenda, setDisplayAgenda] = useState(false);
   const [activeModelIndex, setActiveModelIndex] = useState(0);
 
-  const features = [
-    {
-      id: 1,
-      title: "Hỏi đáp nghiệp vụ nội bộ",
-      description: "Trong demo này, Tôi sẽ giải đáp thắc mắc về quyền lợi nghĩa vụ của nhân viên mới cho bạn nhé.",
-      body: "Hình ảnh minh họa",
-      demoSrc: "./ocr-cmnd-demo.png",
-    },
-    {
-      id: 2,
-      title: "Ra lệnh tự động hóa công việc",
-      description: "Trong demo này, Tôi là trợ lý công việc giúp bạn như soạn thảo email, đặt lịch họp, kiểm tra khách hàng đang chăm sóc...",
-      body: "Hình ảnh minh họa",
-      demoSrc: "./ocr-cmnd-demo.png",
-    },
-    {
-      id: 3,
-      title: "Hỗ trợ khách hàng, hóa đơn",
-      description: "Trong demo này, Tôi sẽ là tổng đài hỗ trợ kiểm tra sản phẩm, yêu cầu hỗ trợ, đơn hàng cho bạn nhé.",
-      body: "Hình ảnh minh họa",
-      demoSrc: "./ocr-banking-result-demo.png",
-    },
-    {
-      id: 5,
-      title: "Giải trí",
-      description: "Trong demo này, Tôi sẽ là một một con mèo đáng yêu tâm sự với bạn nhé",
-      body: "Hình ảnh minh họa",
-      demoSrc: "",
-    },
-  ];
+ 
 
   return (
     <div>
       <HeadTag page="ocr-service" />
       <NextSeo
-        title={`${"Bóc tách dữ liệu"}`}
+        title={`${"Enterprise Chatbot"}`}
         description={"" || ""}
         canonical={`/ocr-service/`}
         twitter={{
@@ -83,7 +55,7 @@ export default function Chatbots(props) {
             data-component-name=""
           >
             <div className="container mb-10 grid grid-cols-12">
-              <div className="md:col-span-5 col-span-12 md:pr-8">
+              <div className="md:col-span-5 col-span-12 md:pr-8 px-2">
                 <h2 className="text-base font-bold default:text-[#08445E] uppercase mb-7 richtext">
                   <TypeIt
                     options={{
@@ -104,8 +76,8 @@ export default function Chatbots(props) {
                     data-aos-delay={5000}
                     className="lg:w-2/3"
                   >
-                    {features
-                      ? features.map((model, key) => {
+                    {chatbotfeatures
+                      ? chatbotfeatures.map((model, key) => {
                           return (
                             <div
                               key={key}
@@ -161,7 +133,7 @@ export default function Chatbots(props) {
                       Demo 
                     </p>
                     
-                    <ChatbotCustomView model={features[activeModelIndex]} currentTheme={currentTheme} />   
+                    <ChatbotCustomView model={chatbotfeatures[activeModelIndex]} currentTheme={currentTheme} />   
 
                   
                   </div>
@@ -172,7 +144,7 @@ export default function Chatbots(props) {
 
           <div id="list" className={"my-12 z-50"}>
           <h2 className="text-base font-bold default:text-[#08445E] uppercase mb-7 richtext">MÔ TẢ CHI TIẾT</h2>
-          {features[activeModelIndex]?.body}
+          {chatbotfeatures[activeModelIndex]?.body}
 
           </div>
         </div>

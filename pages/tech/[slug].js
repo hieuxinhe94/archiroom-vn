@@ -39,7 +39,7 @@ export default function Post(props) {
     : null;
 
   const contentResolver = (type) => {
-    console.log(type);
+    
     switch (type) {
       case "QNA-CHATBOT": {
         setLoading(true);
@@ -145,17 +145,31 @@ export default function Post(props) {
                     {post.title}
                   </p>
                   <div className="relative my-8 z-0 max-w-screen-lg mx-auto overflow-hidden lg:rounded-lg aspect-video">
-                    {imageProps && (
-                      <Image
-                        src={imageProps.src}
-                        loader={imageProps.loader}
-                        blurDataURL={imageProps.blurDataURL}
-                        alt={post.mainImage?.alt || "Thumbnail"}
-                        placeholder="blur"
-                        layout="fill"
-                        loading="eager"
-                        objectFit="cover"
-                      />
+                    {post.videoURL && (
+                      <video
+                        width={"800px"}
+                        height={"600px"}
+                        className=" max-w-full border border-gray-200 rounded-lg dark:border-gray-700"
+                        controls
+                        autoPlay={true}
+                      >
+                        <source src={"../" +post.videoURL} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    )}
+
+                    {!post.videoURL && imageProps && (
+                      <div className=" max-w-full border border-gray-200 rounded-lg dark:border-gray-700">
+                        <Image
+                          src={imageProps?.src}
+                          alt={post.title}
+                          loader={imageProps.loader}
+                          width={"800px"}
+                          height={"400px"}
+                          priority={false}
+                          className="ratio-4-3 w-full bg-cover bg-no-repeat p-3"
+                        />
+                      </div>
                     )}
                   </div>
                   <div className="text-brand-primary dark:text-white  text-justify  my-3 prose prose-base dark:prose-invert prose-a:text-blue-500 antialiased hover:subpixel-antialiased">
@@ -233,21 +247,26 @@ export default function Post(props) {
                   </button>
 
                   <div className="w-full px-8">
-                  <div className=" rounded-3xl border border-gray-100 p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none lg:px-12">
-                  <div className="w-full flex text-xs font-medium text-gray-300 text-justify">
-                      Tính năng:
+                    <div className=" rounded-3xl border border-gray-100 p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none lg:px-12">
+                      <div className="w-full flex text-xs font-medium text-gray-300 text-justify">
+                        Tính năng:
                       </div>
-                            <div className="w-64">
-                                <p className="mt-2 w-full mb-8 text-gray-600 dark:text-gray-300 overflow-hidden">Lorem ipsum dolor laboriosam deleniti 
-                                aperiam ab veniam sint non cumque quis tempore cupiditate.   veritatis harum et rerum.</p>
-                                <div className="flex gap-4">
-                                <div>
-                                        <h2 className="leading-0 text-lg font-medium text-gray-700 dark:text-white">Randy Doe</h2>
-                                        <p className="leading-0 -mt-0.5 text-sm text-gray-500 dark:text-gray-400">Backend dev</p>
-                                    </div>
-                                </div>
-                            </div>
+                      <div className="w-64">
+                        <p className="mt-2 w-full mb-8 text-gray-600 dark:text-gray-300 overflow-hidden">
+                         {post.excerpt}
+                        </p>
+                        <div className="flex gap-4">
+                          <div>
+                            <h2 className="leading-0 text-lg font-medium text-gray-700 dark:text-white">
+                             {post?.author.name}
+                            </h2>
+                            <p className="leading-0 -mt-0.5 text-sm text-gray-500 dark:text-gray-400">
+                            {post?._createdAt}
+                            </p>
+                          </div>
                         </div>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="w-full px-8 mt-12">

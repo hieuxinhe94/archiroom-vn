@@ -29,7 +29,7 @@ const SectionCardTypeProduct = ({ currentTheme, data }) => {
         className=" text-and-media-block relative px-4 bg-no-repeat overflow-hidden py-8 md:py-12 xl:py-16 bg-primary-color bg-cover bg-center"
         data-aos="fade-up"
       >
-        <div className="container container-xl mx-auto z-10 relative px-2">
+        <div className="container container-xl mx-auto  relative px-2">
           <div className="bg-theme-light-gray pt-8 px-2 lg:px-0 lg:py-2 mt-8">
             <div className="flex relative flex-wrap">
               <div className="w-full lg:w-1/2 order-1 md:order-2">

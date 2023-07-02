@@ -26,8 +26,8 @@ const SectionCardTypeParterTrusted = ({ currentTheme, data }) => {
         {partnerTrustedMetadata?.title}
       </div>
 
-      <section className="cards-block z-30 relative bg-no-repeat px-3 py-8 md:py-12 xl:py-16 bg-cover bg-center">
-        <div className="container mx-auto z-10 relative">
+      <section className="cards-block relative bg-no-repeat px-3 py-8 md:py-12 xl:py-16 bg-cover bg-center">
+        <div className="container mx-auto   relative">
           <div className="flex flex-wrap justify-center">
             <div className="card-rise px-8 lg:px-3 mb-4 mt-3 w-full md:w-1/2 lg:w-1/4  ">
               <a target="" href="#ev-charging">

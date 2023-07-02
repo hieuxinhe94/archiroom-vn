@@ -10,7 +10,7 @@ import {
 const HomeBusinessMainProcess = ({ currentTheme }) => {
   return (
     <>
-      <div className="container mx-auto z-10 relative">
+      <div className="container mx-auto relative">
         <div className="flex justify-center flex-wrap">
           {businessMainSteps
             ? businessMainSteps.steps.map((item, index) => {

@@ -204,7 +204,7 @@ const MegaMenu = ({ currentTheme, onMouseEnterCb, onMouseLeaveCb }) => {
         {
           id: 302,
           href: "/tech/ecm-phan-mem-luu-tru-tap-trung",
-          title: "Quản lý lưu trữ - EPM",
+          title: "Quản lý lưu trữ - ECM",
           description:
             "Lưu trữ dữ liệu phi cấu trúc office, email, media... lên tới hàng Terabytes",
         },
@@ -223,7 +223,7 @@ const MegaMenu = ({ currentTheme, onMouseEnterCb, onMouseLeaveCb }) => {
       onMouseLeave={() => onMouseLeaveCb()}
       className="no-scrollbar rounded mt-4 px-6 overflow-hidden overflow-y-auto max-w-screen-xl  bg-white absolute inset-x-0 top-[73px] z-[21] pointer-events-none transition-transform duration-[452ms] ease-[cubic-bezier(0.26,1.00,0.48,1.00)] motion-reduce:transition-none  text-black opacity-98 visible pointer-events-auto translate-y-0"
     >
-      <div className="container  grid grid-cols-3 gap-x-gutter gap-y-0">
+      <div className="container  grid grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-0">
         {menuDetailService.map((item, i) => (
           <div
             key={i}

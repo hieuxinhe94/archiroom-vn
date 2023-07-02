@@ -125,26 +125,6 @@ export default function ShowCases(props) {
                 />
               </div>
             </div>
-
-            {/* <div className="md:container flex justify-between gap-x-gutter max-w-screen overflow-x-scroll md:overflow-x-visible snap-x snap-mandatory no-scrollbar">
-              {posts
-                ? posts.map((post, key) => { 
-                  if(!post.mainImage) return null;
-                  const imageProps = GetImage(post.mainImage)
-                  if(!imageProps) return null;
-                  return(
-                      <img
-                        key={key}
-                        className="w-[15vw] md:w-1/3-gutter aspect-square snap-center first:ml-gutter last:mr-gutter md:first:ml-0 md:last:mr-0"
-                        sizes="10vw"
-                        src={imageProps.src}
-                        loading="lazy"
-                        alt="Marketing product examples"
-                      />
-                    ) }
-                  )
-                : null}
-            </div> */}
           </section>
 
           <div id="list" className={"mt-2 z-50"}>

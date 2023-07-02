@@ -57,7 +57,7 @@ export function PostThumbnail(post) {
 
         <div className="grow flex flex-col">
           <button
-            className="focus:outline-none grow flex items-start justify-between text-left bg-theme-light-gray px-6 py-4 z-10 relative"
+            className="focus:outline-none grow flex items-start justify-between text-left bg-theme-light-gray px-6 py-4 relative"
             data-modal="bio-modal-1"
           >
             <div className="">

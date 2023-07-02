@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import styles from "../styles/Home.module.css";
 import {
-  userinfo,
-   
-  ctaTexts,
-  digitalTransformationSteps,
-  digitalMeasureToolMetatdata,
+  consultantService,
   digitalConceptMetatdata,
+  digitalSolutionMetadata,
+  ocrfeatures,
 } from "../Constants/userinfo";
 import Link from "next/link";
 
-const SectionCardTypeConcept = ({ currentTheme, data }) => {
-  const [toggleId, setToggleId] = useState(null);
-
+const SectionCardOCRService = (props) => {
+  const { products, currentTheme } = props;
+  const [selectedId, setSelectedId] = useState(0);
   return (
-    <div className={styles.educationWrapper + " container mx-auto"}>
+    <div className={styles.educationWrapper + " container mx-auto my-24"}>
       <div
         className={
           styles.workheading +
@@ -23,7 +21,7 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
         }
         data-aos="fade-up"
       >
-        {digitalConceptMetatdata?.title}
+        <Link href={`/ocr-service/`}>OCR - RPA Bóc tách thông tin</Link>
       </div>
 
       <section className="lg:mt-20 text-and-media-block relative px-4 bg-no-repeat overflow-hidden py-8 md:py-12 xl:py-16 bg-primary-color bg-cover bg-center">
@@ -34,12 +32,15 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
                 <div className="relative shadow-image transform -translate-y-16 lg:-translate-y-20 ratio-3-2 lg:ratio-none lg:-translate-x-3 xl1450:-translate-x-20">
                   <div className="my-auto lg:max-w-2xl">
                     <div className="relative w-full transition-shadow duration-300 hover:shadow-xl">
-                      <img
-                        className="p-2 mt-8 object-cover w-full h-64 rounded shadow-lg sm:h-64 md:h-80 lg:h-96"
-                        src="https://images.pexels.com/photos/927022/pexels-photo-927022.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
-                        alt=""
-                      />
-                      <a
+                      <a href={`/ocr-service`}>
+                        {" "}
+                        <img
+                          className="p-2 mt-8 object-cover w-full h-64 rounded shadow-lg sm:h-64 md:h-80 lg:h-96"
+                          src="2.png"
+                          alt=""
+                        />
+                      </a>
+                      {/* <a
                         aria-label="Play Video"
                         className="absolute inset-0 flex items-center justify-center w-full h-full transition-colors duration-300 bg-gray-900 bg-opacity-50 group hover:bg-opacity-25"
                       >
@@ -54,35 +55,38 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
                             </svg>
                           </div>
                         </Link>
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>
               </div>
               <div className="w-full lg:w-1/2  transform -translate-y-16 lg:translate-y-0 mt-2 lg:mt-0 lg:pr-12">
-                <h2 className="text-primary-color -mt-10 font-semibold">
-                  {digitalConceptMetatdata?.subtitle}
-                </h2>
+                <h2 className="text-primary-color -mt-10 font-semibold"></h2>
                 <div
-                  className="flex flex-wrap text-center pt-4 mb-2"
+                  className="flex flex-wrap text-center mb-2"
                   data-aos="fade-up"
                 >
                   <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
-                    PDF Book download
+                    Trên nền tảng Azure Cognitives Service
                   </div>
                   <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
-                    Video download
+                    On-premise{" "}
                   </div>
                 </div>
                 <div className="wysiwyg">
                   <p className="py-2 font-light text-gray-300 lg:w-4/5">
-                    {digitalConceptMetatdata?.description}
+                    Được tối ưu hóa để cung cấp độ chính xác cao và hiệu suất
+                    tốt. Nó có khả năng xử lý lượng lớn tài liệu một cách tự
+                    động và nhanh chóng, giúp tiết kiệm thời gian và công sức
+                    cho doanh nghiệp của bạn. Đồng thời, nó cung cấp khả năng
+                    tùy chỉnh linh hoạt để phù hợp với yêu cầu đặc thù của từng
+                    ngành và quy trình công việc.
                   </p>
 
                   <div className="w-full text-center sm:w-3/4 lg:w-4/5">
                     <ul className="accordion mt-4">
-                      {digitalConceptMetatdata?.features &&
-                        digitalConceptMetatdata?.features.map((item, key) => {
+                      {ocrfeatures &&
+                        ocrfeatures.map((item, key) => {
                           return (
                             <li
                               key={key}
@@ -95,20 +99,22 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
                                 <p
                                   className="text-xl font-bold ml-2"
                                   onClick={() => {
-                                    if (key == toggleId) setToggleId(null);
+                                    if (key == selectedId) setSelectedId(null);
                                     else {
-                                      setToggleId(key);
+                                      setSelectedId(key);
                                     }
                                   }}
                                 >
                                   <span className="plus block">
-                                    {key == toggleId ? "-" : "+"}
+                                    {key == selectedId ? "-" : "+"}
                                   </span>
                                 </p>
                               </div>
                               <div
                                 className={
-                                  (key == toggleId ? "" : "!visible hidden  ") +
+                                  (key == selectedId
+                                    ? ""
+                                    : "!visible hidden  ") +
                                   " rounded-lg shadow-lg"
                                 }
                                 id="collapseExample"
@@ -133,4 +139,4 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
   );
 };
 
-export default SectionCardTypeConcept;
+export default SectionCardOCRService;

@@ -1,7 +1,7 @@
 //const chatbotDocument = document.getElementById("SimplifyBot");
 
 const getAnswer = (questionString) => {
-  console.log("getAnswer");
+   
   // WARNING: For POST requests, body is set to null by browsers.
   var data = JSON.stringify({
     top: 3,
@@ -17,7 +17,7 @@ const getAnswer = (questionString) => {
 };
 
 const addMessagebyBot = ({ answer }) => {
-  console.log(answer);
+   
 };
 const init = () => {
   const btnSend = document.getElementById("btnSend");

@@ -612,7 +612,201 @@ export const digitalCaseStudyArticles = {
 
 export const showcasesSectionConfig = {
   title: "Tầm nhìn",
-  subtitle:
-    "",
-  description: "Chúng tôi hiểu rằng: Sự thay đổi nhanh chóng, phức tạp của những công nghệ luôn là trở ngại lớn. Và sứ mệnh chúng tôi là cầu nối vững chắc giúp doanh nghiệp chuyển đổi số bằng công nghệ mới thành công!",
+  subtitle: "",
+  description:
+    "Chúng tôi hiểu rằng: Sự thay đổi nhanh chóng, phức tạp của những công nghệ luôn là trở ngại lớn. Và sứ mệnh chúng tôi là cầu nối vững chắc giúp doanh nghiệp chuyển đổi số bằng công nghệ mới thành công!",
 };
+
+export const consultantService = {
+  title: "Tư vấn Chuyển đổi số",
+  subtitle: "Vòng tròn cải tiến liên tục trong quá trình chuyển đổi số ",
+  description: `Chúng tôi hiểu rằng: Sự thay đổi nhanh chóng, phức tạp của những công nghệ luôn là trở ngại lớn. Và sứ mệnh chúng tôi là cầu nối vững chắc giúp doanh nghiệp chuyển đổi số bằng công nghệ mới thành công!.
+  `,
+  main_image: {
+    src: "https://www.morrisengineeringllc.com/wp-content/uploads/condominium-icon.png",
+    alt: "",
+  },
+  features: [
+    {
+      id: 1,
+      title: "Plan: Hiểu rõ mục tiêu ngắn hạn",
+      subtitle: "",
+      description:
+        "Trong quá trình xác định vấn đề, điều này có thể áp dụng bằng cách tìm hiểu cách mà khách hàng tương tác với doanh nghiệp và các sản phẩm/sản phẩm của doanh nghiệp.",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+    },
+    {
+      id: 2,
+      title: "Do: Thực thi",
+      subtitle: "",
+      description: "",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+    },
+    {
+      id: 3,
+      title: "Check: Đánh giá",
+      subtitle: "",
+      description: "",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+    },
+    {
+      id: 4,
+      title: "Act: Điều chỉnh",
+      subtitle: "",
+      description: "",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+    },
+  ],
+};
+
+export const ChatbotConfigSection = {
+  title: "AI - Chatbots",
+  subtitle: `Chatbot của được thiết kế để tương tác mượt mà
+  và tự động hóa quy trình công việc phức tạp. Với khả
+  năng nhận diện ngữ cảnh và hiểu ý định của người dùng,
+  nó có thể cung cấp hỗ trợ và giải đáp các câu hỏi một
+  cách nhanh chóng và hiệu quả. Không chỉ giúp tiết kiệm
+  thời gian và công sức của khách hàng, chatbot còn có khả
+  năng xử lý nhiều yêu cầu cùng lúc, đảm bảo tính linh
+  hoạt và khả năng mở rộng cao.`,
+  description: `[ProductName] cung cấp cho người quản trị những chỉ số đa chiều 360 về năng lực của tổ chức.\n
+   Chúng tôi hỗ trợ các chỉ số thông dụng sau:
+   `,
+  main_image: {
+    src: "1.png",
+    alt: "",
+  },
+  steps: [
+    {
+      id: 1,
+      title: "Digital Transformation Index - DTI",
+      subtitle: " Chỉ số mức độ chuyển đổi số",
+      description:
+        "Đây là chỉ số đo lường mức độ chuyển đổi số của một tổ chức hay doanh nghiệp, bao gồm đánh giá các yếu tố như năng lực kỹ thuật số, quản lý dữ liệu, cơ sở hạ tầng kỹ thuật số, quản lý đổi mới và sáng tạo.",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
+        alt: "",
+      },
+    },
+    {
+      id: 2,
+      title: "Digital Adaptability Index - DAI",
+      subtitle: "Chỉ số sự thích nghi với chuyển đổi số",
+      description:
+        " Đây là chỉ số đo lường khả năng thích nghi với các thay đổi kỹ thuật số trong môi trường kinh doanh, bao gồm đánh giá các yếu tố như tính linh hoạt của tổ chức, khả năng đổi mới và sáng tạo, và khả năng học hỏi và thích nghi nhanh chóng.",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
+        alt: "",
+      },
+    },
+    {
+      id: 3,
+      title: "Digital Momentum Index - DMI: ",
+      subtitle: "Chỉ số động lực kỹ thuật số",
+      description:
+        "Đây là chỉ số đo lường tốc độ và quy mô của chuyển đổi số của một tổ chức hay doanh nghiệp, bao gồm đánh giá các yếu tố như tốc độ đầu tư vào công nghệ kỹ thuật số, tốc độ đào tạo nhân viên về kỹ thuật số, và tốc độ triển khai các giải pháp kỹ thuật số mới.",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
+        alt: "",
+      },
+    },
+    {
+      id: 4,
+      title: "Digital Customer Interaction Index - DCI",
+      subtitle: "Chỉ số tương tác khách hàng kỹ thuật số ",
+      description:
+        "Đây là chỉ số đo lường mức độ tương tác của tổ chức hay doanh nghiệp với khách hàng thông qua các kênh kỹ thuật số, bao gồm đánh giá các yếu tố như trải nghiệm khách hàng, tính khả dụng của các kênh tương tác, và tốc độ phản hồi của tổ chức đối với phản hồi của khách hàng trên các kênh kỹ thuật số.",
+      due_date: "1-2 weeks",
+      href: "/solution",
+      main_classes: "",
+      secondary_classes: "",
+      main_image: {
+        src: "https://cdn-icons-png.flaticon.com/512/4727/4727266.png",
+        alt: "",
+      },
+    },
+  ],
+};
+
+export const chatbotfeatures = [
+  {
+    id: 1,
+    title: "Hỏi đáp nghiệp vụ nội bộ",
+    description: "Trong demo này, Tôi sẽ giải đáp thắc mắc về quyền lợi nghĩa vụ của nhân viên mới cho bạn nhé.",
+    body: "Hình ảnh minh họa",
+    demoSrc: "./ocr-cmnd-demo.png",
+  },
+  {
+    id: 2,
+    title: "Ra lệnh tự động hóa công việc",
+    description: "Trong demo này, Tôi là trợ lý công việc giúp bạn như soạn thảo email, đặt lịch họp, kiểm tra khách hàng đang chăm sóc...",
+    body: "Hình ảnh minh họa",
+    demoSrc: "./ocr-cmnd-demo.png",
+  },
+  {
+    id: 3,
+    title: "Hỗ trợ khách hàng, hóa đơn",
+    description: "Trong demo này, Tôi sẽ là tổng đài hỗ trợ kiểm tra sản phẩm, yêu cầu hỗ trợ, đơn hàng cho bạn nhé.",
+    body: "Hình ảnh minh họa",
+    demoSrc: "./ocr-banking-result-demo.png",
+  },
+  {
+    id: 5,
+    title: "Giải trí",
+    description: "Trong demo này, Tôi sẽ là một một con mèo đáng yêu tâm sự với bạn nhé",
+    body: "Hình ảnh minh họa",
+    demoSrc: "",
+  },
+];
+
+export const ocrfeatures = [
+  {
+    id: 1,
+    title: "Vietnamese ID",
+    description: "Hình ảnh minh họa",
+    body: "Hình ảnh minh họa",
+    demoSrc: "./ocr-cmnd-demo.png",
+  },
+  {
+    id: 4,
+    title: "Ảnh chuyển tiền",
+    description: "Hình ảnh minh họa",
+    body: "Hình ảnh minh họa",
+    demoSrc: "./ocr-banking-result-demo.png",
+  },
+  {
+    id: 5,
+    title: "Thẻ sinh viên",
+    description: "Hình ảnh minh họa",
+    body: "Hình ảnh minh họa",
+    demoSrc: "",
+  },
+];
+
+export const homeConfigs = [
+   
+];

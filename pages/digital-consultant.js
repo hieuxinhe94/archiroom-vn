@@ -56,12 +56,12 @@ export default function DigitalConsultant(props) {
             data-component-name=""
           >
             <div className="container mb-10 grid grid-cols-12">
-              <div className="md:col-span-5 col-span-12 md:pr-8">
-                <h2 className="text-base font-bold default:text-[#08445E] uppercase mb-7 richtext">
+              <div className="md:col-span-8 col-span-12 md:pr-8 px-2">
+                <h2 className="text-lg font-medium default:text-[#08445E] uppercase mb-7 richtext">
                   <TypeIt
                     options={{
-                      strings: ["Tư vấn chiến lược chuyển đổi số"],
-                      speed: 0.5,
+                      strings: [ showcasesSectionConfig?.description],
+                      speed: 0.25,
                       startDelay: 1000,
                       waitUntilVisible: true,
                     }}

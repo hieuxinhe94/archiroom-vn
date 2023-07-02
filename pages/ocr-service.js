@@ -6,6 +6,7 @@ import { NextSeo } from "next-seo";
 import styles from "../styles/Post.module.css";
 import {
   digitalCaseStudyArticles,
+  ocrfeatures,
   showcasesSectionConfig,
 } from "../Constants/userinfo";
 import TypeIt from "typeit-react";
@@ -21,29 +22,7 @@ export default function OCRServices(props) {
   const [displayAgenda, setDisplayAgenda] = useState(false);
   const [activeModelIndex, setActiveModelIndex] = useState(0);
 
-  const features = [
-    {
-      id: 1,
-      title: "Vietnamese ID",
-      description: "Hình ảnh minh họa",
-      body: "Hình ảnh minh họa",
-      demoSrc: "./ocr-cmnd-demo.png",
-    },
-    {
-      id: 4,
-      title: "Ảnh chuyển tiền",
-      description: "Hình ảnh minh họa",
-      body: "Hình ảnh minh họa",
-      demoSrc: "./ocr-banking-result-demo.png",
-    },
-    {
-      id: 5,
-      title: "Thẻ sinh viên",
-      description: "Hình ảnh minh họa",
-      body: "Hình ảnh minh họa",
-      demoSrc: "",
-    },
-  ];
+ 
 
   return (
     <div>
@@ -75,7 +54,7 @@ export default function OCRServices(props) {
             data-component-name=""
           >
             <div className="container mb-10 grid grid-cols-12">
-              <div className="md:col-span-5 col-span-12 md:pr-8">
+              <div className="md:col-span-5 col-span-12 md:pr-8 px-2">
                 <h2 className="text-base font-bold default:text-[#08445E] uppercase mb-7 richtext">
                   <TypeIt
                     options={{
@@ -96,8 +75,8 @@ export default function OCRServices(props) {
                     data-aos-delay={5000}
                     className="lg:w-2/3"
                   >
-                    {features
-                      ? features.map((model, key) => {
+                    {ocrfeatures
+                      ? ocrfeatures.map((model, key) => {
                           return (
                             <div
                               key={key}
@@ -161,14 +140,14 @@ export default function OCRServices(props) {
                     </p>
                     <img
                       sizes="100vw"
-                      src={features[activeModelIndex]?.demoSrc}
+                      src={ocrfeatures[activeModelIndex]?.demoSrc}
                       alt="Not found"
                       className="w-full  h-full  relative  mt-auto scale-105"
                     />
                     <div className="absolute inset-0 py-2 px-4 flex flex-col items-center justify-center  opacity-0 hover:opacity-100 transition-opacity h-full">
                       <div className="merchant-info  bottom-0 inset-x-0 flex flex-col items-center justify-center text-center px-2 self-end mt-auto w-full mb-4">
                         <div className="text-black font-bold text-lg">
-                          {features[activeModelIndex]?.description}
+                          {ocrfeatures[activeModelIndex]?.description}
                         </div>
                       </div>
                     </div>
@@ -182,7 +161,7 @@ export default function OCRServices(props) {
             <h2 className="text-base font-bold default:text-[#08445E] uppercase mb-7 richtext">
               MÔ TẢ CHI TIẾT
             </h2>
-            {features[activeModelIndex]?.body}
+            {ocrfeatures[activeModelIndex]?.body}
           </div>
         </div>
       </section>

@@ -2,7 +2,7 @@ import Head from 'next/head'
 import HomePage from '../Components/HomePage'
 import HeadTag from '../Components/HeadTag'
 import { getClient } from '../lib/sanity';
-import { postfeaturesquery, postquery } from '../lib/groq';
+import { postfeaturesquery, postquery, prebuildproductListquery } from '../lib/groq';
 
 export default function Home(props) {
 
@@ -18,11 +18,11 @@ export async function getStaticProps({ params, preview = false }) {
   const post = await getClient(preview).fetch(postfeaturesquery);
   //const config = await getClient(preview).fetch(configQuery);
   // const categories = (await client.fetch(catquery)) || null;
-
+  const lastestProduct = await getClient(preview).fetch(prebuildproductListquery);
   return {
     props: {
       postdata: post,
-      // categories: categories,
+      products: lastestProduct,
       //siteconfig: { ...config },
       preview
     },
