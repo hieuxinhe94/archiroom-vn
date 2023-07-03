@@ -9,7 +9,7 @@ const DynamicComponentWithNoSSR = dynamic(
 
 const ChatbotCustomView = ({ currentTheme, model }) => {
   const [visible, setVisible] = useState(false);
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
   const [activeChat, setActiveChat] = useState(false);
   const [activeOption, setActiveOption] = useState(false);
   const [conversationsArr, setConversationsArr] = useState([]);
@@ -32,7 +32,7 @@ const ChatbotCustomView = ({ currentTheme, model }) => {
       console.log("This will run after 2 second!");
       setVisible(true);
       setActiveChat(true);
-    }, 2000);
+    }, 7000);
     return () => clearTimeout(timer3);
   }, [model]);
 
@@ -40,8 +40,16 @@ const ChatbotCustomView = ({ currentTheme, model }) => {
     const timer = setTimeout(() => {
       console.log("This will run after 3 second!");
       setVisible(!visible);
-    }, 3000);
+    }, 10000);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer0 = setTimeout(() => {
+      console.log("This will run after 5 second!");
+      setActive(!active);
+    }, 5000);
+    return () => clearTimeout(timer0);
   }, []);
 
   useEffect(() => {
@@ -49,7 +57,7 @@ const ChatbotCustomView = ({ currentTheme, model }) => {
       console.log("This will run after 5 second!");
 
       setActiveChat(!activeChat);
-    }, 5000);
+    }, 12000);
     return () => clearTimeout(timer2);
   }, []);
 

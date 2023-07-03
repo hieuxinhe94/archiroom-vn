@@ -28,28 +28,48 @@ export default function HomePage(props) {
 
   return (
     <div>
-      <div id="banner relative">
-        <div className="w-full h-full">
-          <div
-            className={styles.homeheading + " overflow-visible"}
-            style={{
-              backgroundColor: currentTheme.secondary,
-              backgroundImage: "",
-              opacity: 0.9,
-            }}
-          >
-            <section class="hero-banner">
-              {/* <Banner {...props} /> */}
-            </section>
-            <h2
-              className={styles.subheading}
-              style={{ color: currentTheme.subtext }}
-            >
-              <p id="subtitleTyping"></p>
-            </h2>
-          </div>
+      <div id="static">
+        <div className="">
+          <video className="videoTag" autoPlay loop muted>
+            <source src="./bannerbg.mp4" type="video/mp4" />
+          </video>
         </div>
-        <div className="fixed w-full h-full z-50"></div>
+        <div
+          class="absolute"
+          style={{ top: "25rem", left: "10%", maxWidth: "50rem" }}
+        >
+          {/* <h1 className={styles.heading}>{heroInfo.title}</h1> */}
+          <h2 className={styles.subheading}>
+            <p id="" className="mx-4">
+              <TypeIt
+                getBeforeInit={(instance) => {
+                  instance
+                    .type("Chúng tôi hiểu rằng: <br/>")
+
+                    .pause(250)
+                    .type(
+                      "Sự thay đổi nhanh chóng, phức tạp của những công nghệ luôn là trở ngại lớn. <br/> "
+                    )
+                    .pause(250)
+                    .type(
+                      " Và sứ mệnh chúng tôi <br/> Là một cầu nối vững chắc giúp doanh nghiệp bạn chuyển đổi số thành công!"
+                    )
+                    .pause(50)
+                    .type("");
+
+                  return instance;
+                }}
+                options={{
+                  speed: 5,
+                  startDelay: 100,
+                  waitUntilVisible: true,
+                  cursor: false,
+                }}
+              />
+             
+            </p>
+          </h2>
+        </div>
       </div>
 
       <div
