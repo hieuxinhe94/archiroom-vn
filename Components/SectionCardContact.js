@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/outline";
 import { useForm } from "react-hook-form";
 import { NextSeo } from "next-seo";
+import { config } from "../lib/config";
 export default function SectionCardContact(props) {
   const {
     register,
@@ -31,6 +32,7 @@ export default function SectionCardContact(props) {
     onSuccess: (msg, data) => {
       setIsSuccess(true);
       setMessage("Cảm ơn bạn. Chúng tôi sẽ liên hệ lại với bạn sớm.");
+      postNewContact();
       reset();
     },
     onError: (msg, data) => {
@@ -39,12 +41,38 @@ export default function SectionCardContact(props) {
     },
   });
 
+  const postNewContact = () => {
+    const mutations = [
+      {
+        createOrReplace: {
+          _id: "123",
+          _type: "cms.article",
+          title: "An article",
+        },
+      },
+    ];
+
+    fetch(
+      `https://${config.projectId}.api.sanity.io/v2021-06-07/data/mutate/${config.dataset}`,
+      {
+        method: "post",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${tokenWithWriteAccess}`,
+        },
+        body: JSON.stringify({ mutations }),
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
+  };
+
   return (
     <>
-      <div className="w-1/2 mx-auto my-2">
+      <div className="lg:w-1/2 mx-2 lg:mx-auto my-2">
         <h1 className="mt-32 mb-3 text-2xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white"></h1>
         <div className="text-center"></div>
-
         <div>
           <form
             onSubmit={(e) => handleSubmit(e)}

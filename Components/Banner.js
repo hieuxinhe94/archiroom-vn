@@ -168,54 +168,54 @@
 //     <>
      
 //         <div id="webgl-canvas" />
-//         <div class="bubbles bubbleContainer">
+//         <div className="bubbles bubbleContainer">
 //           <img
-//             class="bubble person-1"
+//             className="bubble person-1"
 //             src="https://assets.codepen.io/502545/person-bubble-1.png"
 //             alt="Smiling woman"
 //           />
 //           <img
-//             class="bubble person-2"
+//             className="bubble person-2"
 //             src="https://assets.codepen.io/502545/person-bubble-2.png"
 //             alt="Smiling older man"
 //           />
 //           <img
-//             class="bubble person-3"
+//             className="bubble person-3"
 //             src="https://assets.codepen.io/502545/person-bubble-3.png"
 //             alt="Smiling woman"
 //           />
 //           <img
-//             class="bubble person-4"
+//             className="bubble person-4"
 //             src="https://assets.codepen.io/502545/person-bubble-4.png"
 //             alt="Smiling man"
 //           />
 //           <img
-//             class="bubble person-5"
+//             className="bubble person-5"
 //             src="https://assets.codepen.io/502545/person-bubble-5.png"
 //             alt="Smiling woman in headscarf"
 //           />
 //           <img
-//             class="bubble koral-bubble"
+//             className="bubble koral-bubble"
 //             src="https://assets.codepen.io/502545/koral-bubble.png"
 //             alt="coral colored bubble"
 //           />
 //           <img
-//             class="bubble marigold-bubble"
+//             className="bubble marigold-bubble"
 //             src="https://assets.codepen.io/502545/marigold-bubble.png"
 //             alt="marigold colored bubble"
 //           />
 //           <img
-//             class="bubble marigold-bubble-2"
+//             className="bubble marigold-bubble-2"
 //             src="https://assets.codepen.io/502545/marigold-bubble-2.png"
 //             alt="marigold colored bubble"
 //           />
 //           <img
-//             class="bubble aqua-bubble"
+//             className="bubble aqua-bubble"
 //             src="https://assets.codepen.io/502545/aqua-bubble.png"
 //             alt="aqua blue colored bubble"
 //           />
 //           <img
-//             class="innovation-logo"
+//             className="innovation-logo"
 //             alt="Cornerstone AI Logo"
 //             src="https://assets.codepen.io/502545/csod-innovationlab-AI-01-2.png"
 //           />

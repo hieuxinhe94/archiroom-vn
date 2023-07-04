@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}
 
 .h-48 {
   height: 12rem;

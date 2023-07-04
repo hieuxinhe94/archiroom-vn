@@ -49,7 +49,7 @@ const SectionCardTypeSolution = ({ currentTheme, data }) => {
                 </div>
               </div>
 
-              <div className="w-full lg:w-1/2  transform -translate-y-16 lg:translate-y-0 mt-8 lg:mt-24 lg:pr-12">
+              <div className="w-full lg:w-1/2  transform   lg:translate-y-0 mt-8 lg:mt-24 lg:pr-12">
                 <h2 className="text-primary-color -mt-10 font-semibold text-justify">
                   {digitalSolutionMetadata?.subtitle}
                 </h2>

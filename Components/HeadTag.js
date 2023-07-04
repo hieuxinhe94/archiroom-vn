@@ -19,6 +19,7 @@ const HeadTag = ({page}) => {
             <meta property="twitter:title" content={pageInfo.logoText} />
             <meta property="twitter:description" content={pageInfo.description} />
             <meta property="twitter:image" content="" />
+            
         </Head>
     )
 }

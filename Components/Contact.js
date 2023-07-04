@@ -22,7 +22,7 @@ const Contact = ({ currentTheme }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Sending')
+   
     let data = {
       name: name,
       email: email,

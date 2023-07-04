@@ -31,7 +31,7 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
           <div className="bg-theme-light-gray pt-8 px-2 lg:px-0">
             <div className="flex relative flex-wrap">
               <div className="w-full lg:w-1/2 ">
-                <div className="relative shadow-image transform -translate-y-16 lg:-translate-y-20 ratio-3-2 lg:ratio-none lg:-translate-x-3 xl1450:-translate-x-20">
+                <div className="relative shadow-image transform   lg:-translate-y-20 ratio-3-2 lg:ratio-none lg:-translate-x-3 xl1450:-translate-x-20">
                   <div className="my-auto lg:max-w-2xl">
                     <div className="relative w-full transition-shadow duration-300 hover:shadow-xl">
                       <img
@@ -59,7 +59,7 @@ const SectionCardTypeConcept = ({ currentTheme, data }) => {
                   </div>
                 </div>
               </div>
-              <div className="w-full lg:w-1/2  transform -translate-y-16 lg:translate-y-0 mt-2 lg:mt-0 lg:pr-12">
+              <div className="w-full lg:w-1/2  transform   lg:translate-y-0 mt-2 lg:mt-0 lg:pr-12">
                 <h2 className="text-primary-color -mt-10 font-semibold">
                   {digitalConceptMetatdata?.subtitle}
                 </h2>

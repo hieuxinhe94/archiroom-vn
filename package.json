@@ -33,9 +33,9 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+     
     "@heroicons/react": "^1.0.6",
     "@portabletext/react": "^2.0.2",
-    
     "@sanity/base": "^2.29.8",
     "@sanity/core": "^2.29.5",
     "@sanity/default-layout": "^2.29.8",
@@ -44,7 +44,6 @@
     "@sanity/eslint-config-studio": "^2.0.0",
     "@sanity/vision": "^2.29.8",
     "@tailwindcss/line-clamp": "^0.4.4",
-   
     "aos": "^2.3.4",
     "chart.js": "^4.2.1",
     "date-fns": "^2.28.0",
@@ -64,7 +63,6 @@
     "sanity-plugin-asset-source-unsplash": "^0.2.1",
     "styled-components": "^5.3.0",
     "tailwindcss": "^3.2.7",
-    
     "typeit-react": "^2.6.4",
     "use-web3forms": "^1.2.1"
   },

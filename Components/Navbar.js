@@ -28,7 +28,7 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
     <div
       className={styles.navbar + " top-0 relative"}
       style={{
-        backgroundColor: currentTheme.secondary,
+        // backgroundColor: currentTheme.secondary,
         boxShadow: currentTheme.boxShadow,
         position: sticky ? "fixed" : "static",
       }}
@@ -39,6 +39,7 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
           justifyContent: "space-evenly",
           alignItems: "baseline",
           marginBottom: !drawerVisible ? "0" : "10px",
+          opacity: "90%"
         }}
       >
         <Link href="/">
@@ -221,7 +222,7 @@ const MegaMenu = ({ currentTheme, onMouseEnterCb, onMouseLeaveCb }) => {
       }}
       onMouseEnter={() => onMouseEnterCb()}
       onMouseLeave={() => onMouseLeaveCb()}
-      className="no-scrollbar rounded mt-4 px-6 overflow-hidden overflow-y-auto max-w-screen-xl  bg-white absolute inset-x-0 top-[73px] z-[21] pointer-events-none transition-transform duration-[452ms] ease-[cubic-bezier(0.26,1.00,0.48,1.00)] motion-reduce:transition-none  text-black opacity-98 visible pointer-events-auto translate-y-0"
+      className="no-scrollbar rounded mt-4 px-6 overflow-hidden overflow-y-auto max-w-screen-xl  bg-white absolute inset-x-0 top-[73px] z-50 pointer-events-none transition-transform duration-[452ms] ease-[cubic-bezier(0.26,1.00,0.48,1.00)] motion-reduce:transition-none  text-black opacity-98 visible pointer-events-auto translate-y-0"
     >
       <div className="container  grid grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-0">
         {menuDetailService.map((item, i) => (

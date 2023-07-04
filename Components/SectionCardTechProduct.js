@@ -9,7 +9,7 @@ const SectionCardTechProduct = (props) => {
   const { products, currentTheme } = props;
   const [selectedId, setSelectedId] = useState(0);
   const [selectedProduct, setSelectedProduct] = useState(products[0] || {});
-  console.log(products)
+   
   return (
     <div className={styles.educationWrapper + " container mx-auto my-24"}>
       <div
@@ -23,8 +23,8 @@ const SectionCardTechProduct = (props) => {
         Phần mềm doanh nghiệp
       </div>
 
-      <section className="flex flex-row-reverse  text-and-media-block relative px-4 bg-no-repeat overflow-hidden py-8 md:py-12 xl:py-16 bg-primary-color bg-cover bg-center">
-        <div className="w-1/2">
+      <section className=" lg:flex flex-row-reverse  text-and-media-block relative px-4 bg-no-repeat overflow-hidden py-8 md:py-12 xl:py-16 bg-primary-color bg-cover bg-center">
+        <div className="w-full lg:w-1/2">
           <div
             id="list"
             data-aos="fade-up"
@@ -66,7 +66,7 @@ const SectionCardTechProduct = (props) => {
         <div
           data-aos="fade-up"
           data-aos-delay={5000}
-          className="lg:w-2/3  my-8"
+          className="w-full lg:w-2/3 my-8"
         >
           <div className="flex flex-wrap text-center mb-2" data-aos="fade-up">
             <div className="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">
