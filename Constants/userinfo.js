@@ -12,8 +12,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 export const pageInfo = {
-  logoText: "SIMPLIFY.AI", //This text is visible on your navbar and footer like your logo.
-  logoSecondaryText: "Ứng dụng AI trong chuyển đổi số", //This text is visible on your navbar and footer like your logo.
+  logoText: "SIMPLIFY DX", //This text is visible on your navbar and footer like your logo.
+  logoSecondaryText: "Hợp tác Chuyển đổi số chiến lược", //This text is visible on your navbar and footer like your logo.
   subtitle: "Tư vấn chiến lược công nghệ",
   description: "Tư vấn chiến lược công nghệ",
   contact: {
@@ -53,7 +53,7 @@ export const navigations = [
 ];
 
 export const heroInfo = {
-  title: "SIMPLIFY", //This text is visible on your navbar and footer like your logo.
+  title: "SIMPLIFY DX", //This text is visible on your navbar and footer like your logo.
   subtitle: "Tư vấn & chuyển giao công nghệ", //This text is visible on your navbar and footer like your logo.
 };
 

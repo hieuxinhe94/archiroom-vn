@@ -17,6 +17,7 @@ import Link from "next/link";
 import styles from "../../styles/Post.module.css";
 import { CustomFieldsComponent } from "../../Components/CustomFieldsComponent";
 import { useState } from "react";
+import { PortableText as PortableTextSanity } from "../../lib/sanity";
 
 export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
@@ -39,7 +40,6 @@ export default function Post(props) {
     : null;
 
   const contentResolver = (type) => {
-    
     switch (type) {
       case "QNA-CHATBOT": {
         setLoading(true);
@@ -85,6 +85,7 @@ export default function Post(props) {
           {children}
         </CustomFieldsComponent>
       ),
+      image: ({ value }) => <img src={value.imageUrl} />,
     },
   };
 
@@ -153,7 +154,7 @@ export default function Post(props) {
                         controls
                         autoPlay={true}
                       >
-                        <source src={"../" +post.videoURL} type="video/mp4" />
+                        <source src={"../" + post.videoURL} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>
                     )}
@@ -173,7 +174,7 @@ export default function Post(props) {
                     )}
                   </div>
                   <div className="text-brand-primary dark:text-white  text-justify  my-3 prose prose-base dark:prose-invert prose-a:text-blue-500 antialiased hover:subpixel-antialiased">
-                    {(post.body || post.customizebody) && (
+                    {/* {(post.body || post.customizebody) && (
                       <PortableText
                         components={components}
                         value={
@@ -182,7 +183,9 @@ export default function Post(props) {
                             : post.customizebody
                         }
                       />
-                    )}
+                    )} */}
+
+                    <PortableTextSanity value={post.body} />
                   </div>
                 </div>
                 <div className="justify-start">
@@ -253,15 +256,15 @@ export default function Post(props) {
                       </div>
                       <div className="w-64">
                         <p className="mt-2 w-full mb-8 text-gray-600 dark:text-gray-300 overflow-hidden">
-                         {post.excerpt}
+                          {post.excerpt}
                         </p>
                         <div className="flex gap-4">
                           <div>
                             <h2 className="leading-0 text-lg font-medium text-gray-700 dark:text-white">
-                             {post?.author.name}
+                              {post?.author.name}
                             </h2>
                             <p className="leading-0 -mt-0.5 text-sm text-gray-500 dark:text-gray-400">
-                            {post?._createdAt}
+                              {post?._createdAt}
                             </p>
                           </div>
                         </div>
