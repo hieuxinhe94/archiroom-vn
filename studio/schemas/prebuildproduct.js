@@ -86,6 +86,11 @@ export default {
       type: "boolean",
     },
     {
+      name: "body",
+      title: "Body",
+      type: "blockContent"
+    },
+    {
       name: "customizebody",
       title: "CustomizeBody",
       type: "array",
