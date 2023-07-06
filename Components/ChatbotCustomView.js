@@ -21,7 +21,7 @@ const ChatbotCustomView = ({ currentTheme, model }) => {
 
   const [messageHelps, setHelps] = useState([
     `Xin chào, tôi là SFA bot. Tôi được thiết kế để học tự động từ văn bản và trả lời trong phạm vi xác định.`,
-    "Trong demo này, hãy trò chuyện về sản phẩm mới kính vision pro của Apple với tôi nhé !.",
+    "Trong demo này, tôi là chuyên gia chuyển đổi số, hãy trò chuyện với tôi nhé !.",
   ]);
   useEffect(() => {
     console.log("This will reset bot");

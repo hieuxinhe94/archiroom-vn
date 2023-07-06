@@ -2,14 +2,14 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import HeadTag from "./Components/HeadTag";
 
 export default function Layout({ children, toggleTheme, currentTheme }) {
   const router = useRouter();
   const { slug } = router.query;
   let isHomePage = false;
-  console.log(router);
-  if ((router.route == "/")) {
-    console.log("Home page")
+  if (router.route == "/") {
+    console.log("Home page");
     isHomePage = true;
   }
 
@@ -51,8 +51,9 @@ export default function Layout({ children, toggleTheme, currentTheme }) {
 
   return (
     <div className="scroll-smooth md:scroll-auto" id="fullpage">
+      <HeadTag page="SIMPLIFY" />
       <div className="static mt-24">
-      <div
+        <div
           style={{
             width: isHomePage ? "99.6vw" : "10vw",
             height: isHomePage ? "100vh" : "15vh",
