@@ -38,6 +38,7 @@ const SectionCardOCRService = (props) => {
                           className="p-2 mt-8 object-cover w-full h-64 rounded shadow-lg sm:h-64 md:h-80 lg:h-96"
                           src="2.png"
                           alt=""
+                          data-aos="fade-up"
                         />
                       </a>
                       {/* <a

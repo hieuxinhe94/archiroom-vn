@@ -70,7 +70,7 @@ export default function SectionCardContact(props) {
 
   return (
     <>
-      <div className="lg:w-1/2 mx-2 lg:mx-auto my-2">
+      <div className="lg:w-1/2 mx-2 lg:mx-auto my-2" data-aos="fade-up">
         <h1 className="mt-32 mb-3 text-2xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white"></h1>
         <div className="text-center"></div>
         <div>

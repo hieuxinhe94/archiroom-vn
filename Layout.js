@@ -51,12 +51,13 @@ export default function Layout({ children, toggleTheme, currentTheme }) {
 
   return (
     <div className="scroll-smooth md:scroll-auto" id="fullpage">
-      <HeadTag page="SIMPLIFY" />
+      
       <div className="static mt-24">
         <div
           style={{
-            width: isHomePage ? "99.6vw" : "10vw",
-            height: isHomePage ? "100vh" : "15vh",
+            width: isHomePage ? "99.6vw" : "0vw",
+            height: isHomePage ? "100vh" : "0vh",
+            
           }}
         >
           <video className="videoTag" autoPlay loop muted>
@@ -78,6 +79,7 @@ export default function Layout({ children, toggleTheme, currentTheme }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+      <HeadTag page="SIMPLIFY" />
     </div>
   );
 }

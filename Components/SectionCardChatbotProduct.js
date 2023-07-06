@@ -47,6 +47,7 @@ const SectionCardChatbotProduct = (props) => {
                           className="p-2 mt-8 object-cover w-full h-64 rounded shadow-lg sm:h-64 md:h-80 lg:h-96"
                           alt="condo"
                           loading="lazy"
+                          data-aos="fade-up"
                         />
                       </picture></a>
                     </div>
