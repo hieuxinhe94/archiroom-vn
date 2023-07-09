@@ -13,13 +13,13 @@ import {
 
 export const pageInfo = {
   logoText: "SIMPLIFY DX", //This text is visible on your navbar and footer like your logo.
-  logoSecondaryText: "Hợp tác Chuyển đổi số chiến lược", //This text is visible on your navbar and footer like your logo.
+  logoSecondaryText: "Chuyển đổi số chiến lược bằng AI", //This text is visible on your navbar and footer like your logo.
   subtitle: "Tư vấn chiến lược công nghệ",
   description: "Tư vấn chiến lược công nghệ",
   contact: {
-    email: "michaelscott@email.com", //It is always a good idea to mention your email on your website. Good platform to communicate.
-    phone: "1234567890", //Phone number is optional, if you dont want it, consider leaving it blank .
-    countrycode: "+91", //It is advisable to add the country code incase you mention your contact number.
+    email: "admin@simplifydx.com", //It is always a good idea to mention your email on your website. Good platform to communicate.
+    phone: "0358977789", //Phone number is optional, if you dont want it, consider leaving it blank .
+    countrycode: "+84", //It is advisable to add the country code incase you mention your contact number.
   },
   socials: [
     //For aesthetics, it is advisable for you to mention upto 4 social media links only. Fill in the links.
