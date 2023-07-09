@@ -7,6 +7,52 @@ import {
 import Link from "next/link";
 
 const SectionCardConsultantService = (props) => {
+
+  const productJsonLd = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: "SimplifyDx - Digital transformation AI",
+    image: [
+      "https://example.com/photos/1x1/photo.jpg",
+      "https://example.com/photos/4x3/photo.jpg",
+      "https://example.com/photos/16x9/photo.jpg",
+    ],
+    description:
+      "SimplifyDx - AI Digital Consultant service, Tư vấn chuyển đổi số",
+    sku: "0446310786",
+    mpn: "925872",
+    brand: {
+      "@type": "Brand",
+      name: "SimplifyDx",
+    },
+    review: {
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: 4,
+        bestRating: 5,
+      },
+      author: {
+        "@type": "Person",
+        name: "Fred Benson",
+      },
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: 4.4,
+      reviewCount: 89,
+    },
+    offers: {
+      "@type": "Offer",
+      url: "https://SimplifyDx.com/digital-consultant",
+      priceCurrency: "USD",
+      price: 119.99,
+      priceValidUntil: "2020-11-20",
+      itemCondition: "https://schema.org/UsedCondition",
+      availability: "https://schema.org/InStock",
+    },
+  };
+
   return (
     <div className={styles.educationWrapper + " container mx-auto my-24"}>
       <a href={`/digital-consultant`}>
@@ -91,6 +137,10 @@ const SectionCardConsultantService = (props) => {
           </div>
         </div>
       </section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
     </div>
   );
 };

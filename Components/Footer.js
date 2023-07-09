@@ -16,18 +16,19 @@ const Footer = ({ currentTheme }) => {
                             )
                         }) : null
                     }
-                    <Link href={`mailto:${pageInfo.contact.email ? pageInfo.contact.email : ''}`}><a><li>Mail</li></a></Link>
+                    <Link href={`mailto:admin@simplifydx.com`}><a><li>Mail</li></a></Link>
                 </ul>
                 <ul>
                     <li className={styles.listHeading}>Pages</li>
-                    <Link href=''><a><li>Home</li></a></Link>
-                    <Link href='/#about'><a><li>About</li></a></Link>
-                    <Link href='/work'><a><li>Work</li></a></Link>
-                    <Link href='/contact'><a><li>Contact</li></a></Link>
+                    <Link href='/chatbots'><a><li>Chatbots</li></a></Link>
+                    <Link href='/ocr-service'><a><li>OCR</li></a></Link>
+                    <Link href='/digital-consultant'><a><li>Constants service</li></a></Link>
+                    <Link href='/showcases'><a><li>Sản phẩm doanh nghiệp</li></a></Link>
+                    <Link href='/contact'><a><li>Liên hệ</li></a></Link>
                 </ul>
             </div>
             <hr style={{ height: '1px', backgroundColor: currentTheme.subtext, border: 'none', opacity: '0.5' }}></hr>
-            <h4 className={styles.footercontent}>© 2023 [CompanyName]. All Rights Reserved.</h4>
+            <h4 className={styles.footercontent}>© 2023 SIMPLIFY DX. All Rights Reserved.</h4>
         </div>
     )
 }

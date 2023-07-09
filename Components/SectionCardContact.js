@@ -1,4 +1,4 @@
-import { getClient } from "../lib/sanity";
+import client, { getClient } from "../lib/sanity";
 import { useState, useEffect } from "react";
 import {
   LocationMarkerIcon,
@@ -8,6 +8,7 @@ import {
 import { useForm } from "react-hook-form";
 import { NextSeo } from "next-seo";
 import { config } from "../lib/config";
+import { useToast } from "@chakra-ui/react";
 export default function SectionCardContact(props) {
   const {
     register,
@@ -24,6 +25,15 @@ export default function SectionCardContact(props) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [message, setMessage] = useState(false);
   // Please update the Access Key in the Sanity CMS - Site Congig Page
+
+  const toast = useToast();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
   const {
     submit: onSubmit,
   } = () => ({
@@ -41,31 +51,29 @@ export default function SectionCardContact(props) {
     },
   });
 
-  const postNewContact = () => {
-    const mutations = [
-      {
-        createOrReplace: {
-          _id: "123",
-          _type: "cms.article",
-          title: "An article",
-        },
-      },
-    ];
+  const postNewContact = async () => {
+    try {
+      console.log(client.config());
+      alert("Cảm ơn bạn. Chúng tôi sẽ liên hệ lại với bạn sớm.");
+      await client.create({
+        _type: "contact",
+        title: message,
+        name: name,
+        email: email,
+        phone: phone,
+        company: company,
+        content: message,
+      });
+    } catch (err) {
+      console.error(err);
+    }
 
-    fetch(
-      `https://${config.projectId}.api.sanity.io/v2021-06-07/data/mutate/${config.dataset}`,
-      {
-        method: "post",
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${tokenWithWriteAccess}`,
-        },
-        body: JSON.stringify({ mutations }),
-      }
-    )
-      .then((response) => response.json())
-      .then((result) => console.log(result))
-      .catch((error) => console.error(error));
+    toast({
+      description: "You reached us!",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
   };
 
   return (
@@ -101,6 +109,9 @@ export default function SectionCardContact(props) {
                     {...register("name", {
                       required: "Nhập thông tin",
                     })}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
                     autoComplete="name"
                     className="peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700"
                   />
@@ -125,6 +136,9 @@ export default function SectionCardContact(props) {
                     {...register("email", {
                       required: "Nhập thông tin",
                     })}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
                     autoComplete="email"
                     className="peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700"
                   />
@@ -149,6 +163,9 @@ export default function SectionCardContact(props) {
                     {...register("phone", {
                       required: "Nhập thông tin",
                     })}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                    }}
                     autoComplete="tel"
                     className="peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700"
                   />
@@ -173,6 +190,9 @@ export default function SectionCardContact(props) {
                     {...register("company", {
                       required: "Nhập thông tin",
                     })}
+                    onChange={(e) => {
+                      setCompany(e.target.value);
+                    }}
                     autoComplete="work"
                     className="peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700"
                   />
@@ -193,6 +213,9 @@ export default function SectionCardContact(props) {
                     {...register("message", {
                       required: "Nhập thông điệp",
                     })}
+                    onChange={(e) => {
+                      setMessage(e.target.value);
+                    }}
                     className="peer block h-28 w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700"
                     spellCheck="false"
                   ></textarea>
@@ -213,7 +236,11 @@ export default function SectionCardContact(props) {
               </p>
 
               <button
-                type="submit"
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  postNewContact();
+                }}
                 className="w-full py-4 font-semibold text-white transition-colors bg-gray-900 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-offset-2 focus:ring focus:ring-gray-200 px-7 dark:bg-white dark:text-black "
               >
                 {isSubmitting ? (

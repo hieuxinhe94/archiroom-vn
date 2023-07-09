@@ -33,8 +33,8 @@ const SectionCardTypeParterTrusted = ({ currentTheme, data }) => {
               <a target="" href="#ev-charging">
                 <div className=" bg-white bg-theme-light-gray text-gray-900 text-center flex flex-col justify-start items-center mx-auto  h-full shadow-lg px-3 pt-5 pb-6  sm:m-0 ">
                   <img
-                    src="https://www.morrisengineeringllc.com/wp-content/uploads/evcharging-icon.png"
-                    alt="evcharging-icon"
+                    src="https://play-lh.googleusercontent.com/LS7tVTiBfbye5EtUJAKcs2Zz33ml0XvK9FZ54xSidhAKs7nGFvsZqzTbgFSGwvHM2maA"
+                    alt="logo"
                     className="inline-block h-24 mt-3"
                      
                   />
@@ -49,8 +49,8 @@ const SectionCardTypeParterTrusted = ({ currentTheme, data }) => {
               <a target="" href="#pavement">
                 <div className=" bg-white bg-theme-light-gray text-gray-900 text-center flex flex-col justify-start items-center mx-auto  h-full shadow-lg px-3 pt-5 pb-6  sm:m-0 ">
                   <img
-                    src="https://www.morrisengineeringllc.com/wp-content/uploads/road-icon-2.png"
-                    alt="road-icon-2"
+                    src="https://hdproland.com/media/uploads/uploads/04113720-vingroup.png"
+                    alt="vin-logo"
                     className="inline-block h-24 mt-3"
                  
                   />

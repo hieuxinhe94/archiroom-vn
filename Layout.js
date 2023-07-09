@@ -13,6 +13,13 @@ export default function Layout({ children, toggleTheme, currentTheme }) {
     isHomePage = true;
   }
 
+  const organization = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    url: "https://www.simplifydx.com",
+    logo: "https://www.simplifydx.com/favicon.svg",
+  };
+
   let structuredData = {
     "@context": "https://schema.org",
     "@type": "ClaimReview",
@@ -51,16 +58,14 @@ export default function Layout({ children, toggleTheme, currentTheme }) {
 
   return (
     <div className="scroll-smooth md:scroll-auto" id="fullpage">
-      
-      <div className="static mt-24">
+      <div className="static mt-24 ">
         <div
           style={{
             width: isHomePage ? "99.6vw" : "0vw",
             height: isHomePage ? "100vh" : "0vh",
-            
           }}
         >
-          <video className="videoTag" autoPlay loop muted>
+          <video className="hidden lg:block videoTag" autoPlay loop muted>
             <source src="./bannerbg.mp4" type="video/mp4" />
           </video>
         </div>
@@ -78,6 +83,10 @@ export default function Layout({ children, toggleTheme, currentTheme }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
       />
       <HeadTag page="SIMPLIFY" />
     </div>

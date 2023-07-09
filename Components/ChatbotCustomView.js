@@ -25,7 +25,7 @@ const ChatbotCustomView = ({ currentTheme, model }) => {
   ]);
   useEffect(() => {
     console.log("This will reset bot");
-    setHelps(["Xin chào, tôi là SFA bot. Tôi được thiết kế để học tự động từ văn bản và trả lời trong phạm vi xác định.", model?.description ?? "Trong demo này hãy trao đổi về sản phẩm mới của Apple nhé"])
+    setHelps(["Xin chào, tôi là SFA bot. Tôi được thiết kế để học tự động từ văn bản và trả lời trong phạm vi xác định.", model?.description ?? "Trong demo này, tôi là chuyên gia chuyển đổi số, hãy trò chuyện với tôi nhé"])
     setActiveChat(p => false);
     setVisible(false);
     const timer3 = setTimeout(() => {
