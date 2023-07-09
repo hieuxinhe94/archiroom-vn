@@ -62,7 +62,7 @@ export default function Layout({ children, toggleTheme, currentTheme }) {
         <div
           style={{
             width: isHomePage ? "99.6vw" : "0vw",
-            height: isHomePage ? "100vh" : "0vh",
+            height: isHomePage ? "100vh" : "20vh",
           }}
         >
           <video className="hidden lg:block videoTag" autoPlay loop muted>
