@@ -20,6 +20,7 @@ import SectionCardTechProduct from "./SectionCardTechProduct";
 import Contact from "../pages/contact";
 import SectionCardContact from "./SectionCardContact";
 import Banner from "./Banner";
+import Leader from "./Leader";
 
 export default function HomePage(props) {
   const { postdata, products, siteconfig, preview, currentTheme } = props;
@@ -127,10 +128,14 @@ export default function HomePage(props) {
           <SectionCardTypeParterTrusted currentTheme={currentTheme} />
         ) : null}
       </div>
+
+      <Leader currentTheme={currentTheme}/>
+
       <div
         className={" h-1 w-full container mx-auto " + styles.lineHorizontal}
         data-aos="fade-up"
       />
+      
       <div >
         {true ? (
           <SectionCardTypeCaseStudy
