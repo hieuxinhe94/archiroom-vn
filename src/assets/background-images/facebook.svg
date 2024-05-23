@@ -1,0 +1,18 @@
+<svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="vuesax/linear/facebook">
+<g id="facebook">
+<path id="Vector" d="M31.0668 20.6373V27.0726H36.8364C37.2802 27.0726 37.5021 27.5164 37.5021 27.9602L36.6144 32.1765C36.6144 32.3984 36.1706 32.6203 35.9487 32.6203H31.0668V48.8195H24.4096V32.8422H20.6372C20.1933 32.8422 19.9714 32.6203 19.9714 32.1765V27.9602C19.9714 27.5164 20.1933 27.2945 20.6372 27.2945H24.4096V19.9716C24.4096 16.1992 27.2944 13.3144 31.0668 13.3144H37.0583C37.5021 13.3144 37.724 13.5363 37.724 13.9801V19.3059C37.724 19.7497 37.5021 19.9716 37.0583 19.9716H31.7325C31.2887 19.9716 31.0668 20.1935 31.0668 20.6373Z" stroke="url(#paint0_linear_402_2245)" strokeWidth="2.24716" stroke-miterlimit="10" strokeLinecap="round"/>
+<path id="Vector_2" d="M33.2859 48.8195H19.9715C8.87612 48.8195 4.43799 44.3813 4.43799 33.286V19.9716C4.43799 8.87625 8.87612 4.43811 19.9715 4.43811H33.2859C44.3812 4.43811 48.8193 8.87625 48.8193 19.9716V33.286C48.8193 44.3813 44.3812 48.8195 33.2859 48.8195Z" stroke="url(#paint1_linear_402_2245)" strokeWidth="2.24716" strokeLinecap="round" strokeLinejoin="round"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_402_2245" x1="19.9714" y1="48.8195" x2="37.724" y2="48.8195" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FA00FF"/>
+<stop offset="1" stop-color="#0094FF"/>
+</linearGradient>
+<linearGradient id="paint1_linear_402_2245" x1="4.43799" y1="48.8195" x2="48.8194" y2="48.8195" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FA00FF"/>
+<stop offset="1" stop-color="#0094FF"/>
+</linearGradient>
+</defs>
+</svg>

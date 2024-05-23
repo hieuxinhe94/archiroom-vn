@@ -1,222 +1,149 @@
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <h1 align="center">NextJS Portfolio Template</h1>
-  <p align="center">
-    Portfolio website template!
-    <br />
-    <a href="https://michaelscott-nextjstemp.vercel.app/">View Demo</a>
-    ·
-    <a href="https://github.com/AsavariA/nextjs-portfolio-template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/AsavariA/nextjs-portfolio-template/issues">Request Feature</a>
-  </p>
-</p>
+# A minimal Next.js site with Sanity Studio
 
+This starter is a statically generated site that uses [Next.js][nextjs] for the frontend and [Sanity][sanity-homepage] to handle its content..
+It comes with a native Sanity Studio that offers features like real-time collaboration, instant side-by-side content previews, and intuitive editing.
 
+The Studio connects to Sanity Content Lake, which gives you hosted content APIs with a flexible query language, on-demand image transformations, powerful patching, and more.
+You can use this starter to kick-start a clean slate site or learn these technologies.
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#sections-available">Sections Available</a></li>
-        <li><a href="#built-with">Built With</a></li>
-        <li><a href="#demos">Demos</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li>
-	    <a href="#usage">Usage</a>
-	    <ul>
-        <li><a href="#user-info">User Info</a></li>
-        <li><a href="#blogs">Blogs</a></li>
-        <li><a href="#setting-up-images">Setting up Images</a></li>
-        <li><a href="#setting-up-themes">Setting up Themes</a></li>
-        <li><a href="#setting-up-contact-form">Setting up Contact Form</a></li>
-      </ul>
-	</li>
-	<li><a href="#deployment">Deployment</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-  </ol>
-</details>
+[![Deploy with Vercel](https://vercel.com/button)][vercel-deploy]
 
+> **Note**
+>
+> This starter uses the `/pages` directory for Next.js routing.
+>
+> The template will be migrated to the currently experimental [/app][app-dir] directory
+> when Vercel announce that it is production ready.
 
+## Table of Contents
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+- [Features](#features)
+- [Table of Contents](#table-of-contents)
+- [Project Overview](#project-overview)
+  - [Important files and folders](#important-files-and-folders)
+- [Configuration](#configuration)
+  - [Step 1. Set up the environment](#step-1-set-up-the-environment)
+  - [Step 2. Set up the project locally](#step-2-set-up-the-project-locally)
+  - [Step 3. Run Next.js locally in development mode](#step-3-run-nextjs-locally-in-development-mode)
+  - [Step 4. Deploy to production](#step-4-deploy-to-production)
+- [Questions and Answers](#questions-and-answers)
+  - [It doesn't work! Where can I get help?](#it-doesnt-work-where-can-i-get-help)
+  - [How can I remove the "Next steps" block from my app?](#how-can-i-remove-the-next-steps-block-from-my-app)
+  - [How can I set up Incremental Static Revalidation?](#how-can-i-set-up-incremental-static-revalidation)
+- [Next steps](#next-steps)
 
-Making a Portfolio website from scratch can be a tedious process. This repository solves that problem. How? Well, it is a easy-to-use portfolio template! You can use it by following a few simple instructions given below. Feel free to suggest changes and features too!
+## Project Overview
 
-### Sections Available
+| [Example Studio with preview](https://template-nextjs-clean.sanity.build/studio)                                        |
+| ----------------------------------------------------------------------------------------------------------------------- |
+| ![Sanity Studio](https://user-images.githubusercontent.com/44635000/197511725-b2a2e2e5-287b-41a9-84c6-ec90d37ca480.png) |
 
-✔️ Landing Page - greeting\
-✔️ Work section\
-✔️ Capabilities\
-✔️ Education\
-✔️ About \
-✔️ Projects\
-✔️ Work Experience\
-✔️ Blogs - Custom, Medium and DevTo support\
-✔️ Contact me\
-✔️ Socials
+# Important files and folders
 
-### Built With
-🔧 [NextJS](https://nextjs.org/)\
-🔧 [Chakra UI](https://chakra-ui.com/)
+| File(s)                          | Description                                                                           |
+| -------------------------------- | ------------------------------------------------------------------------------------- |
+| `sanity.config.ts`               | Config file for Sanity Studio                                                         |
+| `sanity.cli.ts`                  | Config file for Sanity CLI                                                            |
+| `/pages/index.tsx`               | Landing page for `/`.                                                                 |
+| `/pages/studio/[[...index]].tsx` | Where Sanity Studio is mounted                                                        |
+| `/pages/api/draft.ts`            | Serverless route for triggering Draft mode                                            |
+| `/sanity/schemas.ts`             | Where Sanity Studio gets its content types from                                       |
+| `/sanity/env.ts`                 | Configuration for the Sanity project and dataset                                      |
+| `/sanity/schemas.ts`             | Where Sanity Studio gets its content types from                                       |
+| `/sanity/lib/client.ts`          | Sanity client configured based on `env.ts`                                            |
+| `/sanity/lib/image.ts`           | Sanity image builder - unused in this template, but is needed to render Sanity images |
+| `tailwind.config.js`             | Tailwind config. Only applies to files listed under `content`                         |
 
-### Demos
-To view a demo, [click here](https://michaelscott-nextjstemp.vercel.app/)\
-To view a live example, [click here](https://asavariambavane.vercel.app/)
+All pages are wrapped in `pages/_document.tsx` and `pages/_app.tsx`.
 
-<!-- GETTING STARTED -->
-## Getting Started
+## Configuration
 
-To get a local copy up and running follow these simple steps.
+### Step 1. Set up the environment
 
-### Prerequisites
-npm - Latest version of npm works the best with this project. Run the following command to install it.
-  ```sh
-  npm -v //checks npm version
-  npm install npm@latest -g //installs latest npm version
-  ```
+Use the Deploy Button below. It will let you deploy the starter using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-sanity-example) as well as connect it to your Sanity Content Lake using [the Sanity Vercel Integration][integration].
 
-### Installation
+[![Deploy with Vercel](https://vercel.com/button)][vercel-deploy]
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/AsavariA/nextjs-portfolio-template.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
+### Step 2. Set up the project locally
 
+[Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) that was created for you on your GitHub account. Once cloned, run the following command from the project's root directory:
 
+```bash
+npx vercel link
+```
 
-<!-- USAGE EXAMPLES -->
-## Usage
-These are instructions to use the project once you have cloned it. Follow them step by step for the best experience. Comments are mentioned in the files as guides.
+Download the environment variables needed to connect Next.js and the Studio to your Sanity project:
 
-### User Info
-Go to the file ***userinfo.js*** inside the ***Constants*** folder. Fill up this file like you are filling up a form.
+```bash
+npx vercel env pull
+```
 
- 1. logoText
- 2. contact - email, phone(leave blank if not willing to use), countrycode
- 3. socials - follow the json format
- 4. greeting - title, subtitle
- 5. capabilities - follow the json format
- 6. about - content, resume link ( can be drive link etc )
- 7. education - follow the json format
- 8. experience - follow the json format
- 9. blogs - if you want this section in your website, set it true, otherwise false. If true, follow the instructions in <a href="#blogs">blog section</a>
- 10. projects - go to  **Constants > projects.js** and follow the json format. Import images as mentioned in the imports.
- 11. headings - you can customise all the headings in the template with this. 
- 12. ctas - you can customise all the ctaTexts in the template with this. 
+This will create a git-ignored `.env` file with environment variables that will be used for local development.
 
-### Blogs
-This instruction set is only applicable if blogs are set to visible. The blogs section provides 3 kinds of support. **Custom blogs**, importing **medium blogs**, or importing **devto blogs**.
- 
- 1. Go to **Constants > blogs.js**  
- 2. You will be able to see 3 different exports. Choose the one you want and comment out the others.
- 3. If your choice is **Custom blogs**, fill in the details as shown in json format.
- 4. If your choice is **Medium blogs**, then uncomment the medium blogs export down below and fill in your **medium username**.
- 5. Now move to **Components > Work.js**.
- 6. You will see three commented out sections each with a useEffect and heading ***MEDIUM BLOGS SUPPORT***
- 7. Uncomment the useEffect in the section you want and comment the other two out.
- 8. You are set to import your medium blogs now!
- 9. Follow the steps from 4 - 8 but with DevTo details if your choice is DevTo blogs.
+### Step 3. Run Next.js locally in development mode
 
-### Setting up Images
-There are only 3 images you need to set up externally. These images have to have a particular name and format and location. 
+```bash
+npm install && npm run dev
+```
 
-<ol>
-    <li>
-      Landing Page Background Image
-      <ul>
-        <li>name - background</li>
-        <li>type - .jpg</li>
-        <li>filename - background.jpg</li>
-        <li>location - root > styles</li>
-      </ul>
-    </li>
-    <li>
-      About Section Background Image
-      <ul>
-        <li>name - about</li>
-        <li>type - .jpg</li>
-        <li>filename - about.jpg</li>
-         <li>location - root > styles</li>
-      </ul>
-    </li>
-    <li>
-      Favicon Image
-      <ul>
-        <li>name - favicon</li>
-        <li>type - .jpg</li>
-        <li>filename - favicon.jpg</li>
-         <li>location - root > public</li>
-      </ul>
-    </li>
-  </ol>
+When you run this development server, the changes you make in your frontend and studio configuration will be applied live using hot reloading.
 
-### Setting up Themes
-Go to the file ***theme.js*** inside the folder ***Constants***.
-You can change the colors as per your wish or leave the theme as it is. Make sure to keep all the fields intact because skipping any field can lead to errors.
+Your blog should be up and running on [http://localhost:3000][localhost-3000]! You can create and edit content on [http://localhost:3000/studio][localhost-3000-studio].
 
+### Step 4. Deploy to production
 
-### Setting up Contact Form
-For this step, you will need to create a **new google account** which will send you the form data. Need for a new account - well, it is advisable to use this new account only for this purpose so as to **prevent giving this template access** to your personal emails ( which are on your original email account ). \
+To deploy your changes to production you use `git`:
 
-Once you have made your account, make sure you have selected that account and go to [this link](https://myaccount.google.com/lesssecureapps). **Allow** the access.\
+```bash
+git add .
+git commit
+git push
+```
 
-Now go to the **test.env** file. Rename this file to only **.env**\
-*If your project is on github, please make sure to exclude this file from github ( put it in gitignore ) since it contains private / environmental variables.*
+Alternatively, you can deploy without a `git` hosting provider using the Vercel CLI:
 
-  ```
-//type in all data without the < and > signs.
+```bash
+npx vercel --prod
+```
 
-  PASSWORD = <sender-mail-password> //password of newly created account
-SENDER = <sender-mail> //email address of newly created account
-TO = <reciever-mail> //email address of your personal account (which will be reciever of data in this case)
-  ```
+## Questions and Answers
 
-**Contact form is now set up!**
+### It doesn't work! Where can I get help?
 
-### Deployment
-To check if your website is running the way you wish, run the following command to start it locally on localhost:3000\
-`npm run dev`
+In case of any issues or questions, you can post:
 
-To deploy your portfolio, you can use any of the following ways.
+- [GitHub Discussions for Next.js][vercel-github]
+- [Sanity's GitHub Discussions][sanity-github]
+- [Sanity's Community Slack][sanity-community]
 
- - Vercel - this is the most advisable platform to deploy your nextjs applications because they are the building company and provide the best support for all nextjs websites.
- - Netlify - Use the exclusive nextjs support on netlify to deploy your site.
- 
-Both of these can be used directly through github and therefore any new changes and updates to your project repository will be updated immediately in the deployment. There are other ways and platforms to deploy your portfolio too.
+### How can I remove the "Next steps" block from my app?
 
-<!-- CONTRIBUTING -->
-## Contributing
+You can remove it by deleting `intro-template`, and removing `IntroTemplate` usage from `pages/index.tsx`
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+## Next steps
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- [Setup live preview](./docs/studio-preview.md)
+- [Join our Slack community to ask questions and get help][sanity-community]
+- [How to edit my content structure?][sanity-schema-types]
+- [How to query content?][sanity-groq]
+- [What is content modelling?][sanity-content-modelling]
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License.
-
-
+[vercel-deploy]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsanity-io%2Fsanity-template-nextjs-clean&repository-name=nextjs-sanity-clean&project-name=nextjs-sanity-clean&demo-title=Clean+Sanity+%2B+Next.js+app&demo-image=https%3A%2F%2Fuser-images.githubusercontent.com%2F835514%2F212771865-7a603a28-0416-45e8-84d3-2aafe02b0c7f.png&demo-description=A+clean+example+of+Next.js+with+embedded+Sanity+ready+for+recomposition.&demo-url=https%3A%2F%2Ftemplate-nextjs-clean.sanity.build&integration-ids=oac_hb2LITYajhRQ0i4QznmKH7gx&external-id=nextjs%3Btemplate%3Dnextjs-sanity-clean
+[integration]: https://www.sanity.io/docs/vercel-integration?utm_source=github.com&utm_medium=referral&utm_campaign=nextjs-v3vercelstarter
+[`.env.local.example`]: .env.local.example
+[nextjs]: https://github.com/vercel/next.js
+[sanity-create]: https://www.sanity.io/get-started/create-project?utm_source=github.com&utm_medium=referral&utm_campaign=nextjs-v3vercelstarter
+[sanity-deployment]: https://www.sanity.io/docs/deployment?utm_source=github.com&utm_medium=referral&utm_campaign=nextjs-v3vercelstarter
+[sanity-homepage]: https://www.sanity.io?utm_source=github.com&utm_medium=referral&utm_campaign=nextjs-v3vercelstarter
+[sanity-community]: https://slack.sanity.io/
+[sanity-schema-types]: https://www.sanity.io/docs/schema-types?utm_source=github.com&utm_medium=referral&utm_campaign=nextjs-v3vercelstarter
+[sanity-github]: https://github.com/sanity-io/sanity/discussions
+[sanity-groq]: https://www.sanity.io/docs/groq?utm_source=github.com&utm_medium=referral&utm_campaign=nextjs-v3vercelstarter
+[sanity-content-modelling]: https://www.sanity.io/docs/content-modelling?utm_source=github.com&utm_medium=referral&utm_campaign=nextjs-v3vercelstarter
+[sanity-webhooks]: https://www.sanity.io/docs/webhooks?utm_source=github.com&utm_medium=referral&utm_campaign=nextjs-v3vercelstarter
+[localhost-3000]: http://localhost:3000
+[localhost-3000-studio]: http://localhost:3000/studio
+[vercel-isr]: https://nextjs.org/blog/next-12-1#on-demand-incremental-static-regeneration-beta
+[vercel]: https://vercel.com
+[vercel-github]: https://github.com/vercel/next.js/discussions
+[app-dir]: https://beta.nextjs.org/docs/routing/fundamentals#the-app-directory
