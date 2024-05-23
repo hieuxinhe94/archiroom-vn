@@ -21,7 +21,7 @@ import google from '../components/background-images/google_login.svg';
 import instagram from '../components/background-images/instagram_login.svg';
 import { authOptions } from "../pages/api/auth/[...nextauth]"
 import Layout from "./Layout";
-import { getCurrentUserByBrowser, putCachingUserToBrowser } from "./try-on-plugin";
+ 
 import { vtoService } from "~/services/VTOService";
 
 export class LoginResultViewModel {
@@ -45,7 +45,7 @@ export  default  function Authenticate( props)  {
   const [email, setEmail] = useState<string>();
   const [name, setName] = useState<string>();
   const [username, setUsername] = useState<string>();
-  const [currentUser, setCurrentUser] = useState<UserEntity>(getCurrentUserByBrowser())
+  const [currentUser, setCurrentUser] = useState<UserEntity>()
   const [password, setPassword] = useState<string>("");
   const [rePassword, setRePassword] = useState<string>("");
   const [message, setMessage] = useState<string>();

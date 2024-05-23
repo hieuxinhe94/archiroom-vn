@@ -8,8 +8,7 @@ import React, { useEffect, useState } from "react";
 import closeIcon from '../components/background-images/closeIcon.svg';
 import facebook from '../components/background-images/facebook-login.svg';
 import google from '../components/background-images/google_login.svg';
-import instagram from '../components/background-images/instagram_login.svg';
-import { getCurrentUserByBrowser, putCachingUserToBrowser } from "./try-on-plugin";
+import instagram from '../components/background-images/instagram_login.svg'; 
 
 enum BusinessType {
   INDIVIDUAL,
@@ -49,7 +48,7 @@ export default function LoginApp({status = false, ssoproviders=[],  onCloseEvent
   const { isOpen, onOpen, onOpenChange } = useDisclosure({ isOpen: status, onClose: onCloseEvent });
 
 
-  const [currentUser, setCurrentUser] = useState<UserEntity>(getCurrentUserByBrowser())
+  const [currentUser, setCurrentUser] = useState<UserEntity>()
   const [email, setEmail] = useState<string>(currentUser?.email ?? "");
   const [name, setName] = useState<string>(currentUser?.name ?? "");
   const [message, setMessage] = useState<string>();
@@ -75,10 +74,10 @@ export default function LoginApp({status = false, ssoproviders=[],  onCloseEvent
         currentUser.mainBodyPhoto = data.bodyPhotoSrc;
         localStorage.setItem("access_token", res.token)
         localStorage.setItem("user)id", data._id);
-        currentUser.token = res.token;
+       
         currentUser.id = data._id;
         setCurrentUser(currentUser)
-        putCachingUserToBrowser(currentUser);
+        
 
         setTimeout(() => {
           onSuccessEvent(currentUser);

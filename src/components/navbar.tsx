@@ -9,15 +9,8 @@ import React, { useState } from "react";
 import { Fragment } from "react";
 
 import { urlForImage } from "~/lib/sanity.image"
-import { getCurrentUserByBrowser } from "~/pages/try-on-plugin";
 
 export default function Navbar({ settings, menu, isHomepage = true, launchAppEvent, client = undefined, isLogin = false, hasSearch = false }) {
-
-
-  const [currentUser, setCurrentUser] = useState<UserEntity>(getCurrentUserByBrowser())
-
-
-
   return (
     <div>
 
