@@ -16,6 +16,7 @@ import polygon from "../assets/background-images/polygon.svg"
 import polygonfooter from "../assets/background-images/polygon-footer.svg"
 import purpleGradient from "../assets/background-images/purple-gradient.svg"
 import vector from "../assets/background-images/vector.svg"
+import { MARKET_CONFIG_DATA } from '~/components/data';
 
 export async function getStaticProps() {
   const homeData = await getHomepageData()
@@ -95,7 +96,7 @@ export default function Contact(props) {
             <Image priority={true} src={purpleGradient} width={200} height={200} className='absolute top-[-100px] right-[70px]' alt={''} />
             <Image priority={true} src={polygon} width={900} height={900} className='absolute top-[-100px] right-[200px]' alt={''} />
           </div>
-          <Navbar menu={[]} settings={props.settings} launchAppEvent={() => { }} />
+          <Navbar heroSliderSetting={MARKET_CONFIG_DATA} key={''} settings={null} />
         </Container>
       </section>
 
@@ -113,7 +114,7 @@ export default function Contact(props) {
 
         <div className="grid my-10 md:grid-cols-2 text-white z-50">
           <div className="my-10">
-            <h2 className="text-2xl font-semibold dark:text-white">SIMPLIFY TECH.INC</h2>
+            <h2 className="text-2xl font-semibold dark:text-white">SIMPLIFY AI.INC</h2>
             <p className="max-w-sm mt-5 text-justify">
 
               Chúng tôi hiểu rằng Tryonhub.ai còn nhiều điều phải làm, nhiều bước phải tối ưu

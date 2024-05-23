@@ -10,6 +10,8 @@ import product from "next-seo/lib/jsonld/product";
 import VideoPlayer from "~/components/marketplace/video-player";
 import { useState } from "react";
 import { MARKET_CONFIG_DATA } from "~/components/data";
+import { NextSeo } from "next-seo";
+import Navbar from "~/components/navbar";
 
 export default function Tools(props) {
 
@@ -20,116 +22,59 @@ export default function Tools(props) {
     <>
 
       <Head>
-        <title>Trang chủ | SIMPLIFY.AI</title>
+        <title>Generative AI Vietnam | SIMPLIFY.AI</title>
         <link
           rel="canonical"
-          href={"www.tryonhub.ai/tools"}
+          href={"https://www.simplifydx.com"}
           key="canonical"
         />
+
+        <meta name="description" content='ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam' key="desc" />
+        <meta property="og:title" content="Chợ ứng dụng Generative AI dành cho doanh nghiệp Việt Nam - SIMPLIFY AI INC" />
         <meta
-          name="description"
-          content={"Ứng dụng Generative AI dành cho doanh nghiệp Việt Nam - SIMPLIFY TECH INC"}
+          property="og:description"
+          content="ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam"
+        />
+        <meta
+          property="og:image"
+          content="https://simplifydx.com/services/logo.png"
         />
         <link
           rel="stylesheet"
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
         />
-
       </Head>
 
+      <NextSeo
+        title="Chợ ứng dụng Generative AI dành cho doanh nghiệp Việt Nam - SIMPLIFY AI INC"
+        description='ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam'
+        canonical="https://simplifydx.com"
+        openGraph={{
+          url: 'https://simplifydx.com',
+          title: "Chợ ứng dụng Generative AI dành cho doanh nghiệp Việt Nam - SIMPLIFY AI INC",
+          description: 'ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam, AI thử mặc thời trang, Bikini try on, Try on dress, wedding dress try on, try before you buy, try on clothes at home, try on clothes online',
+          images: [
+            {
+              url: 'https://simplifydx.com/services/logo.png',
+              width: 800,
+              height: 600,
+              alt: 'Chợ ứng dụng Generative AI dành cho doanh nghiệp Việt Nam',
+              type: 'image/jpeg',
+            },
 
-      <header className="py-5" style={{ backgroundColor: "whitesmoke" }}>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <nav className="relative z-50 flex justify-between">
-            <div className="flex items-center text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900 font-medium">
-              <a aria-label="Home" href="#" className="py-1 ">
-                <img src={heroSliderSetting.header.logo} height={65} width={65} />
-              </a>
-              <a aria-label="Home" className="flex pl-4 py-1" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="hidden lg:block w-5 h-5 ">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
-                </svg>
-                <span className="pl-2">SIMPLIFY TECH</span>
-
-              </a>
-              <div className="hidden md:flex md:gap-x-6 pl-24">
-                {heroSliderSetting.header.navigators.map((item, index) => (<a key={index}
-                  className="inline-block rounded-lg px-2 py-1 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                  href={item.href}
-                >
-                  {item.title}
-                </a>))}
+          ],
+          siteName: 'simplifydx.com',
+        }}
+        twitter={{
+          handle: '@handle',
+          site: '@site',
+          cardType: 'summary_large_image',
+        }}
+      />
 
 
-              </div>
-            </div>
-            <div className="flex items-center gap-x-5 md:gap-x-8">
-              <div className="hidden md:block">
-                <a
-                  className="inline-block rounded-lg px-2 py-1 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                  href="/authenticate"
-                >
-                  Đăng ký
-                </a>
-              </div>
-              <a
-                className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gradient-to-tr to-emerald-600 from-purple-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600"
-                color="blue"
-
-                href="/authenticate"
-              >
-                <span>
-                  Đăng ký ngay<span className="hidden lg:inline"> hôm nay</span>
-                </span>
-              </a>
-              <div className="-mr-1 md:hidden">
-                <div >
-                  <button
-                    className="relative z-10 flex h-8 w-8 items-center justify-center ui-not-focus-visible:outline-none"
-                    aria-label="Toggle Navigation"
-                    type="button"
-                    aria-expanded="false"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      className="h-3.5 w-3.5 overflow-visible stroke-slate-700"
-                      fill="none"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                    >
-                      <path
-                        d="M0 1H14M0 7H14M0 13H14"
-                        className="origin-center transition"
-                      />
-                      <path
-                        d="M2 2L12 12M12 2L2 12"
-                        className="origin-center transition scale-90 opacity-0"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <div
-                  style={{
-                    position: "fixed",
-                    top: 1,
-                    left: 1,
-                    width: 1,
-                    height: 0,
-                    padding: 0,
-                    margin: "-1px",
-                    overflow: "hidden",
-                    clip: "rect(0, 0, 0, 0)",
-                    whiteSpace: "nowrap",
-                    borderWidth: 0,
-                    display: "none"
-                  }}
-                />
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
+      <Navbar heroSliderSetting={heroSliderSetting} key={''} settings={null} />
 
       <main style={{
         backgroundColor: "whitesmoke", color: "whitesmoke"
@@ -518,7 +463,7 @@ export default function Tools(props) {
 
               {
                 heroSliderSetting.allTools.map((item, index) => (
-                  <AIArticleItem key={index} product={item}  />
+                  <AIArticleItem key={index} product={item} />
                 ))
               }
             </div>

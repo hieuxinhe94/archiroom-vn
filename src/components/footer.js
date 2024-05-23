@@ -95,7 +95,7 @@ export default function Footer(props) {
         </div>
       </div>
       <div className="relative z-10 copy-right socials border-t border-white border-opacity-30 mt-[40px] md:mt-[70px] flex justify-between items-center flex-col-reverse lg:flex-row">
-        <p className="text-[14px] md:text-base text-white py-[20px]">Copyright © {new Date().getFullYear()} SIMPLIFY TECH JOIN STOCK. All
+        <p className="text-[14px] md:text-base text-white py-[20px]">Copyright © {new Date().getFullYear()} SIMPLIFY AI JOIN STOCK. All
         rights reserved.</p>
         <div className="socials flex mt-[20px] lg:mt-0">
           {

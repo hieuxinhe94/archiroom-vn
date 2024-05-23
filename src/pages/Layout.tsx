@@ -23,7 +23,7 @@ let structuredData = {
     "@type": "Claim",
     author: {
       "@type": "Organization",
-      name: "Simplify Tech.Inc",
+      name: "SIMPLIFY AI.Inc",
     },
     datePublished: "2023-06-20",
     appearance: {

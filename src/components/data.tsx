@@ -173,7 +173,7 @@ export const MARKET_CONFIG_DATA = {
         ]
     },
     footer: {
-        brandName: 'SIMPLIFY TECH INC',
+        brandName: 'SIMPLIFY AI INC',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique',
         logo: '/logo-s.png',
         shortLinks: [
