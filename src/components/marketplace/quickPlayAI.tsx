@@ -149,7 +149,6 @@ export default function QuickPlayAI({ config, isOpenDetail, onClose }) {
                       Xử lý
                     </a>
                   </ModalFooter>
-
                 </>
               )}
             </ModalContent>
