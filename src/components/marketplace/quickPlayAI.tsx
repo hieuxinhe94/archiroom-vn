@@ -1,75 +1,17 @@
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Progress, Skeleton } from '@nextui-org/react'
 import Link from 'next/link'
 import React, { useState } from 'react';
-import VideoPlayer from './video-player';
-import QuickPlayAI from './quickPlayAI';
 
-export default function AIArticleItem({ product }) {
-
-  const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false);
-  const [isPlayVideo, setIsPlayVideo] = useState<boolean>(false);
-  const [isPlayTryIt, setIsPlayTryIt] = useState<boolean>(false);
+export default function QuickPlayAI({ config, isOpenDetail, onClose }) {
   return (
-    <div onClick={() => (setIsOpenDetail(!isOpenDetail))} key={product} className="relative  hover:opacity-100 bg-slate-800 rounded-xl  text-white">
-
-      <div
-        style={{
-          backgroundImage: "url('" + product.image + "')",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }}
-
-        className="rounded-lg h-[260px] w-full">
-        <div className="w-11 rounded-lg bg-slate-500 p-1">
-          <svg aria-hidden="true" className="h-9 w-9" fill="none">
-            <defs>
-              <linearGradient
-                id=":r25:"
-                x1="11.5"
-                y1={18}
-                x2={36}
-                y2="15.5"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset=".194" stopColor="#fff" />
-                <stop offset={1} stopColor="#6692F1" />
-              </linearGradient>
-            </defs>
-            <path
-              d="m30 15-4 5-4-11-4 18-4-11-4 7-4-5"
-              stroke="url(#:r25:)"
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-      </div>
-      <h3 className="mt-2 text-sm font-medium text-white px-4">
-        <button
-          className="ui-not-focus-visible:outline-none"
-          role="tab"
-          type="button"
-          aria-selected="false"
-          tabIndex={-1}
-        >
-          <span className="absolute inset-0 " />
-          {product.title}
-        </button>
-      </h3>
-
-      <p className="hidden lg:block my-4 text-sm text-white px-4">
-        {product.description}
-      </p>
-
+    <div className="relative  hover:opacity-100 bg-slate-800 rounded-xl  text-white">
       {
         isOpenDetail && (<>
-          <Modal size="5xl" className='overflow-y-auto' isOpen={true} onOpenChange={() => { console.log('aaaaaaaaaaaa') }} isDismissable={false} isKeyboardDismissDisabled={true} onClose={() => { setIsOpenDetail(false) }}>
+          <Modal size="5xl" isOpen={true} onOpenChange={() => { console.log('aaaaaaaaaaaa') }} isDismissable={false} isKeyboardDismissDisabled={true} onClose={() => { onClose(false) }}>
             <ModalContent>
               {(onClose) => (
                 <>
-                  <ModalHeader className="flex flex-col gap-1">Giới thiệu {product.title}</ModalHeader>
+                  <ModalHeader className="flex flex-col gap-1">Giới thiệu {config.title}</ModalHeader>
                   <ModalBody>
                     <div className='w-full block lg:flex h-auto overflow-y-scroll'>
                       <div className="hidden lg:block w-full lg:w-1/2 lg:col-span-4 p-2 lg:p-12">
@@ -83,8 +25,8 @@ export default function AIArticleItem({ product }) {
                           <a
                             className="w-1/2 cursor-pointer shadow-small inline-flex ring-1 items-center justify-center rounded-full mx-2 py-2 px-4 text-sm focus:outline-none ring-slate-200 text-slate-700 hover:text-slate-900 hover:ring-slate-300 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300"
                             color="slate"
-                            // href={product.video}
-                            onClick={() => setIsPlayVideo(true)}
+                          // href={config.video}
+
                           >
                             <svg
                               aria-hidden="true"
@@ -180,12 +122,12 @@ export default function AIArticleItem({ product }) {
                       <div className="w-full lg:w-1/2 lg:col-span-4 p-2 lg:px-4">
                         <span className='font-bold'>Mô tả:</span>
                         <div className="flex w-full flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
-                          {product.description}
+                          {config.description}
                         </div>
                         <div
                           className='rounded-xl my-6'
                           style={{
-                            backgroundImage: "url('" + product.image + "')",
+                            backgroundImage: "url('" + config.image + "')",
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "cover",
                             backgroundPosition: "center",
@@ -196,27 +138,26 @@ export default function AIArticleItem({ product }) {
                     </div>
                   </ModalBody>
                   <ModalFooter className='pb-6'>
-                    <Button color="danger" variant="light" onClick={() => {setIsOpenDetail(false); }}>
+                    <Button color="danger" variant="light" onClick={() => { onClose(); }}>
                       Close
                     </Button>
                     <a className="flex cursor-pointer group shadow-small inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900"
                       color="slate"
 
-                      href={product.tryLink}
+                      href={config.tryLink}
                     >
-                      Dùng thử ngay bây giờ
+                      Xử lý
                     </a>
                   </ModalFooter>
+
                 </>
               )}
             </ModalContent>
           </Modal>
         </>)
       }
-
-      <VideoPlayer url={product.video} isOpenDetail={isPlayVideo} onClose={() => setIsPlayVideo(!isPlayVideo)} />
-      <QuickPlayAI config={product}  isOpenDetail={isPlayTryIt} onClose={() => setIsPlayTryIt(!isPlayTryIt)}/>
     </div >
+
 
   )
 }

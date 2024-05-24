@@ -1,12 +1,9 @@
 import { Tabs, Tab } from "@nextui-org/react";
-import { Card } from "@stripe/stripe-js";
 import Head from "next/head";
-import Image from "next/image";
 
 import Slider from "react-slick";
 
 import AIArticleItem from "~/components/marketplace/ai-article-item";
-import product from "next-seo/lib/jsonld/product";
 import VideoPlayer from "~/components/marketplace/video-player";
 import { useState } from "react";
 import { MARKET_CONFIG_DATA } from "~/components/data";
@@ -30,14 +27,14 @@ export default function Tools(props) {
         />
 
         <meta name="description" content='ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam' key="desc" />
-        <meta property="og:title" content="Chợ ứng dụng Generative AI dành cho doanh nghiệp Việt Nam - SIMPLIFY AI INC" />
+        <meta property="og:title" content="Kho ứng dụng Generative AI dành cho doanh nghiệp Việt Nam - SIMPLIFY AI INC" />
         <meta
           property="og:description"
           content="ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam"
         />
         <meta
           property="og:image"
-          content="https://simplifydx.com/services/logo.png"
+          content="https://simplifydx.com/logo-s2.png"
         />
         <link
           rel="stylesheet"
@@ -47,7 +44,7 @@ export default function Tools(props) {
       </Head>
 
       <NextSeo
-        title="Chợ ứng dụng Generative AI dành cho doanh nghiệp Việt Nam - SIMPLIFY AI INC"
+        title="Kho ứng dụng Generative AI dành cho doanh nghiệp Việt Nam - SIMPLIFY AI INC"
         description='ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam'
         canonical="https://simplifydx.com"
         openGraph={{
@@ -56,7 +53,7 @@ export default function Tools(props) {
           description: 'ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam, AI thử mặc thời trang, Bikini try on, Try on dress, wedding dress try on, try before you buy, try on clothes at home, try on clothes online',
           images: [
             {
-              url: 'https://simplifydx.com/services/logo.png',
+              url: 'https://simplifydx.com/logo-s2.png',
               width: 800,
               height: 600,
               alt: 'Chợ ứng dụng Generative AI dành cho doanh nghiệp Việt Nam',
@@ -435,7 +432,7 @@ export default function Tools(props) {
                 Kho ứng dụng
               </span>
             </h2>
-            <div className="algin-center flex w-full flex-col h-[48px] mt-8 md:overflow-scroll">
+            <div className="algin-center flex w-full flex-col h-[48px] mt-8 md:overflow-scroll lg:overflow-hidden">
               <div className=" ">
                 <Tabs
                   aria-label="Options"

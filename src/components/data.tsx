@@ -1,4 +1,4 @@
- export const autoPlaySettings = {
+export const autoPlaySettings = {
     dots: true,
     infinite: true,
     slidesToShow: 3,
@@ -96,7 +96,7 @@ export const MARKET_CONFIG_DATA = {
         slidesToScroll: 1,
         vertical: true,
         fade: true,
-        arrows:false,
+        arrows: false,
         autoplay: true,
         autoplaySpeed: 1000,
         verticalSwiping: true,
@@ -111,20 +111,28 @@ export const MARKET_CONFIG_DATA = {
     previewData: [
         {
             id: 1,
+            title: "Phục hồi/Làm nét/Xóa nền hình ảnh",
+            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            image: './services/upscale-image.jpg',
+            tryLink: 'https://www.tryonhub.ai'
+        },
+
+        {
+            id: 2,
             title: "Người mẫu AI tạo sinh",
             description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
             image: './services/ai-character.png',
             tryLink: 'https://www.tryonhub.ai'
         },
         {
-            id: 2,
+            id: 3,
             title: "Tạo hình kiến trúc xây dựng",
             description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
             image: './services/architecture-2.png',
             tryLink: 'https://www.tryonhub.ai'
         },
         {
-            id: 3,
+            id: 4,
             title: "GenAI mặc thử quần áo",
             description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
             image: './services/virtual-try-on.jpg',
@@ -174,7 +182,7 @@ export const MARKET_CONFIG_DATA = {
     },
     footer: {
         brandName: 'SIMPLIFY AI INC',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique',
+        description: 'Kho ứng dụng Generative AI dành cho doanh nghiệp Việt Nam',
         logo: '/logo-s.png',
         shortLinks: [
             {
