@@ -34,7 +34,7 @@ export default function Tools(props) {
         />
         <meta
           property="og:image"
-          content="https://simplifydx.com/logo-s2.png"
+          content="https://simplifydx.com/logo-s.png"
         />
         <link
           rel="stylesheet"
@@ -53,7 +53,7 @@ export default function Tools(props) {
           description: 'ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam, AI thử mặc thời trang, Bikini try on, Try on dress, wedding dress try on, try before you buy, try on clothes at home, try on clothes online',
           images: [
             {
-              url: 'https://simplifydx.com/logo-s2.png',
+              url: 'https://simplifydx.com/logo-s.png',
               width: 800,
               height: 600,
               alt: 'Chợ ứng dụng Generative AI dành cho doanh nghiệp Việt Nam',

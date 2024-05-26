@@ -70,6 +70,7 @@ export const MARKET_CONFIG_DATA = {
         {
             id: 1,
             title: "Thương mại điện tử",
+            code: "",
             description: "Mua sắm trực tuyến, chăm sóc khách hàng,...",
             image: './services/ai-character.png',
             tryLink: 'https://www.tryonhub.ai'
@@ -77,6 +78,7 @@ export const MARKET_CONFIG_DATA = {
         {
             id: 2,
             title: "Truyền thông & Marketing",
+            code: "",
             description: "Sáng tạo nội dung, nhân vật AI, videos.",
             image: './services/architecture-2.png',
             tryLink: 'https://www.tryonhub.ai'
@@ -84,6 +86,7 @@ export const MARKET_CONFIG_DATA = {
         {
             id: 2,
             title: "Kiến trúc & Xây dựng",
+            code: "",
             description: "Sáng tạo nội dung, nhân vật AI, videos.",
             image: './services/virtual-try-on.jpg',
             tryLink: 'https://www.tryonhub.ai'
@@ -111,6 +114,7 @@ export const MARKET_CONFIG_DATA = {
     previewData: [
         {
             id: 1,
+            code: "ai-image-upscale",
             title: "Phục hồi/Làm nét/Xóa nền hình ảnh",
             description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
             image: './services/upscale-image.jpg',
@@ -119,13 +123,15 @@ export const MARKET_CONFIG_DATA = {
 
         {
             id: 2,
-            title: "Người mẫu AI tạo sinh",
-            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
-            image: './services/ai-character.png',
-            tryLink: 'https://www.tryonhub.ai'
+            code: "ai-chatbot",
+            title: "ChatGPT tùy chỉnh (GPT-4o)",
+            description: "Trợ lý ảo trong lĩnh vực cụ thể, đào tạo thêm bằng thông tin bổ sung từ dữ liệu nội bộ. Vd: Tuyển dụng, Chăm sóc KH, Đào tạo",
+            image: './services/chatbot-ai.png',
+            tryLink: ''
         },
         {
             id: 3,
+            code: "ai-architecture",
             title: "Tạo hình kiến trúc xây dựng",
             description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
             image: './services/architecture-2.png',
@@ -134,6 +140,7 @@ export const MARKET_CONFIG_DATA = {
         {
             id: 4,
             title: "GenAI mặc thử quần áo",
+            code: "tryonhub",
             description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
             image: './services/virtual-try-on.jpg',
             tryLink: 'https://www.tryonhub.ai'

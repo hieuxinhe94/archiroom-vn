@@ -1,0 +1,22 @@
+<svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 1000003206">
+<circle id="Ellipse 141" cx="38.7425" cy="38.7425" r="37.9828" fill="url(#paint0_linear_459_6584)" fill-opacity="0.1" stroke="url(#paint1_linear_459_6584)" strokeWidth="1.51931"/>
+<g id="Group 1000003203">
+<path id="Vector" d="M44.3208 26.9218H48.618V20.878L46.0232 20.627C44.8555 20.5146 43.6812 20.4832 42.5096 20.5342C40.3105 20.6296 38.346 21.5812 36.9294 23.0568C35.514 24.5325 34.6464 26.5322 34.6464 28.7268V34.4765H28.8669V41.247H34.6464V56.9198H41.7718V41.247H47.5512L48.449 34.4765H41.7718V29.4627C41.7718 28.0589 42.9133 26.9218 44.3208 26.9218Z" fill="url(#paint2_linear_459_6584)"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_459_6584" x1="0" y1="77.485" x2="77.485" y2="77.485" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FA00FF"/>
+<stop offset="1" stop-color="#0094FF"/>
+</linearGradient>
+<linearGradient id="paint1_linear_459_6584" x1="0" y1="77.485" x2="77.485" y2="77.485" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FA00FF"/>
+<stop offset="1" stop-color="#0094FF"/>
+</linearGradient>
+<linearGradient id="paint2_linear_459_6584" x1="28.8669" y1="56.9198" x2="48.618" y2="56.9198" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FA00FF"/>
+<stop offset="1" stop-color="#0094FF"/>
+</linearGradient>
+</defs>
+</svg>

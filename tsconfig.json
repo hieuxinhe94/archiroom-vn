@@ -22,8 +22,17 @@
     ],
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+    "strictNullChecks": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/product/[slug].ts", "src/pages/paymentgate.jsx", "src/pages/paymentgate.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/pages/product/[slug].ts",
+    "src/pages/paymentgate.jsx",
+    "src/pages/paymentgate.js"
+  ],
   "exclude": ["node_modules"]
 }
