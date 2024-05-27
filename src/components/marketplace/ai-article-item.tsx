@@ -68,7 +68,7 @@ export default function AIArticleItem({ product }) {
       </div>
       {
         isOpenDetail && (<>
-          <Modal size="5xl" className='overflow-y-auto' isOpen={true}
+          <Modal size={(product.fullscreen && isPlayTryIt) ? "full" : "5xl"} className='overflow-y-auto ' isOpen={true}
             onOpenChange={() => { console.log('aaaaaaaaaaaa') }}
             isDismissable={false}
             isKeyboardDismissDisabled={false}
@@ -77,22 +77,24 @@ export default function AIArticleItem({ product }) {
             <ModalContent>
               {(onClose) => (
                 <>
-                  <ModalHeader className="flex flex-col gap-1">Giới thiệu {product.title}</ModalHeader>
                   {
-                    isPlayTryIt ? (<QuickPlayAI  config={product} onCloseEvent={() => {setIsPlayTryIt(!isPlayTryIt)}} />) : (<IntroduceModal product={product} />)
+                    isPlayTryIt ? (<QuickPlayAI config={product} onCloseEvent={() => { setIsPlayTryIt(!isPlayTryIt) }} />) : (<IntroduceModal product={product} />)
+                  }
+                  {
+                    !(product.fullscreen && isPlayTryIt) && (
+                      <ModalFooter className='pb-6'>
+                        <Button color="danger" variant="light" onClick={() => { setIsOpenDetail(false); setIsPlayTryIt(false); }}>
+                          Đóng cửa sổ
+                        </Button>
+                        {!isPlayTryIt && (<Button className="flex cursor-pointer group shadow-small inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900"
+                          onClick={() => { setIsPlayTryIt(!isPlayTryIt); }}
+                        >
+                          Dùng thử ngay bây giờ
+                        </Button>)}
+
+                      </ModalFooter>)
                   }
 
-                  <ModalFooter className='pb-6'>
-                    <Button color="danger" variant="light" onClick={() => { setIsOpenDetail(false); setIsPlayTryIt(false); }}>
-                      Đóng cửa sổ
-                    </Button>
-                    {!isPlayTryIt && (<Button className="flex cursor-pointer group shadow-small inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900"
-                      onClick={() => { setIsPlayTryIt(!isPlayTryIt); }}
-                    >
-                      Dùng thử ngay bây giờ
-                    </Button>)}
-
-                  </ModalFooter>
                 </>
               )}
             </ModalContent>
@@ -111,7 +113,11 @@ export default function AIArticleItem({ product }) {
 export function IntroduceModal({ product }) {
   return (<ModalBody>
     <div className='w-full block lg:flex h-auto overflow-y-scroll'>
+
       <div className="hidden lg:block w-full lg:w-1/2 lg:col-span-4 p-2 lg:p-12">
+        <h1 className='py-1 font-bold text-xl'>{product.title}</h1>
+
+
         <div className="flex  bg-content1   mb-4">
           <a className="w-1/2 flex group shadow-small inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900"
             color="slate"
@@ -187,6 +193,7 @@ export function IntroduceModal({ product }) {
 
             <div className="mt-4 flex w-full flex-col gap-4">
               <button
+                disabled={true}
                 className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-medium px-4 min-w-20 h-10 text-small gap-2 rounded-full w-full [&>svg]:max-w-[theme(spacing.8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none bg-transparent border-default text-foreground data-[hover=true]:opacity-hover"
                 type="button"
               >
@@ -216,7 +223,7 @@ export function IntroduceModal({ product }) {
 
 
       </div>
-      <div className="w-full lg:w-1/2 lg:col-span-4 p-2 lg:px-4">
+      <div className="w-full lg:w-1/2 lg:col-span-4 p-2 lg:px-4 lg:p-12">
         <span className='font-bold'>Mô tả:</span>
         <div className="flex w-full flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
           {product.description}

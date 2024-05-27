@@ -132,6 +132,7 @@ export const MARKET_CONFIG_DATA = {
         {
             id: 3,
             code: "ai-architecture",
+            fullscreen: true,
             title: "Tạo hình kiến trúc xây dựng",
             description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
             image: './services/architecture-2.png',

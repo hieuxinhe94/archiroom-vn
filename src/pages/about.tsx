@@ -18,22 +18,7 @@ import purpleGradient from "../assets/background-images/purple-gradient.svg"
 import vector from "../assets/background-images/vector.svg"
 import { MARKET_CONFIG_DATA } from '~/components/data';
 
-export async function getStaticProps() {
-  const homeData = await getHomepageData()
-  return {
-    props: {
-      featureBlock: homeData.featureBlock.length > 0 ? homeData.featureBlock[0] : null,
-      howitworks: homeData.howItWorksBlock.length > 0 ? homeData.howItWorksBlock[0] : null,
-      introInfo: homeData.intro.length > 0 ? homeData.intro[0] : null,
-      partners: homeData.partners,
-      twoColumns: homeData.twoColumnsBlocks,
-      settings: homeData.settings,
-      pricing: homeData.pricingBlock.length > 0 ? homeData.pricingBlock[0] : null,
-      uses: homeData.howToUseBlock.length > 0 ? homeData.howToUseBlock[0] : null,
-      testimonials: homeData.testimonialBlock.length > 0 ? homeData.testimonialBlock[0] : null
-    }
-  }
-}
+ 
 
 export default function Contact(props) {
   const {
@@ -174,7 +159,7 @@ export default function Contact(props) {
                     </label>
                     <input
                       type="text"
-                      name="name"
+                   
                       id="name"
                       {...register("name", {
                         required: "Nhập thông tin",
@@ -202,7 +187,7 @@ export default function Contact(props) {
                     </label>
                     <input
                       type="email"
-                      name="email"
+                     
                       id="email"
                       {...register("email", {
                         required: "Nhập thông tin",
@@ -230,7 +215,7 @@ export default function Contact(props) {
                     </label>
                     <input
                       type="tel"
-                      name="phone"
+                     
                       id="phone"
                       {...register("phone", {
                         required: "Nhập thông tin",
@@ -258,7 +243,7 @@ export default function Contact(props) {
                     </label>
                     <input
                       type="text"
-                      name="company"
+              
                       id="company"
                       {...register("company", {
                         required: "Nhập thông tin",
@@ -279,7 +264,7 @@ export default function Contact(props) {
                       Nội dung liên hệ?
                     </label>
                     <textarea
-                      name="message"
+                      
                       id="message"
                       {...register("message", {
                         required: "Nhập thông điệp",
