@@ -150,31 +150,37 @@ export const MARKET_CONFIG_DATA = {
     allTools: [
         {
             id: 1,
-            title: "Người mẫu AI tạo sinh",
+            code: "ai-image-upscale",
+            title: "Phục hồi/Làm nét/Xóa nền hình ảnh",
             description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
-            image: './services/ai-character.png',
-            tryLink: 'https://www.tryonhub.ai'
+            image: './services/upscale-image.jpg',
+            tryLink: ''
         },
+
         {
             id: 2,
-            title: "Tạo hình kiến trúc xây dựng",
-            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
-            image: './services/architecture-2.png',
-            tryLink: 'https://www.tryonhub.ai'
+            code: "ai-chatbot",
+            title: "ChatGPT tùy chỉnh (GPT-4o)",
+            description: "Trợ lý ảo trong lĩnh vực cụ thể, đào tạo thêm bằng thông tin bổ sung từ dữ liệu nội bộ. Vd: Tuyển dụng, Chăm sóc KH, Đào tạo",
+            image: './services/chatbot-ai.png',
+            tryLink: ''
         },
         {
             id: 3,
-            title: "GenAI mặc thử quần áo",
+            code: "ai-architecture",
+            fullscreen: true,
+            title: "Tạo hình kiến trúc xây dựng",
             description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
-            image: './services/virtual-try-on.jpg',
-            tryLink: 'https://www.tryonhub.ai'
+            image: './services/architecture-2.png',
+            tryLink: ''
         },
         {
             id: 4,
-            title: "Người mẫu AI tạo sinh",
+            title: "GenAI mặc thử quần áo",
+            code: "tryonhub",
             description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
-            image: './services/ai-character.png',
-            tryLink: 'https://www.tryonhub.ai'
+            image: './services/virtual-try-on.jpg',
+            tryLink: ''
         },
     ],
     fqa: {
