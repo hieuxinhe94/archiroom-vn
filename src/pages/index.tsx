@@ -5,15 +5,31 @@ import Slider from "react-slick";
 
 import AIArticleItem from "~/components/marketplace/ai-article-item";
 import VideoPlayer from "~/components/marketplace/video-player";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MARKET_CONFIG_DATA } from "~/components/data";
 import { NextSeo } from "next-seo";
 import Navbar from "~/components/navbar";
-
+import { useRouter } from 'next/router';
 export default function Tools(props) {
 
   const heroSliderSetting = MARKET_CONFIG_DATA;
   const [isPlayVideo, setIsPlayVideo] = useState<boolean>(false);
+
+  const router = useRouter();
+
+  const [selectingProductId, setSelectingProductId] = useState<string | string[]>();
+
+  useEffect(() => {
+    const product = router.query.product;
+    if (product) {
+      // Fetch product details from an API or some data source
+      console.log("check selectingProductId")
+      console.log(product)
+      setSelectingProductId(product)
+    }
+  }, [router]);
+
+
   return (
 
     <>
@@ -125,9 +141,9 @@ export default function Tools(props) {
           <div className="mt-12 lg:pt-12 w-full justify-center slider-container">
             <Slider {...heroSliderSetting.sliderConfig} >
               {
-                heroSliderSetting?.previewData?.map((item) => (
+              selectingProductId &&  heroSliderSetting?.previewData?.map((item) => (
                   <div key={item.id} className="my-4 py-2 px-2 lg:px-8">
-                    <AIArticleItem product={item} />
+                    <AIArticleItem product={item} isSelecting={selectingProductId === item.code} />
                   </div>))
               }
 

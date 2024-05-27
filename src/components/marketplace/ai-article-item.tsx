@@ -3,17 +3,18 @@ import Link from 'next/link'
 import React, { useState } from 'react';
 import VideoPlayer from './video-player';
 import QuickPlayAI from './quickPlayAI';
+import { useRouter } from 'next/router';
 
-export default function AIArticleItem({ product }) {
-
-  const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false);
+export default function AIArticleItem({ product, isSelecting = false }) {
+  const router = useRouter();
+  const [isOpenDetail, setIsOpenDetail] = useState<boolean>(isSelecting);
   const [isPlayVideo, setIsPlayVideo] = useState<boolean>(false);
   const [isPlayTryIt, setIsPlayTryIt] = useState<boolean>(false);
 
 
   return (
     <div>
-      <div onClick={() => { console.log('onclicked'); setIsOpenDetail(!isOpenDetail) }} key={product} className="relative py-1 hover:opacity-100 bg-slate-800 rounded-xl  text-white">
+      <div onClick={() => { console.log('onclicked'); setIsOpenDetail(!isOpenDetail);  router.push(`?product=${product.code}`); }} key={product} className="relative py-1 hover:opacity-100 bg-slate-800 rounded-xl  text-white">
 
         <div
           style={{
