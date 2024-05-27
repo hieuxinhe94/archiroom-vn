@@ -5,6 +5,7 @@ import { StreamingTextResponse, streamText } from 'ai';
 import { NextRequest } from 'next/server';
 import { useChat } from 'ai/react';
 import { openai } from '@ai-sdk/openai';
+import axios from 'axios';
 
 
 
@@ -12,26 +13,28 @@ export default function PlayGroundChatBot({ config, onCloseEvent }) {
 
   const [isPlayingChat, setIsPlayingChat] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<string>();
-  const [response, setResponse] = useState('');
 
-  const promt_for_hr = `Hãy là một chuyên viên tuyển dụng đang trò chuyện với các ứng cử viên cho các vị trí công việc: Senior Java Developer, Senior Automation Tester. 
-  Công ty đang cần tuyển dụng gấp vào làm việc trong tháng 7 năm 2024. 
-  Mức lương cho vị trí Senior Java Developer là khoảng 2000$ và Senior Automation Tester là khoảng 1000$. Hãy trò chuyện với ứng cử viên tiềm năng và thu thập thông tin liên lạc (số điện thoại, email, năm sinh, mức lương mong muốn, skill) và hẹn lịch phỏng vấn online với họ vào khoảng thời gian họ sẵn sàng.
-  `;
+  const [prompt, setPrompt] = useState('');
+  const [messages, setMessages] = useState<any>([]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:3000/api/chat/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt }),
-     
-    });
-
-    
-    const data = await res.json();
-
-    
-    setResponse(data.choices[0].text);
+    let temp: object[] = [...messages];
+    temp.push({ role: 'You', result: prompt })
+    setMessages(temp);
+    setPrompt('')
+    try {
+      await axios.post('/api/chatgpt', { prompt }).then((res) => {
+        let temp: object[] = [...messages];
+        temp.push({ role: 'You', result: prompt })
+        temp.push({ role: 'HR Hiếu', result: res.data.result });
+        setMessages(temp);
+      });
+    } catch (error) {
+      let temp: object[] = [...messages];
+      temp.push({ role: 'System', result: 'Error fetching response' });
+      setMessages(temp);
+    }
   };
 
   return (
@@ -197,18 +200,18 @@ export default function PlayGroundChatBot({ config, onCloseEvent }) {
           </div>)
         }
 
-        {/* {
+        <div className="relative w-full p-3 flex-auto place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased flex flex-col gap-2">
 
-          isPlayingChat && (<>
-            {response.map(m => (
-              <div key={m.id} className="whitespace-pre-wrap">
-                {m.role === 'user' ? 'User: ' : 'AI: '}
-                {m.content}
-              </div>
-            ))}
 
-          </>)
-        } */}
+
+          {messages?.map((msg, index) => (
+            <div key={index}>
+              <p className="text-small text-slate-800">
+                <strong>{msg.role}:</strong> {msg.result}
+              </p>
+            </div>
+          ))}
+        </div>
 
 
         <div
@@ -231,8 +234,8 @@ export default function PlayGroundChatBot({ config, onCloseEvent }) {
                 <input
                   data-slot="input"
                   multiple={true}
-                  value={userInput}
-                  onChange={(evt) => setUserInput(evt.target.value)}
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
                   onFocus={() => setIsPlayingChat(true)}
                   data-has-end-content="true"
                   className="w-full font-normal bg-transparent !outline-none placeholder:text-foreground-500 focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 resize-none data-[hide-scroll=true]:scrollbar-hide group-data-[has-value=true]:text-default-foreground h-full transition-height !duration-100 motion-reduce:transition-none py-0 pt-1 pl-2 pb-6 !pr-10 text-medium"
@@ -245,12 +248,12 @@ export default function PlayGroundChatBot({ config, onCloseEvent }) {
                   spellCheck="false"
 
                 />
-                <div>{response}</div>
+
                 <div className="flex items-end justify-center pt-4 gap-2">
                   <button
                     className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-tiny gap-2 rounded-large opacity-disabled pointer-events-none px-0 !gap-0 data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none bg-default text-default-foreground min-w-8 w-[150px] h-8 data-[hover=true]:opacity-hover"
                     data-disabled="true"
-                    type="button"
+                    type="submit"
 
                   >
                     Gửi
