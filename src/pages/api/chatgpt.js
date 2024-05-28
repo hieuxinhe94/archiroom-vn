@@ -11,9 +11,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Only POST requests are allowed' })
   }
 
-  const { prompt } = req.body
+  const { messages} = req.body
 
-  if (!prompt) {
+  if (!messages) {
     return res.status(400).json({ message: 'Prompt is required' })
   }
 
@@ -22,10 +22,7 @@ export default async function handler(req, res) {
       'https://api.openai.com/v1/chat/completions',
       {
         model: 'gpt-4o',
-        messages: [
-          { role: 'system', content: promt_for_hr },
-          { role: 'user', content: prompt }
-        ],
+        messages: [{ role: 'system', content: promt_for_hr }].concat(messages),
         max_tokens: 100,
       },
       {
@@ -39,11 +36,11 @@ export default async function handler(req, res) {
 
     const data = response.data;
     
-    
+  
     res.status(200).json({ result: data.choices[0].message.content })
     
   } catch (error) {
-   
+     
     res
       .status(500)
       .json({ message: 'Error generating response', error: error.message })

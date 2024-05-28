@@ -20,19 +20,19 @@ export default function PlayGroundChatBot({ config, onCloseEvent }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let temp: object[] = [...messages];
-    temp.push({ role: 'You', result: prompt })
+    temp.push({ role: 'user', content: prompt })
     setMessages(temp);
     setPrompt('')
     try {
-      await axios.post('/api/chatgpt', { prompt }).then((res) => {
+      await axios.post('/api/chatgpt', { messages: temp }).then((res) => {
         let temp: object[] = [...messages];
-        temp.push({ role: 'You', result: prompt })
-        temp.push({ role: 'HR Hiếu', result: res.data.result });
+        temp.push({ role: 'user', content: prompt })
+        temp.push({ role: 'assistant', content: res.data.result });
         setMessages(temp);
       });
     } catch (error) {
       let temp: object[] = [...messages];
-      temp.push({ role: 'System', result: 'Error fetching response' });
+      temp.push({ role: 'System', content: 'Error fetching response' });
       setMessages(temp);
     }
   };
@@ -207,7 +207,7 @@ export default function PlayGroundChatBot({ config, onCloseEvent }) {
           {messages?.map((msg, index) => (
             <div key={index}>
               <p className="text-small text-slate-800">
-                <strong>{msg.role}:</strong> {msg.result}
+                <strong>{msg.role === 'assistant' ? 'Hiếu (Phòng tuyển dụng)': 'Bạn'}:</strong> {msg.content}
               </p>
             </div>
           ))}
