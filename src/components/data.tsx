@@ -114,10 +114,10 @@ export const MARKET_CONFIG_DATA = {
     previewData: [
         {
             id: 1,
-            code: "ai-image-upscale",
-            title: "Phục hồi/Làm nét/Xóa nền hình ảnh",
-            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
-            image: './services/upscale-image.jpg',
+            code: "ai-film-maker",
+            title: "Thăng cấp sự sáng tạo của bạn với Gen AI – tạo phim và truyện một cách dễ dàng, biến tưởng tượng thành hiện thực!",
+            description: "Hãy ",
+            image: './services/film-maker.png',
             tryLink: 'https://www.tryonhub.ai'
         },
 
@@ -150,11 +150,11 @@ export const MARKET_CONFIG_DATA = {
     allTools: [
         {
             id: 1,
-            code: "ai-image-upscale",
-            title: "Phục hồi/Làm nét/Xóa nền hình ảnh",
-            description: "Phục hồi ảnh và làm nét ảnh cũ. Tạo filter sống động cho bức ảnh của bạn.",
-            image: './services/upscale-image.jpg',
-            tryLink: ''
+            code: "ai-film-maker",
+            title: "Làm video/film bằng GenAI",
+            description: "Thăng cấp sự sáng tạo của bạn với Gen AI – tạo phim và truyện một cách dễ dàng, biến tưởng tượng thành hiện thực! ",
+            image: './services/film-maker.png',
+            tryLink: 'https://www.tryonhub.ai'
         },
         {
             id: 2,
