@@ -138,15 +138,15 @@ export default function Tools(props) {
             </a>
           </div>
 
-          <div className="mt-12 lg:pt-12 w-full justify-center slider-container">
+          <div key={selectingProductId?.toString()} className="mt-12 lg:pt-12 w-full justify-center slider-container">
             <Slider {...heroSliderSetting.sliderConfig} >
               {
-              selectingProductId &&  heroSliderSetting?.previewData?.map((item) => (
+                heroSliderSetting?.previewData?.map((item) => (
                   <div key={item.id} className="my-4 py-2 px-2 lg:px-8">
                     <AIArticleItem product={item} isSelecting={selectingProductId === item.code} />
-                  </div>))
+                  </div>
+                ))
               }
-
             </Slider>
           </div>
 

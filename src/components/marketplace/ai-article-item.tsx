@@ -6,6 +6,7 @@ import QuickPlayAI from './quickPlayAI';
 import { useRouter } from 'next/router';
 
 export default function AIArticleItem({ product, isSelecting = false }) {
+  console.log("isSelecting:" || isSelecting)
   const router = useRouter();
   const [isOpenDetail, setIsOpenDetail] = useState<boolean>(isSelecting);
   const [isPlayVideo, setIsPlayVideo] = useState<boolean>(false);

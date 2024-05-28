@@ -134,7 +134,7 @@ export const MARKET_CONFIG_DATA = {
             code: "ai-architecture",
             fullscreen: true,
             title: "Tạo hình kiến trúc xây dựng",
-            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            description: "Sáng tạo cho bạn những công trình nhiều màu sắc và đầy thú vị bằng Gen AI. Upload sketch và nhận về thiết kế.",
             image: './services/architecture-2.png',
             tryLink: 'https://www.tryonhub.ai'
         },
