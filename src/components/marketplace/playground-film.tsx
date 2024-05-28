@@ -265,6 +265,7 @@ export default function PlayGroundFilmMaking({ config, onCloseEvent }) {
               isLoading && (<CircularProgress
                 aria-label="Loading..."
                 size="lg"
+              
                 label={value}
                 value={value}
                 color="warning"
