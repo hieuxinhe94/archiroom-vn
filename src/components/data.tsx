@@ -125,7 +125,7 @@ export const MARKET_CONFIG_DATA = {
             id: 2,
             code: "ai-chatbot",
             title: "ChatGPT tùy chỉnh (GPT-4o)",
-            description: "Trợ lý ảo trong lĩnh vực cụ thể, đào tạo thêm bằng thông tin bổ sung từ dữ liệu nội bộ. Vd: Tuyển dụng, Chăm sóc KH, Đào tạo",
+            description: "Trợ lý ảo trong lĩnh vực cụ thể, đào tạo thêm bằng thông tin bổ sung từ dữ liệu nội bộ. Vd: Tuyển dụng, Chăm sóc KH, Đào tạo.",
             image: './services/chatbot-ai.png',
             tryLink: ''
         },
@@ -152,11 +152,10 @@ export const MARKET_CONFIG_DATA = {
             id: 1,
             code: "ai-image-upscale",
             title: "Phục hồi/Làm nét/Xóa nền hình ảnh",
-            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            description: "Phục hồi ảnh và làm nét ảnh cũ. Tạo filter sống động cho bức ảnh của bạn.",
             image: './services/upscale-image.jpg',
             tryLink: ''
         },
-
         {
             id: 2,
             code: "ai-chatbot",
