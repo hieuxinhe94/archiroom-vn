@@ -144,7 +144,7 @@ export function IntroduceModal({ product }) {
 
         </div>
 
-        <div className="flex flex-col gap-2 rounded-medium bg-content1 p-6 shadow-small">
+        {/* <div className="flex flex-col gap-2 rounded-medium bg-content1 p-6 shadow-small">
           <div className="flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -220,7 +220,7 @@ export function IntroduceModal({ product }) {
 
             </div>
           </div>
-        </div>
+        </div> */}
 
 
       </div>

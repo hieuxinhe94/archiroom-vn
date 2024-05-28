@@ -52,14 +52,16 @@ export default function PlayGroundFilmMaking({ config, onCloseEvent }) {
               console.log(res.data)
               console.log("chatgpt-image: " + res.data);
               setOutputImage(res.data.result.url)
+              setIsLoading(false);
               //setOutputImageDesc(res.data.result.revised_prompt)
               setValue((v) => (50))
               // translate back to vietnamse
-              await axios.post('/api/chatgpt-translator', { promt: res.data.result.revised_prompt })
+              await axios.post('/api/chatgpt-translatorback', { promt: res.data.result.revised_prompt })
                 .then(async (res) => {
-                  setOutputImageDesc(res.data.result)
                   console.log("chatgpt-translator: " + res.data.result);
-                  setIsLoading(false);
+                  setOutputImageDesc(res.data.result)
+                 
+                
                   setValue((v) => (75))
                 })
                 .finally(() => {
@@ -143,7 +145,7 @@ export default function PlayGroundFilmMaking({ config, onCloseEvent }) {
               <div className="relative w-full p-3 flex-auto place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased flex flex-col gap-2">
                 <div className="flex min-h-[50px] rounded-medium bg-content3 px-3 py-2 text-content3-foreground">
                   <p className="text-small">
-                    Hãy làm phim ngắn giới thiệu về Hồ Chí Minh
+                    Hãy làm phim ngắn giới thiệu về Hồ Chí Minh - Việt Nam
                   </p>
                 </div>
                 <div className="flex min-h-[50px] rounded-medium bg-content3 px-3 py-2 text-content3-foreground">
@@ -258,11 +260,12 @@ export default function PlayGroundFilmMaking({ config, onCloseEvent }) {
 
           </div>
 
-          <div className='w-full lg:w-1/2 p-4'>
+          <div className='w-full lg:w-1/2 p-4 text-slate-800'>
             {
               isLoading && (<CircularProgress
                 aria-label="Loading..."
                 size="lg"
+                label={value}
                 value={value}
                 color="warning"
                 showValueLabel={true}

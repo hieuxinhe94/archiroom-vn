@@ -1,26 +1,26 @@
 // pages/api/chatgpt.js
 
-import axios from 'axios' 
+import axios from 'axios'
+ 
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Only POST requests are allowed' })
   }
 
-  const { prompt} = req.body
+  const { promt} = req.body
 
-  if (!prompt) {
+  if (!promt) {
     return res.status(400).json({ message: 'Prompt is required' })
   }
 
   try {
     const response = await axios.post(
-      'https://api.openai.com/v1/images/generations',
+      'https://api.openai.com/v1/chat/completions',
       {
-        model: 'dall-e-3',
-        prompt: prompt ,
-        n: 1,
-        size: "1024x1024"
+        model: 'gpt-4o',
+        messages: [{ role: 'user', content: `Response only answer. Translate the following English text to Vietnamese: "${promt}"` }],
+        max_tokens: 100,
       },
       {
         headers: {
@@ -33,9 +33,11 @@ export default async function handler(req, res) {
 
     const data = response.data;
     
-    res.status(200).json({ result: data.data[0]})
+  
+    res.status(200).json({ result: data.choices[0].message.content })
+    
   } catch (error) {
-    console.log(error)
+     
     res
       .status(500)
       .json({ message: 'Error generating response', error: error.message })
