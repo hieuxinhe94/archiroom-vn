@@ -8,7 +8,7 @@ const requestSchema = z.object({
   image: z.string(),
 })
 
-const STABLE_DIFFUSION_SERVER_URL = 'https://e8bc-14-231-197-33.ngrok-free.app'
+const STABLE_DIFFUSION_SERVER_URL = process.env.SD_URL
 
 export default async function handler(
   req: NextApiRequest,
