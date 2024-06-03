@@ -97,18 +97,15 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
 
   async function onSubmit(data) {
     // console.log(data.prompt)
-    ;(async function () {
+    ; (async function() {
       setLoading(true)
       const base64Encode = await getImageBase64(data.image[0])
       try {
-        const res = await axios.post(
-          'http://localhost:3000/api/stable-diffusion-txt2img',
-          {
-            prompt: data.prompt,
-            negative_prompt: data.negative_prompt,
-            image: base64Encode,
-          },
-        )
+        const res = await axios.post('/api/stable-diffusion-txt2img', {
+          prompt: data.prompt,
+          negative_prompt: data.negative_prompt,
+          image: base64Encode,
+        })
         // console.log(res.data.result)
         setResultImage(res.data.result)
       } catch (e) {
@@ -141,7 +138,7 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
 
             <label>Style</label>
             <select {...register('style')}>
-              {styles.map(function (style) {
+              {styles.map(function(style) {
                 return (
                   <option key={style} value={style}>
                     {style}
