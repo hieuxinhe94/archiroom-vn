@@ -2,6 +2,7 @@ import {
   Button,
   Card,
   cn,
+  Input,
   Modal,
   ModalBody,
   ModalContent,
@@ -12,6 +13,7 @@ import {
   Select,
   SelectItem,
   Skeleton,
+  Spinner,
   Tab,
   Tabs,
   useRadio,
@@ -27,8 +29,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Webcam from 'react-webcam'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
-import UploadHumanBody from '../UploadHumanBody'
 import checked from './components/background-images/checked.svg'
 import closeIcon from './components/background-images/closeIcon.svg'
 import combineIcon from './components/background-images/combineIcon.svg'
@@ -36,15 +36,21 @@ import modalLogo from './components/background-images/modal-logo.svg'
 import resultIcon from './components/background-images/resultIcon.svg'
 import upload from './components/background-images/upload.svg'
 import { imageKitService } from './components/ImageKitService'
+import axios from 'axios'
 
-export default function PlayGroundArchitecture({ config, onCloseEvent }) {
+export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const fileInputRef = useRef<any>()
   const [step, setStep] = useState(0)
   const [counter, setCounter] = useState(0)
-  const [isFirstTime, setIsFirstTime] = useState(true)
+  const [isFirstTime, setIsFirstTime] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [hasOutput, setHasOutput] = useState(false)
   const [isUploadingImage, setIsUploadingImage] = useState(false)
   const [imageUploadedUrl, setImageUploadedUrl] = useState('')
+  const [imageResponseddUrl, setImageResponseddUrl] = useState('')
+  const [promt, setPromt] = useState('architecture')
+  const [negativePromt, setNegativePromt] = useState('')
+  const [serviceUrl, setServiceUrl] = useState('https://nhathao.top')
   const [outputImageUploadedUrl, setOutputImageUploadedUrl] = useState(
     './services/architecture-ai-step-3.jpg',
   )
@@ -53,6 +59,57 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
     fileInputRef?.current.click()
   }
   const [genType, setGenType] = React.useState<any>(new Set(['Chính xác']))
+
+  const onSubmit = useCallback(async (event: any) => {
+    setIsLoading(true);
+    const file = event.target.files[0];
+    const base64File = URL.createObjectURL(file);
+    console.log(process.env.SD_URL)
+    await axios.post(
+      `${serviceUrl}/sdapi/v1/img2img`,
+      {
+        prompt: promt,
+        negative_prompt: negativePromt,
+        scheduler: 'Karras',
+        seed: -1,
+        steps: 20,
+        width: 512,
+        height: 512,
+        denoising_strength: 0.5,
+        n_iter: 1,
+        init_images: [base64File],
+        alwayson_scripts: {
+          controlnet: {
+            args: [
+              {
+                module: 'canny',
+                model: 'control_canny-fp16 [e3fe7712]',
+              },
+            ],
+          },
+        },
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    ).then((res) => {
+      const data = res.data.images[0];
+      console.log("data responsed: ");
+
+      //TODO
+      setImageResponseddUrl(data)
+    })
+      .catch((err) => {
+        alert(err)
+      }).finally(() => {
+        setIsLoading(false);
+        setHasOutput(true);
+        setStep(1)
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [promt, negativePromt]);
 
   // upload clothes photo
   const handleImageUpload = useCallback(async (event: any) => {
@@ -82,9 +139,9 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
     }
   }, [])
   return (
-    <div className="w-full px-4 hover:opacity-100  rounded-xl  text-white ">
-      <div className="flex h-[calc(100vh_-_40px)] w-full gap-x-2">
-        <div className="flex hidden bg-slate-800 text-white h-full w-[344px] flex-shrink-0 flex-col items-start gap-y-8 rounded-large  px-8 py-6 shadow-small lg:flex">
+    <div className="w-full px-0 lg:px-4 hover:opacity-100  rounded-xl  text-white ">
+      <div className="block lg:flex h-[calc(100vh_-_40px)] w-full gap-x-2">
+        <div className="flex  bg-slate-800 text-white h-full w-full lg:w-[344px] flex-shrink-0 flex-col items-start gap-y-8 rounded-large  px-8 py-6 shadow-small lg:flex">
           <button
             onClick={() => onCloseEvent()}
             className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 rounded-full [&>svg]:max-w-[theme(spacing.8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none data-[hover=true]:opacity-hover bg-default-50 text-small font-medium text-default-500 shadow-lg"
@@ -111,18 +168,93 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
           </button>
           <div>
             <div className="text-xl font-medium leading-7 ">
-              Sketch to Image
+              Tạo thiết kế
             </div>
           </div>
           <div className="w-full text-white text-sm">
-            <RadioGroup label="Chọn đối tượng Gen ảnh:">
-              <CustomRadio value="Tự động">Tự động</CustomRadio>
-              <CustomRadio value="Ngoại thất">Ngoại thất</CustomRadio>
-              <CustomRadio value="Nội thất">Nội thất</CustomRadio>
+            <Tabs key={'success'} color='secondary' className='w-full ' aria-label="Render types" radius="full">
+              <Tab key="basic" title="Cơ bản" className='px-8 py-1' />
+              <Tab key="advanced" title="Nâng cao" className='px-8 py-1' />
+
+            </Tabs>
+          </div>
+          <div className="w-full text-white text-sm">
+            <RadioGroup orientation="horizontal" className='w-auto h-auto' label="Chọn đối tượng Gen ảnh:">
+              <CustomRadio value="Nội thất">
+                <div className='relative'>
+                  <Image
+                    src="./services/architecture-ai-step-3.jpg"
+                    className='rounded'
+                    width={96}
+                    height={60}
+                    alt="Try On Step Image"
+                  />
+                  <span className='p-1 absolute bottom-0 left-0 text-gray-100'> Nội thất</span>
+                </div>
+              </CustomRadio>
+              <CustomRadio value="Ngoại thất">
+                <div className='relative'>
+                  <Image
+                    src="./services/architecture-ai-step-3.jpg"
+                    className='rounded'
+                    width={96}
+                    height={60}
+                    alt="Try On Step Image"
+                  />
+                  <span className='p-1 absolute bottom-0 left-0 text-gray-100'> Ngoại thất</span>
+                </div>
+              </CustomRadio>
+
             </RadioGroup>
           </div>
 
-          <div className="w-full  font-bold">
+          <div className="w-full text-white text-sm">
+            <div className='rounded-lg bg-slate-500/50 w-full rounded-[10px] p-[2px]'>
+              <div className="">
+                <div className="w-full h-full bg-slate-800/60 rounded-[8px] p-[15px] lg:p-[36px] hover:bg-gradient-to-r hover:from-purple-500/[.05] hover:to-blue-500/[.05] duration-300">
+                  <div className="options flex justify-center mb-[15px]">
+                    <div className="hover:scale-125 duration-300">
+                      <div className="cursor-pointer">
+                        {isLoading ? (
+                          <Spinner color="secondary" />
+                        ) : (
+                          <>
+                            <Image
+                              onClick={uploadTrigger}
+                              src={upload}
+                              width={49}
+                              height={47}
+                              alt="upload image"
+                              className="w-[36px] h-[36px] lg:w-[49px] lg:h-[47px]"
+                            />
+                          </>
+                        )}
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={onSubmit}
+                          onBlur={() => setIsLoading(false)}
+                          ref={fileInputRef}
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className=""
+                    >
+                    </div>
+                  </div>
+                  <p className="text-[12px] lg:text-base text-center font-medium bg-white bg-clip-text text-transparent">
+                    Tải lên ảnh thiết kế
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div className="w-full rounded ">
             <Select
               label="Chế độ Gen ảnh"
               placeholder="Chọn một loại"
@@ -145,14 +277,15 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
                   <span className="text-slate-800">{genType}</span>
                 </div>
               }
+              color='primary'
               defaultSelectedKeys={genType}
-              className="max-w-xs "
+              className="max-w-xs bg-transparent "
               isOpen={isFirstTime}
               onOpenChange={setIsFirstTime}
               onSelectionChange={setGenType}
             >
               <SelectItem
-                className=""
+                className="bg-slate-100 bg-transparent"
                 key={'Chính xác'}
                 value={'architecture.precise'}
               >
@@ -170,11 +303,11 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
                     d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
                   />
                 </svg>
-                <span className="text-slate-800">Chính xác</span>
+                <span className="text-slate-800 text-sm">Chính xác</span>
               </SelectItem>
 
               <SelectItem
-                className=""
+                className="bg-white"
                 key={'Tương đối'}
                 value={'architecture.balanced'}
               >
@@ -196,7 +329,7 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
               </SelectItem>
 
               <SelectItem
-                className=""
+                className="bg-white"
                 key={'Sáng tạo'}
                 value={'architecture.creative'}
               >
@@ -218,12 +351,25 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
               </SelectItem>
             </Select>
           </div>
+
+          <div className="w-full absolute bottom-5 left-11 text-white text-sm">
+            <Input
+              isRequired
+              type="text"
+              color={'danger'}
+              label="ServiceURL"
+              value={serviceUrl}
+              onValueChange={setServiceUrl}
+              className="max-w-xs bg-slate-800"
+            />
+
+          </div>
         </div>
 
-        <div className="flex h-full w-full flex-col items-center gap-4 md:p-4 ">
+        <div className="flex h-auto w-full flex-col items-center gap-4 md:p-4 ">
           {step === 0 ? (
-            <>
-              <h2 className="text-slate-800 text-base lg:text-[30px] font-bold mb-[60px] flex items-center gap-[10px]">
+            <div className='p-24 text-lg'>
+              <h2 className="text-slate-800 text-xl font-bold mb-[60px] hidden lg:flex items-center gap-[10px]">
                 <Image
                   src="./logo-s.png"
                   width={42}
@@ -235,19 +381,20 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
               </h2>
               <div className="try-on-steps justify-between items-center mb-[60px] hidden lg:flex">
                 <div
-                  className="try-on-step flex flex-col items-center shrink-0"
+                  className="try-on-step flex flex-col items-center shrink-0 "
                   data-aos="fade-right"
                   data-aos-easing="ease-in-out"
                   data-aos-delay={200}
                   data-aos-duraion={1000}
                 >
                   <Image
+                    className='rounded-2xl b-solid b-1 border-slate-100 '
                     src="./services/architecture-ai-step-1.jpg"
-                    width={418}
+                    width={320}
                     height={334}
                     alt="Try On Step Image"
                   />
-                  <p className="step-description text-[18px] font-bold mt-[24px] text-center text-slate-800">
+                  <p className="step-description text-[18px]  font-bold mt-[24px] text-center text-slate-800">
                     Tải lên thiết kế (Sketch)
                   </p>
                 </div>
@@ -326,8 +473,9 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
                   data-aos-duraion={1000}
                 >
                   <Image
+                    className='rounded-2xl b-solid b-1 border-slate-100 '
                     src="./services/architecture-ai-step-3.jpg"
-                    width={418}
+                    width={320}
                     height={334}
                     alt="Try On Step Image"
                   />
@@ -336,96 +484,8 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
                   </p>
                 </div>
               </div>
-              <div className="try-on-steps-mobile text-slate-800 lg:hidden">
-                <Swiper
-                  pagination={{
-                    dynamicBullets: true,
-                    bulletClass: 'normal-swiper-slide-grey',
-                    bulletActiveClass: 'active-swiper-slide-gradient',
-                  }}
-                  loop={true}
-                  modules={[Autoplay, Pagination]}
-                  autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                  }}
-                  spaceBetween={0}
-                  slidesPerView={1}
-                >
-                  <SwiperSlide>
-                    <div className="try-on-step flex flex-col items-center shrink-0 mb-[50px]">
-                      <Image
-                        src="./services/architecture-ai-step-1.jpg"
-                        width={230}
-                        height={260}
-                        alt="Step Image"
-                      />
-                      <p className="step-description text-[18px] font-bold mt-[24px] text-center">
-                        Tải lên ảnh Sketch
-                      </p>
-                    </div>
-                  </SwiperSlide>
 
-                  <SwiperSlide>
-                    <div className="try-on-step flex flex-col items-center shrink-0 mb-[50px]">
-                      <div
-                        className="try-on-step flex flex-col items-center shrink-0"
-                        data-aos="fade-right"
-                        data-aos-easing="ease-in-out"
-                        data-aos-delay={800}
-                        data-aos-duraion={1000}
-                      >
-                        <nav
-                          aria-label="Progress"
-                          className="px-12 max-w-fit py-4"
-                        >
-                          <ol className="flex flex-row flex-nowrap gap-x-3 [--step-color:hsl(var(--nextui-primary))] [--step-fg-color:hsl(var(--nextui-primary-foreground))] [--active-fg-color:var(--step-fg-color)] [--active-border-color:var(--step-color)] [--active-color:var(--step-color)] [--complete-background-color:var(--step-color)] [--complete-border-color:var(--step-color)] [--inactive-border-color:hsl(var(--nextui-default-300))] [--inactive-color:hsl(var(--nextui-default-300))] [--inactive-bar-color:hsl(var(--nextui-default-300))] max-w-md">
-                            <li className="relative flex w-full items-center pr-12">
-                              <button className="group flex w-full cursor-pointer flex-row items-center justify-center gap-x-3 rounded-large py-2.5">
-                                <div className="max-w-full flex-1 text-start">
-                                  <div className="text-small font-medium text-default-foreground transition-[color,opacity] duration-300 group-active:opacity-80 lg:text-medium">
-                                    Chọn bối cảnh
-                                  </div>
-                                </div>
-                                <div
-                                  aria-hidden="true"
-                                  className="pointer-events-none absolute right-0 w-10 flex-none items-center"
-                                >
-                                  <div className="relative h-0.5 w-full bg-[var(--inactive-bar-color)] transition-colors duration-300 after:absolute after:block after:h-full after:bg-[var(--active-border-color)] after:transition-[width] after:duration-300 after:content-[''] after:w-full" />
-                                </div>
-                              </button>
-                            </li>
-                            <li className="relative flex w-full items-center pr-12">
-                              <button className="group flex w-full cursor-pointer flex-row items-center justify-center gap-x-3 rounded-large py-2.5">
-                                <div className="max-w-full flex-1 text-start">
-                                  <div className="text-small font-medium text-default-foreground transition-[color,opacity] duration-300 group-active:opacity-80 lg:text-medium">
-                                    Chọn style Gen
-                                  </div>
-                                </div>
-                              </button>
-                            </li>
-                          </ol>
-                        </nav>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-
-                  <SwiperSlide>
-                    <div className="try-on-step flex flex-col items-center shrink-0 mb-[50px]">
-                      <Image
-                        src="./services/architecture-ai-step-3.jpg"
-                        width={230}
-                        height={260}
-                        alt="Try On Step Image"
-                      />
-                      <p className="step-description text-[18px] font-bold mt-[24px] text-center">
-                        Nhận kết quả
-                      </p>
-                    </div>
-                  </SwiperSlide>
-                </Swiper>
-              </div>
-            </>
+            </div>
           ) : null}
 
           {step === 1 ? (
@@ -488,13 +548,13 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
                     radius="lg"
                   >
                     <Skeleton isLoaded={isLoading} className="rounded-lg">
-                      {isLoading && (
+                      {hasOutput && (
                         <div className="h-auto w-full flex justify-center rounded-lg bg-slate-800/20">
                           <Image2
                             width={520}
                             height={580}
                             isZoomed
-                            src={outputImageUploadedUrl}
+                            src={imageResponseddUrl}
                             alt="user uploaded cover"
                             className=" w-full h-auto p-5 justify-center mx-auto"
                             fallbackSrc="https://via.placeholder.com/300x500"
@@ -573,12 +633,12 @@ export default function PlayGroundArchitecture({ config, onCloseEvent }) {
 
           {step === 0 ? (
             <>
-              <div className="w-full lg:w-auto h-[40px] box-border rounded-full hover:bg-white  to-blue-gd p-[1px]">
+              <div className="w-full lg:w-auto h-[40px] box-border rounded-full hover:bg-white hidden lg:block to-blue-gd p-[1px]">
                 <input
                   type="file"
                   accept="image/*"
                   className="hidden"
-                  onChange={handleImageUpload}
+                  onChange={onSubmit}
                   ref={fileInputRef}
                 />
                 <Button
@@ -615,17 +675,17 @@ export const CustomRadio = (props) => {
       {...getBaseProps()}
       className={cn(
         'group inline-flex items-center hover:opacity-70 active:opacity-50 justify-between flex-row-reverse tap-highlight-transparent',
-        'max-w-[300px] cursor-pointer border-1 border-slate-100 rounded-lg gap-4 p-4',
-        'data-[selected=true]:border-green-400 data-[selected=true]:border-2 text-white',
+        'max-w-[300px] cursor-pointer border-1 border-slate-100 rounded-lg  p-1 ml-0',
+        'data-[selected=true]:border-purple-400 data-[selected=true]:border-2 text-white',
       )}
     >
       <VisuallyHidden>
         <input {...getInputProps()} />
       </VisuallyHidden>
-      <span {...getWrapperProps()}>
+      {/* <span {...getWrapperProps()}>
         <span {...getControlProps()} />
-      </span>
-      <div {...getLabelWrapperProps()}>
+      </span> */}
+      <div {...getLabelWrapperProps()} className='ml-0'>
         {children && <span className="text-white">{children}</span>}
         {description && (
           <span className="text-small  opacity-70">{description}</span>
