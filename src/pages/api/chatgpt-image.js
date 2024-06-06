@@ -2,6 +2,9 @@
 
 import axios from 'axios' 
 
+export const config = {
+  runtime: "edge",
+};
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Only POST requests are allowed' })
@@ -14,14 +17,18 @@ export default async function handler(req, res) {
   }
 
   try {
+
+    const payload =  {
+      model: 'dall-e-3',
+      prompt: prompt ,
+      stream: true,
+      n: 1,
+      size: "1024x1024"
+    }
+
     const response = await axios.post(
       'https://api.openai.com/v1/images/generations',
-      {
-        model: 'dall-e-3',
-        prompt: prompt ,
-        n: 1,
-        size: "1024x1024"
-      },
+      payload,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -31,8 +38,8 @@ export default async function handler(req, res) {
       },
     )
 
-    const data = response.data;
-    
+ 
+
     res.status(200).json({ result: data.data[0]})
   } catch (error) {
     console.log(error)

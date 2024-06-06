@@ -254,7 +254,7 @@ export default function PlayGroundChatBot({ config, onCloseEvent }) {
                     className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-tiny gap-2 rounded-large opacity-disabled pointer-events-none px-0 !gap-0 data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none bg-default text-default-foreground min-w-8 w-[150px] h-8 data-[hover=true]:opacity-hover"
                     data-disabled="true"
                     type="submit"
-
+                    onClick={handleSubmit}
                   >
                     Gửi
                     <svg

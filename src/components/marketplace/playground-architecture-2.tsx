@@ -3,11 +3,6 @@ import {
   Card,
   cn,
   Input,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
   Progress,
   RadioGroup,
   Select,
@@ -20,19 +15,10 @@ import {
   VisuallyHidden,
 } from '@nextui-org/react'
 import { Image as Image2 } from '@nextui-org/react'
-import { StreamingTextResponse, streamText } from 'ai'
 import * as ImageJS from 'image-js'
 import Image from 'next/image'
-import Link from 'next/link'
-import { NextRequest } from 'next/server'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import Webcam from 'react-webcam'
-import { Autoplay, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import checked from './components/background-images/checked.svg'
-import closeIcon from './components/background-images/closeIcon.svg'
+import React, { useCallback, useRef, useState } from 'react'
 import combineIcon from './components/background-images/combineIcon.svg'
-import modalLogo from './components/background-images/modal-logo.svg'
 import resultIcon from './components/background-images/resultIcon.svg'
 import upload from './components/background-images/upload.svg'
 import { imageKitService } from './components/ImageKitService'
@@ -62,8 +48,10 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
   const onSubmit = useCallback(async (event: any) => {
     setIsLoading(true);
+    
     const file = event.target.files[0];
-    const base64File = URL.createObjectURL(file);
+    const base64File:any = await getImageBase64(file);
+    setImageUploadedUrl(URL.createObjectURL(file)) 
     console.log(process.env.SD_URL)
     await axios.post(
       `${serviceUrl}/sdapi/v1/img2img`,
@@ -96,8 +84,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
       },
     ).then((res) => {
       const data = res.data.images[0];
-      console.log("data responsed: ");
-
+      console.log("data responsed: res.data ");
+      console.log(res.data);
       //TODO
       setImageResponseddUrl(data)
     })
@@ -138,6 +126,18 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
         })
     }
   }, [])
+
+  
+  async function getImageBase64(file: File) {
+    return new Promise((resolve) => {
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = () => {
+        resolve(reader.result)
+      }
+    })
+  }
+
   return (
     <div className="w-full px-0 lg:px-4 hover:opacity-100  rounded-xl  text-white ">
       <div className="block lg:flex h-[calc(100vh_-_40px)] w-full gap-x-2">
@@ -499,13 +499,14 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                     className="w-full h-[70vh] space-y-12 mx-12 p-8 "
                     radius="lg"
                   >
-                    <Skeleton isLoaded={isLoading} className="rounded-lg">
+                    <Skeleton isLoaded={true} className="rounded-lg">
                       {!isUploadingImage && (
                         <div className="h-auto w-full flex justify-center rounded-lg bg-slate-800/20 pb-10">
                           <Image2
                             width={520}
                             height={580}
                             src={imageUploadedUrl}
+                           
                             alt="user uploaded cover"
                             className=" w-full p-5 justify-center mx-auto "
                             fallbackSrc="https://via.placeholder.com/300x500"
@@ -547,14 +548,15 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                     className="w-full h-[70vh] space-y-12 mx-12 p-8 "
                     radius="lg"
                   >
-                    <Skeleton isLoaded={isLoading} className="rounded-lg">
+                    <Skeleton isLoaded={hasOutput} className="rounded-lg">
                       {hasOutput && (
                         <div className="h-auto w-full flex justify-center rounded-lg bg-slate-800/20">
                           <Image2
                             width={520}
                             height={580}
                             isZoomed
-                            src={imageResponseddUrl}
+                            src={`data:image/png;base64, ${imageResponseddUrl}`}
+                            // src={imageResponseddUrl}
                             alt="user uploaded cover"
                             className=" w-full h-auto p-5 justify-center mx-auto"
                             fallbackSrc="https://via.placeholder.com/300x500"
