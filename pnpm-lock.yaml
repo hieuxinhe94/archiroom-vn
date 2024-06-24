@@ -17,6 +17,9 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^3.4.2
     version: 3.4.2(react-hook-form@7.51.5)
+  '@img-comparison-slider/react':
+    specifier: ^8.0.2
+    version: 8.0.2
   '@nextui-org/button':
     specifier: ^2.0.26
     version: 2.0.33(@nextui-org/system@2.2.1)(@nextui-org/theme@2.2.5)(framer-motion@10.18.0)(react-dom@18.2.0)(react@18.2.0)
@@ -1257,6 +1260,12 @@ packages:
   /@humanwhocodes/object-schema@2.0.3:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     dev: true
+
+  /@img-comparison-slider/react@8.0.2:
+    resolution: {integrity: sha512-Him0yhbXpMXdnV6R3XE3LiXcMRhSXFMsbk6I7ct5HxO2YpK/BAGz3ub+7+akJRnK2XI7c3vQqvoIE507N1K4SA==}
+    dependencies:
+      img-comparison-slider: 8.0.6
+    dev: false
 
   /@internationalized/date@3.5.4:
     resolution: {integrity: sha512-qoVJVro+O0rBaw+8HPjUB1iH8Ihf8oziEnqMnvhJUSuVIrHOuZ6eNLHNvzXJKUvAtaDiqMnRlg8Z2mgh09BlUw==}
@@ -7875,6 +7884,10 @@ packages:
       uuid: 8.3.2
     transitivePeerDependencies:
       - debug
+    dev: false
+
+  /img-comparison-slider@8.0.6:
+    resolution: {integrity: sha512-ej4de7mWyjcXZvDgHq8K2a/dG8Vv+qYTdUjZa3cVILf316rLtDrHyGbh9fPvixmAFgbs30zTLfmaRDa7abjtzw==}
     dev: false
 
   /immer@9.0.21:

@@ -1,0 +1,99 @@
+import { Tab, Tabs } from '@nextui-org/react'
+import Image from 'next/image'
+import React, { useState } from 'react'
+
+import { AdvanceGenerateForm } from './AdvancedGenerate'
+import { SimpleGenerate } from './SimpleGenerate'
+
+enum type {
+  EXTERIOR,
+  INTERIOR,
+}
+export const TYPES = [
+  { label: 'Ngoại thất', keyword: 'exterior' },
+  { label: 'Nội thất', keyword: 'interior' },
+]
+
+const serviceUrl = 'https://nhathao.top'
+
+export default function PlayGroundArchitecture2() {
+  const [resultImages, setResultImages] = useState<string[] | null>(null)
+  const [loading, setLoading] = useState(false)
+
+  return (
+    <div className="w-full h-full flex flex-row px-4 hover:opacity-100  rounded-xl">
+      <div className="flex h-[calc(100vh_-40px)] w-full gap-x-2">
+        <div className="flex h-full flex-col gap-y-8 rounded-large  px-8 py-6  lg:flex">
+          <Tabs>
+            <Tab key="simple" title="Cơ bản">
+              <SimpleGenerate setLoading={setLoading} />
+            </Tab>
+            <Tab key="advance" title="Nâng cao">
+              <AdvanceGenerateForm setLoading={setLoading} />
+            </Tab>
+          </Tabs>
+        </div>
+      </div>
+      <ResultImages loading={loading} resultImages={resultImages} />
+    </div>
+  )
+}
+
+export async function getImageBase64(file: File) {
+  return new Promise((resolve) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => {
+      resolve(reader.result)
+    }
+  })
+}
+function ImageUpload() {
+  const [selectedImage, setSelectedImage] = useState<File | null>(null)
+
+  return (
+    <>
+      {selectedImage ? (
+        <div className="md:max-w-[200px]">
+          <img src={URL.createObjectURL(selectedImage)} alt="Selected" />
+        </div>
+      ) : (
+        <div className="inline-flex items-center justify-between">
+          <div className="p-3 bg-slate-200  justify-center items-center flex">
+            No image selected
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
+
+export function GenerateButton() {
+  return (
+    <input type="submit" className="border-2 rounded-large" value="Generate" />
+  )
+}
+
+function ResultImages({
+  loading,
+  resultImages,
+}: {
+  loading: boolean
+  resultImages: string | string[] | null
+}) {
+  return (
+    <>
+      {loading && <p>Generating Image...</p>}
+      <div className="h-full w-full flex items-center">
+        {!loading && resultImages && (
+          <div className=" md:max-w-[500px] h-full align-middle">
+            <Image
+              src={`data:image/png;base64, ${resultImages}`}
+              alt="Selected"
+            />
+          </div>
+        )}
+      </div>
+    </>
+  )
+}
