@@ -687,7 +687,7 @@ function CommonPart({
         {TYPES_OF_GENERATE.map((architect, index) => (
           <Button
             key={index}
-            onClick={function() {
+            onClick={function () {
               setTypeOfGenerate(architect.keyword)
             }}
             color={typeOfGenerate === architect.keyword ? 'success' : 'default'}
@@ -781,7 +781,7 @@ function SelectReferenceImageAndRemoveButton({
     <div>
       <Image alt="Uploaded" src={referenceImage} width={300} height={300} />
       <Button
-        onClick={function() {
+        onClick={function () {
           setReferenceImage(null)
         }}
       >
@@ -808,7 +808,7 @@ function AdvanceGenerate({
   const [negativePrompt, setNegativePrompt] = useState('')
 
   const generateButtonClick = useCallback(
-    async function() {
+    async function () {
       setLoading(true)
       const payload = {
         prompt: typeOfGenerate + ',' + basePrompt + prompt,
@@ -875,7 +875,7 @@ function AdvanceGenerate({
       <Textarea
         label="Prompt"
         value={prompt}
-        onChange={function(e) {
+        onChange={function (e) {
           setPrompt(e.target.value)
         }}
       />
@@ -883,7 +883,7 @@ function AdvanceGenerate({
       <Textarea
         label="Negative Prompt"
         value={negativePrompt}
-        onChange={function(e) {
+        onChange={function (e) {
           setNegativePrompt(e.target.value)
         }}
       />
@@ -977,7 +977,7 @@ function ArchitectSelect({
         value={typeOfArchitect}
         label="Kiểu kiến trúc"
         items={TYPES_OF_ARCHITECT}
-        onClick={function() {
+        onClick={function () {
           onOpen()
         }}
       >
@@ -985,7 +985,7 @@ function ArchitectSelect({
       </Select>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalContent>
-          {function(onClose) {
+          {function (onClose) {
             return (
               <>
                 <ModalHeader className="flex">
@@ -1073,7 +1073,7 @@ function ResultImages({
                 {images.map((image, index) => (
                   <div
                     key={index}
-                    onClick={function() {
+                    onClick={function () {
                       setCurrentImageIdx(index)
                     }}
                     className={clsx({
@@ -1149,7 +1149,7 @@ function ChooseNumberOfReturnImages({
         {numberOfResultImagesOptions.map((value, idx) => (
           <Button
             key={idx}
-            onClick={function() {
+            onClick={function () {
               setNumberOfResultImages(value)
             }}
             color={value === numberOfResultImages ? 'primary' : 'default'}
