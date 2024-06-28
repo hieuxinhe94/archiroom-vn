@@ -28,6 +28,8 @@ import clsx from 'clsx'
 import * as ImageJS from 'image-js'
 import Image from 'next/image'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { SlCloudDownload } from 'react-icons/sl'
+import Slider from 'react-slick'
 
 import combineIcon from './components/background-images/combineIcon.svg'
 import resultIcon from './components/background-images/resultIcon.svg'
@@ -115,6 +117,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                   setLoading={setLoading}
                   setResultImages={setResultImages}
                   numberOfResultImages={numberOfResultImages}
+                  loading={loading}
                 />
               </Tab>
               <Tab key="advanced" title="Nâng cao" className="px-8 py-1">
@@ -134,6 +137,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                   setLoading={setLoading}
                   setResultImages={setResultImages}
                   numberOfResultImages={numberOfResultImages}
+                  loading={loading}
                 />
               </Tab>
             </Tabs>
@@ -617,15 +621,15 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
           {/*   </> */}
           {/* ) : null} */}
         </div>
-        <div className="w-full">
-          <ResultImages
-            loading={loading}
-            images={resultImages}
-            original={referenceImage}
-            currentImageIdx={currentImageIdx}
-            setCurrentImageIdx={setCurrentImageIdx}
-          />
-        </div>
+        {/* <div className=""> */}
+        <ResultImages
+          loading={loading}
+          images={resultImages}
+          original={referenceImage}
+          currentImageIdx={currentImageIdx}
+          setCurrentImageIdx={setCurrentImageIdx}
+        />
+        {/* </div> */}
       </div>
     </div>
   )
@@ -687,7 +691,7 @@ function CommonPart({
         {TYPES_OF_GENERATE.map((architect, index) => (
           <Button
             key={index}
-            onClick={function () {
+            onClick={function() {
               setTypeOfGenerate(architect.keyword)
             }}
             color={typeOfGenerate === architect.keyword ? 'success' : 'default'}
@@ -701,6 +705,10 @@ function CommonPart({
         referenceImage={referenceImage}
         setReferenceImage={setReferenceImage}
       />
+
+      {referenceImage && (
+        <DownloadButton base64String={referenceImage} fileName="original.png" />
+      )}
     </div>
   )
 }
@@ -781,7 +789,7 @@ function SelectReferenceImageAndRemoveButton({
     <div>
       <Image alt="Uploaded" src={referenceImage} width={300} height={300} />
       <Button
-        onClick={function () {
+        onClick={function() {
           setReferenceImage(null)
         }}
       >
@@ -797,18 +805,20 @@ function AdvanceGenerate({
   setLoading,
   setResultImages,
   numberOfResultImages,
+  loading,
 }: {
   typeOfGenerate: string
   referenceImage: string | null
   setLoading: Function
   numberOfResultImages: number
   setResultImages: Function
+  loading: boolean
 }) {
   const [prompt, setPrompt] = useState('')
   const [negativePrompt, setNegativePrompt] = useState('')
 
   const generateButtonClick = useCallback(
-    async function () {
+    async function() {
       setLoading(true)
       const payload = {
         prompt: typeOfGenerate + ',' + basePrompt + prompt,
@@ -875,7 +885,7 @@ function AdvanceGenerate({
       <Textarea
         label="Prompt"
         value={prompt}
-        onChange={function (e) {
+        onChange={function(e) {
           setPrompt(e.target.value)
         }}
       />
@@ -883,12 +893,14 @@ function AdvanceGenerate({
       <Textarea
         label="Negative Prompt"
         value={negativePrompt}
-        onChange={function (e) {
+        onChange={function(e) {
           setNegativePrompt(e.target.value)
         }}
       />
 
-      <Button onClick={generateButtonClick}>Generate</Button>
+      <Button onClick={generateButtonClick} isDisabled={loading}>
+        Generate
+      </Button>
     </div>
   )
 }
@@ -936,15 +948,88 @@ function SimpleGenerate({
   setLoading,
   setResultImages,
   numberOfResultImages,
+  loading,
 }: {
   typeOfGenerate: string
   referenceImage: string | null
   setLoading: Function
   numberOfResultImages: number
   setResultImages: Function
+  loading: boolean
 }) {
   const [typeOfArchitecture, setTypeOfArchitecture] = useState('')
   const [style, setStyle] = useState('')
+  const [material, setMaterial] = useState('')
+
+  const generateButtonClick = useCallback(
+    async function() {
+      setLoading(true)
+      const payload = {
+        prompt: [
+          basePrompt,
+          typeOfGenerate,
+          typeOfArchitecture,
+          style,
+          material,
+        ].join(','),
+        negative_prompt: baseNegativePrompt,
+        seed: -1,
+        steps: 30,
+        width: 512,
+        height: 512,
+        // denoising_strength: 0.5,
+        // n_iter: 1,
+        init_images: [referenceImage],
+        batch_size: numberOfResultImages,
+        sampler_name: 'DPM++ 2M',
+        alwayson_scripts: {
+          controlnet: {
+            args: [
+              {
+                module: 'canny',
+                model: 'control_canny-fp16 [d14c016b]',
+              },
+            ],
+          },
+        },
+      }
+
+      // console.log(payload)
+
+      try {
+        const res = await axios.post(
+          `${serviceUrl}/sdapi/v1/img2img`,
+          payload,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          },
+        )
+
+        // console.log(res.data)
+        let resultImages: string[] = []
+        for (const image of res.data.images) {
+          resultImages = [...resultImages, `data:image/png;base64,${image}`]
+        }
+        setResultImages(resultImages)
+      } catch (e) {
+        console.log(e)
+      } finally {
+        setLoading(false)
+      }
+    },
+    [
+      material,
+      typeOfGenerate,
+      typeOfArchitecture,
+      style,
+      referenceImage,
+      numberOfResultImages,
+      setLoading,
+      setResultImages,
+    ],
+  )
 
   return (
     <div className="flex flex-col flex-grow">
@@ -953,11 +1038,22 @@ function SimpleGenerate({
         setTypeOfArchitect={setTypeOfArchitecture}
       />
       <StyleSelect style={style} setStyle={setStyle} />
-      <Select items={MATERIALS} label="Nguyên vật liệu">
+      <Select
+        items={MATERIALS}
+        label="Nguyên vật liệu"
+        value={material}
+        onChange={(e) => {
+          setMaterial(e.target.value)
+        }}
+      >
         {(material) => (
           <SelectItem key={material.keyword}>{material.label}</SelectItem>
         )}
       </Select>
+
+      <Button onPress={generateButtonClick} isDisabled={loading}>
+        Generate
+      </Button>
     </div>
   )
 }
@@ -977,7 +1073,7 @@ function ArchitectSelect({
         value={typeOfArchitect}
         label="Kiểu kiến trúc"
         items={TYPES_OF_ARCHITECT}
-        onClick={function () {
+        onClick={function() {
           onOpen()
         }}
       >
@@ -985,7 +1081,7 @@ function ArchitectSelect({
       </Select>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalContent>
-          {function (onClose) {
+          {function(onClose) {
             return (
               <>
                 <ModalHeader className="flex">
@@ -1055,8 +1151,15 @@ function ResultImages({
   setCurrentImageIdx: Function
   loading: boolean
 }) {
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+  }
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col justify-center flex-grow">
       {images.length === 0 ? (
         <NoResultImages />
       ) : (
@@ -1064,27 +1167,40 @@ function ResultImages({
           {loading ? (
             <Spinner size="lg" label="Đang tạo ..." color="warning" />
           ) : (
-            <>
+            <div className="flex flex-col gap-4 justify-center flex-grow">
               <SliderImagesComparison
                 original={original!}
                 newImage={images[currentImageIdx]}
               />
-              <div className="w-full flex flex-wrap gap-2">
-                {images.map((image, index) => (
-                  <div
-                    key={index}
-                    onClick={function () {
-                      setCurrentImageIdx(index)
-                    }}
-                    className={clsx({
-                      'border-2 border-black': index === currentImageIdx,
-                    })}
-                  >
-                    <Image src={image} width={300} height={300} alt="Result" />
-                  </div>
-                ))}
+              <div className="slider-container">
+                <Slider {...settings}>
+                  {/* <div className="w-full flex flex-wrap gap-2"> */}
+                  {images.map((image, index) => (
+                    <div
+                      key={index}
+                      onClick={function() {
+                        setCurrentImageIdx(index)
+                      }}
+                      className={clsx({
+                        'border-2 border-black': index === currentImageIdx,
+                      })}
+                    >
+                      <Image
+                        src={image}
+                        width={300}
+                        height={300}
+                        alt="Result"
+                      />
+                      <DownloadButton
+                        base64String={image}
+                        fileName={`result-${index + 1}.png`}
+                      />
+                    </div>
+                  ))}
+                  {/* </div> */}
+                </Slider>
               </div>
-            </>
+            </div>
           )}
         </>
       )}
@@ -1149,7 +1265,7 @@ function ChooseNumberOfReturnImages({
         {numberOfResultImagesOptions.map((value, idx) => (
           <Button
             key={idx}
-            onClick={function () {
+            onClick={function() {
               setNumberOfResultImages(value)
             }}
             color={value === numberOfResultImages ? 'primary' : 'default'}
@@ -1159,5 +1275,65 @@ function ChooseNumberOfReturnImages({
         ))}
       </div>
     </div>
+  )
+}
+
+function DownloadButton({
+  base64String,
+  fileName,
+}: {
+  base64String: string
+  fileName: string
+}) {
+  const downloadImage = useCallback(() => {
+    // Function to convert base64 string to Blob
+    const base64ToBlob = (base64, contentType = '', sliceSize = 512) => {
+      const byteCharacters = atob(base64.split(',')[1])
+      const byteArrays = []
+
+      for (
+        let offset = 0;
+        offset < byteCharacters.length;
+        offset += sliceSize
+      ) {
+        const slice = byteCharacters.slice(offset, offset + sliceSize)
+        const byteNumbers = new Array(slice.length)
+
+        for (let i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i)
+        }
+
+        const byteArray = new Uint8Array(byteNumbers)
+        byteArrays.push(byteArray)
+      }
+
+      return new Blob(byteArrays, { type: contentType })
+    }
+
+    // Convert the base64 string to a Blob
+    const contentType = base64String.split(';')[0].split(':')[1]
+    const blob = base64ToBlob(base64String, contentType)
+
+    // Create a link element and set the URL to the Blob
+    const link = document.createElement('a')
+    link.href = URL.createObjectURL(blob)
+    link.download = fileName // Specify the filename
+
+    // Programmatically click the link to trigger the download
+    document.body.appendChild(link)
+    link.click()
+
+    // Clean up and remove the link element
+    document.body.removeChild(link)
+  }, [base64String, fileName])
+
+  return (
+    <Button
+      onClick={downloadImage}
+      style={{ padding: '10px', cursor: 'pointer' }}
+      startContent={<SlCloudDownload />}
+    >
+      Tải ảnh xuống
+    </Button>
   )
 }
