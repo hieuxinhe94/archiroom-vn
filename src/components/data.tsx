@@ -112,14 +112,14 @@ export const MARKET_CONFIG_DATA = {
         }
     },
     previewData: [
-        {
-            id: 1,
-            code: "ai-film-maker",
-            title: "Làm video/film bằng GenAI",
-            description: "Thăng cấp sự sáng tạo của bạn với Gen AI – tạo phim và truyện một cách dễ dàng, biến tưởng tượng thành hiện thực! ",
-            image: './services/film-maker.png',
-            tryLink: 'https://www.tryonhub.ai'
-        },
+        // {
+        //     id: 1,
+        //     code: "ai-film-maker",
+        //     title: "Làm video/film bằng GenAI",
+        //     description: "Thăng cấp sự sáng tạo của bạn với Gen AI – tạo phim và truyện một cách dễ dàng, biến tưởng tượng thành hiện thực! ",
+        //     image: './services/film-maker.png',
+        //     tryLink: 'https://www.tryonhub.ai'
+        // },
         {
             id: 2,
             code: "ai-chatbot",
@@ -147,14 +147,14 @@ export const MARKET_CONFIG_DATA = {
         },
     ],
     allTools: [
-        {
-            id: 1,
-            code: "ai-film-maker",
-            title: "Làm video/film bằng GenAI",
-            description: "Thăng cấp sự sáng tạo của bạn với Gen AI – tạo phim và truyện một cách dễ dàng, biến tưởng tượng thành hiện thực! ",
-            image: './services/film-maker.png',
-            tryLink: 'https://www.tryonhub.ai'
-        },
+        // {
+        //     id: 1,
+        //     code: "ai-film-maker",
+        //     title: "Làm video/film bằng GenAI",
+        //     description: "Thăng cấp sự sáng tạo của bạn với Gen AI – tạo phim và truyện một cách dễ dàng, biến tưởng tượng thành hiện thực! ",
+        //     image: './services/film-maker.png',
+        //     tryLink: 'https://www.tryonhub.ai'
+        // },
         {
             id: 2,
             code: "ai-chatbot",
