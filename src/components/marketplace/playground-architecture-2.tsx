@@ -1152,54 +1152,49 @@ function ResultImages({
   loading: boolean
 }) {
   const settings = {
-    dots: false,
-    infinite: false,
+    dots: true,
+    infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
   }
   return (
     <div className="flex flex-col justify-center flex-grow">
-      {images.length === 0 ? (
-        <NoResultImages />
+      {loading ? (
+        <Spinner size="lg" label="Đang tạo ..." color="warning" />
       ) : (
         <>
-          {loading ? (
-            <Spinner size="lg" label="Đang tạo ..." color="warning" />
+          {images.length === 0 ? (
+            <NoResultImages />
           ) : (
             <div className="flex flex-col gap-4 justify-center flex-grow">
               <SliderImagesComparison
                 original={original!}
                 newImage={images[currentImageIdx]}
               />
-              <div className="slider-container">
-                <Slider {...settings}>
-                  {/* <div className="w-full flex flex-wrap gap-2"> */}
-                  {images.map((image, index) => (
-                    <div
-                      key={index}
-                      onClick={function() {
-                        setCurrentImageIdx(index)
-                      }}
-                      className={clsx({
-                        'border-2 border-black': index === currentImageIdx,
-                      })}
-                    >
-                      <Image
-                        src={image}
-                        width={300}
-                        height={300}
-                        alt="Result"
-                      />
-                      <DownloadButton
-                        base64String={image}
-                        fileName={`result-${index + 1}.png`}
-                      />
-                    </div>
-                  ))}
-                  {/* </div> */}
-                </Slider>
+              {/* <div className="slider-container"> */}
+              {/*   <Slider {...settings}> */}
+              <div className="w-full flex flex-wrap gap-2">
+                {images.map((image, index) => (
+                  <div
+                    key={index}
+                    onClick={function() {
+                      setCurrentImageIdx(index)
+                    }}
+                    className={clsx({
+                      'border-2 border-black': index === currentImageIdx,
+                    })}
+                  >
+                    <Image src={image} width={300} height={300} alt="Result" />
+                    <DownloadButton
+                      base64String={image}
+                      fileName={`result-${index + 1}.png`}
+                    />
+                  </div>
+                ))}
               </div>
+              {/*   </Slider> */}
+              {/* </div> */}
             </div>
           )}
         </>
