@@ -146,18 +146,129 @@ export const MARKET_CONFIG_DATA = {
             tryLink: 'https://www.tryonhub.ai'
         },
     ],
-    allTools: [
-        // {
-        //     id: 1,
-        //     code: "ai-film-maker",
-        //     title: "Làm video/film bằng GenAI",
-        //     description: "Thăng cấp sự sáng tạo của bạn với Gen AI – tạo phim và truyện một cách dễ dàng, biến tưởng tượng thành hiện thực! ",
-        //     image: './services/film-maker.png',
-        //     tryLink: 'https://www.tryonhub.ai'
-        // },
+    archiroomPreviewData: [
+        {
+            id: 1,
+            code: "archiroom-exterior",
+            title: "AI cho ngoại thất",
+            description: "",
+            image: 'archiroom/sample-3.jpg',
+            image2: 'archiroom/sample-4.jpg',
+            tryLink: ''
+        },
         {
             id: 2,
-            code: "ai-chatbot",
+            code: "archiroom-iterior",
+            fullscreen: true,
+            title: "AI cho nội thất",
+            description: "",
+            image: 'archiroom/sample-1.jpg',
+            image2: 'archiroom/sample-2.jpg',
+            tryLink: ''
+        },
+        {
+            id: 3,
+            title: "Hiện thực hóa bản sketch",
+            code: "archiroom-sketch",
+            description: "",
+            image: 'archiroom/sample-6.jpg',
+            image2: 'archiroom/sample-5.jpg',
+            tryLink: ''
+        },
+        {
+            id: 4,
+            title: "Chuyển đổi phong cách",
+            code: "archiroom-transform",
+            description: "",
+            image: 'archiroom/sample-7.jpg',
+            image2: 'archiroom/sample-8.jpg',
+            tryLink: ''
+        },
+    ],
+
+    archiroomFeatures: [
+        {
+            id: 1,
+            code: "archiroom-exterior",
+            title: "Lên ý tưởng ngoại thất ",
+            description: "Gen ảnh ngoại thất bằng AI - Công cụ thiết kế đột phá cho ngôi nhà mơ ước! Bứt phá giới hạn sáng tạo, biến mọi ý tưởng ngoại thất thành hiện thực chỉ với vài cú nhấp chuột cùng công cụ Gen ảnh ngoại thất bằng AI",
+            image: 'archiroom/sample-1.jpg',
+            video: './services/chatbot-ai.mp4',
+            tryLink: ''
+        },
+        {
+            id: 2,
+            code: "ai-architecture",
+            fullscreen: true,
+            title: "Nội thất nhà ở",
+            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            image: 'archiroom/sample-2.jpg',
+            tryLink: ''
+        },
+        {
+            id: 3,
+            title: "Nội thất văn phòng, sự kiện",
+            code: "tryonhub",
+            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            image: 'archiroom/sample-3.jpg',
+            tryLink: ''
+        },
+        {
+            id: 4,
+            title: "Thay đổi phong cách",
+            code: "tryonhub",
+            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            image: 'archiroom/sample-4.jpg',
+            tryLink: ''
+        },
+        {
+            id: 4,
+            title: "Thay đổi phong cách",
+            code: "tryonhub",
+            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            image: 'archiroom/sample-5.jpg',
+            tryLink: ''
+        }
+    ],
+    archiroomStyles: [
+        {
+            id: 2,
+            code: "archiroom-style-change",
+            title: "Phong cách Á Đông",
+            description: "Trợ lý ảo trong lĩnh vực cụ thể, đào tạo thêm bằng thông tin bổ sung từ dữ liệu nội bộ. Vd: Tuyển dụng, Chăm sóc KH, Đào tạo",
+            image: 'archiroom/sample-11.jpg',
+            tryLink: ''
+        },
+        {
+            id: 3,
+            code: "ai-architecture",
+            fullscreen: true,
+            title: "Phong cách làng quê VN",
+            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            image: 'archiroom/sample-12.jpg',
+            tryLink: ''
+        },
+        {
+            id: 4,
+            title: "Phong cách châu Âu",
+            code: "tryonhub",
+            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            image: 'archiroom/sample-13.jpg',
+            tryLink: ''
+        },
+        {
+            id: 4,
+            title: "Phong cách khác",
+            code: "tryonhub",
+            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            image: 'archiroom/sample-14.jpg',
+            tryLink: ''
+        },
+    ],
+    allTools: [
+        {
+            id: 2,
+            code: "archiroom-style-change",
             title: "ChatGPT tùy chỉnh (GPT-4o)",
             description: "Trợ lý ảo trong lĩnh vực cụ thể, đào tạo thêm bằng thông tin bổ sung từ dữ liệu nội bộ. Vd: Tuyển dụng, Chăm sóc KH, Đào tạo",
             image: './services/chatbot-ai.png',
@@ -184,12 +295,13 @@ export const MARKET_CONFIG_DATA = {
     fqa: {
         config: {
             title: 'Những câu hỏi thường gặp',
-            description: 'Nếu bạn không thể tìm thấy những gì bạn đang tìm kiếm, hãy gửi email tới contact@tryonhub.ai của chúng tôi và sẽ có người liên hệ lại với bạn.'
+            description: 'Nếu bạn không thể tìm thấy những gì bạn đang tìm kiếm, hãy gửi email tới contact@archiroom.vn của chúng tôi và sẽ có người liên hệ lại với bạn.'
 
         },
         items: [
-            { title: 'How do you generate reports?', description: 'You just tell us what data you need a report for, and we get our kids to create beautiful charts for you using only the finest crayons.' },
-            { title: 'How do you generate reports?', description: 'You just tell us what data you need a report for, and we get our kids to create beautiful charts for you using only the finest crayons.' }
+            { title: 'Giới thiệu Archiroom.vn', description: 'Chúng tôi là công ty cung cấp dịch vụ Generative AI dựa trên nền tảng Stable Diffusion và Mid Jorney.' },
+            { title: 'Archiroom.vn có miễn phí không?', description: 'Bạn sẽ được sử dụng miễn phí gói FREE+ của chúng tôi với credit là 200$.' },
+            { title: 'Sử dụng Archiroom vào những mục đích nào', description: 'Tất cả mục đích trong việc thiết kế nội thất, kiến trúc....' }
         ]
     },
     footer: {
