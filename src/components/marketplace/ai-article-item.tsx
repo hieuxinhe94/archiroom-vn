@@ -1,4 +1,4 @@
-import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Progress, Skeleton } from '@nextui-org/react'
+import { Avatar, Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Progress, Skeleton } from '@nextui-org/react'
 import Link from 'next/link'
 import React, { useState } from 'react';
 import VideoPlayer from './video-player';
@@ -14,7 +14,7 @@ export default function AIArticleItem({ product, isSelecting = false }) {
 
   return (
     <div>
-      <div onClick={() => { console.log('onclicked'); setIsOpenDetail(!isOpenDetail);  router.push(`?product=${product.code}`); }} key={product} className="relative py-1 hover:opacity-100 bg-slate-800 rounded-xl  text-white">
+      <div onClick={() => { console.log('onclicked'); setIsOpenDetail(!isOpenDetail); router.push(`?product=${product.code}`); }} key={product} className="relative py-1 hover:opacity-100 bg-slate-800 rounded-xl  text-white">
 
         <div
           style={{
@@ -25,29 +25,11 @@ export default function AIArticleItem({ product, isSelecting = false }) {
           }}
 
           className="rounded-lg h-[260px] w-full px-1">
-          <div className="w-11 rounded-lg bg-slate-500 px-1">
-            <svg aria-hidden="true" className="h-9 w-9" fill="none">
-              <defs>
-                <linearGradient
-                  id=":r25:"
-                  x1="11.5"
-                  y1={18}
-                  x2={36}
-                  y2="15.5"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop offset=".194" stopColor="#fff" />
-                  <stop offset={1} stopColor="#6692F1" />
-                </linearGradient>
-              </defs>
-              <path
-                d="m30 15-4 5-4-11-4 18-4-11-4 7-4-5"
-                stroke="url(#:r25:)"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+          <div className="w-11 rounded-lg  px-1">
+            <img
+              className=" rounded-lg"
+              src="/logo-s.png"
+            />
           </div>
         </div>
         <h3 className="mt-2 text-sm font-medium text-white px-4">

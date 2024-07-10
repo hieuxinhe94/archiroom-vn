@@ -11,7 +11,7 @@ export const autoPlaySettings = {
         {
             breakpoint: 1024,
             settings: {
-                slidesToShow: 3,
+                slidesToShow: 4,
                 slidesToScroll: 3,
                 infinite: true,
                 dots: true
@@ -152,8 +152,8 @@ export const MARKET_CONFIG_DATA = {
             code: "archiroom-exterior",
             title: "AI cho ngoại thất",
             description: "",
-            image: 'archiroom/sample-3.jpg',
-            image2: 'archiroom/sample-4.jpg',
+            image: 'archiroom/sample-6.jpg',
+            image2: 'archiroom/sample-3.jpg',
             tryLink: ''
         },
         {
@@ -171,8 +171,8 @@ export const MARKET_CONFIG_DATA = {
             title: "Hiện thực hóa bản sketch",
             code: "archiroom-sketch",
             description: "",
-            image: 'archiroom/sample-6.jpg',
-            image2: 'archiroom/sample-5.jpg',
+            image: 'archiroom/sample-7.jpg',
+            image2: 'archiroom/sample-8.jpg',
             tryLink: ''
         },
         {
@@ -180,8 +180,17 @@ export const MARKET_CONFIG_DATA = {
             title: "Chuyển đổi phong cách",
             code: "archiroom-transform",
             description: "",
-            image: 'archiroom/sample-7.jpg',
-            image2: 'archiroom/sample-8.jpg',
+            image: 'archiroom/sample-3.jpg',
+            image2: 'archiroom/sample-4.jpg',
+            tryLink: ''
+        },
+        {
+            id: 5,
+            title: "Cải tạo công trình",
+            code: "archiroom-transform",
+            description: "",
+            image: 'archiroom/sample-9.jpg',
+            image2: 'archiroom/sample-10.jpg',
             tryLink: ''
         },
     ],
@@ -191,7 +200,7 @@ export const MARKET_CONFIG_DATA = {
             id: 1,
             code: "archiroom-exterior",
             title: "Lên ý tưởng ngoại thất ",
-            description: "Gen ảnh ngoại thất bằng AI - Công cụ thiết kế đột phá cho ngôi nhà mơ ước! Bứt phá giới hạn sáng tạo, biến mọi ý tưởng ngoại thất thành hiện thực chỉ với vài cú nhấp chuột cùng công cụ Gen ảnh ngoại thất bằng AI",
+            description: "",
             image: 'archiroom/sample-1.jpg',
             video: './services/chatbot-ai.mp4',
             tryLink: ''
@@ -201,7 +210,7 @@ export const MARKET_CONFIG_DATA = {
             code: "ai-architecture",
             fullscreen: true,
             title: "Nội thất nhà ở",
-            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            description: "",
             image: 'archiroom/sample-2.jpg',
             tryLink: ''
         },
@@ -209,7 +218,7 @@ export const MARKET_CONFIG_DATA = {
             id: 3,
             title: "Nội thất văn phòng, sự kiện",
             code: "tryonhub",
-            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            description: "",
             image: 'archiroom/sample-3.jpg',
             tryLink: ''
         },
@@ -217,7 +226,7 @@ export const MARKET_CONFIG_DATA = {
             id: 4,
             title: "Thay đổi phong cách",
             code: "tryonhub",
-            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            description: "",
             image: 'archiroom/sample-4.jpg',
             tryLink: ''
         },
@@ -225,7 +234,7 @@ export const MARKET_CONFIG_DATA = {
             id: 4,
             title: "Thay đổi phong cách",
             code: "tryonhub",
-            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
+            description: "",
             image: 'archiroom/sample-5.jpg',
             tryLink: ''
         }
@@ -234,34 +243,44 @@ export const MARKET_CONFIG_DATA = {
         {
             id: 2,
             code: "archiroom-style-change",
-            title: "Phong cách Á Đông",
-            description: "Trợ lý ảo trong lĩnh vực cụ thể, đào tạo thêm bằng thông tin bổ sung từ dữ liệu nội bộ. Vd: Tuyển dụng, Chăm sóc KH, Đào tạo",
-            image: 'archiroom/sample-11.jpg',
+            title: "Biệt thự hiện đại",
+            image: 'archiroom/biệt thự phong cách hiện đại.jpg',
             tryLink: ''
         },
         {
             id: 3,
             code: "ai-architecture",
             fullscreen: true,
-            title: "Phong cách làng quê VN",
-            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
-            image: 'archiroom/sample-12.jpg',
+            title: "Biệt thự tân cổ điển",
+            image: 'archiroom/biệt thự phong cách tân cổ điển.jpg',
             tryLink: ''
         },
         {
             id: 4,
-            title: "Phong cách châu Âu",
+            title: "Nhà mái thái",
             code: "tryonhub",
-            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
-            image: 'archiroom/sample-13.jpg',
+            image: 'archiroom/nhà mái thái.jpg',
             tryLink: ''
         },
         {
             id: 4,
-            title: "Phong cách khác",
+            title: "Nhà phố hiện đại",
             code: "tryonhub",
-            description: "Tạo sinh các người mẫu với phong cách Á Đông bằng mô hình Generative AI tiên tiến, mạnh mẽ dành riêng cho người.",
-            image: 'archiroom/sample-14.jpg',
+            image: 'archiroom/nhà phố phong cách hiện đại.jpg',
+            tryLink: ''
+        },
+        {
+            id: 5,
+            title: "Phong cách địa trung hải",
+            code: "tryonhub",
+            image: 'archiroom/phong cách địa trung hải.jpg',
+            tryLink: ''
+        },
+        {
+            id: 6,
+            title: "Nội thất wabisabi",
+            code: "tryonhub",
+            image: 'archiroom/nội thất wabisabi.jpg',
             tryLink: ''
         },
     ],

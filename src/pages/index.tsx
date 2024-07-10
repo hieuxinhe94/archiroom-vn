@@ -44,7 +44,7 @@ export default function Tools(props) {
         />
 
         <meta name="description" content='ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam' key="desc" />
-        <meta property="og:title" content="Kho ứng dụng Generative AI dành cho doanh nghiệp Việt Nam - SIMPLIFY AI INC" />
+        <meta property="og:title" content="Generative AI Cho kiến trúc - Archiroom.VN" />
         <meta
           property="og:description"
           content="ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam"
@@ -101,7 +101,7 @@ export default function Tools(props) {
               # Generative AI:Công nghệ đột phá, hành trình dẫn đầu
             </h4>
             <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl mt-8">
-              Đưa kiến trúc bay lên tầm cao mới với {" "}
+              Đưa kiến trúc lên tầm cao mới với {" "}
               <span className="relative whitespace-nowrap text-blue-600">
                 <svg
                   aria-hidden="true"
@@ -121,7 +121,7 @@ export default function Tools(props) {
               <a className="hidden lg:block group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900"
 
                 color="slate"
-                href="/authenticate"
+                href="/signIn"
               >
                 Nhận 3 tháng dùng thử
               </a>
@@ -175,7 +175,7 @@ export default function Tools(props) {
             <div className="my-36 lg:mt-44">
               <div className="md:text-center">
                 <h2 className="font-display text-3xl tracking-tight tracking-tight text-slate-700">
-                  <span className="relative whitespace-nowrap">
+                  <span className="relative  whitespace-nowrap">
                     <svg
                       aria-hidden="true"
                       viewBox="0 0 281 40"
@@ -201,8 +201,8 @@ export default function Tools(props) {
                 role="list"
                 className="mt-8 w-full  lg:flex flex-row items-center justify-center gap-x-8 sm:flex-col sm:gap-x-0 sm:gap-y-10 xl:flex-row xl:gap-x-12 xl:gap-y-0"
               >
-                {["LuxHomes", " Kiến trúc & Nội thất C&B", "NovaX", "10+ khách hàng DN"].map(item => (
-                  <li key={item} className="flex">
+                {["LuxHomes", " Kiến trúc & Nội thất C&B", "NovaX", "500+ kiến trúc sư"].map(item => (
+                  <li key={item} className="flex w-full lg:w-auto justify-center items-center py-2">
                     <a
                       className="tap-highlight-transparent no-underline hover:opacity-80 active:opacity-disabled transition-opacity z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-medium px-4 min-w-20 h-10 gap-2 rounded-medium [&>svg]:max-w-[theme(spacing.8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none bg-transparent border-default data-[hover=true]:opacity-hover group text-sm border-dashed font-normal text-default-600 data-[hover=true]:bg-default-100/50"
                       tabIndex={0}
@@ -260,7 +260,7 @@ export default function Tools(props) {
                   <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
                     Những thiết kế mà bạn <br />
                     <span className="relative text-transparent  bg-clip-text bg-gradient-to-tr to-emerald-300 from-purple-400 font-bold">
-                      còn chưa nghĩ tới.
+                      còn chưa nghĩ tới
                     </span>
                   </h2>
                   <p className="mt-6 text-lg tracking-tight text-blue-100">
@@ -442,7 +442,7 @@ export default function Tools(props) {
                     className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-10"
                     color="white"
 
-                    href="/authenticate"
+                    href="/signIn"
                   >
                     Đăng ký tài khoản
                   </a>

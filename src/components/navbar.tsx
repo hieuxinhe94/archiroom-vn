@@ -16,7 +16,7 @@ export default function Navbar({ settings, heroSliderSetting }) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav className="relative z-50 flex justify-between">
           <div className="flex items-center text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900 font-medium">
-            <a aria-label="Home" href="/" className="py-1 ">
+            <a aria-label="Home" href="/" className=" hidden lg:block py-1 ">
               <img src={heroSliderSetting.header.logo} height={65} width={65} />
             </a>
             <a aria-label="Home" className="flex pl-4 py-1" href="/">
@@ -41,7 +41,7 @@ export default function Navbar({ settings, heroSliderSetting }) {
             <div className="hidden md:block">
               <a
                 className="inline-block rounded-lg px-2 py-1 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                href="/authenticate"
+                href="/signIn"
               >
                 Đăng ký
               </a>
@@ -50,7 +50,7 @@ export default function Navbar({ settings, heroSliderSetting }) {
               className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gradient-to-tr to-emerald-600 from-purple-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600"
               color="blue"
 
-              href="/authenticate"
+              href="/signIn"
             >
               <span>
                 Đăng ký ngay<span className="hidden lg:inline"> hôm nay</span>
