@@ -122,7 +122,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
     setGenConfig({ ..._config });
     genConfigurations[configId] = configValue;
     setStep(0.5)
-  }, []);
+  }, [genConfig]);
 
   useEffect(() => {
     AOS.init({
@@ -261,7 +261,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
           {
             ARCHIROOM_TOOL_CONFIG.options.map(item => (
-              <div className="w-full rounded ">
+              <div key={item} className="w-full rounded ">
                 <Dropdown backdrop="blur">
                   <DropdownTrigger id={item.id}>
                     <div className='w-full h-14 rounded-lg bg-slate-700 text-sm p-1 px-2 cursor-pointer'>
