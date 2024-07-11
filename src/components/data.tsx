@@ -443,9 +443,9 @@ export const ARCHIROOM_TOOL_CONFIG = {
     },
     optionsSelected:
     {
-        "genType" : "genType-1"
+        "genType": "genType-1"
     }
-        
+
     ,
     options: [
         {
@@ -524,6 +524,41 @@ export const ARCHIROOM_TOOL_CONFIG = {
         }
 
     ],
+    responseDefault: {
+        title: "Kết quả của {genType}, ",
+        config: {},
+        outputs: [
+            {
+                id: 1,
+                title: "Biệt thự 1",
+                description: "",
+                image: "archiroom/sample-1.jpg",
+                tags: ["Biệt thự", "Việt Nam"]
+            },
+            {
+                id: 2,
+                title: "Biệt thự 2",
+                description: "",
+                image: "archiroom/sample-2.jpg",
+                tags: ["Biệt thự", "Châu Âu"]
+            },
+            {
+                id: 3,
+                title: "Biệt thự 3",
+                description: "",
+                image: "archiroom/sample-3.jpg",
+                tags: ["Biệt thự", "Scandarian"]
+            },
+            {
+                id: 4,
+                title: "Biệt thự 4",
+                description: "",
+                image: "archiroom/sample-4.jpg",
+                tags: ["Biệt thự", "America"]
+            }
+        ]
+
+    },
     responsive: [
         {
             breakpoint: 1024,

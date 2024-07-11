@@ -15,6 +15,7 @@ export default function ImageComparison({ url1, url2 }) {
                         borderRadius: "5px"
                              
                     }}
+                    position={20}
                     itemOne={<ReactCompareSliderImage src={url1}  alt="Image one" />}
                     itemTwo={<ReactCompareSliderImage src={url2}  alt="Image two" />}
                 />

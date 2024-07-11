@@ -3,6 +3,8 @@ import {
   Breadcrumbs,
   Button,
   Card,
+  CardFooter,
+  CardHeader,
   cn,
   Dropdown,
   DropdownItem,
@@ -33,7 +35,9 @@ import { imageKitService } from './components/ImageKitService'
 import axios from 'axios'
 import { ARCHIROOM_TOOL_CONFIG } from '../data'
 import AOS from "aos";
+import ImageComparison from '../image-comparison'
 
+var genConfigurations = {};
 export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const fileInputRef = useRef<any>()
   const [step, setStep] = useState(0)
@@ -42,7 +46,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const [isLoading, setIsLoading] = useState(false)
   const [hasOutput, setHasOutput] = useState(false)
   const [isUploadingImage, setIsUploadingImage] = useState(false)
-  const [numberOfOutput, setNumberOfOutput] = useState("1")
+  const [numberOfOutput, setNumberOfOutput] = useState("4")
   const [genConfig, setGenConfig] = useState({})
   const [imageUploadedUrl, setImageUploadedUrl] = useState('')
   const [imageResponseddUrl, setImageResponseddUrl] = useState('')
@@ -60,7 +64,6 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
   const onSubmit = useCallback(async (event: any) => {
     setIsLoading(true);
-
     const file = event.target.files[0];
     const base64File: any = await getImageBase64(file);
     setImageUploadedUrl(URL.createObjectURL(file))
@@ -103,6 +106,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
     })
       .catch((err) => {
         alert(err)
+        setImageResponseddUrl("./archiroom/sample-2.jpg")
       }).finally(() => {
         setIsLoading(false);
         setHasOutput(true);
@@ -115,36 +119,10 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
     let _config: {} = { ...genConfig };
     console.log(_config);
     _config[configId] = configValue;
-    setGenConfig({..._config});
+    setGenConfig({ ..._config });
+    genConfigurations[configId] = configValue;
+    setStep(0.5)
   }, []);
-
-  // upload clothes photo
-  const handleImageUpload = useCallback(async (event: any) => {
-    const file = event.target.files[0]
-
-    if (file) {
-      setIsUploadingImage(true)
-      setIsPlayingAround(true)
-      setIsLoading(true)
-      setStep(1)
-      const imageUrl = URL.createObjectURL(file)
-      const img = await ImageJS.Image.load(imageUrl)
-      imageKitService
-        .upload({
-          file: img.toDataURL(),
-          fileName: 'architecture.jpg',
-        })
-        .then((uploaded) => {
-          setImageUploadedUrl(uploaded.url + '?tr=w-768,h-1024') // using imagekit auto resize
-          setIsUploadingImage(false)
-
-          // temp
-          setTimeout(() => {
-            setCounter((v) => (v >= 100 ? 0 : v + 1))
-          }, 1000)
-        })
-    }
-  }, [])
 
   useEffect(() => {
     AOS.init({
@@ -255,14 +233,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                               />
                             </>
                           )}
-                          <input
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                            onChange={onSubmit}
-                            onBlur={() => setIsLoading(false)}
-                            ref={fileInputRef}
-                          />
+
                         </div>
                       </div>
                       <div
@@ -276,6 +247,14 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                   </div>
                 </div>
               </Tooltip>
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={onSubmit}
+                onBlur={() => setIsLoading(false)}
+                ref={fileInputRef}
+              />
             </div>
 
           </div>
@@ -291,7 +270,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3" />
                         </svg>
-                        {item.child.findLast(a => a.id === genConfig[item.id])?.title ?? ""}
+                        {item.child.findLast(a => a.id === genConfigurations[item.id])?.title ?? ""}
+
                       </div>
                     </div>
                   </DropdownTrigger>
@@ -347,8 +327,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                   }}
                   itemClasses={{
                     item: [
-                      "px-2 py-0.5 border-small font-normal  rounded-small",
-                      "data-[current=true]:border-foreground data-[current=true]:bg-foreground data-[current=true]:text-background transition-colors",
+                      "px-2 py-0.5  font-normal  rounded-small",
+                      "data-[current=true]:border-small data-[current=true]:border-2 data-[current=true]:border-s data-[current=true]:bg-foreground data-[current=true]:text-background transition-colors",
                       "data-[disabled=true]:border-slate-400 data-[disabled=true]:bg-slate-100 text-white",
                     ],
                     separator: "hidden",
@@ -384,7 +364,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
           className="flex h-auto w-full flex-col items-center gap-4 md:p-4 " >
           {step === 0 ? (
             <div data-aos='zoom-in'
-              data-aos-duraion={1000} className='p-24 text-lg'>
+              data-aos-duraion={1000} className='px-24 pt-12 text-lg'>
               <h2 className="text-slate-800 text-xl font-bold mb-[60px] hidden lg:flex items-center gap-[10px]">
                 <Image
                   src="./logo-s.png"
@@ -393,8 +373,13 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                   alt="Try On Step Image"
                   className="w-[30px] h-[30px] lg:w-[42px] lg:h-[42px]"
                 />
-                Xin chào, đây là những bước để tạo ra thiết kế ấn tượng.
+                <span className="tracking-tight inline font-semibold text-2xl lg:text-3xl">Với Archiroom.VN, sự sáng tạo  <span className="tracking-tight inline font-semibold text-2xl lg:text-3xl">là &nbsp;</span>
+                  <span className="relative text-transparent  bg-clip-text bg-gradient-to-tr to-emerald-500 from-purple-600">Không giới hạn</span>
+                </span>
+                <div>
+                </div>
               </h2>
+
               <div className="try-on-steps justify-between items-center mb-[60px] hidden lg:flex">
                 <div
                   className="try-on-step flex flex-col items-center shrink-0 "
@@ -410,8 +395,9 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                     height={334}
                     alt="Try On Step Image"
                   />
-                  <p className="step-description text-[18px]  font-bold mt-[24px] text-center text-slate-800">
-                    Tải lên thiết kế (Sketch)
+                  <p className="step-description text-slate-800 text-[18px] font-bold mt-[24px] text-center">
+                    Tải lên phác thảo thiết kế của bạn
+
                   </p>
                 </div>
 
@@ -488,15 +474,15 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                   data-aos-delay={1400}
                   data-aos-duraion={1000}
                 >
-                  <Image
+                  <Image2
                     className='rounded-2xl b-solid b-1 border-slate-100 '
-                    src="./services/architecture-ai-step-3.jpg"
+                    src="https://app.requestly.io/delay/5000/https://archiroom.vn/services/architecture-ai-step-3.jpg"
                     width={320}
                     height={334}
                     alt="Try On Step Image"
                   />
                   <p className="step-description text-slate-800 text-[18px] font-bold mt-[24px] text-center">
-                    Nhận kết quả
+                    AI sẽ hiện thực các phương án
                   </p>
                 </div>
               </div>
@@ -505,146 +491,16 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
           ) : null}
 
           {step === 1 ? (
-            <>
-              <h2 className="text-slate-800 text-base lg:text-[30px] font-bold mb-[20px] lg:mb-[30px] flex items-center mt-12">
-                Đang tải ảnh lên
-              </h2>
-              <div className="w-full flex">
-                <div className="w-1/2 flex">
-                  <Card
-                    className="w-full h-[70vh] space-y-12 mx-12 p-8 "
-                    radius="lg"
-                  >
-                    <Skeleton isLoaded={true} className="rounded-lg">
-                      {!isUploadingImage && (
-                        <div className="h-auto w-full flex justify-center rounded-lg bg-slate-800/20 pb-10">
-                          <Image2
-                            width={520}
-                            height={580}
-                            src={imageUploadedUrl}
-
-                            alt="user uploaded cover"
-                            className=" w-full p-5 justify-center mx-auto "
-                            fallbackSrc="https://via.placeholder.com/300x500"
-                          />
-                        </div>
-                      )}
-
-                      {isUploadingImage && (
-                        <div className="h-[154px] w-full rounded-lg bg-slate-800/20"></div>
-                      )}
-                    </Skeleton>
-                    {isUploadingImage && (
-                      <div className="space-y-3 ">
-                        <span className="my-1">Đang phân tích bối cảnh</span>
-                        <Skeleton
-                          isLoaded={isLoading}
-                          className="w-3/5 rounded-lg"
-                        >
-                          <div className="h-3 w-full rounded-lg bg-secondary"></div>
-                        </Skeleton>
-                        <Skeleton
-                          isLoaded={isLoading}
-                          className="w-4/5 rounded-lg"
-                        >
-                          <div className="h-3 w-full rounded-lg bg-secondary-300"></div>
-                        </Skeleton>
-                        <Skeleton
-                          isLoaded={isLoading}
-                          className="w-2/5 rounded-lg"
-                        >
-                          <div className="h-3 w-full rounded-lg bg-secondary-200"></div>
-                        </Skeleton>
-                      </div>
-                    )}
-                  </Card>{' '}
-                </div>
-                <div className="w-1/2 flex">
-                  <Card
-                    className="w-full h-[70vh] space-y-12 mx-12 p-8 "
-                    radius="lg"
-                  >
-                    <Skeleton isLoaded={hasOutput} className="rounded-lg">
-                      {hasOutput && (
-                        <div className="h-auto w-full flex justify-center rounded-lg bg-slate-800/20">
-                          <Image2
-                            width={520}
-                            height={580}
-                            isZoomed
-                            src={`data:image/png;base64, ${imageResponseddUrl}`}
-                            // src={imageResponseddUrl}
-                            alt="user uploaded cover"
-                            className=" w-full h-auto p-5 justify-center mx-auto"
-                            fallbackSrc="https://via.placeholder.com/300x500"
-                          />
-                        </div>
-                      )}
-
-                      {isLoading && (
-                        <Progress
-                          aria-label={counter + 'seconds left'}
-                          size="md"
-                          value={counter}
-                          color="secondary"
-                          showValueLabel={true}
-                          className=" my-2 w-full"
-                        />
-                      )}
-                    </Skeleton>
-
-                    <div className="space-y-3 ">
-                      <div className="flex gap-4 items-center">
-                        <Button
-                          className="bg-slate-800 text-white"
-                          endContent={
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.5}
-                              stroke="currentColor"
-                              className="size-6"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                              />
-                            </svg>
-                          }
-                        >
-                          Tải xuống định dạng ảnh
-                        </Button>
-                        <Button
-                          onPress={() => {
-                            setStep(1)
-                          }}
-                          startContent={
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.5}
-                              stroke="currentColor"
-                              className="size-6 text-white"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
-                              />
-                            </svg>
-                          }
-                          className="bg-gradient-to-r font-bold from-purple-gd to-blue-gd rounded-full h-[38px] w-full hover:shadow-purple-300 hover:shadow-[0_0_20px_5px_rgba(0,0,0,0.1)] duration-300 lg:w-auto"
-                        >
-                          <span className="text-white">Retry</span>
-                        </Button>
-                      </div>
-                    </div>
-                  </Card>
-                </div>
-              </div>
-            </>
+            <RenderSDOutut
+              isLoading={isLoading}
+              hasOutput={hasOutput}
+              isUploadingImage={isUploadingImage}
+              imageUploadedUrl={imageUploadedUrl}
+              imageResponseddUrl={imageResponseddUrl}
+              counter={counter}
+              genConfig={genConfigurations}
+              numberOfOutput={numberOfOutput}
+            />
           ) : null}
 
           {/* Footer */}
@@ -652,16 +508,10 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
           {step === 0 ? (
             <>
               <div className="w-full lg:w-auto h-[40px] box-border rounded-full hover:bg-white hidden lg:block to-blue-gd p-[1px]">
-                <input
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={onSubmit}
-                  ref={fileInputRef}
-                />
+
                 <Button
                   onClick={() => setStep(0.5)}
-                  className="w-full lg:w-auto text-white font-medium rounded-full py-1 bg-gradient-to-r from-purple-gd to-blue-gd px-[50px] hover:shadow-purple-300 hover:shadow-[0_0_20px_5px_rgba(0,0,0,0.1)] duration-300"
+                  className="w-full lg:w-auto text-white font-medium rounded-full py-1  bg-slate-800 px-[50px] hover:shadow-purple-300 hover:shadow-[0_0_20px_5px_rgba(0,0,0,0.1)] duration-300"
                 >
                   Bắt đầu
                 </Button>
@@ -672,6 +522,78 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
       </div>
     </div>
   )
+}
+
+
+const RenderSDOutut = (props) => {
+  const {
+    isLoading, numberOfOutput, hasOutput, isUploadingImage, imageUploadedUrl, imageResponseddUrl, counter, isEnable, genConfig, renderConfig,
+  } = (props)
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [response, setResponse] = useState(ARCHIROOM_TOOL_CONFIG.responseDefault);
+
+  return (<>
+    <div className="items-start justify-center w-full text-slate-800 px-8">
+      <span className="tracking-tight inline font-semibold text-2xl lg:text-3xl">Sự sáng tạo    <span className="tracking-tight inline font-semibold text-2xl lg:text-3xl">là &nbsp;</span>
+        <span className="tracking-tight inline font-semibold to-emerald-500 from-purple-600 text-2xl lg:text-3xl bg-clip-text text-transparent bg-gradient-to-b">
+          Không giới hạn.</span></span><div>
+      </div>
+    </div>
+
+    <div className='w-full  px-8'>
+      <span className="text-slate-800 inline font-normal text-sm">
+        {`${genConfigurations["genType"]}, ${genConfigurations["genStyle"]}, ${genConfigurations["genMaterial"]}, ${genConfigurations["genExactly"]}`} :
+      </span>
+      <Card key={selectedIndex} className="w-3/4 mx-auto h-[550px]  my-4 cursor-pointer">
+        <CardHeader className="absolute w-auto z-10 top-1 flex-col items-start">
+          <p className="text-tiny text-white/60 uppercase font-bold">{response.outputs[selectedIndex].title}</p>
+        </CardHeader>
+        <ImageComparison url1={imageUploadedUrl} url2={response.outputs[selectedIndex].image} />
+        <CardFooter className="absolute w-auto right-0 rounded-lg  top-0 border-t-1 border-zinc-100/50 z-10 justify-between">
+         
+          <Button className="text-tiny" color="primary" radius="full" size="sm">
+            Tải xuống
+          </Button>
+        </CardFooter>
+      </Card>
+
+
+    </div>
+    <div className="w-full gap-2 ">
+      <span className="text-slate-800 inline font-semibold text-lg px-8"> Các phương án :</span>
+      <div className=" grid grid-cols-12 grid-rows-4 ">
+        {
+          response.outputs.map((item, index) => (
+            (<Card
+              key={item.id}
+
+              className="w-auto h-[150px] col-span-12 sm:col-span-3 mx-8 my-4 cursor-pointer">
+              <CardHeader className="absolute w-auto z-10 top-1 flex-col items-start">
+                <p className="text-tiny text-white/60 uppercase font-bold">{item.title}</p>
+              </CardHeader>
+              <Image2
+                onClick={() => { setSelectedIndex(item.id - 1); console.log(item.id) }}
+                removeWrapper
+                alt="Card background"
+                className="z-0 w-full h-full object-cover"
+                src={item.image}
+              />
+              <CardFooter className="absolute w-full right-0 rounded-lg bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
+                <div>
+                  <p className="text-white text-tiny">Click vào từng ảnh để xem <br /></p>
+                </div>
+
+              </CardFooter>
+            </Card>
+            )))
+        }
+      </div>
+    </div>
+  </>
+
+  );
+
 }
 
 export const CustomRadio = (props) => {
