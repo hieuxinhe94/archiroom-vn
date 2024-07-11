@@ -1,6 +1,6 @@
 import { Tabs, Tab, Card, CardBody, CardFooter, CardHeader, Divider, Link } from "@nextui-org/react";
 import Head from "next/head";
-
+import AOS from "aos";
 import Slider from "react-slick";
 
 import AIArticleItem from "~/components/marketplace/ai-article-item";
@@ -30,6 +30,11 @@ export default function Tools(props) {
     }
   }, [router]);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 500, once: true
+    });
+  }, []);
 
   return (
 
@@ -61,12 +66,12 @@ export default function Tools(props) {
       </Head>
 
       <NextSeo
-        title="Kho ứng dụng Generative AI dành cho doanh nghiệp Việt Nam - SIMPLIFY AI INC"
+        title="Generative AI Cho kiến trúc - Archiroom.VN"
         description='ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam'
-        canonical="https://ArchiRoom.AI"
+        canonical="https://ArchiRoom.vn"
         openGraph={{
-          url: 'https://ArchiRoom.AI',
-          title: "Chợ ứng dụng Generative AI dành cho doanh nghiệp Việt Nam - SIMPLIFY AI INC",
+          url: 'https://ArchiRoom.vn',
+          title: "Generative AI Cho kiến trúc - Archiroom.VN",
           description: 'ai art generator, ai picture generative, generative ai vietnam, Ứng dụng Gen AI Việt Nam, Generative AI Việt Nam, Chuyển đổi số bằng Generative AI Việt Nam, AI thử mặc thời trang, Bikini try on, Try on dress, wedding dress try on, try before you buy, try on clothes at home, try on clothes online',
           images: [
             {
@@ -93,9 +98,13 @@ export default function Tools(props) {
 
         className=" w-full  text-center ">
         <div
+         data-aos='zoom-in'
+         data-aos-duraion={1000}
+         data-aos-easing='ease-in-out'
           style={{ backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundImage: 'url("archiroom-bg.png"', }}
           className=" min-h-screen flex-col items-center justify-between px-2 pt-24">
           <div
+          
             className="px-4 sm:px-6 lg:px-8 pb-8 pt-20 text-center lg:pt-12">
             <h4 className="mx-auto mt-4 max-w-2xl text-2xl tracking-tight text-slate-700">
               # Generative AI:Công nghệ đột phá, hành trình dẫn đầu
@@ -118,18 +127,12 @@ export default function Tools(props) {
             </h1>
 
             <div className="mt-10 flex justify-center px-4">
-              <a className="hidden lg:block group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900"
+              
+            <a
+                className="group  font-semibold inline-flex ring-1 items-center justify-center rounded-full mx-2 py-2 px-12 text-sm focus:outline-none ring-slate-200 text-white hover:text-slate-900 bg-slate-900/30 hover:ring-slate-300 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300"
 
                 color="slate"
-                href="/signIn"
-              >
-                Nhận 3 tháng dùng thử
-              </a>
-              <a
-                className="group inline-flex ring-1 items-center justify-center rounded-full mx-2 py-2 px-4 text-sm focus:outline-none ring-slate-200 text-slate-700 hover:text-slate-900 hover:ring-slate-300 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300"
-
-                color="slate"
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                href="/play-architecture?product=ai-architecture"
               >
                 <svg
                   aria-hidden="true"
@@ -137,8 +140,17 @@ export default function Tools(props) {
                 >
                   <path d="m9.997 6.91-7.583 3.447A1 1 0 0 1 1 9.447V2.553a1 1 0 0 1 1.414-.91L9.997 5.09c.782.355.782 1.465 0 1.82Z" />
                 </svg>
-                <span className="ml-3">Xem Video</span>
+                <span className="ml-3">Dùng thử ngay</span>
               </a>
+              
+              <a className="hidden px-12 font-semibold lg:block group inline-flex items-center justify-center rounded-full py-2  text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900"
+
+                color="slate"
+                href="/signIn"
+              >
+                Đăng ký 
+              </a>
+          
             </div>
           </div>
         </div>
@@ -152,10 +164,10 @@ export default function Tools(props) {
                 <Slider {...heroSliderSetting.sliderConfig} >
                   {
                     heroSliderSetting?.archiroomPreviewData?.map((item) => (
-                      <div key={item.id} className="my-4 py-2 px-2 lg:px-8">
-                        <Card className="max-w-[400px] bg-gray-100">
+                      <div key={item.id} className="my-4 py-2 px-2  lg:px-8">
+                        <Card className="max-w-[400px] bg-slate-800 text-white">
                           <CardHeader className="flex gap-2">
-                            <h4 className="mx-auto mt-4 max-w-2xl text-xl tracking-tight text-slate-700">
+                            <h4 className="mx-auto mt-4 max-w-2xl text-xl tracking-tight text-white">
                               # {item.title}
                             </h4>
                           </CardHeader>
@@ -319,7 +331,7 @@ export default function Tools(props) {
                       role="tabpanel"
                       tabIndex={0}
                     >
-                      <div className="m-10 overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[58rem] ">
+                      <div className="m-10 overflow-hidden rounded-xl  shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[58rem] ">
                         <div className="slider-container">
                           <Slider {...heroSliderSetting.verticleSliderSettings}>
                             {
@@ -335,8 +347,8 @@ export default function Tools(props) {
                                       backgroundSize: "cover",
                                       backgroundPosition: "center"
                                     }}
-                                    className={"w-full h-full pb-28 pt-20 sm:py-32 rounded-xl h-[450px] lg:h-[550px]"}>
-                                    <div className="group bottom-0 absolute rounded-full px-4 py-10 lg:rounded-l-xl lg:rounded-r-none p-6  hover:bg-white/10 lg:hover:bg-white/5">
+                                    className={"w-full h-full pb-28 pt-20 sm:py-32 rounded-xl h-[450px] lg:h-[550px] hover:opacity-100 bg-slate-800 rounded-xl  text-white"}>
+                                    <div className="group bottom-0 absolute rounded-full px-4 py-10 lg:rounded-l-xl lg:rounded-r-none p-6  ">
                                       <h3>
                                         <button
                                           className="font-display   ui-not-focus-visible:outline-none text-lg tracking-tight font-bold text-slate-700"

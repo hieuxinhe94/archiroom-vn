@@ -5,7 +5,7 @@ import { NextSeo } from "next-seo";
 import { useEffect } from "react";
 
 import AnnouncementBar from "~/components/announcementBar";
-// import "aos/dist/aos.css";
+import "aos/dist/aos.css";
 const organization = {
   "@context": "https://schema.org",
   "@type": "Organization",

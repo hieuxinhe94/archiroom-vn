@@ -1,7 +1,14 @@
 import {
+  BreadcrumbItem,
+  Breadcrumbs,
   Button,
   Card,
   cn,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownSection,
+  DropdownTrigger,
   Input,
   Progress,
   RadioGroup,
@@ -11,18 +18,21 @@ import {
   Spinner,
   Tab,
   Tabs,
+  Tooltip,
   useRadio,
   VisuallyHidden,
 } from '@nextui-org/react'
 import { Image as Image2 } from '@nextui-org/react'
 import * as ImageJS from 'image-js'
 import Image from 'next/image'
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import combineIcon from './components/background-images/combineIcon.svg'
 import resultIcon from './components/background-images/resultIcon.svg'
 import upload from './components/background-images/upload.svg'
 import { imageKitService } from './components/ImageKitService'
 import axios from 'axios'
+import { ARCHIROOM_TOOL_CONFIG } from '../data'
+import AOS from "aos";
 
 export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const fileInputRef = useRef<any>()
@@ -32,6 +42,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const [isLoading, setIsLoading] = useState(false)
   const [hasOutput, setHasOutput] = useState(false)
   const [isUploadingImage, setIsUploadingImage] = useState(false)
+  const [numberOfOutput, setNumberOfOutput] = useState("1")
+  const [genConfig, setGenConfig] = useState({})
   const [imageUploadedUrl, setImageUploadedUrl] = useState('')
   const [imageResponseddUrl, setImageResponseddUrl] = useState('')
   const [promt, setPromt] = useState('architecture')
@@ -48,10 +60,10 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
   const onSubmit = useCallback(async (event: any) => {
     setIsLoading(true);
-    
+
     const file = event.target.files[0];
-    const base64File:any = await getImageBase64(file);
-    setImageUploadedUrl(URL.createObjectURL(file)) 
+    const base64File: any = await getImageBase64(file);
+    setImageUploadedUrl(URL.createObjectURL(file))
     console.log(process.env.SD_URL)
     await axios.post(
       `${serviceUrl}/sdapi/v1/img2img`,
@@ -99,6 +111,13 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [promt, negativePromt]);
 
+  const setConfig = useCallback((configId: any, configValue: any) => {
+    let _config: {} = { ...genConfig };
+    console.log(_config);
+    _config[configId] = configValue;
+    setGenConfig({..._config});
+  }, []);
+
   // upload clothes photo
   const handleImageUpload = useCallback(async (event: any) => {
     const file = event.target.files[0]
@@ -127,7 +146,12 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
     }
   }, [])
 
-  
+  useEffect(() => {
+    AOS.init({
+      duration: 500, once: true
+    });
+  }, []);
+
   async function getImageBase64(file: File) {
     return new Promise((resolve) => {
       const reader = new FileReader()
@@ -139,12 +163,12 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   }
 
   return (
-    <div className="w-full px-0 lg:px-4 hover:opacity-100  rounded-xl  text-white ">
+    <div className="w-full px-0 hover:opacity-100  rounded-xl  text-white ">
       <div className="block lg:flex h-[calc(100vh_-_40px)] w-full gap-x-2">
-        <div className="flex  bg-slate-800 text-white h-full w-full lg:w-[344px] flex-shrink-0 flex-col items-start gap-y-8 rounded-large  px-8 py-6 shadow-small lg:flex">
+        <div className="flex  bg-slate-800 text-white h-full w-full lg:w-[344px] flex-shrink-0 flex-col items-start gap-y-4 rounded-large  px-8 py-6 shadow-small lg:flex">
           <button
             onClick={() => onCloseEvent()}
-            className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 rounded-full [&>svg]:max-w-[theme(spacing.8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none data-[hover=true]:opacity-hover bg-default-50 text-small font-medium text-default-500 shadow-lg"
+            className="z-0 group relative inline-flex items-center justify-center text-sm gap-2 bg-slate-800/90 p-2 rounded-lg"
             type="button"
           >
             <svg
@@ -164,211 +188,203 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                 clipRule="evenodd"
               />
             </svg>
-            Back
+            Quay lại
           </button>
-          <div>
+          {/* <div>
             <div className="text-xl font-medium leading-7 ">
               Tạo thiết kế
             </div>
-          </div>
-          <div className="w-full text-white text-sm">
-            <Tabs key={'success'} color='secondary' className='w-full ' aria-label="Render types" radius="full">
-              <Tab key="basic" title="Cơ bản" className='px-8 py-1' />
-              <Tab key="advanced" title="Nâng cao" className='px-8 py-1' />
+          </div> */}
+          <div className="w-full text-white text-sm bg-slate-800">
+            <Tabs key={'success'} classNames={{
+              tabList: "gap-6 w-full relative rounded-lg bg-slate-800",
+              cursor: "w-full bg-slate-700",
+              tab: "max-w-fit px-0 h-8 my-1",
+              tabContent: "group-data-[selected=true]:text-white "
+            }}
+              style={{ color: "white" }} className='w-full ' aria-label="Render types" radius="full">
+              {
+                ARCHIROOM_TOOL_CONFIG.mode.map(item => (
+                  <Tab key={item.name} title={item.name} className='px-8 ' />
+                ))
+              }
 
             </Tabs>
           </div>
           <div className="w-full text-white text-sm">
-            <RadioGroup orientation="horizontal" className='w-auto h-auto' label="Chọn đối tượng Gen ảnh:">
-              <CustomRadio value="Nội thất">
-                <div className='relative'>
-                  <Image
-                    src="./services/architecture-ai-step-3.jpg"
-                    className='rounded'
-                    width={96}
-                    height={60}
-                    alt="Try On Step Image"
-                  />
-                  <span className='p-1 absolute bottom-0 left-0 text-gray-100'> Nội thất</span>
-                </div>
-              </CustomRadio>
-              <CustomRadio value="Ngoại thất">
-                <div className='relative'>
-                  <Image
-                    src="./services/architecture-ai-step-3.jpg"
-                    className='rounded'
-                    width={96}
-                    height={60}
-                    alt="Try On Step Image"
-                  />
-                  <span className='p-1 absolute bottom-0 left-0 text-gray-100'> Ngoại thất</span>
-                </div>
-              </CustomRadio>
-
+            <RadioGroup orientation="horizontal" className='w-auto h-auto' label="Chọn đối tượng Gen ảnh:" onSelect={() => { }}>
+              {
+                ARCHIROOM_TOOL_CONFIG.targets.map(item => (
+                  <CustomRadio key={item.name} value={item.name}>
+                    <div className='relative'>
+                      <Image
+                        src={item.image}
+                        className='rounded'
+                        width={72}
+                        height={72}
+                        alt="Try On Step Image"
+                      />
+                      <span className='p-1 text-xs absolute bottom-0 left-0 text-gray-100'> {item.name}</span>
+                    </div>
+                  </CustomRadio>
+                ))
+              }
             </RadioGroup>
           </div>
 
           <div className="w-full text-white text-sm">
-            <div className='rounded-lg bg-slate-500/50 w-full rounded-[10px] p-[2px]'>
-              <div className="">
-                <div className="w-full h-full bg-slate-800/60 rounded-[8px] p-[15px] lg:p-[36px] hover:bg-gradient-to-r hover:from-purple-500/[.05] hover:to-blue-500/[.05] duration-300">
-                  <div className="options flex justify-center mb-[15px]">
-                    <div className="hover:scale-125 duration-300">
-                      <div className="cursor-pointer">
-                        {isLoading ? (
-                          <Spinner color="secondary" />
-                        ) : (
-                          <>
-                            <Image
-                              onClick={uploadTrigger}
-                              src={upload}
-                              width={49}
-                              height={47}
-                              alt="upload image"
-                              className="w-[36px] h-[36px] lg:w-[49px] lg:h-[47px]"
-                            />
-                          </>
-                        )}
-                        <input
-                          type="file"
-                          accept="image/*"
-                          className="hidden"
-                          onChange={onSubmit}
-                          onBlur={() => setIsLoading(false)}
-                          ref={fileInputRef}
-                        />
+            <div className='rounded-lg bg-slate-700 w-full rounded-[10px] p-[2px]'>
+              <Tooltip isOpen={(step == 0.5) && imageUploadedUrl.length == 0} showArrow={true} placement='right-start' content="Tải lên thiết kế của bạn tại đây">
+                <div className="">
+                  <div className="w-full h-full bg-slate-800/60 rounded-[8px] p-[15px] lg:p-[36px] hover:bg-gradient-to-r hover:from-purple-500/[.05] hover:to-blue-500/[.05] duration-300">
+                    <div className="options flex justify-center mb-[15px]">
+                      <div className="hover:scale-125 duration-300">
+                        <div className="cursor-pointer">
+
+                          {isLoading ? (
+                            <Spinner color="secondary" />
+                          ) : (
+                            <>
+                              <Image
+                                onClick={uploadTrigger}
+                                src={upload}
+                                width={49}
+                                height={47}
+                                alt="upload image"
+                                className="w-[36px] h-[36px] lg:w-[49px] lg:h-[47px]"
+                              />
+                            </>
+                          )}
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={onSubmit}
+                            onBlur={() => setIsLoading(false)}
+                            ref={fileInputRef}
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className=""
+                      >
                       </div>
                     </div>
-                    <div
-                      className=""
-                    >
-                    </div>
+                    <p className="text-[12px] lg:text-base text-center font-medium bg-white bg-clip-text text-transparent">
+                      {ARCHIROOM_TOOL_CONFIG.upload.title}
+                    </p>
                   </div>
-                  <p className="text-[12px] lg:text-base text-center font-medium bg-white bg-clip-text text-transparent">
-                    Tải lên ảnh thiết kế
-                  </p>
                 </div>
-              </div>
-
+              </Tooltip>
             </div>
 
           </div>
 
+          {
+            ARCHIROOM_TOOL_CONFIG.options.map(item => (
+              <div className="w-full rounded ">
+                <Dropdown backdrop="blur">
+                  <DropdownTrigger id={item.id}>
+                    <div className='w-full h-14 rounded-lg bg-slate-700 text-sm p-1 px-2 cursor-pointer'>
+                      <div className='w-full text-gray-500'> {item.title} </div>
+                      <div className='w-full flex gap-2 text-gray-300 font-semibold pt-1'>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3" />
+                        </svg>
+                        {item.child.findLast(a => a.id === genConfig[item.id])?.title ?? ""}
+                      </div>
+                    </div>
+                  </DropdownTrigger>
+
+                  <DropdownMenu variant="faded" onAction={(key) => {
+                    console.log(item.id);
+                    console.log(key);
+                    ARCHIROOM_TOOL_CONFIG.optionsSelected[item.id] = key;
+                    setConfig(item.id, key.toString()?.replace(".0", ""));
+                  }} aria-label="Static Actions">
+                    {[
+                      // @ts-ignore
+                      item.child?.map(x => <DropdownSection key={x.id} aria-label="Help & Feedback">
+                        <DropdownItem
+                          shortcut="⌘"
+                          description="Copy the file link"
+                          id={x.id}
+                          startContent={
+                            <div className='relative'>
+                              <Image
+                                src={x.image}
+                                className='rounded'
+                                width={124}
+                                height={124}
+                                alt="Try On Step Image"
+                              />
+                              {/* <span className='p-1 text-xs absolute bottom-0 left-0 text-gray-100'> {x.title}</span> */}
+                            </div>
+                          }
+                        >
+                          {x.title}
+                        </DropdownItem>
+                      </DropdownSection>)
+                    ]}
+                  </DropdownMenu>
+
+                </Dropdown>
+              </div>
+
+            ))
+          }
+
           <div className="w-full rounded ">
-            <Select
-              label="Chế độ Gen ảnh"
-              placeholder="Chọn một loại"
-              startContent={
-                <div className="w-full flex text-sm">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="size-6 w-4 h-4 mx-2 my-1 text-slate-800"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
-                    />
-                  </svg>
-                  <span className="text-slate-800">{genType}</span>
-                </div>
-              }
-              color='primary'
-              defaultSelectedKeys={genType}
-              className="max-w-xs bg-transparent "
-              isOpen={isFirstTime}
-              onOpenChange={setIsFirstTime}
-              onSelectionChange={setGenType}
-            >
-              <SelectItem
-                className="bg-slate-100 bg-transparent"
-                key={'Chính xác'}
-                value={'architecture.precise'}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
-                  />
-                </svg>
-                <span className="text-slate-800 text-sm">Chính xác</span>
-              </SelectItem>
+            <div className='w-full h-14 rounded-lg  text-sm p-1 px-2 cursor-pointer'>
+              <div className='w-full text-gray-500'> Số ảnh trả về </div>
+              <div className='w-full flex gap-2 text-gray-300 font-semibold pt-1'>
 
-              <SelectItem
-                className="bg-white"
-                key={'Tương đối'}
-                value={'architecture.balanced'}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-6"
+                <Breadcrumbs
+                  size="lg"
+                  onAction={(key) => setNumberOfOutput(key.toString())}
+                  classNames={{
+                    list: "gap-2",
+                  }}
+                  itemClasses={{
+                    item: [
+                      "px-2 py-0.5 border-small font-normal  rounded-small",
+                      "data-[current=true]:border-foreground data-[current=true]:bg-foreground data-[current=true]:text-background transition-colors",
+                      "data-[disabled=true]:border-slate-400 data-[disabled=true]:bg-slate-100 text-white",
+                    ],
+                    separator: "hidden",
+                  }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
-                  />
-                </svg>
-                <span className="text-slate-800">Tương đối</span>
-              </SelectItem>
-
-              <SelectItem
-                className="bg-white"
-                key={'Sáng tạo'}
-                value={'architecture.creative'}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
-                  />
-                </svg>
-                <span className="text-slate-800">Sáng tạo</span>
-              </SelectItem>
-            </Select>
+                  <BreadcrumbItem key="1" isCurrent={numberOfOutput === "1"}>
+                    1
+                  </BreadcrumbItem>
+                  <BreadcrumbItem key="2" isCurrent={numberOfOutput === "2"}>
+                    2
+                  </BreadcrumbItem>
+                  <BreadcrumbItem key="3" isCurrent={numberOfOutput === "3"}>
+                    3
+                  </BreadcrumbItem>
+                  <BreadcrumbItem key="4" isCurrent={numberOfOutput === "4"}>
+                    4
+                  </BreadcrumbItem>
+                  <BreadcrumbItem key="5" isCurrent={numberOfOutput === "5"}>
+                    5
+                  </BreadcrumbItem>
+                </Breadcrumbs>
+              </div>
+            </div>
           </div>
 
-          <div className="w-full absolute bottom-5 left-11 text-white text-sm">
-            <Input
-              isRequired
-              type="text"
-              color={'danger'}
-              label="ServiceURL"
-              value={serviceUrl}
-              onValueChange={setServiceUrl}
-              className="max-w-xs bg-slate-800"
-            />
 
-          </div>
         </div>
 
-        <div className="flex h-auto w-full flex-col items-center gap-4 md:p-4 ">
+        <div
+
+
+
+          className="flex h-auto w-full flex-col items-center gap-4 md:p-4 " >
           {step === 0 ? (
-            <div className='p-24 text-lg'>
+            <div data-aos='zoom-in'
+              data-aos-duraion={1000} className='p-24 text-lg'>
               <h2 className="text-slate-800 text-xl font-bold mb-[60px] hidden lg:flex items-center gap-[10px]">
                 <Image
                   src="./logo-s.png"
@@ -506,7 +522,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                             width={520}
                             height={580}
                             src={imageUploadedUrl}
-                           
+
                             alt="user uploaded cover"
                             className=" w-full p-5 justify-center mx-auto "
                             fallbackSrc="https://via.placeholder.com/300x500"
@@ -644,10 +660,10 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                   ref={fileInputRef}
                 />
                 <Button
-                  onClick={uploadTrigger}
+                  onClick={() => setStep(0.5)}
                   className="w-full lg:w-auto text-white font-medium rounded-full py-1 bg-gradient-to-r from-purple-gd to-blue-gd px-[50px] hover:shadow-purple-300 hover:shadow-[0_0_20px_5px_rgba(0,0,0,0.1)] duration-300"
                 >
-                  Tải ảnh Sketch lên
+                  Bắt đầu
                 </Button>
               </div>
             </>
@@ -677,8 +693,8 @@ export const CustomRadio = (props) => {
       {...getBaseProps()}
       className={cn(
         'group inline-flex items-center hover:opacity-70 active:opacity-50 justify-between flex-row-reverse tap-highlight-transparent',
-        'max-w-[300px] cursor-pointer border-1 border-slate-100 rounded-lg  p-1 ml-0',
-        'data-[selected=true]:border-purple-400 data-[selected=true]:border-2 text-white',
+        'max-w-[300px] cursor-pointer  border-slate-300 rounded-lg  p-1 ml-0',
+        'data-[selected=true]:border-slate-400 data-[selected=true]:border-1 text-white',
       )}
     >
       <VisuallyHidden>

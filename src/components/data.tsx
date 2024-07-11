@@ -411,3 +411,129 @@ export const MARKET_CONFIG_DATA = {
 
     }
 };
+
+
+export const ARCHIROOM_TOOL_CONFIG = {
+    mode: [
+        {
+            name: "Cơ bản",
+        },
+        {
+            name: "Nâng cao",
+        },
+
+    ],
+    targets: [
+        {
+            name: "Nội thất",
+            image: "./services/architecture-ai-step-3.jpg"
+        },
+        {
+            name: "Ngoại thất",
+            image: "./services/architecture-ai-step-3.jpg"
+        },
+        {
+            name: "Cải tiến",
+            image: "./services/architecture-ai-step-3.jpg"
+        },
+
+    ],
+    upload: {
+        title: "Tải lên hình phác thảo hoặc mô hình 3D"
+    },
+    optionsSelected:
+    {
+        "genType" : "genType-1"
+    }
+        
+    ,
+    options: [
+        {
+            id: "genType",
+            title: "Kiểu kiến trúc",
+            image: "",
+            child: [
+                {
+                    id: "genType-1",
+                    title: "Dinh thự",
+                    image: "./services/architecture-ai-step-3.jpg"
+                },
+                {
+                    id: "genType-2",
+                    title: "Biệt thự",
+                    image: "./services/architecture-ai-step-3.jpg"
+                }
+            ]
+
+        },
+        {
+            id: "genStyle",
+            title: "Phong cách",
+            image: "",
+            child: [
+                {
+                    id: "genStyle-1",
+                    title: "Biệt thự hiện đại",
+                    image: "./services/architecture-ai-step-3.jpg"
+                },
+                {
+                    id: "genStyle-2",
+                    title: "Biệt thự tân cổ điển",
+                    image: "./services/architecture-ai-step-3.jpg"
+                }
+            ]
+        },
+        {
+            id: "genMaterial",
+            title: "Nguyên vật liệu",
+            image: "",
+            child: [
+                {
+                    id: "genMaterial-1",
+                    title: "Vật liệu Gỗ",
+                    image: "./services/architecture-ai-step-3.jpg"
+                },
+                {
+                    id: "genMaterial-2",
+                    title: "Vật liệu Kính",
+                    image: "./services/architecture-ai-step-3.jpg"
+                }
+            ]
+        },
+        {
+            id: "genExactly",
+            title: "Độ kiết xuất",
+            image: "",
+            child: [
+                {
+                    id: "genExactly-1",
+                    title: "Chính xác",
+                    image: "./services/architecture-ai-step-3.jpg"
+                },
+                {
+                    id: "genExactly-2",
+                    title: "Tương đối",
+                    image: "./services/architecture-ai-step-3.jpg"
+                },
+                {
+                    id: "genExactly-2",
+                    title: "Sáng tạo",
+                    image: "./services/architecture-ai-step-3.jpg"
+                }
+            ]
+        }
+
+    ],
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+            }
+        },
+
+    ]
+};
