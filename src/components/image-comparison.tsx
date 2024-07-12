@@ -16,7 +16,7 @@ export default function ImageComparison({ url1, url2 }) {
                              
                     }}
                     position={20}
-                    itemOne={<ReactCompareSliderImage src={url1}  alt="Image one" />}
+                    itemOne={<ReactCompareSliderImage src={url1}  alt="Image one" height={"100%"} />}
                     itemTwo={<ReactCompareSliderImage src={url2}  alt="Image two" />}
                 />
             </div>

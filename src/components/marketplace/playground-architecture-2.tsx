@@ -51,9 +51,9 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const [imageUploadedUrl, setImageUploadedUrl] = useState('')
   const [imageResponseddUrl, setImageResponseddUrl] = useState('')
   const [promt, setPromt] = useState('architecture')
-  const [contextId, setContextId] = useState('')
+  const [contextId, setContextId] = useState('context-1')
   const [negativePromt, setNegativePromt] = useState('')
-  const [serviceUrl, setServiceUrl] = useState('https://nhathao.top')
+  const [serviceUrl, setServiceUrl] = useState('https://794e-123-16-239-85.ngrok-free.app/docs')
   const [outputImageUploadedUrl, setOutputImageUploadedUrl] = useState(
     './services/architecture-ai-step-3.jpg',
   )
@@ -292,7 +292,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                   }} aria-label="Static Actions">
                     {[
                       // @ts-ignore
-                      item.child?.filter(x => (contextId == null) ? true : ( !x.context ? true : (x.context === contextId))).map(x => <DropdownSection key={x.id} aria-label="Help & Feedback">
+                      item.child?.filter(x => (contextId == null) ? true : (!x.context ? true : (x.context === contextId))).map(x => <DropdownSection key={x.id} aria-label="Help & Feedback">
                         <DropdownItem
                           shortcut="⌘"
                           description="Copy the file link"
@@ -553,7 +553,7 @@ const RenderSDOutut = (props) => {
       <span className="text-slate-800 inline font-normal text-sm">
         {`${genConfigurations["genType"]}, ${genConfigurations["genStyle"]}, ${genConfigurations["genMaterial"]}, ${genConfigurations["genExactly"]}`} :
       </span>
-      <Card key={selectedIndex} className="w-3/4 mx-auto h-[550px]  my-4 cursor-pointer">
+      <Card key={selectedIndex} className="w-3/4 mx-auto   my-4 cursor-pointer">
         <CardHeader className="absolute w-auto z-10 top-1 flex-col items-start">
           <p className="text-tiny text-white/60 uppercase font-bold">{response.outputs[selectedIndex].title}</p>
         </CardHeader>
