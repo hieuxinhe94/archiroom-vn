@@ -423,20 +423,18 @@ export const ARCHIROOM_TOOL_CONFIG = {
         },
 
     ],
-    targets: [
+    context: [
         {
-            name: "Nội thất",
-            image: "./services/architecture-ai-step-3.jpg"
-        },
-        {
+            id: "context-1",
             name: "Ngoại thất",
-            image: "./services/architecture-ai-step-3.jpg"
+            image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/Ngoại thất.jpg"
         },
         {
-            name: "Cải tiến",
-            image: "./services/architecture-ai-step-3.jpg"
+            id: "context-2",
+            name: "Nội thất",
+            image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/Nội thất.jpg"
         },
-
+      
     ],
     upload: {
         title: "Tải lên hình phác thảo hoặc mô hình 3D"
@@ -445,7 +443,6 @@ export const ARCHIROOM_TOOL_CONFIG = {
     {
         "genType": "genType-1"
     }
-
     ,
     options: [
         {
@@ -456,12 +453,57 @@ export const ARCHIROOM_TOOL_CONFIG = {
                 {
                     id: "genType-1",
                     title: "Dinh thự",
-                    image: "./services/architecture-ai-step-3.jpg"
+                    context: "context-2",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/01. Kiểu kiến trúc/biệt thự.jpg"
                 },
                 {
                     id: "genType-2",
                     title: "Biệt thự",
-                    image: "./services/architecture-ai-step-3.jpg"
+                     context: "context-2",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/01. Kiểu kiến trúc/dinh thự.png"
+                },
+                {
+                    id: "genType-3",
+                    title: "Nhà phố",
+                     context: "context-2",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/01. Kiểu kiến trúc/Nhà phố.jpg"
+                },
+                {
+                    id: "genType-4",
+                    title: "Tòa Văn phòng",
+                     context: "context-2",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/01. Kiểu kiến trúc/Tòa nhà văn phòng.jpg"
+                },
+                // other context
+                {
+                    id: "genType-11",
+                    title: "Phòng ăn",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/01. Kiểu phòng/Phòng ăn.jpg"
+                },
+                {
+                    id: "genType-12",
+                    title: "Phòng bếp",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/01. Kiểu phòng/phòng bếp.jpg"
+                },
+                {
+                    id: "genType-13",
+                    title: "Phòng khách",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/01. Kiểu phòng/Phòng khách.jpg"
+                },
+                {
+                    id: "genType-14",
+                    title: "Phòng ngủ",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/01. Kiểu phòng/phòng ngủ.jpg"
+                },
+                {
+                    id: "genType-15",
+                    title: "Phòng tắm",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/01. Kiểu phòng/Phòng tắm.jpg"
                 }
             ]
 
@@ -474,13 +516,88 @@ export const ARCHIROOM_TOOL_CONFIG = {
                 {
                     id: "genStyle-1",
                     title: "Biệt thự hiện đại",
-                    image: "./services/architecture-ai-step-3.jpg"
+                    context: "context-2",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/02. Phong cách/biệt thự hiện đại.png"
                 },
                 {
                     id: "genStyle-2",
-                    title: "Biệt thự tân cổ điển",
-                    image: "./services/architecture-ai-step-3.jpg"
-                }
+                    title: "Biệt thự tân cổ",
+                    context: "context-2",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/02. Phong cách/biệt thự tân cổ.png"
+                },
+                {
+                    id: "genStyle-3",
+                    title: "Cổ điển",
+                    context: "context-2",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/02. Phong cách/Cổ điển.jpg"
+                },
+                {
+                    id: "genStyle-4",
+                    title: "Địa trung hải",
+                    context: "context-2",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/02. Phong cách/Địa trung hải.jpg"
+                },
+                {
+                    id: "genStyle-5",
+                    title: "Tối giản",
+                    context: "context-2",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/02. Phong cách/Tối giản.jpg"
+                },
+                // other context
+                {
+                    id: "genStyle-11",
+                    title: "Ấm cúng",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/Ấm cúng.jpg"
+                },
+                {
+                    id: "genStyle-12",
+                    title: "Cổ điển",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/Cổ điện.jpg"
+                },
+                {
+                    id: "genStyle-13",
+                    title: "Địa trung hải",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/địa trung hải.jpg"
+                },
+                {
+                    id: "genStyle-14",
+                    title: "Hiện đại",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/Hiện đại.jpg"
+                },
+                {
+                    id: "genStyle-15",
+                    title: "Mộc mạc",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/mộc mạc.jpg"
+                },
+                {
+                    id: "genStyle-16",
+                    title: "Indochina",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/nội thất indochi.jpg"
+                },
+                {
+                    id: "genStyle-17",
+                    title: "Tân cổ",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/nội thất tân cổ 1.jpg"
+                },
+                {
+                    id: "genStyle-18",
+                    title: "Phòng khách hiện đại",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/phòng khách hiện đại.jpg"
+                },
+                {
+                    id: "genStyle-19",
+                    title: "Sang trọng",
+                    context: "context-1",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/Sang trọng.jpg"
+                },
             ]
         },
         {
@@ -491,12 +608,58 @@ export const ARCHIROOM_TOOL_CONFIG = {
                 {
                     id: "genMaterial-1",
                     title: "Vật liệu Gỗ",
-                    image: "./services/architecture-ai-step-3.jpg"
+                    context: null,
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Bê tông.jpg"
                 },
                 {
                     id: "genMaterial-2",
-                    title: "Vật liệu Kính",
-                    image: "./services/architecture-ai-step-3.jpg"
+                    title: "Đá hoa",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Đá hoa.jpg"
+                },
+                {
+                    id: "genMaterial-3",
+                    title: "Đá ",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Đá.jpg"
+                },
+                {
+                    id: "genMaterial-4",
+                    title: "Gạch ",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Gạch.jpg"
+                },
+                {
+                    id: "genMaterial-5",
+                    title: "Gỗ tổng hợp ",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Gỗ tổng hợp.jpg"
+                },
+                {
+                    id: "genMaterial-6",
+                    title: "Gỗ ",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Gỗ.jpg"
+                },
+                {
+                    id: "genMaterial-7",
+                    title: "Nhôm ",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Nhôm.jpg"
+                },
+                {
+                    id: "genMaterial-8",
+                    title: "Pvc ",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Pvc.jpg"
+                },
+                {
+                    id: "genMaterial-9",
+                    title: "Sắt ",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Sắt.jpg"
+                },
+                {
+                    id: "genMaterial-10",
+                    title: "Tre ",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Tre.jpg"
+                },
+                {
+                    id: "genMaterial-11",
+                    title: "Vữa ",
+                    image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Vữa.jpg"
                 }
             ]
         },
@@ -532,28 +695,28 @@ export const ARCHIROOM_TOOL_CONFIG = {
                 id: 1,
                 title: "Biệt thự 1",
                 description: "",
-                image: "archiroom/sample-1.jpg",
+                image: "archiroom/output-sample-1.jpg",
                 tags: ["Biệt thự", "Việt Nam"]
             },
             {
                 id: 2,
                 title: "Biệt thự 2",
                 description: "",
-                image: "archiroom/sample-2.jpg",
+                image: "archiroom/output-sample-2.jpg",
                 tags: ["Biệt thự", "Châu Âu"]
             },
             {
                 id: 3,
                 title: "Biệt thự 3",
                 description: "",
-                image: "archiroom/sample-3.jpg",
+                image: "archiroom/output-sample-3.jpg",
                 tags: ["Biệt thự", "Scandarian"]
             },
             {
                 id: 4,
                 title: "Biệt thự 4",
                 description: "",
-                image: "archiroom/sample-4.jpg",
+                image: "archiroom/output-sample-4.jpg",
                 tags: ["Biệt thự", "America"]
             }
         ]

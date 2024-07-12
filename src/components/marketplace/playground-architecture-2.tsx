@@ -51,6 +51,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const [imageUploadedUrl, setImageUploadedUrl] = useState('')
   const [imageResponseddUrl, setImageResponseddUrl] = useState('')
   const [promt, setPromt] = useState('architecture')
+  const [contextId, setContextId] = useState('')
   const [negativePromt, setNegativePromt] = useState('')
   const [serviceUrl, setServiceUrl] = useState('https://nhathao.top')
   const [outputImageUploadedUrl, setOutputImageUploadedUrl] = useState(
@@ -144,8 +145,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
     <div className="w-full px-0 hover:opacity-100  rounded-xl  text-white ">
       <div className="block lg:flex h-[calc(100vh_-_40px)] w-full gap-x-2">
         <div className="flex  bg-slate-800 text-white h-full w-full lg:w-[344px] flex-shrink-0 flex-col items-start gap-y-4 rounded-large  px-8 py-6 shadow-small lg:flex">
-          <button
-            onClick={() => onCloseEvent()}
+          <a
+            href='/'
             className="z-0 group relative inline-flex items-center justify-center text-sm gap-2 bg-slate-800/90 p-2 rounded-lg"
             type="button"
           >
@@ -167,7 +168,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
               />
             </svg>
             Quay lại
-          </button>
+          </a>
           {/* <div>
             <div className="text-xl font-medium leading-7 ">
               Tạo thiết kế
@@ -190,16 +191,18 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
             </Tabs>
           </div>
           <div className="w-full text-white text-sm">
-            <RadioGroup orientation="horizontal" className='w-auto h-auto' label="Chọn đối tượng Gen ảnh:" onSelect={() => { }}>
+            <RadioGroup orientation="horizontal" className='w-auto h-auto' label="Chọn đối tượng Gen ảnh:"
+              value={contextId}
+              onValueChange={setContextId}>
               {
-                ARCHIROOM_TOOL_CONFIG.targets.map(item => (
-                  <CustomRadio key={item.name} value={item.name}>
+                ARCHIROOM_TOOL_CONFIG.context.map(item => (
+                  <CustomRadio key={item.id} value={item.id}>
                     <div className='relative'>
                       <Image
                         src={item.image}
                         className='rounded'
-                        width={72}
-                        height={72}
+                        width={80}
+                        height={150}
                         alt="Try On Step Image"
                       />
                       <span className='p-1 text-xs absolute bottom-0 left-0 text-gray-100'> {item.name}</span>
@@ -261,16 +264,21 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
           {
             ARCHIROOM_TOOL_CONFIG.options.map(item => (
-              <div key={item} className="w-full rounded ">
+              <div key={item.id} className="w-full rounded ">
                 <Dropdown backdrop="blur">
                   <DropdownTrigger id={item.id}>
                     <div className='w-full h-14 rounded-lg bg-slate-700 text-sm p-1 px-2 cursor-pointer'>
                       <div className='w-full text-gray-500'> {item.title} </div>
                       <div className='w-full flex gap-2 text-gray-300 font-semibold pt-1'>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3" />
-                        </svg>
-                        {item.child.findLast(a => a.id === genConfigurations[item.id])?.title ?? ""}
+                        <Image2
+                          src={item.child?.findLast(a => a.id === genConfigurations[item.id])?.image ?? ""}
+                          className='rounded w-[40px] h-[25px] pb-1 '
+                          width={30}
+                          height={30}
+                          alt="Try On Step Image"
+                        />
+
+                        {item.child?.findLast(a => a.id === genConfigurations[item.id])?.title ?? ""}
 
                       </div>
                     </div>
@@ -284,7 +292,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                   }} aria-label="Static Actions">
                     {[
                       // @ts-ignore
-                      item.child?.map(x => <DropdownSection key={x.id} aria-label="Help & Feedback">
+                      item.child?.filter(x => (contextId == null) ? true : ( !x.context ? true : (x.context === contextId))).map(x => <DropdownSection key={x.id} aria-label="Help & Feedback">
                         <DropdownItem
                           shortcut="⌘"
                           description="Copy the file link"
@@ -293,7 +301,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                             <div className='relative'>
                               <Image
                                 src={x.image}
-                                className='rounded'
+                                className='rounded w-[60px] h-[45px] pb-1 '
                                 width={124}
                                 height={124}
                                 alt="Try On Step Image"
@@ -390,7 +398,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                 >
                   <Image
                     className='rounded-2xl b-solid b-1 border-slate-100 '
-                    src="./services/architecture-ai-step-1.jpg"
+                    src="archiroom/input-sample.jpg"
                     width={320}
                     height={334}
                     alt="Try On Step Image"
@@ -476,7 +484,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                 >
                   <Image2
                     className='rounded-2xl b-solid b-1 border-slate-100 '
-                    src="https://app.requestly.io/delay/5000/https://archiroom.vn/services/architecture-ai-step-3.jpg"
+                    src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg"
                     width={320}
                     height={334}
                     alt="Try On Step Image"
@@ -551,7 +559,7 @@ const RenderSDOutut = (props) => {
         </CardHeader>
         <ImageComparison url1={imageUploadedUrl} url2={response.outputs[selectedIndex].image} />
         <CardFooter className="absolute w-auto right-0 rounded-lg  top-0 border-t-1 border-zinc-100/50 z-10 justify-between">
-         
+
           <Button className="text-tiny" color="primary" radius="full" size="sm">
             Tải xuống
           </Button>
