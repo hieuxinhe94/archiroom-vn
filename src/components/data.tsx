@@ -416,9 +416,11 @@ export const MARKET_CONFIG_DATA = {
 export const ARCHIROOM_TOOL_CONFIG = {
     mode: [
         {
+            id: 'genMode-1',
             name: "Cơ bản",
         },
         {
+            id: 'genMode-2',
             name: "Nâng cao",
         },
 

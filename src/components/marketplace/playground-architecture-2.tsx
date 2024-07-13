@@ -12,6 +12,9 @@ import {
   DropdownSection,
   DropdownTrigger,
   Input,
+
+  NavbarContent,
+  Navbar,
   Progress,
   RadioGroup,
   Select,
@@ -20,9 +23,13 @@ import {
   Spinner,
   Tab,
   Tabs,
+  Textarea,
   Tooltip,
   useRadio,
   VisuallyHidden,
+  Avatar,
+  Link,
+  NavbarItem,
 } from '@nextui-org/react'
 import { Image as Image2 } from '@nextui-org/react'
 import * as ImageJS from 'image-js'
@@ -33,7 +40,7 @@ import resultIcon from './components/background-images/resultIcon.svg'
 import upload from './components/background-images/upload.svg'
 import { imageKitService } from './components/ImageKitService'
 import axios from 'axios'
-import { ARCHIROOM_TOOL_CONFIG } from '../data'
+import { ARCHIROOM_TOOL_CONFIG, MARKET_CONFIG_DATA } from '../data'
 import AOS from "aos";
 import ImageComparison from '../image-comparison'
 
@@ -49,14 +56,13 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const [numberOfOutput, setNumberOfOutput] = useState("4")
   const [genConfig, setGenConfig] = useState({})
   const [imageUploadedUrl, setImageUploadedUrl] = useState('')
+  const [genMode, setGenMode] = useState('genMode-1')
   const [imageResponseddUrl, setImageResponseddUrl] = useState('')
   const [promt, setPromt] = useState('architecture')
   const [contextId, setContextId] = useState('context-1')
   const [negativePromt, setNegativePromt] = useState('')
-  const [serviceUrl, setServiceUrl] = useState('https://794e-123-16-239-85.ngrok-free.app/docs')
-  const [outputImageUploadedUrl, setOutputImageUploadedUrl] = useState(
-    './services/architecture-ai-step-3.jpg',
-  )
+  const [serviceUrl, setServiceUrl] = useState('https://794e-123-16-239-85.ngrok-free.app')
+
   const [isPlayingAround, setIsPlayingAround] = useState(true)
   const uploadTrigger = () => {
     fileInputRef?.current.click()
@@ -143,8 +149,11 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
   return (
     <div className="w-full px-0 hover:opacity-100  rounded-xl  text-white ">
-      <div className="block lg:flex h-[calc(100vh_-_40px)] w-full gap-x-2">
-        <div className="flex  bg-slate-800 text-white h-full w-full lg:w-[344px] flex-shrink-0 flex-col items-start gap-y-4 rounded-large  px-8 py-6 shadow-small lg:flex">
+      <div className="block lg:flex w-full  gap-x-2">
+
+        {/* leftside */}
+
+        <div className="flex h-[calc(100vh_-_20px)] bg-slate-800 text-white  w-full lg:w-[344px] flex-shrink-0 flex-col items-start gap-y-4 rounded-large  px-8 py-6 shadow-small lg:flex">
           <a
             href='/'
             className="z-0 group relative inline-flex items-center justify-center text-sm gap-2 bg-slate-800/90 p-2 rounded-lg"
@@ -174,26 +183,30 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
               Tạo thiết kế
             </div>
           </div> */}
+         
           <div className="w-full text-white text-sm bg-slate-800">
-            <Tabs key={'success'} classNames={{
-              tabList: "gap-6 w-full relative rounded-lg bg-slate-800",
-              cursor: "w-full bg-slate-700",
-              tab: "max-w-fit px-0 h-8 my-1",
-              tabContent: "group-data-[selected=true]:text-white "
-            }}
+            <Tabs key={'success'}
+              selectedKey={genMode}
+              onSelectionChange={(key) => {  setGenMode(key.toString());  }}
+               
+              classNames={{
+                tabList: "gap-6 w-full relative rounded-lg bg-slate-800",
+                cursor: "w-full bg-slate-700",
+                tab: "max-w-fit px-0 h-8 my-1",
+                tabContent: "group-data-[selected=true]:text-white "
+              }}
               style={{ color: "white" }} className='w-full ' aria-label="Render types" radius="full">
               {
                 ARCHIROOM_TOOL_CONFIG.mode.map(item => (
-                  <Tab key={item.name} title={item.name} className='px-8 ' />
+                  <Tab key={item.id} title={item.name} className='px-8 ' />
                 ))
               }
-
             </Tabs>
           </div>
           <div className="w-full text-white text-sm">
             <RadioGroup orientation="horizontal" className='w-auto h-auto' label="Chọn đối tượng Gen ảnh:"
               value={contextId}
-              onValueChange={setContextId}>
+              onValueChange={(val) => {console.log("onValueChange"); genConfigurations= {}; setConfig("", ""); setContextId(val)} }>
               {
                 ARCHIROOM_TOOL_CONFIG.context.map(item => (
                   <CustomRadio key={item.id} value={item.id}>
@@ -263,7 +276,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
           </div>
 
           {
-            ARCHIROOM_TOOL_CONFIG.options.map(item => (
+            (genMode === 'genMode-1') && ARCHIROOM_TOOL_CONFIG.options.map(item => (
               <div key={item.id} className="w-full rounded ">
                 <Dropdown backdrop="blur">
                   <DropdownTrigger id={item.id}>
@@ -287,7 +300,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                   <DropdownMenu variant="faded" onAction={(key) => {
                     console.log(item.id);
                     console.log(key);
-                    ARCHIROOM_TOOL_CONFIG.optionsSelected[item.id] = key;
+                    //ARCHIROOM_TOOL_CONFIG.optionsSelected[item.id] = key;
                     setConfig(item.id, key.toString()?.replace(".0", ""));
                   }} aria-label="Static Actions">
                     {[
@@ -322,11 +335,38 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
             ))
           }
 
+          {/* chế độ gen nâng cao */}
+ 
+
+          {
+            (genMode === 'genMode-2') &&
+            <div key="genMode-2" className="w-full text-white">
+              <div className="w-full rounded text-white">
+                <span className='p-1 mb-2 text-xs  text-gray-100'> Prompt:</span>
+                <Textarea
+                  isRequired
+
+                  labelPlacement="outside"
+                  placeholder="Điền các yếu tố mong muốn xuất hiện"
+                  className="max-w-xs text-white"
+                />
+              </div>
+              <div className="w-full rounded mt-4">
+                <span className='p-1 mb-2 text-xs  text-gray-100'> Negative Prompt:</span>
+                <Textarea
+                  isRequired
+                  labelPlacement="outside"
+                  placeholder="Điền các yếu tố muốn loại bỏ"
+                  className="max-w-xs text-white"
+                />
+              </div>
+            </div>
+          }
+
           <div className="w-full rounded ">
             <div className='w-full h-14 rounded-lg  text-sm p-1 px-2 cursor-pointer'>
               <div className='w-full text-gray-500'> Số ảnh trả về </div>
               <div className='w-full flex gap-2 text-gray-300 font-semibold pt-1'>
-
                 <Breadcrumbs
                   size="lg"
                   onAction={(key) => setNumberOfOutput(key.toString())}
@@ -365,28 +405,63 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
         </div>
 
-        <div
+        {/* rightside */}
 
+        <div className="flex min-h-screen w-full flex-col items-center gap-4 ">
 
+          <div className='w-full mb-12  h-[35px] rounded-lg'>
+            <Navbar maxWidth='full' isBordered className='w-full bg-transparent'>
+              <NavbarContent justify="start">
+                <NavbarItem>
+                  <span className="flex lg:block text-slate-800 inline font-semibold text-lg lg:text-xl">Sáng tạo không giới hạn với
+                    <span className="tracking-tight inline font-semibold text-lg lg:text-xl">  &nbsp; </span>
+                    <span className="tracking-tight inline font-semibold to-emerald-500 from-purple-600 text-lg lg:text-xl bg-clip-text text-transparent bg-gradient-to-b">
+                      ARCHIROOM.VN
+                    </span>
+                  </span>
+                  <div>
+                  </div>
+                </NavbarItem>
+              </NavbarContent>
 
-          className="flex h-auto w-full flex-col items-center gap-4 md:p-4 " >
+              <NavbarContent as="div" className="items-center" justify="end">
+                <NavbarItem>
+                  <Link color="foreground" href="#">
+                    guest
+                  </Link>
+                </NavbarItem>
+
+                <Dropdown placement="bottom-end">
+                  <DropdownTrigger>
+                    <Avatar
+                      isBordered
+                      as="button"
+                      className="transition-transform"
+                      color="secondary"
+                      name="Archiroom.VN"
+                      size="sm"
+                      src="/logo-s.png"
+                    />
+                  </DropdownTrigger>
+                  <DropdownMenu aria-label="Profile Actions" variant="flat">
+                    <DropdownItem key="profile" className="h-14 gap-2">
+                      <p className="font-semibold">Đăng nhập với </p>
+                      <p className="font-semibold">guest</p>
+                    </DropdownItem>
+                    <DropdownItem key="settings">Nâng cấp tài khoản</DropdownItem>
+                    <DropdownItem key="logout" color="danger">
+                      Đăng xuất
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              </NavbarContent>
+            </Navbar>
+          </div>
+
           {step === 0 ? (
             <div data-aos='zoom-in'
               data-aos-duraion={1000} className='px-24 pt-12 text-lg'>
-              <h2 className="text-slate-800 text-xl font-bold mb-[60px] hidden lg:flex items-center gap-[10px]">
-                <Image
-                  src="./logo-s.png"
-                  width={42}
-                  height={42}
-                  alt="Try On Step Image"
-                  className="w-[30px] h-[30px] lg:w-[42px] lg:h-[42px]"
-                />
-                <span className="tracking-tight inline font-semibold text-2xl lg:text-3xl">Với Archiroom.VN, sự sáng tạo  <span className="tracking-tight inline font-semibold text-2xl lg:text-3xl">là &nbsp;</span>
-                  <span className="relative text-transparent  bg-clip-text bg-gradient-to-tr to-emerald-500 from-purple-600">Không giới hạn</span>
-                </span>
-                <div>
-                </div>
-              </h2>
+
 
               <div className="try-on-steps justify-between items-center mb-[60px] hidden lg:flex">
                 <div
@@ -527,6 +602,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
             </>
           ) : null}
         </div>
+
+
       </div>
     </div>
   )
@@ -542,18 +619,11 @@ const RenderSDOutut = (props) => {
   const [response, setResponse] = useState(ARCHIROOM_TOOL_CONFIG.responseDefault);
 
   return (<>
-    <div className="items-start justify-center w-full text-slate-800 px-8">
-      <span className="tracking-tight inline font-semibold text-2xl lg:text-3xl">Sự sáng tạo    <span className="tracking-tight inline font-semibold text-2xl lg:text-3xl">là &nbsp;</span>
-        <span className="tracking-tight inline font-semibold to-emerald-500 from-purple-600 text-2xl lg:text-3xl bg-clip-text text-transparent bg-gradient-to-b">
-          Không giới hạn.</span></span><div>
-      </div>
-    </div>
-
     <div className='w-full  px-8'>
       <span className="text-slate-800 inline font-normal text-sm">
         {`${genConfigurations["genType"]}, ${genConfigurations["genStyle"]}, ${genConfigurations["genMaterial"]}, ${genConfigurations["genExactly"]}`} :
       </span>
-      <Card key={selectedIndex} className="w-3/4 mx-auto   my-4 cursor-pointer">
+      <Card key={selectedIndex} className="w-full lg:w-1/2 mx-auto   my-4 cursor-pointer">
         <CardHeader className="absolute w-auto z-10 top-1 flex-col items-start">
           <p className="text-tiny text-white/60 uppercase font-bold">{response.outputs[selectedIndex].title}</p>
         </CardHeader>

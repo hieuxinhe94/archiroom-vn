@@ -101,6 +101,14 @@ export default function Authenticate(props) {
     }
     setLoading(true)
 
+    // example
+    setCookie('name', name);
+    setCookie('username', username);
+    setCookie('email', email);
+    router.push('/play-architecture');
+    // end-example
+    return;
+
     await vtoService.registerAPI(registerObj).then(
       (res) => {
 
@@ -117,7 +125,7 @@ export default function Authenticate(props) {
         vtoService.tokenHeader = res.data.access_token;
         setCookie('bizId', data.bizId);
         setCookie('token', data.access_token);
-        router.push('/business-app')
+        router.push('/play-architecture')
       }
     ).catch((e) => {
 
@@ -136,7 +144,13 @@ export default function Authenticate(props) {
       "isSignUp": !isLogin,
     }
     setLoading(true)
-
+    // example
+    setCookie('name', name);
+    setCookie('username', username);
+    setCookie('email', email);
+    router.push('/play-architecture');
+    // end-example
+    return;
     await vtoService.loginAPI(loginObj).then(
       (res) => {
 
@@ -186,8 +200,8 @@ export default function Authenticate(props) {
 
                     as="button"
                     className="transition-transform"
-                   
-                    
+
+
                     size="sm"
                     src="/logo-s.png"
                   />
@@ -304,7 +318,7 @@ export default function Authenticate(props) {
                   {message}
                 </span>
 
-              
+
 
                 <button onClick={() => onSubmit()} disabled={loading} className="z-0 py-2 group relative inline-flex items-center justify-center box-border font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gradient-to-tr to-emerald-600 from-purple-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600 rounded-xl cursor-pointer">
                   {isLogin ? "Sign In" : "Sign Up"}
@@ -331,11 +345,11 @@ export default function Authenticate(props) {
                     {provider.name === "Facebook" && (<img src="/animates/facebook.svg" height={24} width={24} />)}
 
 
-                  <span className="mx-2">  {isLogin ? "Sign In" : "Sign Up"} with {provider.name}</span>
+                    <span className="mx-2">  {isLogin ? "Sign In" : "Sign Up"} with {provider.name}</span>
                   </button>
                 ))}
               </div>
-              <p className="text-center text-small">hoặc dùng thử bản demo ? &nbsp;<a className="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-small text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity" role="link" href="/business-app?demo=true">here</a></p>
+              <p className="text-center text-small">hoặc dùng thử bản demo ? &nbsp;<a className="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-small text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity" role="link" href="/play-architecture">here</a></p>
             </div>
           </div>
         </div>
