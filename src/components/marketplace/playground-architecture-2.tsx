@@ -56,6 +56,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const [numberOfOutput, setNumberOfOutput] = useState("4")
   const [genConfig, setGenConfig] = useState({})
   const [imageUploadedUrl, setImageUploadedUrl] = useState('')
+  const [base64Image, setBase64Image] = useState()
   const [genMode, setGenMode] = useState('genMode-1')
   const [imageResponseddUrl, setImageResponseddUrl] = useState('')
   const [promt, setPromt] = useState('architecture')
@@ -68,12 +69,15 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
     fileInputRef?.current.click()
   }
   const [genType, setGenType] = React.useState<any>(new Set(['Chính xác']))
-
-  const onSubmit = useCallback(async (event: any) => {
-    setIsLoading(true);
+  const setFile = useCallback(async (event: any) => {
     const file = event.target.files[0];
     const base64File: any = await getImageBase64(file);
+    setBase64Image(base64File);
     setImageUploadedUrl(URL.createObjectURL(file))
+
+  }, [])
+  const onSubmit = useCallback(async () => {
+    setIsLoading(true);
     console.log(process.env.SD_URL)
     await axios.post(
       `${serviceUrl}/sdapi/v1/img2img`,
@@ -87,7 +91,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
         height: 512,
         denoising_strength: 0.5,
         n_iter: 1,
-        init_images: [base64File],
+        init_images: [base64Image],
         alwayson_scripts: {
           controlnet: {
             args: [
@@ -112,7 +116,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
       setImageResponseddUrl(data)
     })
       .catch((err) => {
-        alert(err)
+        alert(err);
+        console.log(err)
         setImageResponseddUrl("./archiroom/sample-2.jpg")
       }).finally(() => {
         setIsLoading(false);
@@ -183,12 +188,12 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
               Tạo thiết kế
             </div>
           </div> */}
-         
+
           <div className="w-full text-white text-sm bg-slate-800">
             <Tabs key={'success'}
               selectedKey={genMode}
-              onSelectionChange={(key) => {  setGenMode(key.toString());  }}
-               
+              onSelectionChange={(key) => { setGenMode(key.toString()); }}
+
               classNames={{
                 tabList: "gap-6 w-full relative rounded-lg bg-slate-800",
                 cursor: "w-full bg-slate-700",
@@ -206,7 +211,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
           <div className="w-full text-white text-sm">
             <RadioGroup orientation="horizontal" className='w-auto h-auto' label="Chọn đối tượng Gen ảnh:"
               value={contextId}
-              onValueChange={(val) => {console.log("onValueChange"); genConfigurations= {}; setConfig("", ""); setContextId(val)} }>
+              onValueChange={(val) => { console.log("onValueChange"); genConfigurations = {}; setConfig("", ""); setContextId(val) }}>
               {
                 ARCHIROOM_TOOL_CONFIG.context.map(item => (
                   <CustomRadio key={item.id} value={item.id}>
@@ -267,7 +272,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                 type="file"
                 accept="image/*"
                 className="hidden"
-                onChange={onSubmit}
+                onChange={setFile}
                 onBlur={() => setIsLoading(false)}
                 ref={fileInputRef}
               />
@@ -336,7 +341,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
           }
 
           {/* chế độ gen nâng cao */}
- 
+
 
           {
             (genMode === 'genMode-2') &&
@@ -403,12 +408,20 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
           </div>
 
 
+          <div className="w-full  h-[40px] box-border rounded-full hover:bg-white hidden lg:block to-blue-gd p-[1px]">
+            <Button
+              onClick={() => onSubmit}
+              className="w-full  font-medium rounded-full py-1  bg-white text-slate-800 px-[50px] hover:shadow-purple-300 hover:shadow-[0_0_20px_5px_rgba(0,0,0,0.1)] duration-300"
+            >
+              Generate
+            </Button>
+          </div>
+
         </div>
 
         {/* rightside */}
 
         <div className="flex min-h-screen w-full flex-col items-center gap-4 ">
-
           <div className='w-full mb-12  h-[35px] rounded-lg'>
             <Navbar maxWidth='full' isBordered className='w-full bg-transparent'>
               <NavbarContent justify="start">

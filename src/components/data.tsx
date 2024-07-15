@@ -37,7 +37,7 @@ export const autoPlaySettings = {
 
 export const MARKET_CONFIG_DATA = {
     header: {
-        logo: '/logo-s.png',
+        logo: '/archiroom/logo.png',
         navigators: [
             {
                 id: 1,

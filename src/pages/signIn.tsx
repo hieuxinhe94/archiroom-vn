@@ -189,7 +189,7 @@ export default function Authenticate(props) {
           cardType: "summary_large_image",
         }}
       />
-      <div className="relative flex min-h-dvh flex-col  bg-radial" id="app-container">
+      <div className="relative flex min-h-dvh flex-col  bg-amber-800" id="app-container">
         {session?.user?.email}
         <div className="flex items-center  h-screen justify-center p-4">
           <div className="flex h-full w-full items-center justify-center">
@@ -200,10 +200,10 @@ export default function Authenticate(props) {
 
                     as="button"
                     className="transition-transform"
-
+                    
 
                     size="sm"
-                    src="/logo-s.png"
+                    src="/archiroom/logo.png"
                   />
 
                   <p className="px-2 pt-1 text-lg font-medium">{isLogin ? "Đăng nhập" : "Đăng ký "}</p>
@@ -320,7 +320,7 @@ export default function Authenticate(props) {
 
 
 
-                <button onClick={() => onSubmit()} disabled={loading} className="z-0 py-2 group relative inline-flex items-center justify-center box-border font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gradient-to-tr to-emerald-600 from-purple-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600 rounded-xl cursor-pointer">
+                <button onClick={() => onSubmit()} disabled={loading} className="z-0 py-2 group relative inline-flex items-center justify-center box-border font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gradient-to-tr to-emerald-600 from-amber-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600 rounded-xl cursor-pointer">
                   {isLogin ? "Sign In" : "Sign Up"}
                   {loading && (<CircularProgress className="px-1" color="danger" size='sm' isDisabled={true} hidden={true} aria-label="Loading..." />)}
                 </button>

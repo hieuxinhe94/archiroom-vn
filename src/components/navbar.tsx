@@ -17,7 +17,7 @@ export default function Navbar({ settings, heroSliderSetting }) {
         <nav className="relative z-50 flex justify-between">
           <div className="flex items-center text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900 font-medium">
             <a aria-label="Home" href="/" className=" hidden lg:block py-1 ">
-              <img src={heroSliderSetting.header.logo} height={65} width={65} />
+              <img src="archiroom/logo.png" height={65} width={65} />
             </a>
             <a aria-label="Home" className="flex pl-4 py-1" href="/">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="hidden lg:block w-5 h-5 ">
@@ -47,7 +47,7 @@ export default function Navbar({ settings, heroSliderSetting }) {
               </a>
             </div>
             <a
-              className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gradient-to-tr to-emerald-600 from-purple-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600"
+              className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gradient-to-tr to-amber-600 from-slate-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600"
               color="blue"
 
               href="/signIn"

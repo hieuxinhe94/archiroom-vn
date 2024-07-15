@@ -14,7 +14,7 @@ export default function AIArticleItem({ product, isSelecting = false }) {
 
   return (
     <div>
-      <div onClick={() => { console.log('onclicked'); setIsOpenDetail(!isOpenDetail); router.push(`?product=${product.code}`); }} key={product} className="relative py-1 hover:opacity-100 bg-slate-800 rounded-xl  text-white">
+      <div onClick={() => { console.log('onclicked'); setIsOpenDetail(!isOpenDetail); router.push(`?product=${product.code}`); }} key={product} className="relative py-1 hover:opacity-100 bg-amber-800 rounded-xl  text-white">
 
         <div
           style={{
@@ -75,7 +75,7 @@ export default function AIArticleItem({ product, isSelecting = false }) {
                         </a>
 
 
-                        {!isPlayTryIt && (<Button className="flex cursor-pointer group shadow-small inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900"
+                        {!isPlayTryIt && (<Button className="flex cursor-pointer group shadow-small inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-amber-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-amber-800 active:text-slate-300 focus-visible:outline-slate-900"
                           onClick={() => { setIsPlayTryIt(!isPlayTryIt); }}
                         >
                           Dùng thử ngay bây giờ
