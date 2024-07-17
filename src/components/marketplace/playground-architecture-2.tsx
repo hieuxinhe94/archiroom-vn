@@ -62,7 +62,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const [promt, setPromt] = useState('architecture')
   const [contextId, setContextId] = useState('context-1')
   const [negativePromt, setNegativePromt] = useState('')
-  const [serviceUrl, setServiceUrl] = useState('https://794e-123-16-239-85.ngrok-free.app')
+  const [serviceUrl, setServiceUrl] = useState('https://toandeptrai.ddns.net')
 
   const [isPlayingAround, setIsPlayingAround] = useState(true)
   const uploadTrigger = () => {
@@ -410,7 +410,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
           <div className="w-full  h-[40px] box-border rounded-full hover:bg-white hidden lg:block to-blue-gd p-[1px]">
             <Button
-              onClick={() => onSubmit}
+              onClick={() => onSubmit()}
               className="w-full  font-medium rounded-full py-1  bg-white text-slate-800 px-[50px] hover:shadow-purple-300 hover:shadow-[0_0_20px_5px_rgba(0,0,0,0.1)] duration-300"
             >
               Generate
