@@ -45,6 +45,7 @@ import AOS from "aos";
 import ImageComparison from '../image-comparison'
 
 var genConfigurations = {};
+var base64ImageStr = null
 export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const fileInputRef = useRef<any>()
   const [step, setStep] = useState(0)
@@ -58,11 +59,11 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const [imageUploadedUrl, setImageUploadedUrl] = useState('')
   const [base64Image, setBase64Image] = useState()
   const [genMode, setGenMode] = useState('genMode-1')
-  const [imageResponseddUrl, setImageResponseddUrl] = useState('')
+  const [imageResponseArr, setImageResponseArr] = useState({})
   const [promt, setPromt] = useState('architecture')
   const [contextId, setContextId] = useState('context-1')
   const [negativePromt, setNegativePromt] = useState('')
-  const [serviceUrl, setServiceUrl] = useState('https://794e-123-16-239-85.ngrok-free.app')
+  const [serviceUrl, setServiceUrl] = useState('https://toandeptrai.ddns.net')
 
   const [isPlayingAround, setIsPlayingAround] = useState(true)
   const uploadTrigger = () => {
@@ -72,6 +73,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const setFile = useCallback(async (event: any) => {
     const file = event.target.files[0];
     const base64File: any = await getImageBase64(file);
+    base64ImageStr = base64File;
     setBase64Image(base64File);
     setImageUploadedUrl(URL.createObjectURL(file))
 
@@ -79,6 +81,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const onSubmit = useCallback(async () => {
     setIsLoading(true);
     console.log(process.env.SD_URL)
+    debugger;
     await axios.post(
       `${serviceUrl}/sdapi/v1/img2img`,
       {
@@ -90,8 +93,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
         width: 512,
         height: 512,
         denoising_strength: 0.5,
-        n_iter: 1,
-        init_images: [base64Image],
+        n_iter: 4,
+        init_images: [base64ImageStr ?? base64Image],
         alwayson_scripts: {
           controlnet: {
             args: [
@@ -105,20 +108,41 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
       },
       {
         headers: {
-          'Content-Type': 'application/json',
+          "accept": "application/json",
+          "accept-language": "en-US,en;q=0.9",
+          "cache-control": "no-cache",
+          "content-type": "application/json",
+
         },
       },
     ).then((res) => {
-      const data = res.data.images[0];
+
       console.log("data responsed: res.data ");
-      console.log(res.data);
+      const images: [] = res.data.images;
+      console.log(images);
+
       //TODO
-      setImageResponseddUrl(data)
+      setImageResponseArr({
+        title: "Kết quả của {genType}, ",
+        config: {},
+        outputs: images.map(function (item, index) {
+          return {
+            id: index,
+            title: "Biệt thự " + (index + 1),
+            description: "",
+            image: item,
+            tags: ["Biệt thự", "Châu Âu"]
+          }
+        })
+      })
+
     })
       .catch((err) => {
         alert(err);
         console.log(err)
-        setImageResponseddUrl("./archiroom/sample-2.jpg")
+        setImageResponseArr({
+
+        })
       }).finally(() => {
         setIsLoading(false);
         setHasOutput(true);
@@ -244,14 +268,22 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                             <Spinner color="secondary" />
                           ) : (
                             <>
-                              <Image
+                              {!imageUploadedUrl && <Image
                                 onClick={uploadTrigger}
                                 src={upload}
-                                width={49}
-                                height={47}
+                                width={45}
+                                height={45}
                                 alt="upload image"
-                                className="w-[36px] h-[36px] lg:w-[49px] lg:h-[47px]"
-                              />
+                                className="w-[45px] h-[45px] lg:w-[45px] lg:h-[45px]"
+                              />}
+                              {imageUploadedUrl && <Image
+                                onClick={uploadTrigger}
+                                src={imageUploadedUrl}
+                                width={250}
+                                height={125}
+                                alt="upload image"
+                                className="w-[100px] h-[86px] lg:w-[200px] lg:h-[96px]"
+                              />}
                             </>
                           )}
 
@@ -262,9 +294,11 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                       >
                       </div>
                     </div>
-                    <p className="text-[12px] lg:text-base text-center font-medium bg-white bg-clip-text text-transparent">
-                      {ARCHIROOM_TOOL_CONFIG.upload.title}
-                    </p>
+                    {
+                      !imageUploadedUrl && (<p className="text-[12px] lg:text-base text-center font-medium bg-white bg-clip-text text-transparent">
+                        {ARCHIROOM_TOOL_CONFIG.upload.title}
+                      </p>)
+                    }
                   </div>
                 </div>
               </Tooltip>
@@ -410,7 +444,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
           <div className="w-full  h-[40px] box-border rounded-full hover:bg-white hidden lg:block to-blue-gd p-[1px]">
             <Button
-              onClick={() => onSubmit}
+              onClick={() => onSubmit()}
               className="w-full  font-medium rounded-full py-1  bg-white text-slate-800 px-[50px] hover:shadow-purple-300 hover:shadow-[0_0_20px_5px_rgba(0,0,0,0.1)] duration-300"
             >
               Generate
@@ -592,7 +626,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
               hasOutput={hasOutput}
               isUploadingImage={isUploadingImage}
               imageUploadedUrl={imageUploadedUrl}
-              imageResponseddUrl={imageResponseddUrl}
+              imageResponseArr={imageResponseArr}
               counter={counter}
               genConfig={genConfigurations}
               numberOfOutput={numberOfOutput}
@@ -625,12 +659,13 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
 const RenderSDOutut = (props) => {
   const {
-    isLoading, numberOfOutput, hasOutput, isUploadingImage, imageUploadedUrl, imageResponseddUrl, counter, isEnable, genConfig, renderConfig,
+    isLoading, numberOfOutput, hasOutput, isUploadingImage, imageUploadedUrl, imageResponseArr, counter, isEnable, genConfig, renderConfig,
   } = (props)
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [response, setResponse] = useState(ARCHIROOM_TOOL_CONFIG.responseDefault);
-
+  const [response, setResponse] = useState(imageResponseArr ?? ARCHIROOM_TOOL_CONFIG.responseDefault);
+  console.log("response");
+  console.log(response);
   return (<>
     <div className='w-full  px-8'>
       <span className="text-slate-800 inline font-normal text-sm">
@@ -638,9 +673,9 @@ const RenderSDOutut = (props) => {
       </span>
       <Card key={selectedIndex} className="w-full lg:w-1/2 mx-auto   my-4 cursor-pointer">
         <CardHeader className="absolute w-auto z-10 top-1 flex-col items-start">
-          <p className="text-tiny text-white/60 uppercase font-bold">{response.outputs[selectedIndex].title}</p>
+          <p className="text-tiny text-white/60 uppercase font-bold">{response.outputs[selectedIndex]?.title}</p>
         </CardHeader>
-        <ImageComparison url1={imageUploadedUrl} url2={response.outputs[selectedIndex].image} />
+        <ImageComparison url1={imageUploadedUrl} url2={'data:image/jpeg;charset=utf-8;base64,' + response.outputs[selectedIndex]?.image} />
         <CardFooter className="absolute w-auto right-0 rounded-lg  top-0 border-t-1 border-zinc-100/50 z-10 justify-between">
 
           <Button className="text-tiny" color="primary" radius="full" size="sm">
@@ -657,18 +692,18 @@ const RenderSDOutut = (props) => {
         {
           response.outputs.map((item, index) => (
             (<Card
-              key={item.id}
+              key={item?.id}
 
               className="w-auto h-[150px] col-span-12 sm:col-span-3 mx-8 my-4 cursor-pointer">
               <CardHeader className="absolute w-auto z-10 top-1 flex-col items-start">
-                <p className="text-tiny text-white/60 uppercase font-bold">{item.title}</p>
+                <p className="text-tiny text-white/60 uppercase font-bold">{item?.title}</p>
               </CardHeader>
               <Image2
-                onClick={() => { setSelectedIndex(item.id - 1); console.log(item.id) }}
+                onClick={() => { setSelectedIndex(item?.id - 1); console.log(item?.id) }}
                 removeWrapper
                 alt="Card background"
                 className="z-0 w-full h-full object-cover"
-                src={item.image}
+                src={'data:image/jpeg;charset=utf-8;base64,' + item?.image}
               />
               <CardFooter className="absolute w-full right-0 rounded-lg bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
                 <div>
