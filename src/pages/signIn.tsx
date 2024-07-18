@@ -197,11 +197,8 @@ export default function Authenticate(props) {
               <div className="flex justify-between w-full">
                 <div className="flex ">
                   <Avatar
-
                     as="button"
                     className="transition-transform"
-                    
-
                     size="sm"
                     src="/archiroom/logo.png"
                   />
