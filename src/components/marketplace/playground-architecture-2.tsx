@@ -69,6 +69,10 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const uploadTrigger = () => {
     fileInputRef?.current.click()
   }
+  const [progressValue, setProgressValue] = React.useState(0);
+
+
+
   const [genType, setGenType] = React.useState<any>(new Set(['Chính xác']))
   const setFile = useCallback(async (event: any) => {
     const file = event.target.files[0];
@@ -81,11 +85,38 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const onSubmit = useCallback(async () => {
     setIsLoading(true);
     console.log(process.env.SD_URL)
+    const interval = setInterval(() => {
+      setProgressValue((v) => (v >= 100 ? 0 : v + 5));
+    }, 1200);
+    console.log(genConfigurations)
+
+    let promtCustomize = '';
+    let templatePromt = "Masterpiece, high quality, best quality, authentic, super detail, [Kiểu nhà] (1), [Nội/ ngoại thất] (2), [Phong cách] (3),  [Vật liệu] (4),wooden entrance gate , daylight, archdaily architecture, white Background, 8k uhd, dslr, soft lighting, suuny,high quality, film grain, Fujifilm XT3, [Lora]"
+
+    let genTypeKeyWord = ARCHIROOM_TOOL_CONFIG.options.findLast(y => y.id == 'genType')?.child.findLast(x => x.id == genConfigurations['genType'])?.keywords ?? "";
+    let genStyleKeyWord = ARCHIROOM_TOOL_CONFIG.options.findLast(y => y.id == 'genStyle')?.child.findLast(x => x.id == genConfigurations['genStyle'])?.keywords ?? "";
+    let genMaterialKeyWord = ARCHIROOM_TOOL_CONFIG.options.findLast(y => y.id == 'genMaterial')?.child.findLast(x => x.id == genConfigurations['genMaterial'])?.keywords ?? "";
+    let genContextKeyWord = ARCHIROOM_TOOL_CONFIG.context.findLast(x => x.id == contextId)?.keywords ?? "";
+
+    promtCustomize = templatePromt
+      .replace('[Nội/ ngoại thất] (2)', genContextKeyWord)
+      .replace('[Kiểu nhà] (1)', genTypeKeyWord)
+      .replace('[Phong cách] (3)', genStyleKeyWord)
+      .replace('[Vật liệu] (4)', genMaterialKeyWord)
     debugger;
+    if (genMode == 'genMode-2') {
+      // todo: set default
+
+      if (promt && promt.length) {
+        promtCustomize = promt;
+      }
+    }
+
+
     await axios.post(
       `${serviceUrl}/sdapi/v1/img2img`,
       {
-        prompt: promt,
+        prompt: promtCustomize,
         negative_prompt: negativePromt,
         scheduler: 'Karras',
         seed: -1,
@@ -93,7 +124,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
         width: 512,
         height: 512,
         denoising_strength: 0.5,
-        n_iter: 4,
+        n_iter: 2,
         init_images: [base64ImageStr ?? base64Image],
         alwayson_scripts: {
           controlnet: {
@@ -147,6 +178,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
         setIsLoading(false);
         setHasOutput(true);
         setStep(1)
+        clearInterval(interval);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [promt, negativePromt]);
@@ -341,6 +373,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                     console.log(key);
                     //ARCHIROOM_TOOL_CONFIG.optionsSelected[item.id] = key;
                     setConfig(item.id, key.toString()?.replace(".0", ""));
+
                   }} aria-label="Static Actions">
                     {[
                       // @ts-ignore
@@ -624,7 +657,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
           ) : null}
 
           {step === 1 ? (
-            <RenderSDOutut
+
+            imageResponseArr && (<RenderSDOutut
               isLoading={isLoading}
               hasOutput={hasOutput}
               isUploadingImage={isUploadingImage}
@@ -634,8 +668,23 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
               promt={promt}
               genConfig={genConfigurations}
               numberOfOutput={numberOfOutput}
-            />
+            />)
+
+
+
           ) : null}
+
+          {
+            isLoading && (
+              <div className='flex min-h-screen w-full flex-col items-center gap-4 mt-[50px] text-slate-800' > <Progress
+                aria-label="Downloading..."
+                size="lg"
+                value={progressValue}
+                color='primary'
+                showValueLabel={true}
+                className="max-w-xl"
+              /></div>)
+          }
 
           {/* Footer */}
 
@@ -670,6 +719,7 @@ const RenderSDOutut = (props) => {
   const [response, setResponse] = useState(imageResponseArr ?? ARCHIROOM_TOOL_CONFIG.responseDefault);
   console.log("response");
   console.log(response);
+  if(response.outputs?.length == 0) return (<></>)
   return (<>
     <div className='w-full  px-8'>
       <span className="text-slate-800 inline font-normal text-sm">

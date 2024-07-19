@@ -429,14 +429,16 @@ export const ARCHIROOM_TOOL_CONFIG = {
         {
             id: "context-2",
             name: "Ngoại thất",
-            image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/Ngoại thất.jpg"
+            image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/Ngoại thất.jpg",
+            keywords: "exterior",
         },
         {
             id: "context-1",
             name: "Nội thất",
-            image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/Nội thất.jpg"
+            image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/Nội thất.jpg",
+            keywords: "interior",
         },
-      
+
     ],
     upload: {
         title: "Tải lên hình phác thảo hoặc mô hình 3D"
@@ -456,24 +458,28 @@ export const ARCHIROOM_TOOL_CONFIG = {
                     id: "genType-1",
                     title: "Dinh thự",
                     context: "context-2",
+                    keywords: "palace",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/01. Kiểu kiến trúc/biệt thự.jpg"
                 },
                 {
                     id: "genType-2",
                     title: "Biệt thự",
-                     context: "context-2",
+                    context: "context-2",
+                    keywords: "villa, mansions                    ",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/01. Kiểu kiến trúc/dinh thự.png"
                 },
                 {
                     id: "genType-3",
                     title: "Nhà phố",
-                     context: "context-2",
+                    context: "context-2",
+                    keywords: "duplex, house",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/01. Kiểu kiến trúc/Nhà phố.jpg"
                 },
                 {
                     id: "genType-4",
                     title: "Tòa Văn phòng",
-                     context: "context-2",
+                    context: "context-2",
+                    keywords: "office buildings",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/01. Kiểu kiến trúc/Tòa nhà văn phòng.jpg"
                 },
                 // other context
@@ -481,30 +487,35 @@ export const ARCHIROOM_TOOL_CONFIG = {
                     id: "genType-11",
                     title: "Phòng ăn",
                     context: "context-1",
+                    keywords: "dinning room",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/01. Kiểu phòng/Phòng ăn.jpg"
                 },
                 {
                     id: "genType-12",
                     title: "Phòng bếp",
                     context: "context-1",
+                    keywords: "kitchen",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/01. Kiểu phòng/phòng bếp.jpg"
                 },
                 {
                     id: "genType-13",
                     title: "Phòng khách",
                     context: "context-1",
+                    keywords: "living room",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/01. Kiểu phòng/Phòng khách.jpg"
                 },
                 {
                     id: "genType-14",
                     title: "Phòng ngủ",
                     context: "context-1",
+                    keywords: "bedroom",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/01. Kiểu phòng/phòng ngủ.jpg"
                 },
                 {
                     id: "genType-15",
                     title: "Phòng tắm",
                     context: "context-1",
+                    keywords: "bathroom",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/01. Kiểu phòng/Phòng tắm.jpg"
                 }
             ]
@@ -519,30 +530,35 @@ export const ARCHIROOM_TOOL_CONFIG = {
                     id: "genStyle-1",
                     title: "Biệt thự hiện đại",
                     context: "context-2",
+                    keywords: "modern",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/02. Phong cách/biệt thự hiện đại.png"
                 },
                 {
                     id: "genStyle-2",
                     title: "Biệt thự tân cổ",
                     context: "context-2",
+                    keywords: "neoclassical",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/02. Phong cách/biệt thự tân cổ.png"
                 },
                 {
                     id: "genStyle-3",
                     title: "Cổ điển",
                     context: "context-2",
+                    keywords: "classic",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/02. Phong cách/Cổ điển.jpg"
                 },
                 {
                     id: "genStyle-4",
                     title: "Địa trung hải",
                     context: "context-2",
+                    keywords: "mediterranean",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/02. Phong cách/Địa trung hải.jpg"
                 },
                 {
                     id: "genStyle-5",
                     title: "Tối giản",
                     context: "context-2",
+                    keywords: "minimalist",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/02. Phong cách/Tối giản.jpg"
                 },
                 // other context
@@ -550,54 +566,63 @@ export const ARCHIROOM_TOOL_CONFIG = {
                     id: "genStyle-11",
                     title: "Ấm cúng",
                     context: "context-1",
+                    keywords: "Cozy",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/Ấm cúng.jpg"
                 },
                 {
                     id: "genStyle-12",
                     title: "Cổ điển",
                     context: "context-1",
+                    keywords: "classic",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/Cổ điện.jpg"
                 },
                 {
                     id: "genStyle-13",
                     title: "Địa trung hải",
                     context: "context-1",
+                    keywords: "mediterranean",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/địa trung hải.jpg"
                 },
                 {
                     id: "genStyle-14",
                     title: "Hiện đại",
                     context: "context-1",
+                    keywords: "modern",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/Hiện đại.jpg"
                 },
                 {
                     id: "genStyle-15",
                     title: "Mộc mạc",
                     context: "context-1",
+                    keywords: "Rustic",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/mộc mạc.jpg"
                 },
                 {
                     id: "genStyle-16",
-                    title: "Indochina",
+                    title: "Indochine",
                     context: "context-1",
+                    keywords: "Indochine",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/nội thất indochi.jpg"
                 },
                 {
                     id: "genStyle-17",
                     title: "Tân cổ",
                     context: "context-1",
+                    keywords: "",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/nội thất tân cổ 1.jpg"
                 },
                 {
                     id: "genStyle-18",
-                    title: "Phòng khách hiện đại",
+                    title: "Hiện đại",
                     context: "context-1",
+                    keywords: "modern",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/phòng khách hiện đại.jpg"
                 },
                 {
                     id: "genStyle-19",
                     title: "Sang trọng",
                     context: "context-1",
+                    keywords: "Luxurious",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/02. Phong cách/Sang trọng.jpg"
                 },
             ]
@@ -611,56 +636,67 @@ export const ARCHIROOM_TOOL_CONFIG = {
                     id: "genMaterial-1",
                     title: "Vật liệu Gỗ",
                     context: null,
+                    keywords: "wood",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Bê tông.jpg"
                 },
                 {
                     id: "genMaterial-2",
                     title: "Đá hoa",
+                    keywords: "Granite",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Đá hoa.jpg"
                 },
                 {
                     id: "genMaterial-3",
                     title: "Đá ",
+                    keywords: "stone",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Đá.jpg"
                 },
                 {
                     id: "genMaterial-4",
                     title: "Gạch ",
+                    keywords: "brick",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Gạch.jpg"
                 },
                 {
                     id: "genMaterial-5",
                     title: "Gỗ tổng hợp ",
+                    keywords: "composite wood",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Gỗ tổng hợp.jpg"
                 },
                 {
                     id: "genMaterial-6",
-                    title: "Gỗ ",
+                    title: "Xi măng ",
+                    keywords: " Concrete",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Gỗ.jpg"
                 },
                 {
                     id: "genMaterial-7",
                     title: "Nhôm ",
+                    keywords: "Aluminum",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Nhôm.jpg"
                 },
                 {
                     id: "genMaterial-8",
                     title: "Pvc ",
+                    keywords: "PVC",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Pvc.jpg"
                 },
                 {
                     id: "genMaterial-9",
                     title: "Sắt ",
+                    keywords: "Iron",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Sắt.jpg"
                 },
                 {
                     id: "genMaterial-10",
                     title: "Tre ",
+                    keywords: "Bamboo",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Tre.jpg"
                 },
                 {
                     id: "genMaterial-11",
                     title: "Vữa ",
+                    keywords: "Stucco",
                     image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/03. Nguyên vật liệu/Vữa.jpg"
                 }
             ]
@@ -673,16 +709,19 @@ export const ARCHIROOM_TOOL_CONFIG = {
                 {
                     id: "genExactly-1",
                     title: "Chính xác",
+                    keywords: "Stucco",
                     image: "./services/architecture-ai-step-3.jpg"
                 },
                 {
                     id: "genExactly-2",
                     title: "Tương đối",
+                    keywords: "Stucco",
                     image: "./services/architecture-ai-step-3.jpg"
                 },
                 {
                     id: "genExactly-2",
                     title: "Sáng tạo",
+                    keywords: "Stucco",
                     image: "./services/architecture-ai-step-3.jpg"
                 }
             ]
