@@ -103,15 +103,12 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
       .replace('[Kiểu nhà] (1)', genTypeKeyWord)
       .replace('[Phong cách] (3)', genStyleKeyWord)
       .replace('[Vật liệu] (4)', genMaterialKeyWord)
-    debugger;
-    if (genMode == 'genMode-2') {
-      // todo: set default
-
-      if (promt && promt.length) {
-        promtCustomize = promt;
-      }
+   
+    if (promt && promt.length && genMode == "genMode-2") {
+      promtCustomize = promt;
+    } else {
+      setPromt(promtCustomize);
     }
-
 
     await axios.post(
       `${serviceUrl}/sdapi/v1/img2img`,
@@ -169,6 +166,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
     })
       .catch((err) => {
+        alert("Server đang gặp vấn đề, Vui lòng quay lại sau");
         alert(err);
         console.log(err)
         setImageResponseArr({
