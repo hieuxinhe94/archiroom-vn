@@ -60,7 +60,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const [base64Image, setBase64Image] = useState()
   const [genMode, setGenMode] = useState('genMode-1')
   const [imageResponseArr, setImageResponseArr] = useState({})
-  const [promt, setPromt] = useState('architecture')
+  const [promt, setPromt] = useState('')
   const [contextId, setContextId] = useState('context-1')
   const [negativePromt, setNegativePromt] = useState('')
   const [serviceUrl, setServiceUrl] = useState('https://toandeptrai.ddns.net')
@@ -384,7 +384,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                 <span className='p-1 mb-2 text-xs  text-gray-100'> Prompt:</span>
                 <Textarea
                   isRequired
-
+                  value={promt}
+                  onValueChange={setPromt}
                   labelPlacement="outside"
                   placeholder="Điền các yếu tố mong muốn xuất hiện"
                   className="max-w-xs text-white"
@@ -394,6 +395,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                 <span className='p-1 mb-2 text-xs  text-gray-100'> Negative Prompt:</span>
                 <Textarea
                   isRequired
+                  value={negativePromt}
+                  onValueChange={setNegativePromt}
                   labelPlacement="outside"
                   placeholder="Điền các yếu tố muốn loại bỏ"
                   className="max-w-xs text-white"
@@ -628,6 +631,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
               imageUploadedUrl={imageUploadedUrl}
               imageResponseArr={imageResponseArr}
               counter={counter}
+              promt={promt}
               genConfig={genConfigurations}
               numberOfOutput={numberOfOutput}
             />
@@ -659,7 +663,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
 const RenderSDOutut = (props) => {
   const {
-    isLoading, numberOfOutput, hasOutput, isUploadingImage, imageUploadedUrl, imageResponseArr, counter, isEnable, genConfig, renderConfig,
+    isLoading, numberOfOutput, hasOutput, isUploadingImage, imageUploadedUrl, imageResponseArr, counter, isEnable, genConfig, renderConfig, promt
   } = (props)
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -669,7 +673,8 @@ const RenderSDOutut = (props) => {
   return (<>
     <div className='w-full  px-8'>
       <span className="text-slate-800 inline font-normal text-sm">
-        {`${genConfigurations["genType"]}, ${genConfigurations["genStyle"]}, ${genConfigurations["genMaterial"]}, ${genConfigurations["genExactly"]}`} :
+        {/* {`${genConfigurations["genType"]}, ${genConfigurations["genStyle"]}, ${genConfigurations["genMaterial"]}, ${genConfigurations["genExactly"]}`} : <br /> */}
+        {promt}
       </span>
       <Card key={selectedIndex} className="w-full lg:w-1/2 mx-auto   my-4 cursor-pointer">
         <CardHeader className="absolute w-auto z-10 top-1 flex-col items-start">

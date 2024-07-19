@@ -427,12 +427,12 @@ export const ARCHIROOM_TOOL_CONFIG = {
     ],
     context: [
         {
-            id: "context-1",
+            id: "context-2",
             name: "Ngoại thất",
             image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/01. Ngoại thất/Ngoại thất.jpg"
         },
         {
-            id: "context-2",
+            id: "context-1",
             name: "Nội thất",
             image: "archiroom/02. Thư viện ảnh/02. Thư viện ảnh/02. Nội thất/Nội thất.jpg"
         },
