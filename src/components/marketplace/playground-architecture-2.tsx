@@ -62,7 +62,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const [imageResponseArr, setImageResponseArr] = useState({})
   const [promt, setPromt] = useState('')
   const [contextId, setContextId] = useState('context-1')
-  const [negativePromt, setNegativePromt] = useState('')
+  const [negativePromt, setNegativePromt] = useState('(normal quality), (low quality), (worst quality), paintings, sketches,lowres, text, cropped, worst quality, low quality, normal quality, signature, watermark, username, blurry,skech,logo,blurry, drawing, sketch, poor quality, ugly, low resolution, saturated, high contrast, oversharpened, low quality, bad anatomy, worst quality,deformed, disfigured, cropped, jpeg artifacts, error, mutation,noise,UnrealisticDream')
   const [serviceUrl, setServiceUrl] = useState('https://toandeptrai.ddns.net')
 
   const [isPlayingAround, setIsPlayingAround] = useState(true)
@@ -109,7 +109,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
     } else {
       setPromt(promtCustomize);
     }
-
+ 
     await axios.post(
       `${serviceUrl}/sdapi/v1/img2img`,
       {
