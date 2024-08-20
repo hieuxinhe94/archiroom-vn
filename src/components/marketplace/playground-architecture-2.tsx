@@ -1,3 +1,4 @@
+'use client'
 import {
   BreadcrumbItem,
   Breadcrumbs,
@@ -43,6 +44,8 @@ import axios from 'axios'
 import { ARCHIROOM_TOOL_CONFIG, MARKET_CONFIG_DATA } from '../data'
 import AOS from "aos";
 import ImageComparison from '../image-comparison'
+// import { Client } from "@gradio/client";
+
 
 var genConfigurations = {};
 var base64ImageStr = null
@@ -103,13 +106,13 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
       .replace('[Kiểu nhà] (1)', genTypeKeyWord)
       .replace('[Phong cách] (3)', genStyleKeyWord)
       .replace('[Vật liệu] (4)', genMaterialKeyWord)
-   
+
     if (promt && promt.length && genMode == "genMode-2") {
       promtCustomize = promt;
     } else {
       setPromt(promtCustomize);
     }
- 
+
     await axios.post(
       `${serviceUrl}/sdapi/v1/img2img`,
       {
@@ -204,6 +207,23 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
         resolve(reader.result)
       }
     })
+  }
+
+  async function getMidjourneyHuggingFace() {
+    // const client = await Client.connect("mukaist/Midjourney");
+    // const result = await client.predict("/run", {
+    //   prompt: "Hello!!",
+    //   negative_prompt: "Hello!!",
+    //   use_negative_prompt: true,
+    //   style: "2560 x 1440",
+    //   seed: 0,
+    //   width: 512,
+    //   height: 512,
+    //   guidance_scale: 0.1,
+    //   randomize_seed: true,
+    // });
+
+    // console.log(result.data);
   }
 
   return (
@@ -378,7 +398,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                       item.child?.filter(x => (contextId == null) ? true : (!x.context ? true : (x.context === contextId))).map(x => <DropdownSection key={x.id} aria-label="Help & Feedback">
                         <DropdownItem
                           shortcut="⌘"
-                          description="Copy the file link"
+                          description={x.keywords}
                           id={x.id}
                           startContent={
                             <div className='relative'>
@@ -387,7 +407,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                                 className='rounded w-[60px] h-[45px] pb-1 '
                                 width={124}
                                 height={124}
-                                alt="Try On Step Image"
+                                alt=""
                               />
                               {/* <span className='p-1 text-xs absolute bottom-0 left-0 text-gray-100'> {x.title}</span> */}
                             </div>
@@ -717,7 +737,7 @@ const RenderSDOutut = (props) => {
   const [response, setResponse] = useState(imageResponseArr ?? ARCHIROOM_TOOL_CONFIG.responseDefault);
   console.log("response");
   console.log(response);
-  if(response.outputs?.length == 0) return (<></>)
+  if (response.outputs?.length == 0) return (<></>)
   return (<>
     <div className='w-full  px-8'>
       <span className="text-slate-800 inline font-normal text-sm">

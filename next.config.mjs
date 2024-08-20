@@ -16,9 +16,11 @@ const config = {
   //       destination: '/try-on-shop',
   //       permanent: true,
   //     },
-      
+
   //   ]
   // },
+  resolve: { fallback: { fs: false } }
+
 }
 
 export default config
