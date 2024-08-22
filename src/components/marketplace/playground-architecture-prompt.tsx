@@ -31,7 +31,6 @@ import {
   Avatar,
   Link,
   NavbarItem,
-  AvatarGroup,
 } from '@nextui-org/react'
 import { Image as Image2 } from '@nextui-org/react'
 import * as ImageJS from 'image-js'
@@ -51,7 +50,7 @@ import { useRouter } from 'next/router'
 
 var genConfigurations = {};
 var base64ImageStr = null
-export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
+export default function PlayGroundArchitecturePromptBase({ config, onCloseEvent }) {
   const fileInputRef = useRef<any>()
   const [step, setStep] = useState(0)
   const [counter, setCounter] = useState(0)
@@ -66,10 +65,9 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
   const [genMode, setGenMode] = useState('genMode-1')
   const [mode, setMode] = useState('image-base')
   const [imageResponseArr, setImageResponseArr] = useState({})
-  const [prompt, setPrompt] = useState('')
-  const [chatGPTDesignPrompts, setChatGPTDesignPrompts] = useState<any[]>([])
+  const [promt, setPromt] = useState('')
   const [contextId, setContextId] = useState('context-1')
-  const [negativePrompt, setNegativePrompt] = useState('(normal quality), (low quality), (worst quality), paintings, sketches,lowres, text, cropped, worst quality, low quality, normal quality, signature, watermark, username, blurry,skech,logo,blurry, drawing, sketch, poor quality, ugly, low resolution, saturated, high contrast, oversharpened, low quality, bad anatomy, worst quality,deformed, disfigured, cropped, jpeg artifacts, error, mutation,noise,UnrealisticDream')
+  const [negativePromt, setNegativePromt] = useState('(normal quality), (low quality), (worst quality), paintings, sketches,lowres, text, cropped, worst quality, low quality, normal quality, signature, watermark, username, blurry,skech,logo,blurry, drawing, sketch, poor quality, ugly, low resolution, saturated, high contrast, oversharpened, low quality, bad anatomy, worst quality,deformed, disfigured, cropped, jpeg artifacts, error, mutation,noise,UnrealisticDream')
   const [serviceUrl, setServiceUrl] = useState('https://toandeptrai.ddns.net')
 
   const [isPlayingAround, setIsPlayingAround] = useState(true)
@@ -77,8 +75,6 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
     fileInputRef?.current.click()
   }
   const [progressValue, setProgressValue] = React.useState(0);
-  const [showPrompt, setShowPrompt] = React.useState(true);
-  const [showEditPrompt, setShowEditPrompt] = React.useState(false);
   const router = useRouter();
   useEffect(() => {
     const prompt = router.query.prompt;
@@ -86,18 +82,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
     if (prompt) {
       // Fetch product details from an API or some data source
       console.log("check prompt: " + prompt)
-      setPrompt(prompt.toString())
-      setMode('prompt-base');
-      setStep(0.5)
-
-      // todo call chat gpt to generate prompt.
-      setChatGPTDesignPrompts([
-        { title: '1. Phòng bếp (10m²)', prompt: "A modern kitchen design with a 10m² area, styled with Japanese-inspired minimalism. The kitchen features sleek black and white cabinetry with handle-less doors, providing a clean and seamless look. A compact island with a black granite countertop serves as both a preparation area and a casual dining spot. The walls are adorned with light-colored tiles, and the floor is made of polished wooden planks that match the overall warm and neutral color palette. Recessed lighting provides ample illumination, and a large window above the sink allows natural light to brighten the space. The kitchen is equipped with modern stainless steel appliances, including a built-in oven, a minimalist range hood, and a slim refrigerator, all designed to maximize space efficiency in this 10m² kitchen." },
-        { title: '2. Phòng khách (20m²)', prompt: "A 20m² living room interior designed in a modern Japanese-inspired style, featuring a large sectional sofa in neutral beige tones. The centerpiece of the room is a low, black wooden coffee table, complemented by a combination of wooden flooring and a soft rug. A raised platform by the large floor-to-ceiling windows provides a cozy seating area with floor cushions. The walls are decorated with geometric patterns, and the ceiling has recessed lighting and dark wooden panels, adding depth and contrast. The room is illuminated by natural light from the windows, softened by sheer curtains. The color palette includes neutral tones like beige and cream, accented by darker shades of black and deep brown, creating a harmonious blend of modern minimalism and traditional Japanese aesthetics in this 20m² space." },
-        { title: '3. Phòng ngủ thứ nhất (15m²)', prompt: "A serene 15m² bedroom designed in a modern Japanese style, with a focus on simplicity and comfort. The room features a low platform bed with crisp white linens and dark wooden frames. A tatami mat covers part of the wooden floor, adding an authentic touch. The walls are painted in soft, neutral tones, with one accent wall decorated with a minimalist geometric pattern. The ceiling is simple, with recessed lighting providing a warm, ambient glow. A large window with sheer curtains allows natural light to filter in, enhancing the room's tranquil atmosphere. A small, built-in closet provides efficient storage without taking up much space. The room is accented with potted plants and minimalist artwork, creating a peaceful and inviting retreat in this 15m² bedroom." },
-        { title: '4. Phòng ngủ thứ hai (15m²)', prompt: "A cozy 15m² bedroom designed with a modern Japanese-inspired aesthetic. The room features a low-profile wooden bed with light gray bedding, positioned against a wall with a subtle, textured pattern. The flooring is a combination of polished wood and a soft, neutral-colored rug. A small reading nook by the window includes a comfortable chair and a low table, perfect for relaxation. The room is illuminated by both natural light from a large window with light, sheer curtains and warm, recessed ceiling lighting. A minimalist wardrobe with sliding doors offers practical storage without encroaching on the room's space. The overall color scheme is calm and neutral, with light wood, gray, and white tones, creating a peaceful and uncluttered environment in this 15m² bedroom." }
-
-      ])
+      setMode('prompt-base')
     }
   }, [router]);
 
@@ -118,31 +103,31 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
     }, 1200);
     console.log(genConfigurations)
 
-    let promptCustomize = '';
-    let templatePrompt = "Masterpiece, high quality, best quality, authentic, super detail, [Kiểu nhà] (1), [Nội/ ngoại thất] (2), [Phong cách] (3),  [Vật liệu] (4),wooden entrance gate , daylight, archdaily architecture, white Background, 8k uhd, dslr, soft lighting, suuny,high quality, film grain, Fujifilm XT3, [Lora]"
+    let promtCustomize = '';
+    let templatePromt = "Masterpiece, high quality, best quality, authentic, super detail, [Kiểu nhà] (1), [Nội/ ngoại thất] (2), [Phong cách] (3),  [Vật liệu] (4),wooden entrance gate , daylight, archdaily architecture, white Background, 8k uhd, dslr, soft lighting, suuny,high quality, film grain, Fujifilm XT3, [Lora]"
 
     let genTypeKeyWord = ARCHIROOM_TOOL_CONFIG.options.findLast(y => y.id == 'genType')?.child.findLast(x => x.id == genConfigurations['genType'])?.keywords ?? "";
     let genStyleKeyWord = ARCHIROOM_TOOL_CONFIG.options.findLast(y => y.id == 'genStyle')?.child.findLast(x => x.id == genConfigurations['genStyle'])?.keywords ?? "";
     let genMaterialKeyWord = ARCHIROOM_TOOL_CONFIG.options.findLast(y => y.id == 'genMaterial')?.child.findLast(x => x.id == genConfigurations['genMaterial'])?.keywords ?? "";
     let genContextKeyWord = ARCHIROOM_TOOL_CONFIG.context.findLast(x => x.id == contextId)?.keywords ?? "";
 
-    promptCustomize = templatePrompt
+    promtCustomize = templatePromt
       .replace('[Nội/ ngoại thất] (2)', genContextKeyWord)
       .replace('[Kiểu nhà] (1)', genTypeKeyWord)
       .replace('[Phong cách] (3)', genStyleKeyWord)
       .replace('[Vật liệu] (4)', genMaterialKeyWord)
 
-    if (prompt && prompt.length && genMode == "genMode-2") {
-      promptCustomize = prompt;
+    if (promt && promt.length && genMode == "genMode-2") {
+      promtCustomize = promt;
     } else {
-      setPrompt(promptCustomize);
+      setPromt(promtCustomize);
     }
 
     await axios.post(
       `${serviceUrl}/sdapi/v1/img2img`,
       {
-        prompt: promptCustomize,
-        negative_prompt: negativePrompt,
+        prompt: promtCustomize,
+        negative_prompt: negativePromt,
         scheduler: 'Karras',
         seed: -1,
         steps: 20,
@@ -207,7 +192,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
         clearInterval(interval);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [prompt, negativePrompt]);
+  }, [promt, negativePromt]);
 
   const setConfig = useCallback((configId: any, configValue: any) => {
     let _config: {} = { ...genConfig };
@@ -332,7 +317,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
           <div className="w-full text-white text-sm">
             <div className='rounded-lg bg-slate-700 w-full rounded-[10px] p-[2px]'>
-              <Tooltip isOpen={(step == 0.5) && imageUploadedUrl.length == 0 && mode== 'image-gen'} showArrow={true} placement='right-start' content="Tải lên thiết kế của bạn tại đây">
+              <Tooltip isOpen={(step == 0.5) && imageUploadedUrl.length == 0} showArrow={true} placement='right-start' content="Tải lên thiết kế của bạn tại đây">
                 <div className="">
                   <div className="w-full h-full bg-slate-800/60 rounded-[8px] p-[15px] lg:p-[36px] hover:bg-gradient-to-r hover:from-purple-500/[.05] hover:to-blue-500/[.05] duration-300">
                     <div className="options flex justify-center mb-[15px]">
@@ -460,8 +445,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                 <span className='p-1 mb-2 text-xs  text-gray-100'> Prompt:</span>
                 <Textarea
                   isRequired
-                  value={prompt}
-                  onValueChange={setPrompt}
+                  value={promt}
+                  onValueChange={setPromt}
                   labelPlacement="outside"
                   placeholder="Điền các yếu tố mong muốn xuất hiện"
                   className="max-w-xs text-white"
@@ -471,8 +456,8 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                 <span className='p-1 mb-2 text-xs  text-gray-100'> Negative Prompt:</span>
                 <Textarea
                   isRequired
-                  value={negativePrompt}
-                  onValueChange={setNegativePrompt}
+                  value={negativePromt}
+                  onValueChange={setNegativePromt}
                   labelPlacement="outside"
                   placeholder="Điền các yếu tố muốn loại bỏ"
                   className="max-w-xs text-white"
@@ -699,117 +684,6 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
             </div>
           ) : null}
 
-          {step === 0.5 && mode == 'prompt-base' ? (
-            <div data-aos='zoom-in'
-              data-aos-duraion={1000} className='px-6  pt-2 text-lg'>
-
-              <div className='w-full flex'>
-
-                <Textarea
-                  isRequired
-                  isReadOnly={isLoading}
-                  value={prompt}
-                  onValueChange={setPrompt}
-                  labelPlacement="outside"
-                  autoFocus={true}
-                  size='lg'
-                  placeholder="Điền các yếu tố muốn ra lệnh"
-                  className="mx-auto max-w-4xl cursor-pointer font-display text-[18px] font-bold mt-[1px] bg-gray-100 text-slate-900 sm:text-7xl mt-2"
-                />
-                <div className="w-[200px] mt-6 items-center justify-center box-border rounded-full hidden lg:block to-blue-gd p-[1px]">
-                  <Button
-                    isLoading={isLoading}
-                    onClick={() => { }}
-                    className="w-full  font-medium rounded-full py-1  bg-white text-slate-800 px-[50px]"
-                  >
-                    Re-Generate
-                  </Button>
-                </div>
-              </div>
-
-
-              <div className="w-full mb-[60px] hidden lg:flex">
-                <div
-                  className="grid grid-cols-2 gap-12 my-12  items-center shrink-0  "
-                  data-aos="fade-right"
-                  data-aos-easing="ease-in-out"
-                  data-aos-delay={200}
-                  data-aos-duraion={1000}
-                >
-                  {chatGPTDesignPrompts.map(i => (
-                    <div
-                      className="flex flex-col relative overflow-hidden h-auto text-foreground box-border bg-content1 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none w-[420px]"
-                      tabIndex={-1}
-                    >
-                      <div className="relative flex w-full p-3 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased px-3 pb-1">
-                        <div
-                          className="relative shadow-black/5 shadow-none rounded-large"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          {" "}
-
-                          <Image2
-                            className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large aspect-video w-full object-cover object-top"
-                            src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg"
-                            width={"auto"}
-                            height={334}
-                            alt="Try On Step Image"
-                          />
-
-                        </div>
-                        <span
-                          aria-hidden="true"
-                          className="w-px h-px block"
-                          style={{ marginLeft: "0.25rem", marginTop: "0.5rem" }}
-                        />
-                        <div className="flex flex-col gap-2 px-2">
-                          <p className="text-large font-medium">{i.title}</p>
-                          {
-                            (showPrompt && !showEditPrompt) && (<p className="text-small text-default-400">
-                              {i.prompt}
-                            </p>)
-                          }
-                          {
-                            (showEditPrompt) && (
-                              <Textarea
-                                isRequired
-                                value={i.prompt}
-                                onValueChange={(evt) => { i.prompt = '' }}
-                                labelPlacement="outside"
-                                placeholder="Điền các yếu tố muốn ra lệnh"
-                                className="mx-auto max-w-4xl cursor-pointer font-display text-4xl font-medium  text-slate-900 sm:text-7xl mt-8"
-                              />
-                            )
-                          }
-
-                        </div>
-                      </div>
-                      <div className="p-3 h-auto flex w-full items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-large justify-end gap-2">
-                        <button
-                          onClick={() => { setShowPrompt(!showPrompt); setShowEditPrompt(false) }}
-                          className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 text-small gap-2 rounded-medium w-full [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-transparent text-default-foreground data-[hover=true]:bg-default/40"
-                          type="button"
-                        >
-                          {showPrompt ? "Ẩn mô tả" : "Hiện mô tả"}
-                        </button>
-                        <button
-                          onClick={() => { setShowPrompt(!showPrompt), setShowEditPrompt(!showEditPrompt); }}
-                          className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 text-small gap-2 rounded-medium w-full [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover"
-                          type="button"
-                        >
-                          {showEditPrompt ? "Cập nhật" : "Chỉnh sửa"}
-                        </button>
-                      </div>
-                    </div>
-
-
-                  ))}
-
-                </div>
-              </div>
-            </div>
-          ) : null}
-
           {step === 1 ? (
 
             imageResponseArr && (<RenderSDOutut
@@ -819,7 +693,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
               imageUploadedUrl={imageUploadedUrl}
               imageResponseArr={imageResponseArr}
               counter={counter}
-              prompt={prompt}
+              promt={promt}
               genConfig={genConfigurations}
               numberOfOutput={numberOfOutput}
             />)
@@ -855,15 +729,10 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
               </div>
             </>
           ) : null}
-
-
-
         </div>
 
 
       </div>
-
-      <History />
     </div>
   )
 }
@@ -871,7 +740,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
 const RenderSDOutut = (props) => {
   const {
-    isLoading, numberOfOutput, hasOutput, isUploadingImage, imageUploadedUrl, imageResponseArr, counter, isEnable, genConfig, renderConfig, prompt
+    isLoading, numberOfOutput, hasOutput, isUploadingImage, imageUploadedUrl, imageResponseArr, counter, isEnable, genConfig, renderConfig, promt
   } = (props)
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -883,7 +752,7 @@ const RenderSDOutut = (props) => {
     <div className='w-full  px-8'>
       <span className="text-slate-800 inline font-normal text-sm">
         {/* {`${genConfigurations["genType"]}, ${genConfigurations["genStyle"]}, ${genConfigurations["genMaterial"]}, ${genConfigurations["genExactly"]}`} : <br /> */}
-        {prompt}
+        {promt}
       </span>
       <Card key={selectedIndex} className="w-full lg:w-1/2 mx-auto   my-4 cursor-pointer">
         <CardHeader className="absolute w-auto z-10 top-1 flex-col items-start">
@@ -930,76 +799,12 @@ const RenderSDOutut = (props) => {
         }
       </div>
     </div>
-
-
-
-
   </>
 
   );
 
 }
 
-
-export const History = () => {
-
-  return (<div
-    className="absolute float-right bottom-0 right-0  h-[300px] text-foreground box-border bg-content1 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none "
-    tabIndex={-1}
-  >
-    <a
-      href="/authenticate"
-      className="group inline-flex px-2 items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-3 min-w-16 h-8 text-tiny gap-2 rounded-full [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover absolute right-2 top-8 z-10"
-      type="button"
-    >
-      Nâng cấp tài khoản
-    </a>
-    <div className="flex w-full mt-10 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased relative min-h-[200px] bg-gradient-to-br from-content1 to-default-100/50 p-8 before:inset-0 before:h-full before:w-full before:content-['']">
-      <div className="p-1  flex w-full items-center color-inherit subpixel-antialiased rounded-b-large bottom-0 h-[auto] overflow-visible bg-content1  duration-300 ease-in-out transition-height border-t-1 border-default-100">
-      <ul>
-        {
-          ["Không giới hạn lượt dùng"," Chất lượng HD", "Lưu lại lịch sử", "Chia sẻ tài khoản", " Chỉnh sửa prompt nâng cao", "Thêm nhiều phương án hơn"].map(item => (
-            <li key={item} className="flex items-center gap-1">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-                aria-hidden="true"
-                role="img"
-                className="text-default-600 iconify iconify--ci"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="m6 12l4.243 4.243l8.484-8.486"
-                />
-              </svg>
-              <p className="text-small text-default-500">{item}</p>
-            </li>
-
-          ))
-        }
-
-      </ul>
-      <br/>
-     
-    </div>
-
-    <AvatarGroup  isGrid max={3} className='mt-4'>
-      <Avatar  src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg" />
-      <Avatar  src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg" />
-      <Avatar  src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg" />
-      <Avatar  src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg" />
-    </AvatarGroup>
-    </div>
-    
-  </div>)
-}
 export const CustomRadio = (props) => {
   const {
     Component,

@@ -6,6 +6,7 @@ import PlayGroundTryOn from './playground-tryon';
 import PlayGroundArchitecture from './playground-architecture';
 import PlayGroundFilmMaking from './playground-film';
 import PlayGroundArchitecture2 from './playground-architecture-2';
+import PlayGroundArchitecturePromptBase from './playground-architecture-prompt';
 
 export default function QuickPlayAI(props) {
   console.log(props.config)
@@ -23,6 +24,10 @@ export default function QuickPlayAI(props) {
 
       {
         (props.config.code === "ai-architecture") && (<PlayGroundArchitecture2 config={props.config} onCloseEvent={props.onCloseEvent} />)
+      }
+
+      {
+        (props.config.code === "ai-architecture-prompt") && (<PlayGroundArchitecturePromptBase config={props.config} onCloseEvent={props.onCloseEvent} />)
       }
 
       {
