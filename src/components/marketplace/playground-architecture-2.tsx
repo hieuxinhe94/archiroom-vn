@@ -332,7 +332,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
 
           <div className="w-full text-white text-sm">
             <div className='rounded-lg bg-slate-700 w-full rounded-[10px] p-[2px]'>
-              <Tooltip isOpen={(step == 0.5) && imageUploadedUrl.length == 0 && mode== 'image-gen'} showArrow={true} placement='right-start' content="Tải lên thiết kế của bạn tại đây">
+              <Tooltip isOpen={(step == 0.5) && imageUploadedUrl.length == 0 && mode == 'image-gen'} showArrow={true} placement='right-start' content="Tải lên thiết kế của bạn tại đây">
                 <div className="">
                   <div className="w-full h-full bg-slate-800/60 rounded-[8px] p-[15px] lg:p-[36px] hover:bg-gradient-to-r hover:from-purple-500/[.05] hover:to-blue-500/[.05] duration-300">
                     <div className="options flex justify-center mb-[15px]">
@@ -738,6 +738,7 @@ export default function PlayGroundArchitecture2({ config, onCloseEvent }) {
                 >
                   {chatGPTDesignPrompts.map(i => (
                     <div
+                      key={i}
                       className="flex flex-col relative overflow-hidden h-auto text-foreground box-border bg-content1 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none w-[420px]"
                       tabIndex={-1}
                     >
@@ -956,48 +957,48 @@ export const History = () => {
     </a>
     <div className="flex w-full mt-10 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased relative min-h-[200px] bg-gradient-to-br from-content1 to-default-100/50 p-8 before:inset-0 before:h-full before:w-full before:content-['']">
       <div className="p-1  flex w-full items-center color-inherit subpixel-antialiased rounded-b-large bottom-0 h-[auto] overflow-visible bg-content1  duration-300 ease-in-out transition-height border-t-1 border-default-100">
-      <ul>
-        {
-          ["Không giới hạn lượt dùng"," Chất lượng HD", "Lưu lại lịch sử", "Chia sẻ tài khoản", " Chỉnh sửa prompt nâng cao", "Thêm nhiều phương án hơn"].map(item => (
-            <li key={item} className="flex items-center gap-1">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-                aria-hidden="true"
-                role="img"
-                className="text-default-600 iconify iconify--ci"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="m6 12l4.243 4.243l8.484-8.486"
-                />
-              </svg>
-              <p className="text-small text-default-500">{item}</p>
-            </li>
+        <ul>
+          {
+            ["Không giới hạn lượt dùng", " Chất lượng HD", "Lưu lại lịch sử", "Chia sẻ tài khoản", " Chỉnh sửa prompt nâng cao", "Thêm nhiều phương án hơn"].map(item => (
+              <li key={item} className="flex items-center gap-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                  aria-hidden="true"
+                  role="img"
+                  className="text-default-600 iconify iconify--ci"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="m6 12l4.243 4.243l8.484-8.486"
+                  />
+                </svg>
+                <p className="text-small text-default-500">{item}</p>
+              </li>
 
-          ))
-        }
+            ))
+          }
 
-      </ul>
-      <br/>
-     
+        </ul>
+        <br />
+
+      </div>
+
+      <AvatarGroup isGrid max={3} className='mt-4'>
+        <Avatar src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg" />
+        <Avatar src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg" />
+        <Avatar src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg" />
+        <Avatar src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg" />
+      </AvatarGroup>
     </div>
 
-    <AvatarGroup  isGrid max={3} className='mt-4'>
-      <Avatar  src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg" />
-      <Avatar  src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg" />
-      <Avatar  src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg" />
-      <Avatar  src="https://app.requestly.io/delay/5000/https://archiroom.vn/archiroom/output-sample-1.jpg" />
-    </AvatarGroup>
-    </div>
-    
   </div>)
 }
 export const CustomRadio = (props) => {

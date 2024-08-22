@@ -118,7 +118,7 @@ export default function Tools(props) {
 
                 onBlur={() => setIsEditing(!isEditing)}
                 description="Nên điền đẩy đủ các tham số về diện tích, số phòng/số tầng, phong cách mong muốn...."
-
+                size="lg"
                 isRequired
                 value={prompt}
                 onValueChange={setPrompt}
